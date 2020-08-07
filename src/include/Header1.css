@@ -33,7 +33,7 @@ li {
 }
 
 /* header a태그 꾸미기 */
-a {
+Link {
   text-decoration: none;
   outline: none;
   color: #b3cdff;
