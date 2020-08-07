@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OP.GG 로그인</title>
+    <style>
+      #root {
+        position: relative;
+        min-height: 100%;
+        background-color: #f3f5f7;
+      }
+
+      div {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        display: block;
+        font-size: 100%;
+        font-family: Helvetica, Helvetica Neue, Arial, Malgun Gothic,
+          AppleSDGothicNeo-Regular, Dotum, AppleSDGothic, Apple SD Gothic Neo,
+          AppleGothic, sans-serif;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        font-family: Helvetica, Helvetica Neue, Arial, Malgun Gothic,
+          AppleSDGothicNeo-Regular, Dotum, AppleSDGothic, Apple SD Gothic Neo,
+          AppleGothic, sans-serif;
+        word-break: keep-all;
+      }
+      .member-card-layout {
+        position: relative;
+        min-width: 320px;
+        min-height: 100%;
+        padding: 170px 0 200px;
+      }
+
+      .member-card-layout__container {
+        position: relative;
+        margin: 0 auto;
+        width: 450px;
+        min-height: 682px;
+        background-color: #fff;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+      }
+
+      .member-card-layout__inner {
+        margin: 0 40px;
+        padding-bottom: 40px;
+      }
+      /* OPGG 로고 */
+      .member-card-layout__logo {
+        padding-top: 48px;
+        text-align: center;
+        margin-bottom: 42px;
+      }
+      h1 {
+        display: block;
+        font-size: 2em;
+        margin-block-start: 0.67em;
+        margin-block-end: 0.67em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        font-weight: bold;
+      }
+      /* 로고 이미지 크기 */
+      .member-card-layout__logo-image {
+        width: 128px;
+        height: 32px;
+      }
+      /* 간편로그인, 페이스북,애플 버튼 */
+      .login__fb-login-btn,
+      .login__fb-title {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+      }
+      .member-button,
+      .member-button:disabled {
+        font-size: 16px;
+        border-radius: 3px;
+        display: inline-block;
+        text-decoration: none;
+        color: #fff;
+        border: 0;
+        height: 56px;
+      }
+
+      /* 여기서부터 페이스북 버튼 */
+      .facebook-button {
+        background-color: #3c5a99;
+        line-height: 20px;
+      }
+      .facebook-button__txt {
+        font-size: 16px;
+        line-height: 19px;
+        font-weight: 700;
+        color: #fff;
+        display: inline-block;
+        vertical-align: top;
+        margin-top: 4px;
+      }
+      .login__fb-btn {
+        margin-top: 12px;
+        width: 100%;
+      }
+      .facebook-button__img {
+        display: inline-block;
+        margin-right: 16px;
+      }
+      /* 여기까지 */
+
+      /* 여기서부터 애플 버튼 */
+      .login__apple-btn {
+        margin-top: 12px;
+        width: 100%;
+      }
+      .apple-button {
+        background-color: #212529;
+        line-height: 20px;
+        box-sizing: border-box;
+      }
+      .apple-button__img {
+        display: inline-block;
+        margin-right: 16px;
+      }
+      .apple-button__txt {
+        font-size: 16px;
+        line-height: 19px;
+        font-weight: 700;
+        color: #fff;
+        display: inline-block;
+        vertical-align: top;
+        margin-top: 4px;
+      }
+      /* 여기까지 */
+
+      /* 애플로그인버튼 아래에 OR */
+      .login__l-or {
+        position: relative;
+        margin-top: 24px;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 18px;
+        color: #c5cbd0;
+        text-align: center;
+        vertical-align: top;
+        line-height: 14px;
+      }
+      .login__l-or:after,
+      .login__l-or:before {
+        position: absolute;
+        top: 6px;
+        content: "";
+        display: block;
+        width: 160px;
+        height: 1px;
+        background-color: #dddfe4;
+      }
+      .login__l-or:before {
+        right: 0;
+      }
+
+      /* 이메일 로그인 text */
+      .login__email-title {
+        margin-top: 42px;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+      }
+      /* 이메일, 비밀번호 인풋박스 밑줄 */
+      .member-input__state {
+        margin-top: 27px;
+        position: relative;
+        padding: 10px 0 11px;
+        border-bottom: 1px solid #dddfe4;
+        margin-bottom: 10px;
+      }
+
+      /* 이메일 주소, 로그인 인풋박스 밑줄 */
+
+      input {
+        text-rendering: auto;
+        color: -internal-light-dark(black, white);
+        letter-spacing: normal;
+        word-spacing: normal;
+        text-transform: none;
+        text-indent: 0px;
+        text-shadow: none;
+        display: inline-block;
+        -webkit-rtl-ordering: logical;
+        text-align: start;
+        appearance: textfield;
+        cursor: text;
+        margin: 0em;
+        font: 400 13.3333px Arial;
+      }
+
+      /* 인풋박스 테두리 없애기 */
+      .member-input__box {
+        position: relative;
+        z-index: 10;
+        border: 0;
+        padding: 0;
+        background-color: transparent;
+        outline: 0;
+      }
+
+      .login__l:after {
+        content: "";
+        display: block;
+        clear: both;
+      }
+
+      /* 로그인, 비번잃어버렸나요 감싸는 div 박스 */
+      .login__checkbox {
+        display: inline-block;
+        margin-right: 40px;
+      }
+
+      /* 로그인 상태 유지하기 text */
+      .member-checkbox__label {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+        color: #52595f;
+        margin-left: 8px;
+        margin-top: 4px;
+        line-height: 17px;
+        display: inline-block;
+      }
+      /* 비밀번호를 잊으셨나요? */
+      .member-link {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+        color: #1ea1f7;
+        text-decoration: underline;
+      }
+      /* 버튼 글씨 색 */
+      .member-button,
+      .member-button:disabled {
+        font-size: 16px;
+        border-radius: 3px;
+        display: inline-block;
+        text-decoration: none;
+
+        color: #fff;
+        border: 0;
+        height: 56px;
+      }
+      /* 로그인 버튼 */
+      .login__btn {
+        margin-top: 40px;
+        width: 100%;
+        background-color: #1ea1f7;
+      }
+
+      /* 회원가입하기 */
+      .login__l-sign-up {
+        position: relative;
+        text-align: center;
+        margin-top: 16px;
+      }
+      .login__l-sign-up {
+        font-size: 14px;
+      }
+
+      .member-link {
+        margin-left: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <!--제일큰 컨테이너 div박스-->
+    <div id="root">
+      <div class="app">
+        <div class="member-card-layout">
+          <!-- 흰색 박스 -->
+          <div class="member-card-layout__container">
+            <!-- 컨테이너 안 div -->
+            <div class="member-card-layout__inner">
+              <!-- 로고 div -->
+              <h1 class="member-card-layout__logo">
+                <img
+                  class="member-card-layout__logo-image"
+                  src="https://member.op.gg/img_opgglogo.1924961d.svg"
+                  alt="OP.GG"
+                />
+              </h1>
+              <div class="login">
+                <form>
+                  <h2 class="login__fb-title">간편 로그인</h2>
+                  <button
+                    type="button"
+                    class="member-button facebook-button login__fb-btn"
+                  >
+                    <!-- 페이스북 로그인 -->
+                    <span class="facebook-button__inner"
+                      ><img
+                        src="https://member.op.gg/icon_facebook_wh.6ab689d7.svg"
+                        class="facebook-button__img"
+                        width="24"
+                        height="24"
+                        alt="facebook"
+                      /><span class="facebook-button__txt"
+                        >페이스북으로 로그인</span
+                      ></span
+                    ></button
+                  ><button
+                    type="button"
+                    class="member-button apple-button login__apple-btn"
+                  >
+                    <!-- apple로그인 -->
+                    <span class="apple-button__inner"
+                      ><img
+                        src="https://member.op.gg/logo_apple.dca28233.svg"
+                        class="apple-button__img"
+                        width="24"
+                        height="24"
+                        alt="apple"
+                      /><span class="apple-button__txt"
+                        >Apple로 로그인</span
+                      ></span
+                    >
+                  </button>
+                  <!-- apple 로그인 밑  ㅡorㅡ -->
+                  <div class="login__l-or">OR</div>
+                  <h2 class="login__email-title">이메일 로그인</h2>
+                  <div class="member-input">
+                    <div class="member-input__state">
+                      <!-- 이메일 input 박스 -->
+                      <input
+                        id="memberInput6908"
+                        class="member-input__box"
+                        type="text"
+                        autocomplete="off"
+                        name="email"
+                        value=""
+                        placeholder="이메일 주소"
+                      /><span class="member-input__valid-wrapper"></span>
+                    </div>
+                  </div>
+
+                  <div class="member-input">
+                    <div class="member-input__state">
+                      <!-- 비밀번호 input 박스 -->
+                      <input
+                        id="memberInput3108"
+                        class="member-input__box"
+                        type="password"
+                        autocomplete="off"
+                        name="password"
+                        value=""
+                        placeholder="비밀번호"
+                      /><span class="member-input__valid-wrapper"></span>
+                    </div>
+                    <!-- 로그인 상태유지 checkbox -->
+                  </div>
+                  <div class="login__l">
+                    <div class="login__checkbox" id="login__checkbox">
+                      <div class="member-checkbox">
+                        <span class="member-checkbox__state"
+                          ><input
+                            id="memberCheckbox6943"
+                            type="checkbox"
+                            class="member-checkbox__input" /></span
+                        ><label
+                          for="memberCheckbox6943"
+                          class="member-checkbox__label"
+                          >로그인 상태 유지하기</label
+                        >
+                      </div>
+                    </div>
+                    <!-- 비밀번호를 잊으셨나요? -->
+                    <span class="login__find-password-btn"
+                      ><a
+                        class="member-link"
+                        href="/find/reset-password/send-email"
+                        >비밀번호를 잊으셨나요?</a
+                      ></span
+                    >
+                  </div>
+                  <button type="submit" class="member-button login__btn">
+                    로그인
+                  </button>
+                  <div class="login__l-sign-up">
+                    OP.GG에 처음이세요?<span class="login__sign-up-link"
+                      ><a class="member-link" href="/register/agree?idType=OPGG"
+                        >회원가입하기</a
+                      ></span
+                    >
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="select-language select-language--login-container"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

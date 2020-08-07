@@ -1,0 +1,285 @@
+$(function(){
+	var types = {
+		PROGAMER: 'PROGAMER',
+		TEAM: 'TEAM',
+		SUMMONER: 'SUMMONER',
+		CHAMPION: 'CHAMPION'
+	};
+	// for handle aborting previous ajax
+	var currentRequest = null;
+
+	initialize();
+
+	function initialize(){
+		var options = {
+			groupBy: 'category',
+			triggerSelectOnValidInput: false,
+			maxHeight: 1000,
+			lookup: lookup,
+			beforeRender: beforeRender,
+			formatResult: formatResult,
+			formatGroup: formatGroup,
+			onSelect: onSelect
+		};
+
+		if (_isMobile) {
+			var mobileOptions = $.extend({}, options);
+			mobileOptions.appendTo = '.IndexAutoComplete .IndexAutoCompleteContent';
+			mobileOptions.forceFixPosition = false;
+			mobileOptions.width = '100%';
+			mobileOptions.onHide = function(container){
+				if ($(this).val().length != 0 && $(this).is(':focus') == false) {
+					$('.IndexAutoComplete').hide();
+				}
+			};
+
+			$('.search-summoner__input-txt').autocomplete(mobileOptions)
+				.on('keydown', abortAjaxWhenArrowKeyDown)
+				.on('focus keydown keyup', checkShowMobileFavoriteSummonerList);
+		} else {
+			var mainSuggestOptions = $.extend({}, options);
+			mainSuggestOptions.appendTo = '.summoner-search-history';
+			mainSuggestOptions.forceFixPosition = false;
+			mainSuggestOptions.width = '100%';
+
+			$('.summoner-search-form').find('.summoner-search-form__text')
+				.addClass("_suggest")
+				.autocomplete(mainSuggestOptions)
+				.on('keydown', abortAjaxWhenArrowKeyDown)
+				.on('focus input keyup', checkShowFavoriteSummonerList);
+
+			// Sub pages
+			var headerSuggestOptions = $.extend({}, options);
+			headerSuggestOptions.appendTo = '.gnb-list-item__search>form';
+			headerSuggestOptions.width = "100%";
+			// $('.gnb-list-item__search').find('input')
+			$('.gnb-list-item__input')
+				.addClass("_suggest")
+				.autocomplete(headerSuggestOptions)
+				.on('focus input keyup', checkShowGNBFavoriteSummonerList);
+			
+			// Custom CSS
+			$(".gnb-list-item__search .autocomplete-suggestions").css("top", "36px");
+		}
+	}
+
+	function abortAjaxWhenArrowKeyDown(evt){
+		var arrowKeyCodes = [37, 38, 39, 40]; // left, top, right, down
+
+		if (arrowKeyCodes.indexOf(evt.which) > -1) {
+			abortAjax();
+		}
+	}
+
+	function checkShowMobileFavoriteSummonerList(){
+		var value = $(this).val();
+		if (value.length > 0) {
+			$('.IndexAutoComplete ul').hide();
+		} else {
+			$('.IndexAutoComplete ul').show();
+		}
+	}
+
+	function checkShowFavoriteSummonerList(){
+		var value = $(this).val();
+		if (value.length > 0) {
+			$('.summoner-search-extra').addClass('__historyHide');
+			$('.summoner-search-history .tabWrap').hide();
+		} else {
+			$('.summoner-search-history .tabWrap').show();
+			$('.summoner-search-extra').removeClass('__historyHide');
+		}
+	}
+
+	function checkShowGNBFavoriteSummonerList(){
+		var value = $(this).val();
+		if (value.length > 0) {
+			$('.summoner-search-history').hide();
+		} else {
+			$('.summoner-search-history').show();
+		}
+	}
+
+	function lookup(query, done){
+		abortAjax();
+
+		currentRequest = $.OP.GG.ajax.getJSON({
+			url: '/ajax/autocomplete.json',
+			data: {
+				keyword: query
+			},
+			callback: {
+				onJSON: function onSuccess(response){
+					if (!response.success) {
+						return;
+					}
+
+					currentRequest = null;
+
+					var result = {
+						suggestions: getItems(response.sections)
+					};
+
+					done(result);
+				},
+				onError: function onFail(){
+				}
+			}
+		});
+	}
+
+	function abortAjax(){
+		if (currentRequest) {
+			currentRequest.abort();
+			currentRequest = null;
+		}
+	}
+
+	function getItems(sections){
+		var items = [];
+
+		for (var i = 0, len = sections.length; i < len; i++) {
+			items = items.concat(getItemsFromSection(sections[i]));
+		}
+
+		return items;
+	}
+
+	function getItemsFromSection(section){
+		var groups = section.groups;
+		var items = [];
+		var title = '';
+
+		for (var i = 0, len = groups.length; i < len; i++) {
+			title = '<img class="autocomplete-group--icon" src="' + section.iconUrl + '"/>' +
+				'<span class="autocomplete-group--title">' + section.title + '</span>';
+
+			items = items.concat(getItemsFromGroup(groups[i], title));
+		}
+
+		return items;
+	}
+
+	function getItemsFromGroup(group, category){
+		var items = group.items;
+		var result = [];
+		var item;
+
+		for (var i = 0, len = items.length; i < len; i++) {
+			item = {};
+			item.value = items[i].name;
+			item.data = items[i];
+			item.data.type = group.type;
+			item.data.category = category;
+			result.push(item);
+		}
+
+		return result;
+	}
+
+	function beforeRender(container, suggestions){
+		var inputValue = $(this).val();
+		var $container = $(container);
+
+		if (!inputValue) {
+			$container.css({
+				opacity: 0
+			}).html('');
+		} else {
+			$container.css({
+				opacity: 1
+			});
+		}
+	}
+
+	function formatResult(suggestion, currentValue){
+		var meta = getMeta(suggestion.data);
+		var dom = '';
+
+		if (_isMobile) {
+			dom =
+				'<div class="autocomplete-item">' +
+				'<img class="autocomplete-item--thumb" src="' + meta.img + '">' +
+				'<div class="autocomplete-item--layout">' +
+				'<div class="autocomplete-item--name">' + suggestion.data.keyword + '</div>' +
+				'<div class="autocomplete-item--info">' + meta.info + '</div>' +
+				'</div>' +
+				'</div>';
+		} else {
+			dom =
+				'<div class="autocomplete-item autocomplete-item--' + suggestion.data.type + '">' +
+				'<table><tr>' +
+				'<td><img class="autocomplete-item--thumb" src="' + meta.img + '"/></td>' +
+				'<td><div class="autocomplete-item--content">' +
+				'<div class="autocomplete-item--name">' + suggestion.data.keyword + '</div>' +
+				'<div class="autocomplete-item--info">' + meta.info + '</div>' +
+				'</div></td>' +
+				'</tr></table>' +
+				'</div>';
+		}
+		return dom;
+	}
+
+	function getMeta(data){
+		var separator = '<span class="autocomplete-item--separator"> | </span>';
+		var img = '';
+		var info = '';
+
+		switch (data.type) {
+			case types.PROGAMER:
+				img = data.faceImageUrl;
+				info = data.team + separator + data.position;
+				if (data.league) {
+					info = data.league.concat(', ' + info);
+				}
+				break;
+			case types.TEAM:
+				img = data.imageUrl;
+				info = data.league || '';
+				break;
+			case types.CHAMPION:
+				img = data.imageUrl;
+				info = data.positions ? data.positions.join(', ') : '';
+				break;
+			default:
+				img = data.profileIconUrl;
+				if (data.tierRank) {
+					info = data.tierRank.tierRank + ' - ' + data.tierRank.lp + 'LP';
+				} else {
+					if (parseInt(data.level, 10) === 0) {
+						info = '';
+					} else {
+						info = 'Level ' + data.level;
+					}
+				}
+		}
+
+		return {
+			img: img,
+			name: data.name,
+			info: info
+		};
+	}
+
+	function formatGroup(suggestion, category){
+		var categoryClass = [
+			'autocomplete-group'
+		].join(' ');
+
+		return '<div class="' + categoryClass + '">' + category + '</div>';
+	}
+
+	function onSelect(suggestion){
+		var data = suggestion.data;
+
+		$(this).autocomplete('dispose');
+
+		if (data.isOutLink) {
+			var redirectWindow = window.open(data.url, '_blank');
+			redirectWindow.location;
+		} else {
+			location.href = data.url;
+		}
+	}
+})
+;

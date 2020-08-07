@@ -1,0 +1,13 @@
+/* search .gg css */
+.search {
+  list-style: none;
+  font-size: 100%;
+  text-transform: none;
+  cursor: pointer;
+  font-family: Helvetica, "Malgun Gothic", "Apple SD Gothic Neo", AppleGothic,
+    Dotum, Arial, Tahoma;
+  text-align: center;
+  line-height: 32px;
+  height: 14px;
+  border: 0;
+}

@@ -1,0 +1,105 @@
+/* head ul이랑 list css 설정임*/
+/* flex 레이아웃 */
+.l-menu {
+  display: flex;
+  height: 48px;
+  background: #5383e8;
+  text-align: center;
+  align-items: center;
+  justify-content: start;
+}
+
+/* header 부분 li, ul 양식 */
+/* 나중에 이쪽부분 전체로 먹을 수 있어서 체크해야함 */
+ul,
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+/* header 부분  css 양식 */
+.menu {
+  display: contents;
+  align-items: center;
+  list-style: none;
+}
+/* header 부분  폰트 사이즈 */
+.menu__item {
+  font-size: 15px;
+  /* 부모 요소 범위를 넘어가는 자식 요소의 부분은 보이지 않도록 처리 */
+
+  /* 잘린 텍스트를 생략 부호(...)표시 함 */
+  text-overflow: ellipsis();
+}
+
+/* header a태그 꾸미기 */
+a {
+  text-decoration: none;
+  outline: none;
+  color: #b3cdff;
+}
+
+/* header 탭 간격 띄우기 */
+li {
+  margin-left: 25px;
+  margin-right: 25px;
+}
+
+/* 서치바 추가함 */
+.gnb-list-item__search input {
+  width: 100%;
+  border: none;
+  background: none;
+  padding: 9px 42px 8px 14px;
+  font-size: 12px;
+  line-height: 15px;
+  color: #727272;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.gnb-list-item__search {
+  margin-left: auto;
+
+  margin-right: 19px;
+  font-family: "Roboto", "Noto sans kr", "Apple SD Gothic Neo", "Malgun Gothic",
+    "sans-serif";
+  display: flex;
+
+  height: 32px;
+  background: #fff;
+  border-radius: 4px;
+  width: 340px;
+  margin-top: 1px;
+}
+
+gnb-list-item__search form {
+  flex: 1;
+  -ms-flex: 1;
+  -webkit-flex: 1;
+  position: relative;
+}
+
+.gnb-list-item__search input {
+  width: 100%;
+  border: none;
+  background: none;
+  padding: 9px 42px 8px 14px;
+  font-size: 12px;
+  line-height: 15px;
+  color: #727272;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.gnb-list-item__search button {
+  position: absolute;
+  top: 19px;
+  right: 28px;
+  height: 32px;
+  width: 54px;
+  text-align: center;
+  background: none;
+  border: none;
+  line-height: 32px;
+}
