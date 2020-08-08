@@ -1,5 +1,6 @@
 /* head ul이랑 list css 설정임*/
 /* flex 레이아웃 */
+
 .l-menu {
   display: flex;
   height: 48px;
@@ -7,6 +8,7 @@
   text-align: center;
   align-items: center;
   justify-content: start;
+  width: 100%;
 }
 
 /* header 부분 li, ul 양식 */

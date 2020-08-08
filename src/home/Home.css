@@ -1,0 +1,214 @@
+.home-container {
+  background-color: #5383e8;
+}
+
+/* head ul이랑 list css 설정임*/
+/* flex 레이아웃 */
+.l-menu {
+  display: flex;
+  height: 48px;
+  background: #5383e8;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+/* header 부분 li, ul 양식 */
+ul,
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+/* header 부분  css 양식 */
+.menu {
+  display: flex;
+
+  align-items: center;
+  list-style: none;
+}
+/* header 부분  폰트 사이즈 */
+.menu__item {
+  font-size: 15px;
+}
+
+/* header a태그 꾸미기 */
+a {
+  text-decoration: none;
+  outline: none;
+  color: #b3cdff;
+}
+
+/* header 탭 간격 띄우기 */
+li {
+  margin-left: 25px;
+  margin-right: 25px;
+}
+
+/* 제일 큰 div 컨테이너 박스 */
+/* 제일 큰 div 컨테이너 박스 */
+.l-container {
+  width: 1080px;
+  margin: 0 auto;
+}
+
+/* 베이가 로고에 패딩넣고 띄우기 */
+.index-logo {
+  padding: 32px 0 24px;
+}
+
+/* 로고 이미지 정렬하기 */
+.index-logo img {
+  display: block;
+  max-height: 200px;
+  margin: 0 auto;
+}
+
+/* 서치바 css 양식임 */
+.summoner-search-form__text__suggest {
+  display: block;
+  width: 100%;
+  padding: 15px 150px 18px 17px;
+  background: none;
+  border: none;
+  line-height: 17px;
+  font-size: 14px;
+  color: #9b9b9b;
+  box-sizing: border-box;
+  outline: none;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.19);
+}
+
+/* 서치바 검색버튼 크기조절 */
+/* 서치바 검색버튼 안에 넣기 */
+.summoner-search-form__button {
+  display: flex;
+  position: absolute;
+  top: 0px;
+  right: 0;
+  margin: 10px 10px 0 0;
+  height: 30px;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+}
+
+/* form으로 서치바 크기 css 조절함 */
+.summoner-search-form {
+  position: relative;
+  width: 624px;
+  margin: 0 auto;
+  border-radius: 2px;
+  background-color: #fff;
+}
+
+/* 커뮤니티 게시글 전체 레이아웃 css 설정*/
+.community-best {
+  margin-top: 30px;
+  min-height: 396px;
+  background: #fff;
+  border: solid 1px #e9eff4;
+}
+
+/* 커뮤니티 list태그안의 상단의 div안의 a태그의 css */
+.community-best__title {
+  display: block;
+  padding: 17px 0 16px 20px;
+  line-height: 17px;
+  font-size: 14px;
+  color: #000;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* 커뮤니티 list태그의 css 임 */
+.community-article__list__item {
+  border-top: 1px solid #f0f0f0;
+  cursor: pointer;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.community-article__list__item__title {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 14px;
+  line-height: 17px;
+  font-size: 14px;
+  color: #000;
+  font-weight: 300;
+}
+
+/* 커뮤니티 글제목 밑에 시간, 작성자 나오는곳 */
+.community-article__list__item__sub {
+  margin-top: 6px;
+  color: #879292;
+  line-height: 15px;
+  font-size: 12px;
+}
+
+.best__content-left {
+  display: inline;
+}
+
+/* <!-- 커뮤니티 article hover 특성--> */
+.community-article__list__item:hover {
+  background: #fbfbfb;
+}
+
+.community-article__list__item__rank.green {
+  color: #1ab80c;
+}
+
+.community-article__list__item__rank {
+  float: left;
+  line-height: 68px;
+  width: 55px;
+  font-size: 18px;
+  font-weight: 300;
+  font-style: oblique;
+
+  text-align: center;
+}
+/* 댓글수 알려주는 것 css설정 */
+.community-article__list__item__title em {
+  color: #0475b8;
+  font-style: normal;
+}
+
+/* footer부분 */
+/* footer 제일큰박스 css */
+
+.l-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.footer {
+  color: #fff;
+}
+
+.footer {
+  width: 1080px;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+/* footer copyright 양식 */
+.footer__copyright {
+  margin-top: 10px;
+  line-height: 1.5;
+  font-size: 11px;
+  width: 1000px;
+}
+
+.footer__sns {
+  margin-top: -16px;
+  line-height: 16px;
+  text-align: right;
+  font-size: 0;
+}

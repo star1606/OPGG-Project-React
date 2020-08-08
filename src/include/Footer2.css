@@ -1,3 +1,6 @@
+/* footer부분 */
+/* footer 제일큰박스 css */
+
 .l-footer {
   position: absolute;
   bottom: 0;
@@ -5,8 +8,8 @@
   width: 100%;
 }
 
-.footer {
-  color: #fff;
+.footer2 {
+  color: #333;
   width: 1080px;
   margin: 0 auto;
   padding: 40px 0;
