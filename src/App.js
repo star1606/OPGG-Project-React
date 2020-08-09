@@ -17,7 +17,7 @@ function App() {
       <Route path="/champion" component={Champ} />
       <Route path="/ranking" component={Ranking} />
       <Route path="/community" component={Community} />
-      {/* <Route path="/login" component={Login} /> */}
+      <Route path="/login" component={Login} />
     </div>
   );
 }

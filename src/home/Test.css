@@ -1,0 +1,23 @@
+html {
+  background-color: green;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
+  width: 100%;
+}
+
+.test {
+  background-color: aqua;
+
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
+  min-width: 100%;
+}
+
+div {
+  margin: 0 auto;
+  padding: 0 auto;
+  border: 0 auto;
+}

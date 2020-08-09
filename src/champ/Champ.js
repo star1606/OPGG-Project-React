@@ -1,12 +1,12 @@
 import React from "react";
 import Header2 from "../include/Header2";
 import Footer2 from "../include/Footer2";
-
+import "./Champ.css";
 const Champ = () => {
   return (
-    <div>
+    <div className="champ-container">
       <Header2 />
-      <h1> 챔피언 분석 페이지</h1>
+
       <Footer2 />
     </div>
   );

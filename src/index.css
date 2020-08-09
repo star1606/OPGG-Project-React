@@ -1,3 +1,10 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: inherit;
+}
+
 /* head ul이랑 list css 설정임*/
 /* flex 레이아웃 */
 .l-menu {
@@ -36,11 +43,11 @@ li {
 }
 
 /* header a태그 꾸미기 */
-a {
+/* a {
   text-decoration: none;
   outline: none;
   color: #b3cdff;
-}
+} */
 
 /* header 탭 간격 띄우기 */
 

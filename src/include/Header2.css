@@ -1,5 +1,10 @@
 /* head ul이랑 list css 설정임*/
 /* flex 레이아웃 */
+
+body {
+  background-color: #eaeaea;
+}
+
 .l-menu {
   display: flex;
   height: 48px;
@@ -19,6 +24,7 @@ li {
 }
 /* header 부분  css 양식 */
 .menu {
+  margin-left: 49px;
   display: contents;
   align-items: center;
   list-style: none;
@@ -60,8 +66,8 @@ li {
 
 .gnb-list-item__search {
   margin-left: auto;
+  margin-right: 74px;
 
-  margin-right: 19px;
   font-family: "Roboto", "Noto sans kr", "Apple SD Gothic Neo", "Malgun Gothic",
     "sans-serif";
   display: flex;
@@ -94,9 +100,9 @@ gnb-list-item__search form {
 
 .gnb-list-item__search button {
   position: absolute;
-  top: 19px;
-  right: 28px;
-  height: 32px;
+  top: 11px;
+  right: 74px;
+  height: 28px;
   width: 54px;
   text-align: center;
   background: none;

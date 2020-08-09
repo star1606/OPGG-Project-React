@@ -1,17 +1,15 @@
-.home-container {
+html {
   background-color: #5383e8;
 }
 
+.home-container {
+  background-color: #5383e8;
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 2.5rem;
+}
 /* head ul이랑 list css 설정임*/
 /* flex 레이아웃 */
-.l-menu {
-  display: flex;
-  height: 48px;
-  background: #5383e8;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-}
 
 /* header 부분 li, ul 양식 */
 ul,
@@ -103,7 +101,7 @@ li {
 }
 
 /* 커뮤니티 게시글 전체 레이아웃 css 설정*/
-.community-best {
+.homeList-container {
   margin-top: 30px;
   min-height: 396px;
   background: #fff;
@@ -141,6 +139,16 @@ li {
   font-weight: 300;
 }
 
+.link {
+  display: block;
+  padding: 17px 0 16px 20px;
+  line-height: 17px;
+  font-size: 14px;
+  color: #000;
+  text-decoration: none;
+  font-weight: bold;
+}
+
 /* 커뮤니티 글제목 밑에 시간, 작성자 나오는곳 */
 .community-article__list__item__sub {
   margin-top: 6px;
@@ -176,39 +184,4 @@ li {
 .community-article__list__item__title em {
   color: #0475b8;
   font-style: normal;
-}
-
-/* footer부분 */
-/* footer 제일큰박스 css */
-
-.l-footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-}
-
-.footer {
-  color: #fff;
-}
-
-.footer {
-  width: 1080px;
-  margin: 0 auto;
-  padding: 40px 0;
-}
-
-/* footer copyright 양식 */
-.footer__copyright {
-  margin-top: 10px;
-  line-height: 1.5;
-  font-size: 11px;
-  width: 1000px;
-}
-
-.footer__sns {
-  margin-top: -16px;
-  line-height: 16px;
-  text-align: right;
-  font-size: 0;
 }

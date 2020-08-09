@@ -7,9 +7,18 @@
   background: #5383e8;
   text-align: center;
   align-items: center;
-  justify-content: start;
+  justify-content: center;
   width: 100%;
 }
+
+/* .l-menu {
+  display: flex;
+  height: 48px;
+  background: #5383e8;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+} */
 
 /* header 부분 li, ul 양식 */
 /* 나중에 이쪽부분 전체로 먹을 수 있어서 체크해야함 */
@@ -35,73 +44,15 @@ li {
 }
 
 /* header a태그 꾸미기 */
-Link {
+
+/* .link {
   text-decoration: none;
   outline: none;
   color: #b3cdff;
-}
+} */
 
 /* header 탭 간격 띄우기 */
 li {
   margin-left: 25px;
   margin-right: 25px;
-}
-
-/* 서치바 추가함 */
-.gnb-list-item__search input {
-  width: 100%;
-  border: none;
-  background: none;
-  padding: 9px 42px 8px 14px;
-  font-size: 12px;
-  line-height: 15px;
-  color: #727272;
-  outline: none;
-  box-sizing: border-box;
-}
-
-.gnb-list-item__search {
-  margin-left: auto;
-
-  margin-right: 19px;
-  font-family: "Roboto", "Noto sans kr", "Apple SD Gothic Neo", "Malgun Gothic",
-    "sans-serif";
-  display: flex;
-
-  height: 32px;
-  background: #fff;
-  border-radius: 4px;
-  width: 340px;
-  margin-top: 1px;
-}
-
-gnb-list-item__search form {
-  flex: 1;
-  -ms-flex: 1;
-  -webkit-flex: 1;
-  position: relative;
-}
-
-.gnb-list-item__search input {
-  width: 100%;
-  border: none;
-  background: none;
-  padding: 9px 42px 8px 14px;
-  font-size: 12px;
-  line-height: 15px;
-  color: #727272;
-  outline: none;
-  box-sizing: border-box;
-}
-
-.gnb-list-item__search button {
-  position: absolute;
-  top: 19px;
-  right: 28px;
-  height: 32px;
-  width: 54px;
-  text-align: center;
-  background: none;
-  border: none;
-  line-height: 32px;
 }
