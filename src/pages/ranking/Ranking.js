@@ -1,6 +1,6 @@
 import React from "react";
-import Header2 from "../include/Header2";
-import Footer2 from "../include/Footer2";
+import Header2 from "../../include/Header2";
+import Footer2 from "../../include/Footer2";
 
 const Ranking = () => {
   return (

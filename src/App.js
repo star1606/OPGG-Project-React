@@ -1,14 +1,16 @@
 import React from "react";
 
 import "./App.css";
-import Header2 from "./include/Header2";
-import Login from "./login/Login";
-import "./login/Login.css";
+
 import { Route } from "react-router-dom";
-import Champ from "./champ/Champ";
-import Home from "./home/Home";
-import Ranking from "./ranking/Ranking";
-import Community from "./community/Community";
+
+import Home from "./pages/home/Home";
+import Ranking from "./pages/ranking/Ranking";
+import Join from "./pages/join/Join";
+import Login from "./pages/login/Login";
+
+import Community from "./pages/community/Community";
+import Champ from "./pages/champ/Champ";
 
 function App() {
   return (
@@ -18,6 +20,7 @@ function App() {
       <Route path="/ranking" component={Ranking} />
       <Route path="/community" component={Community} />
       <Route path="/login" component={Login} />
+      <Route path="/join" component={Join} />
     </div>
   );
 }

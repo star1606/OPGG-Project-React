@@ -1,6 +1,6 @@
 import React from "react";
-import Header1 from "../include/Header1";
-import Footer2 from "../include/Footer2";
+import Header1 from "./../../include/Header1";
+import Footer2 from "./../../include/Footer2";
 
 const Community = () => {
   return (

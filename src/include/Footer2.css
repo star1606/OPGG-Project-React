@@ -1,29 +1,31 @@
 /* footer부분 */
 /* footer 제일큰박스 css */
 
-.l-footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-}
+/* .l-footer2 { */
+/* position: absolute; */
+
+/* width: 100%;
+  display: block;
+} */
 
 .footer2 {
+  position: absolute;
   color: #333;
   width: 1080px;
   margin: 0 auto;
   padding: 40px 0;
+  left: 26%;
 }
 
 /* footer copyright 양식 */
-.footer__copyright {
+.footer__copyright2 {
   margin-top: 10px;
   line-height: 1.5;
   font-size: 11px;
   width: 1000px;
 }
 
-.footer__sns {
+.footer__sns2 {
   margin-top: -16px;
   line-height: 16px;
   text-align: right;

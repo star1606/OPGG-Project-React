@@ -1,13 +1,17 @@
-html {
+/* body {
   background-color: #5383e8;
-}
+} */
+
+/* div {
+  display: block;
+} */
 
 .home-container {
   background-color: #5383e8;
   position: relative;
   min-height: 100vh;
-  padding-bottom: 2.5rem;
 }
+
 /* head ul이랑 list css 설정임*/
 /* flex 레이아웃 */
 

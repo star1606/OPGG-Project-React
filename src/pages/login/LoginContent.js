@@ -1,28 +1,46 @@
-import React from "react";
-import LoginBtn from "./LoginBtn";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, Route } from "react-router-dom";
 
-const Login = ({ history }) => {
+const LoginContent = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const onChangeEmail = (e) => {
+    setEmail(e.target.value);
+    console.log(e.target.value);
+  };
+
+  const onChangePassword = (e) => {
+    setPassword(e.target.value);
+    console.log(e.target.value);
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    console.log([email]);
+    console.log([password]);
+  };
+
   return (
-    <div className="login-container">
-      <div className="app">
-        <div className="member-card-layout">
-          {/* <!-- 흰색 박스 --> */}
-          <div className="member-card-layout__container">
-            {/* <!-- 컨테이너 안 div --> */}
-            <div className="member-card-layout__inner">
-              {/* <!-- 로고 div --> */}
-              <h1 className="member-card-layout__logo">
-                <img
-                  className="member-card-layout__logo-image"
-                  src="/img/opggLogo.png"
-                  alt="op.gg"
-                />
-              </h1>
-              <div className="login">
-                <h2 className="login__fb-title">간편 로그인</h2>
+    <div className="app">
+      <div className="member-card-layout">
+        {/* <!-- 흰색 박스 --> */}
+        <div className="member-card-layout__container">
+          {/* <!-- 컨테이너 안 div --> */}
+          <div className="member-card-layout__inner">
+            {/* <!-- 로고 div --> */}
+            <h1 className="member-card-layout__logo">
+              <img
+                className="member-card-layout__logo-image"
+                src="/img/opggLogo.png"
+                alt="op.gg"
+              />
+            </h1>
+            <div className="login">
+              <h2 className="login__fb-title">간편 로그인</h2>
 
-                {/* <LoginBtn /> */}
+              {/* <LoginBtn /> */}
+              <form onSubmit={onSubmit}>
                 <div>
                   {/* <!-- 페이스북 로그인 --> */}
                   <button
@@ -70,10 +88,10 @@ const Login = ({ history }) => {
                       id="memberInput6908"
                       className="member-input__box"
                       type="text"
-                      autocomplete="off"
+                      autoComplete="off"
                       name="email"
-                      value=""
                       placeholder="이메일 주소"
+                      onChange={onChangeEmail}
                     />
                     <span className="member-input__valid-wrapper"></span>
                   </div>
@@ -86,9 +104,9 @@ const Login = ({ history }) => {
                       id="memberInput3108"
                       className="member-input__box"
                       type="password"
-                      autocomplete="off"
+                      autoComplete="off"
                       name="password"
-                      value=""
+                      onChange={onChangePassword}
                       placeholder="비밀번호"
                     />
                     <span className="member-input__valid-wrapper"></span>
@@ -105,10 +123,7 @@ const Login = ({ history }) => {
                           className="member-checkbox__input"
                         />
                       </span>
-                      <label
-                        for="memberCheckbox6943"
-                        className="member-checkbox__label"
-                      >
+                      <label className="member-checkbox__label">
                         로그인 상태 유지하기
                       </label>
                     </div>
@@ -120,14 +135,13 @@ const Login = ({ history }) => {
                 <div className="login__l-sign-up">
                   OP.GG에 처음이세요?
                   <span className="login__sign-up-link">
-                    <a className="member-link" href="/register/agree">
+                    <Link className="member-link" to="/join">
                       회원가입하기
-                    </a>
+                    </Link>
                   </span>
                 </div>
-              </div>
+              </form>
             </div>
-            <div className="select-language select-language--login-container"></div>
           </div>
         </div>
       </div>
@@ -135,4 +149,4 @@ const Login = ({ history }) => {
   );
 };
 
-export default Login;
+export default LoginContent;

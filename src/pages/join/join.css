@@ -1,0 +1,103 @@
+body {
+  background-color: #f3f5f7;
+}
+.join-container {
+  display: block;
+  text-align: center;
+}
+.join-box {
+  display: block;
+  width: 610px;
+  background-color: #ffffff;
+  text-align: center;
+  margin: 0 auto;
+
+  height: 100vh;
+}
+
+.join-box-inner {
+  margin: 10px 80px;
+  padding-bottom: 88px;
+  background-color: #fff;
+}
+.register-header {
+  padding-top: 88px;
+  padding-bottom: 56px;
+}
+
+.top-text {
+  text-align: left;
+}
+
+.sign-up__sub {
+  margin-top: 12px;
+  padding: 16px;
+  background-color: #f3f5f7;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #52595f;
+  margin-bottom: 32px;
+  text-align: left;
+}
+.member-input__box {
+  display: block;
+
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+  outline: 0;
+}
+
+.member-input__state {
+  margin-top: 27px;
+  position: relative;
+  padding: 10px 0 11px;
+  border-bottom: 1px solid #dddfe4;
+}
+
+.sign-up__input-nickname-message {
+  position: relative;
+  color: #98a0a7;
+  margin-top: 8px;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: left;
+}
+
+.member-button {
+  font-size: 16px;
+  border-radius: 3px;
+  display: inline-block;
+  text-decoration: none;
+  border: 0;
+  height: 56px;
+}
+.sign-up__l-btn {
+  margin-top: 40px;
+}
+.sign-up__btn-cancel {
+  float: left;
+  width: 217px;
+}
+.sign-up__btn {
+  float: right;
+  width: 217px;
+}
+
+.sign-up__go-to-login {
+  margin-top: 40px;
+  text-align: center;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.sign-up__go-to-login-btn {
+  color: #1ea1f7;
+  text-decoration: underline;
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+  margin-left: 12px;
+}
