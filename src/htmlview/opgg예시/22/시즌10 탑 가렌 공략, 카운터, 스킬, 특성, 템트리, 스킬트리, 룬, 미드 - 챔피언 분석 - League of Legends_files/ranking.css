@@ -1,0 +1,147 @@
+@keyframes spin{from{transform:rotate(0deg);} to{transform:rotate(180deg);}}.LadderRankingLayout>.ContentWrap>.Content{width:970px;margin:0 auto;min-height:500px;}
+.ChampionRankingLayout>.ContentWrap{width:970px;margin:0 auto;min-height:500px;}.ChampionRankingLayout>.ContentWrap>.Content:after{visibility:hidden;display:block;font-size:0;content:"";clear:both;height:0;}
+.ChampionRankingLayout>.ContentWrap>.Content>.SideContent{float:left;width:282px;}
+.ChampionRankingLayout>.ContentWrap>.Content>.RealContent{float:right;width:678px;vertical-align:top;}
+.ChampionRankingFilterBox{border-color:#d5d8d8;}.ChampionRankingFilterBox>.SearchChampion{padding:10px;border-bottom:1px solid #d5d8d8;background-color:#ededed;}.ChampionRankingFilterBox>.SearchChampion>.SearchChampionForm{position:relative;}.ChampionRankingFilterBox>.SearchChampion>.SearchChampionForm>.SearchInput{display:block;width:100%;padding:12px 35px 12px 10px;border:1px solid #d7dada;color:#879292;background:#fafafa;font-size:12px;box-sizing:border-box;outline:none;}.ChampionRankingFilterBox>.SearchChampion>.SearchChampionForm>.SearchInput:focus{border-color:#1f8ecd;}
+.ChampionRankingFilterBox>.SearchChampion>.SearchChampionForm>.Icon{position:absolute;top:0;right:0;border:none;background:none;padding:13px 10px;}
+.ChampionRankingFilterBox>.SelectChampion{overflow-y:scroll;background-color:#ededed;padding:2px 0 0;text-align:center;}.ChampionRankingFilterBox>.SelectChampion>.Champion{display:inline-block;width:50px;margin:8px 4px 0;}.ChampionRankingFilterBox>.SelectChampion>.Champion>.Action{text-decoration:none;}.ChampionRankingFilterBox>.SelectChampion>.Champion>.Action>.ChampionImage{position:relative;font-size:0;}.ChampionRankingFilterBox>.SelectChampion>.Champion>.Action>.ChampionImage>.selected{display:none;position:absolute;top:0;right:0;bottom:0;left:0;background-color:rgba(0, 180, 255, 0.8);padding:14px 0 0 14px;text-align:left;}
+.ChampionRankingFilterBox>.SelectChampion>.Champion>.Action>.ChampionName{padding-top:7px;color:#9b9b9b;line-height:15px;font-size:12px;text-align:center;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.ChampionRankingFilterBox>.SelectChampion>.Champion.selected>.Action>.ChampionImage>.selected{display:block;}
+.ChampionRankingBox{border-color:#d5d8d8;}.ChampionRankingBox>.Table{width:100%;table-layout:fixed;}.ChampionRankingBox>.Table>.Body>.Row>.Cell{border-bottom:1px solid #d5d8d8;background-color:#ededed;height:50px;}.ChampionRankingBox>.Table>.Body>.Row>.Cell.Rank{color:#242929;font-size:14px;text-align:center;}
+.ChampionRankingBox>.Table>.Body>.Row>.Cell.SummonerImage{vertical-align:middle;}.ChampionRankingBox>.Table>.Body>.Row>.Cell.SummonerImage>.Link>.Image{width:34px;height:34px;border-radius:50%;}
+.ChampionRankingBox>.Table>.Body>.Row>.Cell.SummonerName{padding-left:5px;padding-right:5px;}.ChampionRankingBox>.Table>.Body>.Row>.Cell.SummonerName>.Link{display:inline-block;max-width:100%;color:#454c4c;font-size:15px;font-weight:bold;text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.ChampionRankingBox>.Table>.Body>.Row>.Cell.TierMedal{vertical-align:middle;}.ChampionRankingBox>.Table>.Body>.Row>.Cell.TierMedal>.Image{width:26px;}
+.ChampionRankingBox>.Table>.Body>.Row>.Cell.TierRank{color:#879292;font-size:12px;text-align:center;}
+.ChampionRankingBox>.Table>.Body>.Row>.Cell.CS{color:#879292;font-size:12px;text-align:center;}
+.ChampionRankingBox>.Table>.Body>.Row>.Cell.KDA{color:#879292;font-size:12px;text-align:center;}
+.ChampionRankingBox>.Table>.Body>.Row>.Cell.GameCount{color:#242929;font-size:12px;text-align:center;}
+.ChampionRankingBox>.Table>.Body>.Row>.Cell.RatioGraph>.WinRatioGraph>.Graph{width:90px;}
+.ChampionRankingBox>.Table>.Body>.Row>.Cell.RatioGraph>.WinRatioGraph>.WinRatio.red{color:#fa4040;}
+.ChampionRankingBox>.Table>.Body>.Row.TopRanker>.Cell{background-color:#e8eaea;}.ChampionRankingBox>.Table>.Body>.Row.TopRanker>.Cell.Rank{color:#1f8ecd;}
+.ChampionRankingBox>.Table>.Footer>.Row>.Cell.MoreButton{text-align:center;}.ChampionRankingBox>.Table>.Footer>.Row>.Cell.MoreButton>.Link{width:100%;height:50px;border:none;background-color:#f2f2f2;color:#555e5e;font-size:13px;text-decoration:underline;line-height:50px;outline:none;}
+.LadderRankingTable{width:100%;table-layout:fixed;}.LadderRankingTable>.Header>.Row>.HeaderCell{height:40px;border-bottom:1px solid #d5d8d8;color:#555e5e;background-color:#f2f2f2;font-size:14px;text-align:left;}.LadderRankingTable>.Header>.Row>.HeaderCell.Rank{text-align:center;}
+.LadderRankingTable>.Body>.Row>.Cell{background-color:#ededed;border-bottom:1px solid #d5d8d8;height:52px;color:#879292;font-size:12px;line-height:1.4;vertical-align:middle;}.LadderRankingTable>.Body>.Row>.Cell.Rank{font-size:14px;color:#242929;text-align:center;}
+.LadderRankingTable>.Body>.Row>.Cell.SummonerImage>.Link{display:block;width:38px;height:38px;}.LadderRankingTable>.Body>.Row>.Cell.SummonerImage>.Link>.Image{width:38px;height:38px;border-radius:50%;}
+.LadderRankingTable>.Body>.Row>.Cell.SummonerImage:hover+.SummonerName>.Link{text-decoration:underline;}
+.LadderRankingTable>.Body>.Row>.Cell.SummonerName{color:#454c4c;font-size:15px;font-weight:bold;}.LadderRankingTable>.Body>.Row>.Cell.SummonerName>.Link{display:inline-block;max-width:140px;margin-left:10px;color:inherit;text-decoration:none;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;vertical-align:middle;}.LadderRankingTable>.Body>.Row>.Cell.SummonerName>.Link:hover{text-decoration:underline;}
+.LadderRankingTable>.Body>.Row>.Cell.RatioGraph>.WinRatioGraph>.Graph{width:140px;}
+.LadderRankingTable>.Body>.Row>.Cell.MostChampions>.Image{display:inline-block;margin-right:2px;vertical-align:middle;}
+.LadderRankingTable>.Body>.Row.TopRanker>.Cell{background-color:#e8eaea;}.LadderRankingTable>.Body>.Row.TopRanker>.Cell.Rank{color:#1f8ecd;}
+.LadderRankingTable>.Body>.Row.Selected>.Cell{background-color:#e8eaea;border-top:2px solid #1f8ecd;border-bottom:2px solid #1f8ecd;}
+.LadderRankingTable>.Body>.Row.Selected>.Cell.Rank{border-left:2px solid #1f8ecd;}
+.LadderRankingTable>.Body>.Row.Selected>.Cell.MostChampions{border-right:2px solid #1f8ecd;}
+.LadderRankingTable>.Footer>.Row>.Cell{background-color:#f2f2f2;color:#555e5e;font-size:13px;text-align:center;}.LadderRankingTable>.Footer>.Row>.Cell.MoreButton>.Link{display:block;color:inherit;text-decoration:underline;line-height:50px;outline:none;}
+.ChampionRankingSummaryBox{display:inline-block;border-color:#d5d8d8;}.ChampionRankingSummaryBox>.Content>.Table{width:100%;table-layout:fixed;}.ChampionRankingSummaryBox>.Content>.Table>.Content>.Row>.Cell{height:44px;background-color:#ededed;border-top:1px solid #d5d8d8;}.ChampionRankingSummaryBox>.Content>.Table>.Content>.Row>.Cell.Rank{color:#242929;font-size:14px;text-align:center;}
+.ChampionRankingSummaryBox>.Content>.Table>.Content>.Row>.Cell.SummonerImage>.Link>.Image{width:34px;height:34px;border-radius:50%;vertical-align:middle;}
+.ChampionRankingSummaryBox>.Content>.Table>.Content>.Row>.Cell.SummonerName{padding-right:8px;padding-left:8px;}.ChampionRankingSummaryBox>.Content>.Table>.Content>.Row>.Cell.SummonerName>.Link{display:inline-block;max-width:100%;color:#454c4c;font-size:13px;font-weight:bold;text-decoration:none;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;vertical-align:middle;}
+.ChampionRankingSummaryBox>.Content>.Table>.Content>.Row>.Cell.SummonerName>.Link:hover{text-decoration:underline;}
+.ChampionRankingSummaryBox>.Content>.Table>.Content>.Row>.Cell.SummonerImage:hover+.SummonerName>.Link{text-decoration:underline;}
+.ChampionRankingSummaryBox>.Content>.Table>.Content>.Row>.Cell.GameCount{color:#555e5e;font-size:13px;text-align:right;padding-right:20px;white-space:nowrap;}
+.ChampionRankingSummaryBox>.Content>.Table>.Content>.Row.Top>.Cell.Rank,.ChampionRankingSummaryBox>.Content>.Table>.Content>.Row.SemiTop>.Cell.Rank{color:#1f8ecd;}
+.ChampionRankingSummaryBox>.Content>.Table>.Content>.Row.Top>.Cell{background-color:#fdf2d2;}
+.ChampionRankingSummaryBox>.Content>.Table>.Content>.Row.SemiTop>.Cell{background-color:#e8eaea;}
+.ChampionRankingSummaryBox>.Content>.Table>.Content>.Row:first-child>.Cell{border-top:none;}
+.ChampionRankingSummaryWrap>.ChampionRankingSummaryBox{float:left;display:block;width:330px;margin-left:10px;margin-bottom:10px;}
+.ChampionRankingSummaryBox>.Title,.ChampionRankingBox>.Title{display:block;padding:8px 0 8px 14px;border-bottom:1px solid #d5d8d8;color:#879292;font-size:14px;line-height:24px;text-decoration:none;font-weight:normal;}.ChampionRankingSummaryBox>.Title>.ChampionImage,.ChampionRankingBox>.Title>.ChampionImage{width:24px;height:24px;border-radius:50%;vertical-align:middle;}
+.ChampionRankingSummaryBox>.Title>.ChampionName,.ChampionRankingBox>.Title>.ChampionName{color:#555e5e;font-size:15px;font-weight:bold;vertical-align:middle;}
+.ranking-highest__list{text-align:center;margin-bottom:20px;}
+.ranking-highest__item{position:relative;display:inline-block;padding:14px 18px;border:2px solid #bdbbbb;width:220px;background:#fff;box-sizing:border-box;text-align:left;margin-top:30px;margin-left:30px;}.ranking-highest__item a{text-decoration:none;}
+.ranking-highest__item--big{display:block;width:650px;margin:0 auto;padding:35px 40px;border-width:5px;}
+.ranking-highest__item--big+.ranking-highest__item{margin-left:0;}
+.ranking-highest__item:after{visibility:hidden;display:block;font-size:0;content:"";clear:both;height:0;}
+.ranking-highest__rank{width:30px;background:#bdbbbb;padding:3px 0;line-height:24px;font-family:Helvetica,AppleSDGothic,"Apple SD Gothic Neo",AppleGothic,Arial,Tahoma;font-size:21px;text-align:center;color:#fff;}.ranking-highest__item .ranking-highest__rank{position:absolute;top:0;left:0;margin-top:-2px;margin-left:-2px;}
+.ranking-highest__item.ranking-highest__item--big .ranking-highest__rank{margin-top:-5px;margin-left:-5px;}
+.ranking-highest__team{position:absolute;top:0;right:0;margin-top:3px;margin-right:4px;font-family:Helvetica,AppleSDGothic,"Apple SD Gothic Neo",AppleGothic,Arial,Tahoma;line-height:14px;font-size:12px;text-align:right;color:#1d2f51;}.ranking-highest__item--big .ranking-highest__team{margin-top:7px;margin-right:9px;}
+.ranking-highest__icon{position:relative;display:block;width:49px;height:49px;margin:10px auto 0;}.ranking-highest__item--big .ranking-highest__icon{width:100px;height:100px;margin:0 20px 0 0;float:left;}
+.ranking-highest__icon .ranking-highest__level{position:absolute;top:100%;left:50%;margin-top:-14px;margin-left:-22px;width:44px;height:24px;padding-top:3px;box-sizing:border-box;background:url(../images/site/summoner/bg-levelbox.png);background-size:100%;line-height:20px;font-family:Helvetica,AppleSDGothic,"Apple SD Gothic Neo",AppleGothic,Arial,Tahoma;font-size:12px;text-align:center;color:#eabd56;}
+.ranking-highest__border{position:absolute;left:-10px;top:-10px;width:120px;height:120px;background-position:center bottom;background-repeat:no-repeat;}
+.ranking-highest__image{display:block;width:100%;height:100%;border-radius:50%;}.ranking-highest__item--big .ranking-highest__image{border-radius:0;}
+.ranking-highest__icon .ranking-highest__level{display:none;}.ranking-highest__item--big .ranking-highest__icon .ranking-highest__level{display:block;}
+.ranking-highest__tierrank .ranking-highest__level{float:right;display:block;}.ranking-highest__item--big .ranking-highest__tierrank .ranking-highest__level{display:none;}
+.ranking-highest__name{display:block;margin-top:5px;line-height:17px;font-size:14px;font-weight:bold;text-align:center;color:#444b4b;}.ranking-highest__item--big .ranking-highest__name{display:inline-block;line-height:24px;font-size:20px;color:#242929;text-align:left;}
+.ranking-highest__level{line-height:25px;font-family:Helvetica,AppleSDGothic,"Apple SD Gothic Neo",AppleGothic,Arial,Tahoma;font-size:12px;color:#666;text-align:center;}
+.ranking-highest__tierrank{display:flex;justify-content:center;align-items:center;}.ranking-highest__tierrank:after{visibility:hidden;display:block;font-size:0;content:"";clear:both;height:0;}
+.ranking-highest__tierrank.first{margin-top:14px;justify-content:flex-start;}
+.ranking-highest__tierrank img{width:25px;vertical-align:middle;}
+.ranking-highest__tierrank span,.ranking-highest__tierrank b{line-height:14px;font-size:12px;color:#666;vertical-align:middle;margin-right:4px;}
+.ranking-highest__item--big .ranking-highest__tierrank img{width:33px;}
+.ranking-highest__item--big .ranking-highest__tierrank span,.ranking-highest__item--big .ranking-highest__tierrank b{line-height:17px;font-size:14px;}
+.ranking-highest__item--big .ranking-highest__tierrank:after{display:none;}
+.ranking-highest-winratio{margin-top:5px;}.ranking-highest-winratio .winratio{display:inline-block;white-space:nowrap;vertical-align:middle;}
+.ranking-highest-winratio .winratio-graph{width:150px;}
+.ranking-highest-winratio__label{display:inline-block;line-height:15px;font-size:12px;color:#666;vertical-align:middle;margin-right:7px;}
+.ranking-highest-champions{float:right;}
+.ranking-highest-champion{white-space:nowrap;line-height:15px;font-size:12px;color:#666;}.ranking-highest-champion:after{visibility:hidden;display:block;font-size:0;content:"";clear:both;height:0;}
+.ranking-highest-champions .ranking-highest-champion{margin-top:8px;}.ranking-highest-champions .ranking-highest-champion:first-child{margin-top:0;}
+.ranking-highest-champion span{vertical-align:middle;}
+.ranking-highest-champion__image{display:inline-block;width:34px;height:34px;margin-right:5px;vertical-align:middle;border-radius:50%;}
+.ranking-highest-champion__winratio--red{color:#c6443e;}
+.ranking-highest-champion__kda--blue span{color:#1f8ecd;}
+.ranking-highest-champion__kda--orange span{color:#e19205;}
+.ranking-highest-champion__kda--green span{color:#2daf7f;}
+.ranking-table{width:100%;table-layout:fixed;background-color:#ededed;border:solid 1px #cdd2d2;}
+.ranking-table__header{height:41px;padding:0;border-bottom:1px solid #cdd2d2;background:#f2f2f2;line-height:17px;font-size:14px;text-align:left;color:#444b4b;font-weight:normal;}
+.ranking-table__cell{border-bottom:1px solid #cdd2d2;height:54px;line-height:16px;font-family:Helvetica,AppleSDGothic,"Apple SD Gothic Neo",AppleGothic,Arial,Tahoma;font-size:14px;}.ranking-table__cell--rank{text-align:center;color:#444b4b;}
+.ranking-table__cell--summoner{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}.ranking-table__cell--summoner a{display:inline-block;text-decoration:none;}
+.ranking-table__cell--summoner img{margin-right:12px;vertical-align:middle;border-radius:50%;width:38px;height:38px;}
+.ranking-table__cell--summoner span{vertical-align:middle;line-height:19px;font-size:15px;font-weight:bold;color:#444b4b;}
+.ranking-table__cell--tier,.ranking-table__cell--lp,.ranking-table__cell--level,.ranking-table__cell--winratio{color:#787878;}
+.ranking-table__cell--team{color:#4a4a4a;}
+.ranking-table__cell--winratio{text-align:center;}
+.ranking-pagination{text-align:center;margin-top:30px;}
+.ranking-pagination__item{display:inline-block;margin-left:10px;}.ranking-pagination__item:first-child{margin-left:0;}
+.ranking-pagination__item a{display:block;width:90px;padding:4px 0 8px;background-color:#fff;border:solid 1px #cdd2d2;line-height:16px;font-family:Helvetica,AppleSDGothic,"Apple SD Gothic Neo",AppleGothic,Arial,Tahoma;font-size:14px;text-align:center;text-decoration:none;color:#444b4b;box-sizing:border-box;}
+.ranking-pagination__item--arrow a{background:#f2f2f2;}
+.ranking-pagination__item--disable a{outline:none;cursor:default;background:#d8d8d8;}
+.ranking-pagination__arrow{font-size:0;}.ranking-pagination__arrow--left{width:0;height:0;border-top:8px solid transparent;border-bottom:8px solid transparent;border-left:8px solid #4a4a4a;}
+.ranking-pagination__arrow--right{width:0;height:0;border-top:8px solid transparent;border-bottom:8px solid transparent;border-right:8px solid #4a4a4a;}
+.ranking-pagination__desc{margin-top:20px;line-height:17px;font-size:14px;text-align:center;color:#a0a0a0;}.ranking-pagination__desc span{color:#4a4a4a;}
+.ranking-table__row--selected{border:2px solid #1f8ecd;}
+.ranking-summary__item{margin-top:12px;padding-top:12px;border-top:1px solid #d7dada;}.ranking-summary__item:after{visibility:hidden;display:block;font-size:0;content:"";clear:both;height:0;}
+.ranking-summary__item a{text-decoration:none;}
+.ranking-summary__item:first-child{margin-top:0;padding-top:0;border-top:0;}
+.ranking-summary-champion{float:left;width:75px;margin-right:18px;}
+.ranking-summary-champion__image{width:100%;}
+.ranking-summary-champion__label{margin-top:10px;line-height:17px;font-size:14px;text-align:left;color:#444b4b;}
+.ranking-summary-summoner:after{visibility:hidden;display:block;font-size:0;content:"";clear:both;height:0;}
+.ranking-summary-summoner a{text-decoration:none;}
+.ranking-summary--index .ranking-summary-summoner{margin-left:93px;}
+.ranking-summary-summoner__item{float:left;position:relative;background-color:#ededed;border:solid 1px #cdd2d2;text-align:center;box-sizing:border-box;width:210px;margin-left:24px;}.ranking-summary--index .ranking-summary-summoner__item{width:180px;margin-left:20px;}
+.ranking-summary-summoner__item:first-child{margin-left:0;}
+.ranking-summary-summoner__rank{position:absolute;top:0;right:0;padding:3px 0;width:30px;line-height:24px;font-size:21px;color:#fff;background:#c1c1c1;text-align:center;}
+.ranking-summary-summoner__image{display:block;margin:12px auto 0;width:50px;height:50px;border-radius:50%;}.ranking-summary-summoner__image .ranking-summary--index{margin-top:14px;}
+.ranking-summary-summoner__name{margin-top:5px;line-height:17px;font-size:14px;text-align:center;color:#444b4b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:bold;}.ranking-summary-summoner__name .ranking-summary--index{margin-top:0;}
+.ranking-summary-summoner__gamecount{margin-top:5px;line-height:17px;font-size:14px;color:#444b4b;text-align:center;}.ranking-summary-summoner__gamecount small{font-size:12px;}
+.ranking-summary-summoner__gamecount .ranking-summary--index{margin-top:10px;font-weight:bold;}
+.ranking-summary-summoner__tierlevel{line-height:20px;font-size:14px;color:#9b9b9b;}.ranking-summary-summoner__tierlevel img{vertical-align:middle;}
+.ranking-summary-summoner__tierlevel b{display:inline-block;font-weight:normal;color:#444b4b;margin-right:10px;vertical-align:middle;}
+.ranking-summary-summoner__tierlevel span{vertical-align:middle;}
+.ranking-summary-summoner__stats{margin-top:18px;margin-bottom:9px;}.ranking-summary-summoner__stats span{display:inline-block;width:90px;min-height:34px;line-height:17px;font-size:14px;color:#444b4b;text-align:center;}
+.ranking-summary-summoner__winratio .winratio-graph{width:90px;height:20px;}
+.ranking-summary-summoner-footer{border-top:1px solid #cdd2d2;margin-top:9px;padding:4px 5px 3px;}
+.ranking-summary-summoner__button{display:block;width:100%;padding:7px 0 8px;border-radius:4px;background-color:#fff;border:solid 1px #cdd2d2;line-height:15px;font-size:12px;text-align:center;color:#9b9b9b;}
+.champion-ranking .ranking-summary-summoner{margin-top:20px;}
+.champion-ranking .champion-ranking-table{margin-top:10px;}
+.champion-ranking__title img{width:30px;height:30px;margin-right:5px;vertical-align:middle;}
+.champion-ranking__title h1{display:inline;line-height:29px;font-size:24px;color:#444b4b;font-weight:normal;vertical-align:middle;}
+.champion-ranking-table{width:100%;table-layout:fixed;border:solid 1px #cdd2d2;}
+.champion-ranking-table__cell{height:55px;border-top:solid 1px #cdd2d2;}.champion-ranking-table__cell--rank{line-height:14px;font-size:12px;text-align:center;color:#444b4b;}
+.champion-ranking-table__cell--summoner{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}.champion-ranking-table__cell--summoner a{text-decoration:none;}
+.champion-ranking-table__cell--summoner img{border-radius:50%;width:34px;height:34px;margin-right:12px;vertical-align:middle;}
+.champion-ranking-table__cell--summoner span{line-height:19px;font-size:15px;font-weight:bold;color:#444b4b;vertical-align:middle;}
+.champion-ranking-table__cell--tierlevel{line-height:14px;font-size:12px;text-align:left;color:#444b4b;}.champion-ranking-table__cell--tierlevel .champion-ranking-table__tier{margin-right:6px;}
+.champion-ranking-table__cell--cs{line-height:14px;font-size:12px;text-align:left;color:#9b9b9b;}
+.champion-ranking-table__cell--kda{line-height:15px;font-size:12px;text-align:left;color:#17b17d;}
+.champion-ranking-table__cell--gamecount{line-height:17px;font-size:14px;font-weight:bold;color:#4a4a4a;}
+.champion-ranking-table__cell--winratio .winratio-graph{width:95px;}
+.champion-ranking-table__cell--winratio .winratio__text{line-height:14px;font-size:12px;font-weight:bold;color:#9b9b9b;margin-left:7px;}
+.champion-ranking-table__cell.blue{color:#1f8ecd;}
+.champion-ranking-table__cell.orange{color:#e19205;}
+.champion-ranking-table__cell.green{color:#2daf7f;}
+.champion-ranking-table__tier{display:inline-block;min-width:30px;padding-top:3px;padding-bottom:1px;line-height:17px;font-size:14px;text-align:center;color:#444b4b;}.champion-ranking-table__tier--Challenger,.champion-ranking-table__tier--Master{background-color:#ff6c81;}
+.champion-ranking-table__tier--Diamond{background-color:#00a0d2;}
+.champion-ranking-table__tier--Platinum{background-color:#00cfbc;}
+.champion-ranking-table__tier--Gold{background-color:#ffc659;}
+.champion-ranking-table__tier--Silver{background-color:#a8aebf;}
+.champion-ranking-table__tier--Bronze{background-color:#7f6a43;}
+.match-build__title{background:#1d2f51;padding:10px 20px;line-height:17px;font-size:14px;color:#fff;}

@@ -1,0 +1,651 @@
+@keyframes spin{from{transform:rotate(0deg);} to{transform:rotate(180deg);}}.ChampionIndexLayout>.Header{width:970px;margin-left:auto;margin-right:auto;margin-bottom:30px;padding-top:20px;border-bottom:1px solid #cdd2d2;}
+.ChampionIndexLayout>.ContentWrap{width:970px;margin-left:auto;margin-right:auto;font-size:0;}.ChampionIndexLayout>.ContentWrap>.RealContent{display:inline-block;width:565px;margin-right:10px;font-size:12px;vertical-align:top;}
+.ChampionIndexLayout>.ContentWrap>.SideContent{display:inline-block;width:395px;font-size:12px;vertical-align:top;}
+.ChampionIndexLayout>.ContentWrap>.FullContent{font-size:12px;}.ChampionIndexLayout>.ContentWrap>.FullContent>.SearchChampionInput>.Input{width:948px;}
+.ChampionDetailLayout>.Header{width:970px;margin:0 auto;}
+.ChampionDetailLayout>.Menu{width:970px;margin:0 auto;}.ChampionDetailLayout>.Menu>.MenuList{display:inline-block;border-radius:3px;margin-top:7px;font-size:0;}.ChampionDetailLayout>.Menu>.MenuList>.Item{display:inline-block;background:#fff;min-width:80px;border:1px solid #c6cbcb;margin-left:-1px;}.ChampionDetailLayout>.Menu>.MenuList>.Item>a{display:block;height:36px;line-height:36px;padding:0 27px;font-size:14px;color:#666;text-decoration:none;text-align:center;outline:none;}
+.ChampionDetailLayout>.Menu>.MenuList>.Item.active>a{color:#fff;background:#1f8ecd;}
+.ChampionDetailLayout>.Menu>.MenuList>.Item-MatchUp{margin-left:10px;}.ChampionDetailLayout>.Menu>.MenuList>.Item-MatchUp .On{display:none;}
+.ChampionDetailLayout>.Menu>.MenuList>.Item-MatchUp .Off{display:inline-block;}
+.ChampionDetailLayout>.Menu>.MenuList>.Item-MatchUp.active .On{display:inline-block;}
+.ChampionDetailLayout>.Menu>.MenuList>.Item-MatchUp.active .Off{display:none;}
+.ChampionDetailLayout>.ContentWrap>.Content{width:970px;margin-left:auto;margin-right:auto;font-size:0;}.ChampionDetailLayout>.ContentWrap>.Content .RealContent{display:inline-block;width:660px;margin-right:10px;font-size:12px;vertical-align:top;}.ChampionDetailLayout>.ContentWrap>.Content .RealContent>.Box{margin-top:7px;}
+.ChampionDetailLayout>.ContentWrap>.Content .SideContent{display:inline-block;width:300px;font-size:12px;vertical-align:top;}.ChampionDetailLayout>.ContentWrap>.Content .SideContent>.Box{margin-top:7px;}
+.ChampionDetailLayout>.ContentWrap>.Content .FullContent{font-size:12px;}.ChampionDetailLayout>.ContentWrap>.Content .FullContent>.Box{margin-top:7px;}
+.ChampionDetailLayout>.ContentWrap .GraphBox>.Content{background:transparent;padding:10px;}
+.ChampionDetailLayout>.ContentWrap .Box>.Footer>.Button{padding:10px;text-decoration:none;border-top:1px solid #cdd2d2;}
+.ChampionGuideIndexLayout>.Header{width:970px;margin:0 auto;padding-top:10px;}
+.ChampionGuideIndexLayout>.Menu{width:970px;margin:0 auto;padding-top:20px;}
+.ChampionGuideIndexLayout>.ContentWrap{font-size:0;width:970px;margin:20px auto 15px auto;}
+.ChampionGuideListWrap{position:relative;margin-top:10px;}.ChampionGuideListWrap>.Content{padding-bottom:10px;}
+.ChampionGuideArticle>.Header{position:relative;}.ChampionGuideArticle>.Header>.Title{padding:10px 0;color:#333;font-size:21px;}
+.ChampionGuideArticle>.Header>.Actions{position:absolute;bottom:5px;right:0;}.ChampionGuideArticle>.Header>.Actions>.Action{display:inline-block;margin-left:10px;}.ChampionGuideArticle>.Header>.Actions>.Action:first-child{margin:0;}
+.ChampionGuideArticle>.Header>.Actions>.Action>.Button{padding:8px 10px;}
+.ChampionGuideArticle>.Content>.ChampionGuideArticleList>.ChampionGuideArticleListItemWrap{display:block;margin:4px 0;}
+.ChampionGuideListLayout>.Header{width:960px;margin:0 auto;padding-top:10px;padding-bottom:10px;}
+.ChampionGuideListLayout>.Menu{border-bottom:1px solid #c6cbcb;margin-top:10px;}.ChampionGuideListLayout>.Menu>.MenuList{width:970px;height:40px;margin:0 auto;padding:0;font-size:0;}.ChampionGuideListLayout>.Menu>.MenuList>.Item{display:inline-block;margin:0 -1px 0 0;padding:0;}.ChampionGuideListLayout>.Menu>.MenuList>.Item.active>a{border-bottom:1px solid #e8eaea;background:#e8eaea;color:#141717;}
+.ChampionGuideListLayout>.Menu>.MenuList>.Item>a{display:block;min-width:70px;height:39px;border:1px solid #c6cbcb;padding-left:6px;padding-right:6px;background-color:#f2f2f2;color:#555e5e;font-size:13px;line-height:40px;text-decoration:none;text-align:center;}
+.ChampionGuideListLayout>.ContentWrap>.ChampionGuideListLayoutContent{width:970px;min-height:500px;margin:0 auto;}.ChampionGuideListLayout>.ContentWrap>.ChampionGuideListLayoutContent>.Menu{position:relative;width:970px;margin:10px auto;font-size:0;}.ChampionGuideListLayout>.ContentWrap>.ChampionGuideListLayoutContent>.Menu>.MenuList{display:inline-block;border:1px solid #c6cbcb;border-radius:3px;overflow:hidden;}.ChampionGuideListLayout>.ContentWrap>.ChampionGuideListLayoutContent>.Menu>.MenuList>.Item{display:inline-block;background:#f2f2f2;}.ChampionGuideListLayout>.ContentWrap>.ChampionGuideListLayoutContent>.Menu>.MenuList>.Item>a{display:block;min-width:70px;height:36px;line-height:36px;padding:0 8px;font-size:14px;color:#666;text-decoration:none;text-align:center;}
+.ChampionGuideListLayout>.ContentWrap>.ChampionGuideListLayoutContent>.Menu>.MenuList>.Item.active>a{color:#fff;background:#1a78ae;}
+.ChampionGuideListLayout>.ContentWrap>.ChampionGuideListLayoutContent>.Menu>.Actions{position:absolute;top:0;right:0;}.ChampionGuideListLayout>.ContentWrap>.ChampionGuideListLayoutContent>.Menu>.Actions>.Action{display:inline-block;margin-left:10px;}.ChampionGuideListLayout>.ContentWrap>.ChampionGuideListLayoutContent>.Menu>.Actions>.Action:first-child{margin:0;}
+.ChampionGuideListLayout>.ContentWrap>.ChampionGuideListLayoutContent>.Menu>.Actions>.Action>.Button{height:34px;line-height:36px;padding:0 8px;}
+.ChampionGuideListLayout>.ContentWrap>.ChampionGuideListLayoutContent>.SideContent{display:inline-block;width:350px;margin-right:10px;font-size:12px;vertical-align:top;}.ChampionGuideListLayout>.ContentWrap>.ChampionGuideListLayoutContent>.SideContent>.Box{margin-top:10px;}
+.ChampionGuideListLayout>.ContentWrap>.ChampionGuideListLayoutContent>.RealContent{display:inline-block;width:600px;font-size:12px;vertical-align:top;}.ChampionGuideListLayout>.ContentWrap>.ChampionGuideListLayoutContent>.RealContent>.Box{margin-top:10px;}
+.ChampionGuideArticleDetailLayout>.Navigation{position:absolute;z-index:0;right:50%;top:204px;margin-right:-670px;max-width:172px;width:100%;}.ChampionGuideArticleDetailLayout>.Navigation>.Title{color:#666;font-size:13px;font-weight:bold;}
+.ChampionGuideArticleDetailLayout>.Navigation>.Content>.NavigationList{position:relative;font-size:0;}.ChampionGuideArticleDetailLayout>.Navigation>.Content>.NavigationList>.Item>.Link{display:block;height:36px;line-height:36px;padding:0 10px;color:#666;font-size:13px;text-decoration:none;border-left:3px solid transparent;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;}.ChampionGuideArticleDetailLayout>.Navigation>.Content>.NavigationList>.Item>.Link:hover{background-color:#d5e4eb;}
+.ChampionGuideArticleDetailLayout>.Navigation>.Content>.NavigationList>.Item.active>.Link{border-left-color:#1f8ecd;color:#1f8ecd;font-weight:bold;background-color:#d5e4eb;}
+.ChampionGuideArticleDetailLayout>.Header{width:970px;margin:0 auto;}
+.ChampionGuideArticleDetailLayout>.ContentWrap>.Content{width:970px;margin:0 auto;padding-bottom:50px;}.ChampionGuideArticleDetailLayout>.ContentWrap>.Content>.Box{margin-top:10px;background:#fafafa;}.ChampionGuideArticleDetailLayout>.ContentWrap>.Content>.Box>.Title{font-size:13px;background:#ececec;}
+.ChampionGuideArticleDetailLayout>.ContentWrap>.Content>.Box>.Content{background:none;}.ChampionGuideArticleDetailLayout>.ContentWrap>.Content>.Box>.Content .EditorPreview{padding:0;margin:0;min-height:0;border:none;background:none;}
+@media screen and (max-width:1650px){.ChampionGuideArticleDetailLayout>.Navigation{display:none;}}@media screen and (max-width:1550px){.ChampionGuideArticleDetailLayout>.Navigation{right:70px;}}
+.ChampionGuideDetailSummaryWrap{display:table;width:100%;}.ChampionGuideDetailSummaryWrap>.SideContent{display:table-cell;width:96px;text-align:center;background-color:#fff;vertical-align:middle;}.ChampionGuideDetailSummaryWrap>.SideContent>.Title{color:#666;font-size:16px;font-weight:bold;}
+.ChampionGuideDetailSummaryWrap>.RealContent{display:table-cell;border-left:1px solid #cdd2d2;background-color:#fafafa;}
+.ChampionGuideVideoWrap>.Box{margin-top:10px;}
+.ChampionGuideVideoWrap>.VideoBox>.Content{padding:10px;text-align:center;}
+.ChampionGuideWriteWrap>.Information{position:relative;width:970px;margin:0 auto;font-size:0;}.ChampionGuideWriteWrap>.Information>.Text{font-size:15px;color:#555;line-height:29px;}.ChampionGuideWriteWrap>.Information>.Text>i{margin-right:5px;}
+.ChampionGuideWriteWrap>.Information>.UpdateButton{position:absolute;right:0;top:0;padding:6px 8px;font-size:13px;}
+.ChampionGuideWriteWrap>.Content{width:970px;margin:0 auto;font-size:0;}
+.ChampionGuideWriteTabLayout{position:relative;}.ChampionGuideWriteTabLayout.ToggleWrap.closed>.Header.Toggle{border-bottom:1px solid #cdd2d2;}.ChampionGuideWriteTabLayout.ToggleWrap.closed>.Header.Toggle>.ToggleButton.Open{display:block;}
+.ChampionGuideWriteTabLayout.ToggleWrap.closed>.Header.Toggle>.ToggleButton.Close{display:none;}
+.ChampionGuideWriteTabLayout.ToggleWrap.closed>.Content{display:none;}
+.ChampionGuideWriteTabLayout>.Header{position:relative;}.ChampionGuideWriteTabLayout>.Header.Toggle{border-bottom:none;}.ChampionGuideWriteTabLayout>.Header.Toggle>.ToggleButton{display:block;padding:30px 0;color:#555e5e;font-size:21px;text-decoration:none;}.ChampionGuideWriteTabLayout>.Header.Toggle>.ToggleButton.Open{display:none;}
+.ChampionGuideWriteTabLayout>.Header.Toggle>.ToggleButton>i{margin-left:18px;}
+.ChampionGuideWriteTabLayout>.Header.Title{padding:30px 0;color:#555e5e;font-size:21px;border-bottom:none;}
+.MasteryPageWrap{position:relative;}.MasteryPageWrap>.MasteryPageSummaryWrap{display:inline-block;width:176px;vertical-align:top;}.MasteryPageWrap>.MasteryPageSummaryWrap>.MasteryPageSummary{display:table;width:100%;table-layout:fixed;margin-top:180px;}.MasteryPageWrap>.MasteryPageSummaryWrap>.MasteryPageSummary>.Offence,.MasteryPageWrap>.MasteryPageSummaryWrap>.MasteryPageSummary>.Defense,.MasteryPageWrap>.MasteryPageSummaryWrap>.MasteryPageSummary>.Utility{display:table-cell;font-size:14px;font-weight:bold;text-align:center;}.MasteryPageWrap>.MasteryPageSummaryWrap>.MasteryPageSummary>.Offence>.Image,.MasteryPageWrap>.MasteryPageSummaryWrap>.MasteryPageSummary>.Defense>.Image,.MasteryPageWrap>.MasteryPageSummaryWrap>.MasteryPageSummary>.Utility>.Image{width:24px;vertical-align:middle;}
+.MasteryPageWrap>.MasteryPageSummaryWrap>.Point{margin-top:10px;color:#333;font-size:15px;text-align:center;}
+.MasteryPageWrap>.MasteryPageSummaryWrap>.Action{margin-top:10px;text-align:center;}
+.MasteryPageWrap>.MasteryPageContent{display:inline-block;width:792px;vertical-align:top;}
+.ChampionGuideWriteItemSelectedWrap{font-size:0;}.ChampionGuideWriteItemSelectedWrap>.SideContent{display:inline-block;width:180px;vertical-align:top;}
+.ChampionGuideWriteItemSelectedWrap>.RealContent{display:inline-block;width:596px;border-left:1px solid #cdd2d2;padding:10px;vertical-align:top;}
+.ChampionGuideWriteRuneSelectedWrap{font-size:0;}.ChampionGuideWriteRuneSelectedWrap>.SideContent{display:inline-block;width:260px;vertical-align:top;}.ChampionGuideWriteRuneSelectedWrap>.SideContent>.ChampionGuideSelectedRuneWrap>.ChampionGuideWriteRuneList{height:366px;overflow-y:auto;overflow-x:hidden;}.ChampionGuideWriteRuneSelectedWrap>.SideContent>.ChampionGuideSelectedRuneWrap>.ChampionGuideWriteRuneList>.ChampionGuideRuneItem{display:block;width:100%;}
+.ChampionGuideWriteRuneSelectedWrap>.SideContent>.ChampionGuideSelectedRuneWrap>.Action{padding:10px;}.ChampionGuideWriteRuneSelectedWrap>.SideContent>.ChampionGuideSelectedRuneWrap>.Action>.Button{display:block;}
+.ChampionGuideWriteRuneSelectedWrap>.RealContent{display:inline-block;width:516px;border-left:1px solid #e1e5e5;padding:10px;vertical-align:top;}.ChampionGuideWriteRuneSelectedWrap>.RealContent .ChampionGuideSelectedRuneWrap{padding:5px;}
+.ChampionGuideWriteRuneSelectedWrap>.Footer{padding:10px 0;border-top:1px solid #e1e5e5;background-color:#e9e9e9;}.ChampionGuideWriteRuneSelectedWrap>.Footer>.Button{width:750px;}
+.ChampionGuideSelectedRuneWrap>.Category{border-bottom:1px solid #ddd;padding:10px;font-size:14px;font-weight:bold;color:#333;background-color:#e9e9e9;}
+.ChampionGuideIndexWrap>.Title{position:relative;padding:20px 20px 15px 20px;color:#666;font-size:18px;font-weight:bold;}.ChampionGuideIndexWrap>.Title>.Right{position:absolute;top:12px;right:20px;font-size:0;}.ChampionGuideIndexWrap>.Title>.Right>.Text{margin-right:10px;font-size:13px;font-weight:normal;}
+.ChampionGuideIndexWrap>.Title>.Right>.Button{height:34px;line-height:36px;padding:0 8px;}
+.ChampionIndexListTable>.Navigation.Role .Rotation{display:none;}
+.SearchChampionInput{position:relative;vertical-align:middle;}.SearchChampionInput>.InputTextWrap{padding:11px 10px;border:1px solid #d7dada;border-radius:2px;background:#fafafa;}.SearchChampionInput>.InputTextWrap>.Input{width:100%;height:12px;border:none;background:none;color:#555e5e;font-size:12px;outline:none;}.SearchChampionInput>.InputTextWrap>.Input::-webkit-input-placeholder{color:#879292;}
+.SearchChampionInput>.InputTextWrap>.Input:-moz-placeholder{color:#879292;}
+.SearchChampionInput>.InputTextWrap>.Input::-moz-placeholder{color:#879292;}
+.SearchChampionInput>.InputTextWrap>.Input:-ms-input-placeholder{color:#879292;}
+.SearchChampionInput>.InputTextWrap>.Input:hover,.SearchChampionInput>.InputTextWrap>.Input:focus{border-color:#1f8ecd;}
+.SearchChampionInput>.InnerButtonWrap{position:absolute;top:0;right:3px;}.SearchChampionInput>.InnerButtonWrap .Button{border:none;background:none;padding:10px;}
+.ChampionIndexGrid{font-size:0;padding:6px 5px 5px 5px;}.ChampionIndexGrid>.Item{position:relative;display:inline-block;margin:5px;text-align:center;vertical-align:top;}.ChampionIndexGrid>.Item.hide{display:none;}
+.ChampionIndexGrid>.Item>.FreeToPlayIcon{position:absolute;left:1px;top:1px;width:33px;height:34px;background:url(../images/site/icon_rotation.png?4) no-repeat;}
+.ChampionIndexGrid>.Item>.Link{display:block;color:#1f8ecd;text-decoration:none;font-size:12px;line-height:20px;}.ChampionIndexGrid>.Item>.Link:hover{text-decoration:underline;}
+.ChampionIndexGrid>.Item>.Link.Champion>.ChampionImage{display:block;width:80px;height:80px;background:#000;border:1px solid #bcc3c3;}.ChampionIndexGrid>.Item>.Link.Champion>.ChampionImage>.Image{display:block;width:80px;height:80px;opacity:1;border:1px solid #000;}
+.ChampionIndexGrid>.Item>.Link.Champion>.ChampionName{display:block;width:80px;font-size:12px;color:#657070;line-height:25px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.ChampionIndexGrid>.Item>.Link.Champion:hover{text-decoration:none;}
+.ChampionIndexGrid>.Item>.Link.Champion:hover>.ChampionName{color:#1f8ecd;}
+.ChampionIndexGrid>.Item>.Link.Champion:hover>.ChampionImage>.Image{opacity:1;}
+.ChampionIndexGrid>.Item>.Link.Champion>.Positions{position:absolute;right:0;bottom:25px;color:#bcc3c3;line-height:16px;font-family:"Tahoma",serif;font-weight:bold;text-align:right;}.ChampionIndexGrid>.Item>.Link.Champion>.Positions>.Position{display:block;font-size:0;}.ChampionIndexGrid>.Item>.Link.Champion>.Positions>.Position>span{display:inline-block;font-size:11px;padding:2px 5px;background:rgba(0, 0, 0, 0.7);}
+.ChampionIndexGrid>.Item>.Link.Champion.Deceased{cursor:not-allowed;}.ChampionIndexGrid>.Item>.Link.Champion.Deceased>.ChampionName{color:#879292;}
+.ChampionIndexGrid>.Item>.Link.Champion.Deceased:hover>.ChampionName{color:#879292;}
+.ChampionIndexGrid>.Item>.Link.Champion.Deceased>.ChampionImage{position:relative;background-color:#000;}.ChampionIndexGrid>.Item>.Link.Champion.Deceased>.ChampionImage>.DeceasedImage{position:absolute;left:0;top:0;width:100%;height:100%;background:url(../images/site/champion/deceased.png);content:' ';}
+.ChampionIndexGrid>.Item>.Link.Champion.Deceased>.ChampionImage>.DeceasedText{position:absolute;bottom:0;left:0;right:0;color:#ccc;font-size:13px;line-height:25px;font-weight:bold;background:rgba(0, 0, 0, 0.5);}
+.ChampionIndexGrid>.Item>.Link.Champion.Deceased>.ChampionImage>.ForeignDeceasedImage{position:absolute;bottom:-2px;left:0;width:100%;text-align:center;}.ChampionIndexGrid>.Item>.Link.Champion.Deceased>.ChampionImage>.ForeignDeceasedImage img{display:block;margin:0 auto;}
+.ChampionIndexGrid.Role>.SearchChampionInput{display:none;}
+.ChampionIndexGrid.Role>.Item{display:none;}
+.ChampionIndexGrid.Role.Role-TOP>.Item.Role-TOP{display:inline-block;}
+.ChampionIndexGrid.Role.Role-JUNGLE>.Item.Role-JUNGLE{display:inline-block;}
+.ChampionIndexGrid.Role.Role-MID>.Item.Role-MID{display:inline-block;}
+.ChampionIndexGrid.Role.Role-ADC>.Item.Role-ADC{display:inline-block;}
+.ChampionIndexGrid.Role.Role-SUPPORT>.Item.Role-SUPPORT{display:inline-block;}
+.ChampionHeader{padding-top:10px;padding-bottom:10px;font-size:0;position:relative;border-bottom:1px solid #cdd2d2;}.ChampionHeader>.ChampionImage{display:table-cell;padding-right:15px;}.ChampionHeader>.ChampionImage>.ImageWrap>.Image{width:100px;height:100px;border-radius:3px;}
+.ChampionHeader>.ChampionInfo{display:table-cell;vertical-align:top;position:relative;}.ChampionHeader>.ChampionInfo>.ChampionName{font-weight:normal;font-size:24px;line-height:100%;}
+.ChampionHeader>.ChampionInfo>.ChampionStats{margin-top:3px;font-size:13px;line-height:100%;}
+.ChampionHeader>.ChampionInfo>.ChampionSkillList{margin-top:10px;}.ChampionHeader>.ChampionInfo>.ChampionSkillList>.Item{display:inline-block;position:relative;margin-right:10px;border-radius:3px;overflow:hidden;border:1px solid #000;}.ChampionHeader>.ChampionInfo>.ChampionSkillList>.Item>.Image>.Image{width:48px;height:48px;}
+.ChampionHeader>.ChampionInfo>.ChampionSkillList>.Item>.Image>.HotKey{position:absolute;width:20px;height:20px;line-height:22px;right:0;bottom:0;font-weight:bold;text-align:center;color:#f2f2f2;border-radius:3px;font-size:12px;background-color:#000;background:rgba(0, 0, 0, 0.5);}
+.ChampionHeader>.ChampionInfo>.ChampionSkillList>.Item>.Image>.Overlay{display:none;position:absolute;top:0;left:0;width:100%;height:100%;transition:all 0.2s ease-in-out;cursor:pointer;}
+.ChampionHeader>.ChampionInfo>.ChampionSkillList>.Item:hover>.Image>.Overlay{display:block;}
+.ChampionHeader>.ChampionRole{position:absolute;right:0;bottom:-1px;}.ChampionHeader>.ChampionRole>.ChampionRoleList>.Item{display:inline-block;width:170px;margin-left:8px;}.ChampionHeader>.ChampionRole>.ChampionRoleList>.Item>.Button{display:block;position:relative;background:#e0e3e3;text-align:left;border:1px solid #cdd2d2;color:#afb4b4;padding-bottom:6px;}.ChampionHeader>.ChampionRole>.ChampionRoleList>.Item>.Button>.Role{padding:12px;border-top:7px solid transparent;border-bottom:1px solid #cdd2d2;font-size:14px;line-height:100%;text-align:left;}.ChampionHeader>.ChampionRole>.ChampionRoleList>.Item>.Button>.Role>.Label{display:inline-block;}
+.ChampionHeader>.ChampionRole>.ChampionRoleList>.Item>.Button>.Role>.Value{display:inline-block;float:right;}
+.ChampionHeader>.ChampionRole>.ChampionRoleList>.Item>.Button>.Stats{position:relative;line-height:30px;padding-left:12px;padding-right:12px;font-size:12px;}
+.ChampionHeader>.ChampionRole>.ChampionRoleList>.Item>.Button>.Stats>.Value{position:absolute;right:12px;}
+.ChampionHeader>.ChampionRole>.ChampionRoleList>.Item>.Button.active,.ChampionHeader>.ChampionRole>.ChampionRoleList>.Item>.Button:hover{background:#f2f2f2;}
+.ChampionHeader>.ChampionRole>.ChampionRoleList>.Item>.Button.active{border-bottom-color:#eaeaea;background:#eaeaea;}.ChampionHeader>.ChampionRole>.ChampionRoleList>.Item>.Button.active>.Role{border-top-color:#1f8ecd;background:#fafafa;}.ChampionHeader>.ChampionRole>.ChampionRoleList>.Item>.Button.active>.Role>.Label{color:#222;}
+.ChampionHeader>.ChampionRole>.ChampionRoleList>.Item>.Button.active>.Role>.Value{color:#1f8ecd;}
+.ChampionHeader>.ChampionRole>.ChampionRoleList>.Item>.Button.active>.Role>.Label{color:#242929;}
+.ChampionHeader>.ChampionRole>.ChampionRoleList>.Item>.Button.active>.Stats{color:#222;}
+.ChampionHeader>.Actions{position:absolute;right:0;top:0;}.ChampionHeader>.Actions>.Action{display:inline-block;width:175px;border:1px solid #cdd2d2;margin-left:1px;}.ChampionHeader>.Actions>.Action>.Button{display:block;position:relative;background:#e0e3e3;text-align:left;color:#333;}.ChampionHeader>.Actions>.Action>.Button:hover{background:#f2f2f2;}
+.ChampionHeader>.Actions>.Action>.Button>.Title{margin:0;padding:0 15px;border-bottom:1px solid #d5d5d5;font-size:15px;text-align:left;line-height:33px;}
+.ChampionHeader>.Actions>.Action>.Button>.Stats{line-height:28px;padding-left:15px;padding-right:15px;}.ChampionHeader>.Actions>.Action>.Button>.Stats>.Label{color:#555e5e;font-size:11px;margin-right:3px;font-weight:bold;}
+.ChampionHeader>.Actions>.Action>.Button>.Stats>.Value{float:right;color:#666;font-size:12px;}
+.ChampionRankingSummary{margin-top:10px;}.ChampionRankingSummary:first-child{margin-top:0;}
+.ChampionRankingSummary>.Title{display:block;color:#666;font-size:12px;text-align:left;overflow:hidden;}.ChampionRankingSummary>.Title button{position:absolute;top:0;right:0;background:#36a4a4;border:1px solid #288b8b;height:100%;padding:0 10px;line-height:14px;font-size:12px;color:#fff;}.ChampionRankingSummary>.Title button i{margin-right:5px;margin-top:-1px;}
+.ChampionRankingSummary>.Content{display:table;width:100%;table-layout:fixed;font-size:0;}.ChampionRankingSummary>.Content>.Item{display:table-cell;text-align:center;}.ChampionRankingSummary>.Content>.Item>.Title{color:#555e5e;font-size:11px;line-height:32px;}
+.ChampionRankingSummary>.Content>.Item>.ChampionList>.Champion{display:block;}.ChampionRankingSummary>.Content>.Item>.ChampionList>.Champion>.Link{position:relative;display:inline-block;text-decoration:none;margin:5px;}.ChampionRankingSummary>.Content>.Item>.ChampionList>.Champion>.Link>.ChampionImage{width:40px;height:40px;}
+.ChampionRankingSummary>.Content>.Item>.ChampionList>.Champion>.Link>i{position:absolute;top:0;left:0;}
+.ChampionBanRateSummary{margin-top:10px;}.ChampionBanRateSummary>.Title{display:block;color:#666;font-size:12px;text-align:left;}.ChampionBanRateSummary>.Title button{position:absolute;top:0;right:0;background:#36a4a4;border:1px solid #288b8b;height:100%;padding:0 10px;line-height:14px;font-size:12px;color:#fff;}.ChampionBanRateSummary>.Title button i{margin-right:5px;margin-top:-1px;}
+.ChampionBanRateSummary>.Content>.Table{width:100%;table-layout:fixed;}.ChampionBanRateSummary>.Content>.Table>.Header>.Row>.HeaderCell{border-bottom:1px solid #cdd2d2;padding:7px;color:#454c4c;font-size:12px;vertical-align:middle;}.ChampionBanRateSummary>.Content>.Table>.Header>.Row>.HeaderCell>.Top{color:#1f8ecd;}
+.ChampionBanRateSummary>.Content>.Table>.Header>.Row>.HeaderCell>.Bottom{color:#fa4040;}
+.ChampionBanRateSummary>.Content>.Table>.Header>.Row>.HeaderCell:first-child{text-align:left;}
+.ChampionBanRateSummary>.Content>.Table>.Content>.Row>.Cell{border-left:1px solid #cdd2d2;color:#879292;font-size:11px;padding-top:5px;padding-bottom:5px;}.ChampionBanRateSummary>.Content>.Table>.Content>.Row>.Cell.Role{padding-left:5px;}
+.ChampionBanRateSummary>.Content>.Table>.Content>.Row>.Cell.Champion{position:relative;padding:5px;}.ChampionBanRateSummary>.Content>.Table>.Content>.Row>.Cell.Champion>.Link{color:#555e5e;text-decoration:none;}.ChampionBanRateSummary>.Content>.Table>.Content>.Row>.Cell.Champion>.Link>.ChampionImage{width:24px;height:24px;vertical-align:middle;margin-right:3px;}
+.ChampionBanRateSummary>.Content>.Table>.Content>.Row>.Cell.Champion>.Link>.ChampionName{vertical-align:middle;}
+.ChampionBanRateSummary>.Content>.Table>.Content>.Row>.Cell.Champion>.Link:hover{text-decoration:underline;}
+.ChampionBanRateSummary>.Content>.Table>.Content>.Row>.Cell.Champion>.Percent{position:absolute;right:5px;color:#555e5e;line-height:24px;}.ChampionBanRateSummary>.Content>.Table>.Content>.Row>.Cell.Champion>.Percent.Top{color:#1f8ecd;}
+.ChampionBanRateSummary>.Content>.Table>.Content>.Row>.Cell.Champion>.Percent.Bottom{color:#fa4040;}
+.ChampionBanRateSummary>.Content>.Table>.Content>.Row>.Cell:first-child{border-left:none;}
+.ChampionBanRateSummary>.Content>.Table>.Content>.Row.Odd>.Cell{background-color:#e0e3e3;}
+.ChampionBanRateSummary>.Content>.Table.Small{display:inline-table;width:50%;vertical-align:top;border-left:1px solid #cdd2d2;}.ChampionBanRateSummary>.Content>.Table.Small>.Content>.Row>.Cell.Role{text-align:center;}
+.ChampionBanRateSummary>.Content>.Table.Small:first-child{border-left:none;}
+.ChampionStatsSummaryTable{width:100%;table-layout:fixed;}.ChampionStatsSummaryTable>.Header>.Row>.HeaderCell{height:33px;border-bottom:1px solid #cdd2d2;color:#666;font-size:14px;text-align:center;vertical-align:middle;font-weight:normal;}.ChampionStatsSummaryTable>.Header>.Row>.HeaderCell.PickRate,.ChampionStatsSummaryTable>.Header>.Row>.HeaderCell.WinRate{padding-right:16px;}
+.ChampionStatsSummaryTable>.Content>.Row>.Cell{padding:10px;vertical-align:middle;background:#ededed;}.ChampionStatsSummaryTable>.Content>.Row>.Cell .Image{width:40px;height:40px;vertical-align:middle;border:1px solid #000;border-radius:3px;overflow:hidden;}
+.ChampionStatsSummaryTable>.Content>.Row>.Cell .Image.NonBorder{border:none;border-radius:0;}
+.ChampionStatsSummaryTable>.Content>.Row>.Cell.ListCell{font-size:0;}.ChampionStatsSummaryTable>.Content>.Row>.Cell.ListCell>.Item{display:inline-block;position:relative;vertical-align:middle;}.ChampionStatsSummaryTable>.Content>.Row>.Cell.ListCell>.Item>.ExtraString{position:absolute;width:20px;height:20px;line-height:20px;right:0;bottom:0;font-weight:bold;text-align:center;color:#f2f2f2;border-radius:3px;font-size:12px;background:rgba(0, 0, 0, 0.5);}
+.ChampionStatsSummaryTable>.Content>.Row>.Cell.ListCell>.Bar{display:inline-block;width:20px;text-align:center;vertical-align:middle;}
+.ChampionStatsSummaryTable>.Content>.Row>.Cell.Single>.Name{display:inline-block;margin-left:10px;color:#666;font-size:11px;vertical-align:middle;}
+.ChampionStatsSummaryTable>.Content>.Row>.Cell.Label{border-right:1px solid #cdd2d2;background:#f2f2f2 !important;color:#666;font-size:13px;text-align:center;}.ChampionStatsSummaryTable>.Content>.Row>.Cell.Label>a{text-decoration:none;color:inherit;}
+.ChampionStatsSummaryTable>.Content>.Row>.Cell.Label>a:hover,.ChampionStatsSummaryTable>.Content>.Row>.Cell.Label a:focus{text-decoration:underline;}
+.ChampionStatsSummaryTable>.Content>.Row>.Cell.PickRate{padding-right:16px;color:#666;font-size:13px;text-align:center;}.ChampionStatsSummaryTable>.Content>.Row>.Cell.PickRate>span{display:block;color:#999;font-size:11px;line-height:1.4;}
+.ChampionStatsSummaryTable>.Content>.Row>.Cell.WinRate{padding-right:16px;font-size:13px;text-align:center;}
+.ChampionStatsSummaryTable>.Content>.Row.First>.Cell{background:#e0e3e3;border-top:1px solid #cdd2d2;}
+.ChampionStatsSummaryTable>.Content>.Row:first-child.First{border-top:none;}
+.ChampionStatsSummaryTable .mastery-page-type__header{margin-bottom:6px;color:#777;}
+.ChampionStatsSummaryTable .mastery-page-type__content{border-left-color:#cdd2d2;}
+.ChampionStatsDetailTable{width:100%;table-layout:fixed;}.ChampionStatsDetailTable>.Header>.Row>.HeaderCell{height:33px;border-bottom:1px solid #cdd2d2;color:#666;font-size:12px;text-align:center;vertical-align:middle;font-weight:normal;}.ChampionStatsDetailTable>.Header>.Row>.HeaderCell:first-child{padding-left:10px;text-align:left;}
+.ChampionStatsDetailTable>.Content>.Row>.Cell{height:62px;vertical-align:middle;background:#ededed;}.ChampionStatsDetailTable>.Content>.Row>.Cell .Image{width:40px;height:40px;vertical-align:middle;border:1px solid #000;border-radius:3px;overflow:hidden;}
+.ChampionStatsDetailTable>.Content>.Row>.Cell .Image.NonBorder{border:none;border-radius:0;}
+.ChampionStatsDetailTable>.Content>.Row>.Cell .RuneStatistics{line-height:17px;}
+.ChampionStatsDetailTable>.Content>.Row>.Cell.ListCell{padding-left:5px;font-size:0;text-align:center;}.ChampionStatsDetailTable>.Content>.Row>.Cell.ListCell>.Item{display:inline-block;position:relative;vertical-align:middle;}.ChampionStatsDetailTable>.Content>.Row>.Cell.ListCell>.Item>.ExtraString{position:absolute;width:20px;height:20px;line-height:20px;right:0;bottom:0;font-weight:bold;text-align:center;color:#f2f2f2;border-radius:3px;font-size:12px;background:rgba(0, 0, 0, 0.5);}
+.ChampionStatsDetailTable>.Content>.Row>.Cell.ListCell>.Bar{display:inline-block;width:20px;text-align:center;vertical-align:middle;}
+.ChampionStatsDetailTable>.Content>.Row>.Cell.Single{height:42px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:11px 3px 11px 6px;}.ChampionStatsDetailTable>.Content>.Row>.Cell.Single>.Name{display:inline-block;margin-left:10px;color:#666;font-size:12px;vertical-align:middle;}
+.ChampionStatsDetailTable>.Content>.Row>.Cell.KeyStone>.Name{max-width:90px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.ChampionStatsDetailTable>.Content>.Row>.Cell.PickRate{color:#666;font-size:13px;text-align:center;}.ChampionStatsDetailTable>.Content>.Row>.Cell.PickRate>span{display:block;color:#999;font-size:11px;line-height:1.4;}
+.ChampionStatsDetailTable>.Content>.Row>.Cell.WinRate{font-size:13px;text-align:center;}
+.ChampionStatsDetailTable>.Content>.Row>.Cell.PickRate.ListCell>.Item,.ChampionStatsDetailTable>.Content>.Row>.Cell.PickRate.ListCell>.Bar{margin-bottom:17px;}
+.ChampionStatsDetailTable>.Content>.Row>.Cell>.SkillBuildTable{width:518px;margin:20px 0 20px 20px;}
+.ChampionStatsDetailTable>.Content>.Row>.Cell>.mastery-page{margin:5px 0;}
+.ChampionStatsDetailTable>.Content>.Row.Odd>.Cell{background-color:#e0e3e3;}
+.ChampionStatsDetailTable.Item>.Content>.Row>.Cell.Single,.ChampionStatsDetailTable.Item>.Content>.Row>.Cell.ListCell{text-align:left;padding-left:10px;}
+.ChampionStatsDetailTable .mastery-page-type__header{color:#777;margin-bottom:6px;}
+.ChampionStatsDetailTable .mastery-page-type__content{border-left-color:#cdd2d2;}
+.SkillBuildTable{width:100%;table-layout:fixed;border-collapse:collapse;}.SkillBuildTable>.Content>.Row>.Cell{position:relative;}.SkillBuildTable>.Content>.Row>.Cell.Passive{position:relative;border:1px solid #cdd2d2;color:#666;font-size:11px;text-align:center;font-weight:bold;}
+.SkillBuildTable>.Content>.Row>.Cell.Value{position:relative;min-width:20px;height:25px;border:1px solid #cdd2d2;color:#1f8ecd;font-family:Arial;font-size:12px;text-align:center;font-weight:bold;}.SkillBuildTable>.Content>.Row>.Cell.Value>.Image{position:absolute;top:0;right:0;bottom:0;left:0;opacity:.3;height:100%;width:100%;}
+.SkillBuildTable>.Content>.Row>.Cell.Value.LevelUP{background:#1a79ae;color:#f2f2f2;}.SkillBuildTable>.Content>.Row>.Cell.Value.LevelUP.Master{background:#249069;}
+.SkillBuildTable>.Content>.Row>.Cell.Label{border-right:1px solid #cdd2d2;text-align:center;line-height:16px;font-size:14px;color:#000;font-family:Helvetica,Arial,sans-serif;}
+.SkillBuildTable>.Content>.Row>.Cell:last-child{border-right:1px solid #cdd2d2;}
+.SkillBuildTable>.Content>.Row>.Cell>.HotKey{position:absolute;width:20px;height:20px;line-height:20px;right:2px;bottom:2px;font-weight:bold;text-align:center;color:#f2f2f2;border-radius:3px;font-size:11px;background-color:#000;background:rgba(0, 0, 0, 0.5);}
+.RuneItemList{padding-top:10px;padding-bottom:10px;}.RuneItemList>.Item{position:relative;display:inline-block;width:69px;text-align:center;color:#777;padding-left:10px;padding-right:10px;vertical-align:top;}.RuneItemList>.Item>.Image{display:inline-block;vertical-align:middle;}
+.RuneItemList>.Item>.Value{display:inline-block;vertical-align:middle;font-size:16px;margin-left:3px;font-weight:bold;}
+.RuneItemList>.Item>.Label{display:block;font-size:12px;line-height:1.4;margin-top:10px;}
+.OverViewSkillBox>.Content>.SkillBuildTable{border-top:1px solid #cdd2d2;}
+.OverViewItemWrap{font-size:0;}.OverViewItemWrap>.Box{display:inline-block;width:318px;font-size:12px;vertical-align:top;margin-top:10px;}
+.SkillPriorityStatList{display:inline-block;vertical-align:middle;padding:5px;}.SkillPriorityStatList>.Stat{display:inline-block;text-align:left;margin-right:10px;}.SkillPriorityStatList>.Stat>.Progress{height:6px;border:1px solid #cdd2d2;background:#f2f2f2;margin:2px;}.SkillPriorityStatList>.Stat>.Progress>.Bar{height:100%;margin:-1px;border:1px solid #b8bfbf;background-color:#c3c8c8;}
+.SkillPriorityStatList>.Stat>.Label,.SkillPriorityStatList>.Stat>.Value{font-size:11px;padding:2px;}
+#GraphWrap>.Box{margin-top:10px;}
+.TrendChangeForm{text-align:right;}
+.MatchupChampionListTable{width:100%;table-layout:fixed;}.MatchupChampionListTable>.Header>.Row>.HeaderCell{height:37px;color:#666;font-size:13px;border-bottom:1px solid #cdd2d2;background-color:#e0e3e3;}.MatchupChampionListTable>.Header>.Row>.HeaderCell.Champion{text-align:left;}
+.MatchupChampionListTable>.Content>.Row{cursor:pointer;}.MatchupChampionListTable>.Content>.Row>.Cell{height:52px;vertical-align:middle;color:#666;background:#eaeaea;}.MatchupChampionListTable>.Content>.Row>.Cell.Button{border-left:3px solid transparent;text-align:center;}.MatchupChampionListTable>.Content>.Row>.Cell.Button>.On{display:none;}
+.MatchupChampionListTable>.Content>.Row>.Cell.Button>.Off{display:inline-block;}
+.MatchupChampionListTable>.Content>.Row>.Cell.Champion{white-space:nowrap;text-overflow:ellipsis;overflow:hidden;}.MatchupChampionListTable>.Content>.Row>.Cell.Champion>.Image{display:inline-block;width:32px;border-radius:50%;margin-right:3px;vertical-align:middle;}
+.MatchupChampionListTable>.Content>.Row>.Cell.Value{font-size:11px;text-align:center;}.MatchupChampionListTable>.Content>.Row>.Cell.Value>span{display:block;color:#999;font-size:11px;line-height:1.4;}
+.MatchupChampionListTable>.Content>.Row>.Cell.WinRatio{font-size:11px;text-align:center;}
+.MatchupChampionListTable>.Content>.Row.active>.Cell{background:#e2d0d0;}.MatchupChampionListTable>.Content>.Row.active>.Cell.Button{border-left-color:#ee5a52;}.MatchupChampionListTable>.Content>.Row.active>.Cell.Button>.On{display:inline-block;}
+.MatchupChampionListTable>.Content>.Row.active>.Cell.Button>.Off{display:none;}
+.MatchupChampionListTable>.Content>.Row.active>.Cell.Champion{color:#444;font-weight:bold;}
+.MatchupChampionListTable>.Content>.Row.active>.Cell.Value{color:#444;font-weight:bold;}
+.MatchupChampionListTable>.Content>.Row.show{display:table-row;}
+.MatchupChampionListTable>.Content>.Row.hide{display:none;}
+.CounterChampionContent{margin-top:38px;}.CounterChampionContent>.Champion{position:relative;font-size:0;}.CounterChampionContent>.Champion>.Champion{display:inline-block;width:50%;}.CounterChampionContent>.Champion>.Champion>.ChampionImage a{text-decoration:none;color:inherit;}
+.CounterChampionContent>.Champion>.Champion>.ChampionImage .Image{width:125px;height:125px;border-radius:50%;border:6px solid transparent;}
+.CounterChampionContent>.Champion>.Champion>.ChampionInfo{width:155px;margin-top:35px;}.CounterChampionContent>.Champion>.Champion>.ChampionInfo>.ChampionName{font-size:17px;color:#555;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid #cdd2d2;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;}.CounterChampionContent>.Champion>.Champion>.ChampionInfo>.ChampionName>a{text-decoration:none;color:inherit;}.CounterChampionContent>.Champion>.Champion>.ChampionInfo>.ChampionName>a:hover{text-decoration:underline;}
+.CounterChampionContent>.Champion>.Champion>.ChampionInfo>.WinRatio{font-size:13px;}
+.CounterChampionContent>.Champion>.Champion.Blue>.ChampionInfo{float:right;margin-left:20px;}
+.CounterChampionContent>.Champion>.Champion.Blue>.ChampionImage{float:left;margin-left:15px;}.CounterChampionContent>.Champion>.Champion.Blue>.ChampionImage .Image{border-color:#1f8ecd;}
+.CounterChampionContent>.Champion>.Champion.Red>.ChampionInfo{float:left;margin-right:20px;text-align:right;}
+.CounterChampionContent>.Champion>.Champion.Red>.ChampionImage{float:right;margin-right:15px;}.CounterChampionContent>.Champion>.Champion.Red>.ChampionImage .Image{border-color:#ee5a52;}
+.CounterChampionContent>.Champion>.Versus{display:inline-block;position:absolute;left:50%;top:35px;width:58px;height:58px;line-height:58px;border:1px solid #cdd2d2;background:#e0e3e3;margin-left:-29px;text-align:center;font-size:16px;border-radius:50%;color:#999;font-weight:bold;}
+.CounterChampionContent>.Content>.PieGraph{text-align:center;}.CounterChampionContent>.Content>.PieGraph>.Item{display:inline-block;width:150px;}.CounterChampionContent>.Content>.PieGraph>.Item>.Title{font-size:13px;color:#555;}
+.CounterChampionContent>.Content>.PieGraph>.Item>.Graph{display:inline-block;position:relative;}.CounterChampionContent>.Content>.PieGraph>.Item>.Graph>.Content{position:absolute;top:52px;left:50%;margin-left:-33px;width:66px;}.CounterChampionContent>.Content>.PieGraph>.Item>.Graph>.Content>.Values{padding-bottom:10px;margin-bottom:10px;white-space:nowrap;border-bottom:1px solid #cdd2d2;font-size:0;}.CounterChampionContent>.Content>.PieGraph>.Item>.Graph>.Content>.Values>.Value{display:inline-block;width:50%;font-size:10px;text-align:center;color:#ee5a52;}.CounterChampionContent>.Content>.PieGraph>.Item>.Graph>.Content>.Values>.Value:first-child{color:#1f8ecd;}
+.CounterChampionContent>.Content>.PieGraph>.Item>.Graph>.Content>.DiffValue{font-size:13px;}.CounterChampionContent>.Content>.PieGraph>.Item>.Graph>.Content>.DiffValue.Win{color:#1f8ecd;}
+.CounterChampionContent>.Content>.PieGraph>.Item>.Graph>.Content>.DiffValue.Lose{color:#ee5a52;}
+.CounterChampionContent>.Content>.GraphBox{margin-top:10px;}.CounterChampionContent>.Content>.GraphBox>.Tab{margin:0 0 -1px 0;padding:0;font-size:0;}.CounterChampionContent>.Content>.GraphBox>.Tab>.Item{display:inline-block;margin:0 -1px 0 0;padding:0;background:#d9dedd;color:#888;border:1px solid #cdd2d2;font-size:12px;}.CounterChampionContent>.Content>.GraphBox>.Tab>.Item>.Link{display:block;height:41px;padding-left:20px;padding-right:20px;line-height:42px;color:inherit;text-decoration:none;outline:none;}
+.CounterChampionContent>.Content>.GraphBox>.Tab>.Item.active{border-bottom:1px solid #eaeaea;background-color:#eaeaea;color:#333;}
+.CounterChampionContent>.Content>.GraphBox>.Box{border-top-left-radius:0;background:#e8eaea;}.CounterChampionContent>.Content>.GraphBox>.Box>.Legend{display:block;text-align:center;margin-top:15px;margin-bottom:5px;}.CounterChampionContent>.Content>.GraphBox>.Box>.Legend>.Content{display:inline-block;}.CounterChampionContent>.Content>.GraphBox>.Box>.Legend>.Content>.Item{display:inline-block;margin-left:5px;font-size:12px;line-height:100%;color:#555;}.CounterChampionContent>.Content>.GraphBox>.Box>.Legend>.Content>.Item i{display:inline-block;width:6px;height:6px;border:1px solid #ee5a52;border-radius:50%;margin-right:3px;vertical-align:middle;background:#fff;}
+.CounterChampionContent>.Content>.GraphBox>.Box>.Legend>.Content>.Item:first-child{margin-left:0;}.CounterChampionContent>.Content>.GraphBox>.Box>.Legend>.Content>.Item:first-child>i{border-color:#1f8ecd;}
+.CounterChampionContent>.Content>.GraphBox>.Box>.ContentWrap{text-align:center;}.CounterChampionContent>.Content>.GraphBox>.Box>.ContentWrap>.Content{padding:5px;}
+.CounterChampionContent>.Content>.Box{margin-top:10px;}
+.MatchupChampionSearch{position:relative;}.MatchupChampionSearch>.Input{display:block;width:100%;padding:12px 35px 12px 13px;border:none;color:#879292;background:#f2f2f2;font-size:12px;box-sizing:border-box;outline:none;border-bottom:1px solid #cdd2d2;}
+.MatchupChampionSearch>i{position:absolute;right:15px;top:11px;}
+.MatchupChampionTableWrap{position:relative;padding-top:40px;background:#eaeaea;}.MatchupChampionTableWrap>.ScrollWrap{height:815px;overflow-y:auto;}.MatchupChampionTableWrap>.ScrollWrap>.MatchupChampionListTable>.Header>.Row{position:absolute;top:0;display:block;width:100%;}
+.CounterChampionStatsTable{width:100%;table-layout:fixed;background:#ececec;}.CounterChampionStatsTable>.Header>.Row>.HeaderCell{border-bottom:1px solid #cdd2d2;font-size:13px;color:#333;text-align:center;vertical-align:middle;height:36px;}.CounterChampionStatsTable>.Header>.Row>.HeaderCell>.tip{margin-left:5px;}
+.CounterChampionStatsTable>.Header>.Row>.HeaderCell.Left{border-bottom:2px solid #1f8ecd;}
+.CounterChampionStatsTable>.Header>.Row>.HeaderCell.Right{border-bottom:2px solid #ee5a52;}
+.CounterChampionStatsTable>.Content>.Row>.Cell{border-top:1px solid #cdd2d2;text-align:right;height:36px;vertical-align:middle;}.CounterChampionStatsTable>.Content>.Row>.Cell.Value{font-size:12px;color:#444;}.CounterChampionStatsTable>.Content>.Row>.Cell.Value>span.Change{display:inline-block;width:40%;margin-left:10px;color:#777;text-align:left;}.CounterChampionStatsTable>.Content>.Row>.Cell.Value>span.Change>i{margin-right:3px;}
+.CounterChampionStatsTable>.Content>.Row>.Cell.Fill.Left{background-color:#dae5eb;}
+.CounterChampionStatsTable>.Content>.Row>.Cell.Fill.Right{background-color:#ecdfdf;}
+.CounterChampionStatsTable>.Content>.Row>.Cell.Label{font-size:13px;color:#999;text-align:center;}.CounterChampionStatsTable>.Content>.Row>.Cell.Label.Left{background-image:url("../images/site/champion/bg-counterStats-left.png?2");background-repeat:no-repeat;background-position:top left;}
+.CounterChampionStatsTable>.Content>.Row>.Cell.Label.Right{background-image:url("../images/site/champion/bg-counterStats-right.png?2");background-repeat:no-repeat;background-position:top right;}
+.CounterChampionStatsTable>.Content>.Row:first-child>.Cell{border-top:none;}
+.ChampionGuideSearchWrap{position:relative;font-size:0;background-color:#fafafa;border-radius:2px;}.ChampionGuideSearchWrap>.Header{padding:12px 22px 10px 22px;}.ChampionGuideSearchWrap>.Header>.SearchTextInput{width:700px;padding:12px;border-bottom:1px solid #d7dada;}.ChampionGuideSearchWrap>.Header>.SearchTextInput>.Input{width:100%;border:none;background:none;color:#333;font-size:16px;outline:none;}
+.ChampionGuideSearchWrap>.Header>.Rotation{position:absolute;top:26px;right:20px;}.ChampionGuideSearchWrap>.Header>.Rotation>label{font-size:0;cursor:pointer;}.ChampionGuideSearchWrap>.Header>.Rotation>label>span{font-size:13px;color:#666;vertical-align:middle;}
+.ChampionGuideSearchWrap>.Content{margin:0 22px 0 12px;padding-bottom:22px;}.ChampionGuideSearchWrap>.Content>.ChampionGuideChampionList{max-height:261px;overflow-y:auto;}
+.ChampionGuideChampionList{font-size:0;}.ChampionGuideChampionList>.Item{position:relative;display:inline-block;margin:10px 0 0 10px;vertical-align:top;}.ChampionGuideChampionList>.Item>.Champion{display:block;text-decoration:none;}.ChampionGuideChampionList>.Item>.Champion>.ChampionImage{position:relative;width:60px;height:60px;border:none;}.ChampionGuideChampionList>.Item>.Champion>.ChampionImage>.Image{width:60px;height:60px;border:none;}
+.ChampionGuideChampionList>.Item>.Champion>.ChampionImage>.selected{display:none;position:absolute;top:0;right:0;bottom:0;left:0;background-color:rgba(0, 180, 255, 0.8);padding:18px 19px 18px 18px;}
+.ChampionGuideChampionList>.Item>.Champion>.ChampionImage>.empty{display:none;position:absolute;top:0;right:0;bottom:0;left:0;}
+.ChampionGuideChampionList>.Item>.Champion>.ChampionName{margin-top:3px;max-width:60px;font-size:12px;color:#666;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.ChampionGuideChampionList>.Item>.Champion>.FreeToPlayIcon{position:absolute;left:0;top:0;width:33px;height:34px;background:url(../images/site/icon_rotation.png?4) no-repeat;}
+.ChampionGuideChampionList>.Item.hide{display:none;}
+.ChampionGuideChampionList>.Item.selected>.Champion>.ChampionImage>.selected{display:block;}
+.ChampionGuideChampionList>.Item.empty>.Champion>.ChampionImage>.empty{display:block;}
+.ChampionGuideChampionList>.Item:hover>.Champion>.ChampionName{color:#333;text-decoration:underline;}
+.ChampionGuideMenuWrap>.Filter{display:inline-block;font-size:0;border:1px solid #cdd2d2;border-radius:3px;overflow:hidden;}.ChampionGuideMenuWrap>.Filter>.Item{display:inline-block;vertical-align:top;}.ChampionGuideMenuWrap>.Filter>.Item>.Button{display:block;min-width:70px;height:36px;line-height:36px;padding:0 8px;font-size:14px;color:#666;text-decoration:none;text-align:center;background:#f2f2f2;}
+.ChampionGuideMenuWrap>.Filter>.Item.active>.Button{color:#fff;background:#1f8ecd;}
+.ChampionGuideMenuWrap>.Right{float:right;}
+.ChampionRecentGuideList>.Content{margin-left:-10px;}.ChampionRecentGuideList>.Content.Highlight>.Guide{width:476px;border:1px solid #c3ced4;}
+.ChampionRecentGuideList>.Content>.Guide{display:inline-block;position:relative;width:480px;background:#f2f2f2;box-shadow:0 1px 2px rgba(0, 0, 0, 0.1);margin:0 0 10px 10px;vertical-align:top;}.ChampionRecentGuideList>.Content>.Guide>.Content{display:table;padding:10px;width:459px;}.ChampionRecentGuideList>.Content>.Guide>.Content>.Thumbnail{position:relative;display:table-cell;width:155px;height:91px;z-index:10;overflow:hidden;text-align:center;background:#000;}.ChampionRecentGuideList>.Content>.Guide>.Content>.Thumbnail>.Link>img{max-width:100%;max-height:100%;background:url(../images/site/r/placeholder/opgg.png) 50% no-repeat;}
+.ChampionRecentGuideList>.Content>.Guide>.Content>.Thumbnail>.Link>.Overlay{position:absolute;top:0;left:0;width:100%;text-align:center;}
+.ChampionRecentGuideList>.Content>.Guide>.Content>.Thumbnail>.Link>.Time{position:absolute;right:0;bottom:0;color:#fff;font-size:11px;background-color:#000;background-color:rgba(0, 0, 0, 0.8);padding:3px;}
+.ChampionRecentGuideList>.Content>.Guide>.Content>.ContentWrap{display:table-cell;padding-left:10px;vertical-align:middle;}.ChampionRecentGuideList>.Content>.Guide>.Content>.ContentWrap>.Content{position:relative;}.ChampionRecentGuideList>.Content>.Guide>.Content>.ContentWrap>.Content>.Title{max-height:44px;line-height:22px;font-size:16px;vertical-align:middle;text-overflow:ellipsis;word-wrap:break-word;overflow:hidden;}.ChampionRecentGuideList>.Content>.Guide>.Content>.ContentWrap>.Content>.Title>.Link{font-size:16px;color:#333;text-decoration:none;line-height:22px;}.ChampionRecentGuideList>.Content>.Guide>.Content>.ContentWrap>.Content>.Title>.Link>.Image{display:inline-block;width:20px;height:20px;border-radius:50%;margin-right:3px;vertical-align:middle;}
+.ChampionRecentGuideList>.Content>.Guide>.Content>.ContentWrap>.Content>.Title>.Link:hover{text-decoration:underline;}
+.ChampionRecentGuideList>.Content>.Guide>.Content>.ContentWrap>.Content>.Author{margin-top:5px;line-height:20px;}.ChampionRecentGuideList>.Content>.Guide>.Content>.ContentWrap>.Content>.Author>.Name{display:inline-block;margin-right:3px;color:#666;font-size:12px;vertical-align:middle;}
+.ChampionRecentGuideList>.Content>.Guide>.Content>.ContentWrap>.Content>.Author>.Summoner{color:#999;font-size:12px;text-decoration:none;vertical-align:middle;}.ChampionRecentGuideList>.Content>.Guide>.Content>.ContentWrap>.Content>.Author>.Summoner>.Medal{height:20px;vertical-align:middle;}
+.ChampionRecentGuideList>.Content>.Guide>.Content>.ContentWrap>.Content>.Author>.Summoner:hover{text-decoration:underline;}
+.ChampionRecentGuideList>.Content>.Guide>.Content>.ContentWrap>.Content>.Actions{display:block;margin-top:5px;}.ChampionRecentGuideList>.Content>.Guide>.Content>.ContentWrap>.Content>.Actions>.Action{display:inline-block;margin-left:12px;}.ChampionRecentGuideList>.Content>.Guide>.Content>.ContentWrap>.Content>.Actions>.Action i{margin-right:2px;}.ChampionRecentGuideList>.Content>.Guide>.Content>.ContentWrap>.Content>.Actions>.Action i.On{display:none;}
+.ChampionRecentGuideList>.Content>.Guide>.Content>.ContentWrap>.Content>.Actions>.Action span{font-size:11px;color:#999;vertical-align:middle;}
+.ChampionRecentGuideList>.Content>.Guide>.Content>.ContentWrap>.Content>.Actions>.Action .Button{padding:0;border:none;background:none;}.ChampionRecentGuideList>.Content>.Guide>.Content>.ContentWrap>.Content>.Actions>.Action .Button.active>i.On{display:inline-block;}
+.ChampionRecentGuideList>.Content>.Guide>.Content>.ContentWrap>.Content>.Actions>.Action .Button.active>i.Off{display:none;}
+.ChampionRecentGuideList>.Content>.Guide>.Content>.ContentWrap>.Content>.Actions>.Action .Button.active.VoteUp>span{color:#1f8ecd;}
+.ChampionRecentGuideList>.Content>.Guide>.Content>.ContentWrap>.Content>.Actions>.Action .Button.active.VoteDown>span{color:#ee5a52;}
+.ChampionRecentGuideList>.Content>.Guide>.Content>.ContentWrap>.Content>.Actions>.Action.Right{float:right;}
+.ChampionRecentGuideList>.Content>.Guide>.Content>.ContentWrap>.Content>.Actions>.Action:first-child{margin-left:0;}
+.ChampionGuidePaging{display:table;width:946px;height:35px;padding:12px;table-layout:fixed;background-color:#fafafa;border:1px solid #d7dada;}.ChampionGuidePaging>.active{display:table-cell;color:#666;vertical-align:middle;text-align:center;font-size:15px;}
+.ChampionGuidePaging>.Prev{display:table-cell;width:33px;border:1px solid #cdd2d2;vertical-align:middle;text-align:center;}
+.ChampionGuidePaging>.Next{display:table-cell;width:33px;border:1px solid #cdd2d2;vertical-align:middle;text-align:center;}
+.ChampionSelectBoxSearchWrap{position:relative;}.ChampionSelectBoxSearchWrap>.SearchTextInput{padding:8px 10px;border:1px solid #d7dada;border-radius:2px;background:#fafafa;}.ChampionSelectBoxSearchWrap>.SearchTextInput>.Input{width:100%;height:12px;border:none;background:none;color:#555e5e;font-size:12px;outline:none;}
+.ChampionGuideDetailSummaryList{font-size:0;}.ChampionGuideDetailSummaryList>.Item{border-top:1px solid #cdd2d2;}.ChampionGuideDetailSummaryList>.Item>.SpellWrap{padding:10px;}.ChampionGuideDetailSummaryList>.Item>.SpellWrap>.Title{padding-bottom:9px;color:#666;font-size:13px;font-weight:bold;}
+.ChampionGuideDetailSummaryList>.Item>.SpellWrap>.SpellList>.Item{display:inline-block;margin:5px;vertical-align:middle;}.ChampionGuideDetailSummaryList>.Item>.SpellWrap>.SpellList>.Item>.Image{width:40px;height:40px;vertical-align:middle;border-radius:3px;overflow:hidden;border:1px solid #000;}
+.ChampionGuideDetailSummaryList>.Item>.SpellWrap>.SpellList>.Item:first-child{margin-left:0;}
+.ChampionGuideDetailSummaryList>.Item>.SpellWrap>.SpellList>.Bar{display:inline-block;margin:0 32px;vertical-align:middle;}.ChampionGuideDetailSummaryList>.Item>.SpellWrap>.SpellList>.Bar>.Text{color:#666;font-size:11px;font-weight:bold;}
+.ChampionGuideDetailSummaryList>.Item>.SkillWrap{padding:10px;}.ChampionGuideDetailSummaryList>.Item>.SkillWrap>.Title{padding-bottom:9px;color:#666;font-size:13px;font-weight:bold;}
+.ChampionGuideDetailSummaryList>.Item>.SkillWrap>.SkillList{display:table;}.ChampionGuideDetailSummaryList>.Item>.SkillWrap>.SkillList>.SkillArea{display:table-cell;width:200px;padding-left:9px;vertical-align:middle;}.ChampionGuideDetailSummaryList>.Item>.SkillWrap>.SkillList>.SkillArea>.Item{display:inline-block;position:relative;vertical-align:middle;}.ChampionGuideDetailSummaryList>.Item>.SkillWrap>.SkillList>.SkillArea>.Item>.Image{width:40px;height:40px;vertical-align:middle;border:1px solid #000;border-radius:3px;overflow:hidden;}
+.ChampionGuideDetailSummaryList>.Item>.SkillWrap>.SkillList>.SkillArea>.Item>.HotKey{position:absolute;width:20px;height:20px;line-height:20px;right:0;bottom:0;font-weight:bold;text-align:center;color:#f2f2f2;border-radius:3px;font-size:12px;background-color:#000;background:rgba(0, 0, 0, 0.5);}
+.ChampionGuideDetailSummaryList>.Item>.SkillWrap>.SkillList>.SkillArea>.Bar{display:inline-block;margin:0 10px;vertical-align:middle;}
+.ChampionGuideDetailSummaryList>.Item>.SkillWrap>.SkillList>.SkillBuildArea{display:table-cell;width:648px;height:137px;vertical-align:middle;}
+.ChampionGuideDetailSummaryList>.Item>.RuneMasteryWrap{display:table;padding:10px;}.ChampionGuideDetailSummaryList>.Item>.RuneMasteryWrap>.RuneWrap{display:table-cell;width:454px;padding-right:9px;vertical-align:top;}.ChampionGuideDetailSummaryList>.Item>.RuneMasteryWrap>.RuneWrap>.Title{color:#666;font-size:13px;font-weight:bold;}
+.ChampionGuideDetailSummaryList>.Item>.RuneMasteryWrap>.RuneWrap>.RuneList{display:table-cell;vertical-align:middle;}.ChampionGuideDetailSummaryList>.Item>.RuneMasteryWrap>.RuneWrap>.RuneList>.Item{display:inline-block;padding:9px;width:69px;color:#777;text-align:center;vertical-align:top;}.ChampionGuideDetailSummaryList>.Item>.RuneMasteryWrap>.RuneWrap>.RuneList>.Item>.Image{display:inline-block;width:42px;vertical-align:middle;}
+.ChampionGuideDetailSummaryList>.Item>.RuneMasteryWrap>.RuneWrap>.RuneList>.Item>.Value{display:inline-block;vertical-align:middle;font-size:16px;margin-left:3px;font-weight:bold;}
+.ChampionGuideDetailSummaryList>.Item>.RuneMasteryWrap>.RuneWrap>.RuneList>.Item>.Label{display:block;font-size:12px;line-height:1.4;margin-top:10px;}
+.ChampionGuideDetailSummaryList>.Item>.RuneMasteryWrap>.RuneWrap>.RuneStatistics{border-top:1px solid #cdd2d2;margin-top:12px;padding:14px 0 18px;line-height:1.5;font-size:0;}.ChampionGuideDetailSummaryList>.Item>.RuneMasteryWrap>.RuneWrap>.RuneStatistics>.Item>.Title{color:#666;font-size:13px;font-weight:bold;}
+.ChampionGuideDetailSummaryList>.Item>.RuneMasteryWrap>.RuneWrap>.RuneStatistics>.Item>.Stat{color:#666;font-size:13px;}
+.ChampionGuideDetailSummaryList>.Item>.RuneMasteryWrap>.MasteryWrap{display:table-cell;vertical-align:top;}.ChampionGuideDetailSummaryList>.Item>.RuneMasteryWrap>.MasteryWrap>.Title{padding-bottom:9px;color:#666;font-size:13px;font-weight:bold;}
+.ChampionGuideDetailSummaryList>.Item>.RuneMasteryWrap>.MasteryWrap>.mastery-page{background:#e0e3e3;}
+.ChampionGuideDetailSummaryList>.Item>.ItemMatchupWrap{display:table;width:100%;}.ChampionGuideDetailSummaryList>.Item>.ItemMatchupWrap>.ItemWrap{display:table-cell;width:430px;border-right:1px solid #cdd2d2;vertical-align:top;}.ChampionGuideDetailSummaryList>.Item>.ItemMatchupWrap>.ItemWrap>.Title{padding:10px 10px 9px 10px;color:#666;font-size:13px;font-weight:bold;}
+.ChampionGuideDetailSummaryList>.Item>.ItemMatchupWrap>.ItemWrap>.ItemList{margin-bottom:5px;}.ChampionGuideDetailSummaryList>.Item>.ItemMatchupWrap>.ItemWrap>.ItemList>.Item{margin-top:10px;}.ChampionGuideDetailSummaryList>.Item>.ItemMatchupWrap>.ItemWrap>.ItemList>.Item>.Title{margin-bottom:4px;padding-left:10px;color:#666;font-size:11px;}
+.ChampionGuideDetailSummaryList>.Item>.ItemMatchupWrap>.ItemWrap>.ItemList>.Item>.Content{padding-left:5px;}.ChampionGuideDetailSummaryList>.Item>.ItemMatchupWrap>.ItemWrap>.ItemList>.Item>.Content>.Item{display:inline-block;margin:5px;vertical-align:middle;}.ChampionGuideDetailSummaryList>.Item>.ItemMatchupWrap>.ItemWrap>.ItemList>.Item>.Content>.Item>.Image{width:40px;height:40px;border:1px solid #000;border-radius:3px;}
+.ChampionGuideDetailSummaryList>.Item>.ItemMatchupWrap>.ItemWrap>.ItemList>.Item>.Content>.Bar{display:inline-block;vertical-align:middle;}
+.ChampionGuideDetailSummaryList>.Item>.ItemMatchupWrap>.ItemWrap>.ItemList>.Item:first-child{margin-top:0;}
+.ChampionGuideDetailSummaryList>.Item>.ItemMatchupWrap>.MatchupWrap{display:table-cell;vertical-align:top;}.ChampionGuideDetailSummaryList>.Item>.ItemMatchupWrap>.MatchupWrap>.Title{padding:10px 10px 9px 10px;color:#666;font-size:13px;font-weight:bold;}
+.ChampionGuideDetailSummaryList>.Item>.ItemMatchupWrap>.MatchupWrap>.MatchupList{margin-bottom:5px;}.ChampionGuideDetailSummaryList>.Item>.ItemMatchupWrap>.MatchupWrap>.MatchupList>.Item{margin-top:10px;}.ChampionGuideDetailSummaryList>.Item>.ItemMatchupWrap>.MatchupWrap>.MatchupList>.Item.Hard>.MatchupArea>.Title{color:#c5746e;}
+.ChampionGuideDetailSummaryList>.Item>.ItemMatchupWrap>.MatchupWrap>.MatchupList>.Item.Soft>.MatchupArea>.Title{color:#4c8eb9;}
+.ChampionGuideDetailSummaryList>.Item>.ItemMatchupWrap>.MatchupWrap>.MatchupList>.Item>.MatchupArea>.Title{margin-bottom:4px;padding-left:10px;color:#666;font-size:11px;}
+.ChampionGuideDetailSummaryList>.Item>.ItemMatchupWrap>.MatchupWrap>.MatchupList>.Item>.MatchupArea>.Content{padding-left:5px;}.ChampionGuideDetailSummaryList>.Item>.ItemMatchupWrap>.MatchupWrap>.MatchupList>.Item>.MatchupArea>.Content>.ChampionList{font-size:0;}.ChampionGuideDetailSummaryList>.Item>.ItemMatchupWrap>.MatchupWrap>.MatchupList>.Item>.MatchupArea>.Content>.ChampionList>.Item{display:inline-block;margin:5px;vertical-align:middle;}.ChampionGuideDetailSummaryList>.Item>.ItemMatchupWrap>.MatchupWrap>.MatchupList>.Item>.MatchupArea>.Content>.ChampionList>.Item>.Link>.Image{width:40px;height:40px;border:1px solid #000;border-radius:3px;}
+.ChampionGuideDetailSummaryList>.Item>.ItemMatchupWrap>.MatchupWrap>.MatchupList>.Item:first-child{margin-top:0;}
+.ChampionGuideDetailSummaryList>.Item:first-child{border-top:none;}
+.ChampionGuideDetailUtilWrap{padding-top:10px;text-align:center;}.ChampionGuideDetailUtilWrap>.Actions{font-size:0;}.ChampionGuideDetailUtilWrap>.Actions>.Action{display:inline-block;margin-right:10px;vertical-align:middle;}.ChampionGuideDetailUtilWrap>.Actions>.Action>.Button{color:#555e5e;font-size:12px;line-height:22px;}.ChampionGuideDetailUtilWrap>.Actions>.Action>.Button.Vote.active>.On{display:inline-block;}
+.ChampionGuideDetailUtilWrap>.Actions>.Action>.Button.Vote.active>.Off{display:none;}
+.ChampionGuideDetailUtilWrap>.Actions>.Action>.Button.Vote.active.VoteUp>span{color:#1f8ecd;}
+.ChampionGuideDetailUtilWrap>.Actions>.Action>.Button.Vote.active.VoteDown>span{color:#f00;}
+.ChampionGuideDetailUtilWrap>.Actions>.Action>.Button.Vote>.On{display:none;}
+.ChampionGuideDetailUtilWrap>.Actions>.Action>.Button.Vote>.Off{display:inline-block;}
+.ChampionGuideDetailUtilWrap>.Actions>.Action>.Button>span{margin-left:5px;vertical-align:middle;}
+.ChampionGuideArticleList{background:#efefef;border:1px solid #ddd;border-radius:4px;}.ChampionGuideArticleList>.Item{display:table;width:100%;border-top:1px solid #dfdfdf;}.ChampionGuideArticleList>.Item>.Thumbnail{position:relative;display:table-cell;width:150px;height:101px;padding:10px;vertical-align:middle;overflow:hidden;}.ChampionGuideArticleList>.Item>.Thumbnail>.Image{position:relative;height:100%;background-color:#ccc;}.ChampionGuideArticleList>.Item>.Thumbnail>.Image>.Link>img{width:100%;height:100%;background:url(../images/site/r/placeholder/opgg.png) 50% no-repeat;}
+.ChampionGuideArticleList>.Item>.Thumbnail>.Image>.Link>.Overlay{position:absolute;top:0;left:0;width:100%;height:100%;text-align:center;margin-top:32px;}
+.ChampionGuideArticleList>.Item>.Thumbnail>.Image>.Tag{position:absolute;left:0;top:0;width:48px;height:49px;background:url(../images/site/icon_tag_best.png?4) no-repeat;}
+.ChampionGuideArticleList>.Item>.Thumbnail>.Image>.Time{position:absolute;right:5px;bottom:5px;padding:6px 7px;color:#ddd;font-size:13px;background-color:#000;background-color:rgba(0, 0, 0, 0.5);border-radius:2px;}
+.ChampionGuideArticleList>.Item>.Info{display:table-cell;padding-left:10px;vertical-align:middle;}.ChampionGuideArticleList>.Item>.Info>.Title>.Link{display:inline-block;overflow:hidden;max-width:652px;text-overflow:ellipsis;white-space:nowrap;text-decoration:none;}.ChampionGuideArticleList>.Item>.Info>.Title>.Link>.Text{font-size:17px;color:#666;}
+.ChampionGuideArticleList>.Item>.Info>.Author{margin-top:3px;}.ChampionGuideArticleList>.Item>.Info>.Author>.Name{display:inline-block;margin-right:3px;color:#666;font-size:12px;vertical-align:middle;}
+.ChampionGuideArticleList>.Item>.Info>.Author>.Summoner{color:#999;font-size:12px;text-decoration:none;vertical-align:middle;}.ChampionGuideArticleList>.Item>.Info>.Author>.Summoner>.SummonerName{vertical-align:middle;}
+.ChampionGuideArticleList>.Item>.Info>.Author>.Summoner>.Medal{height:20px;vertical-align:middle;}
+.ChampionGuideArticleList>.Item>.Info>.Author>.Summoner:hover{text-decoration:underline;}
+.ChampionGuideArticleList>.Item>.Info>.Actions>.Action{display:inline-block;margin-left:12px;vertical-align:middle;}.ChampionGuideArticleList>.Item>.Info>.Actions>.Action>.Button{background:none;border:none;height:22px;padding:0;color:#555e5e;font-size:0;line-height:22px;text-decoration:none;white-space:nowrap;}.ChampionGuideArticleList>.Item>.Info>.Actions>.Action>.Button.VoteUp.active>span{color:#1f8ecd;}
+.ChampionGuideArticleList>.Item>.Info>.Actions>.Action>.Button.VoteDown.active>span{color:#f00;}
+.ChampionGuideArticleList>.Item>.Info>.Actions>.Action>.Button>i{margin:-1px 2px 0 0;}
+.ChampionGuideArticleList>.Item>.Info>.Actions>.Action>.Button>span{color:#999;font-size:12px;vertical-align:middle;margin-left:3px;}
+.ChampionGuideArticleList>.Item>.Info>.Actions>.Action>.Button.Vote>.On{display:none;}
+.ChampionGuideArticleList>.Item>.Info>.Actions>.Action>.Button.Vote>.Off{display:inline-block;}
+.ChampionGuideArticleList>.Item>.Info>.Actions>.Action>.Button.Vote.active{color:#1f8ecd;}.ChampionGuideArticleList>.Item>.Info>.Actions>.Action>.Button.Vote.active>.On{display:inline-block;}
+.ChampionGuideArticleList>.Item>.Info>.Actions>.Action>.Button.Vote.active>.Off{display:none;}
+.ChampionGuideArticleList>.Item>.Info>.Actions>.Action>.Button.Comment,.ChampionGuideArticleList>.Item>.Info>.Actions>.Action>.Button.Delete{color:#999;font-size:12px;}
+.ChampionGuideArticleList>.Item>.Info>.Actions>.Action>.Button:disabled{color:#879292;}
+.ChampionGuideArticleList>.Item>.Info>.Actions>.Action:first-child{margin-left:0;}
+.ChampionGuideArticleList>.Item>.Info>.Actions>.Author+.Actions{margin-left:10px;}
+.ChampionGuideArticleList>.Item>.ExtraInfo{display:table-cell;padding-left:10px;width:120px;text-align:center;vertical-align:middle;}.ChampionGuideArticleList>.Item>.ExtraInfo>.Hit{margin-bottom:5px;color:#999;font-size:12px;}
+.ChampionGuideArticleList>.Item>.ExtraInfo>.WriteDate{color:#999;font-size:12px;}
+.ChampionGuideArticleList>.Item:first-child{border-top:none;}
+.ChampionGuideArticleListItem{display:table;width:100%;height:82px;background:#eee;}.ChampionGuideArticleListItem>.Role{display:table-cell;width:60px;vertical-align:middle;text-align:center;color:#1f8ecd;font-size:15px;font-weight:bold;}
+.ChampionGuideArticleListItem>.Image{display:table-cell;width:66px;vertical-align:middle;}.ChampionGuideArticleListItem>.Image>.ItemImage{position:relative;display:block;width:66px;height:66px;overflow:hidden;text-align:center;}.ChampionGuideArticleListItem>.Image>.ItemImage>img{max-width:100%;max-height:100%;border-radius:50%;}
+.ChampionGuideArticleListItem>.VideoImage{display:table-cell;width:98px;padding-left:14px;vertical-align:middle;}.ChampionGuideArticleListItem>.VideoImage>.ItemImage{position:relative;display:block;width:98px;height:66px;border-radius:3px;background-color:#000;overflow:hidden;text-align:center;}.ChampionGuideArticleListItem>.VideoImage>.ItemImage>img{width:100%;max-height:100%;}
+.ChampionGuideArticleListItem>.VideoImage>.ItemImage>.Time{position:absolute;right:0;bottom:0;padding:3px;color:#ddd;font-size:11px;background-color:#000;}
+.ChampionGuideArticleListItem>.Info{position:relative;display:table-cell;padding-right:14px;padding-left:10px;vertical-align:middle;}.ChampionGuideArticleListItem>.Info>.Title{margin-bottom:3px;}.ChampionGuideArticleListItem>.Info>.Title>.Link{color:#242929;vertical-align:middle;text-decoration:none;white-space:nowrap;}.ChampionGuideArticleListItem>.Info>.Title>.Link:visited{color:#879292;}
+.ChampionGuideArticleListItem>.Info>.Title>.Link>.Text{display:inline-block;max-width:550px;font-size:16px;line-height:20px;word-break:break-all;vertical-align:middle;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;}
+.ChampionGuideArticleListItem>.Info>.Author{color:#879292;font-size:11px;line-height:14px;}.ChampionGuideArticleListItem>.Info>.Author>.Name{display:inline-block;font-size:13px;vertical-align:middle;color:#555e5e;margin-right:6px;}
+.ChampionGuideArticleListItem>.Info>.Author>.Summoner{color:#879292;font-size:12px;text-decoration:none;}.ChampionGuideArticleListItem>.Info>.Author>.Summoner>.Medal{height:20px;vertical-align:middle;}
+.ChampionGuideArticleListItem>.Info>.Author>.Summoner:hover{text-decoration:underline;}
+.ChampionGuideArticleListItem>.Info>.Actions{font-size:0;}.ChampionGuideArticleListItem>.Info>.Actions>.Action{display:inline-block;margin-right:10px;}.ChampionGuideArticleListItem>.Info>.Actions>.Action>.Button{background:none;border:none;height:22px;padding:0;color:#555e5e;font-size:0;line-height:22px;text-decoration:none;white-space:nowrap;}.ChampionGuideArticleListItem>.Info>.Actions>.Action>.Button.Vote.active>.On{display:inline-block;}
+.ChampionGuideArticleListItem>.Info>.Actions>.Action>.Button.Vote.active>.Off{display:none;}
+.ChampionGuideArticleListItem>.Info>.Actions>.Action>.Button.Vote.active.VoteUp>span{color:#1f8ecd;}
+.ChampionGuideArticleListItem>.Info>.Actions>.Action>.Button.Vote.active.VoteDown>span{color:#f00;}
+.ChampionGuideArticleListItem>.Info>.Actions>.Action>.Button.Vote>.On{display:none;}
+.ChampionGuideArticleListItem>.Info>.Actions>.Action>.Button.Vote>.Off{display:inline-block;}
+.ChampionGuideArticleListItem>.Info>.Actions>.Action>.Button.Vote>span{font-size:12px;vertical-align:middle;margin-left:5px;}
+.ChampionGuideArticleListItem>.Info>.Actions>.Action>.Button>i{margin:-1px 2px 0 0;}
+.ChampionGuideArticleListItem>.Info>.Actions>.Action>.Button>span{font-size:12px;vertical-align:middle;margin-left:5px;}
+.ChampionGuideArticleListItem>.ExtraInfo{position:relative;display:table-cell;text-align:right;padding-right:14px;white-space:nowrap;vertical-align:middle;}.ChampionGuideArticleListItem>.ExtraInfo>.WriteDate{display:inline-block;margin-left:14px;vertical-align:middle;}.ChampionGuideArticleListItem>.ExtraInfo>.WriteDate>.Title{display:inline-block;margin-right:6px;color:#879292;font-size:12px;font-weight:bold;}
+.ChampionGuideArticleListItem>.ExtraInfo>.WriteDate>.Text{color:#879292;font-size:12px;}
+.ChampionGuideArticleListItem>.ExtraInfo>.Hit{display:inline-block;min-width:60px;margin-left:14px;vertical-align:middle;}.ChampionGuideArticleListItem>.ExtraInfo>.Hit>.Text{display:block;color:#879292;font-size:16px;text-align:center;font-weight:bold;line-height:150%;}
+.ChampionGuideArticleListItem>.ExtraInfo>.Hit>.Title{display:block;color:#879292;font-size:12px;text-align:center;}
+.ChampionGuideArticlePaging{display:table;width:100%;height:44px;table-layout:fixed;background-color:#eee;margin-top:10px;}.ChampionGuideArticlePaging>.active{display:table-cell;color:#555e5e;vertical-align:middle;text-align:center;font-size:15px;}
+.ChampionGuideArticlePaging>.Prev{display:table-cell;width:50px;border-right:1px solid #cdd2d2;vertical-align:middle;text-align:center;}
+.ChampionGuideArticlePaging>.Next{display:table-cell;width:50px;border-left:1px solid #cdd2d2;vertical-align:middle;text-align:center;}
+.ChampionStatsTable{width:100%;table-layout:fixed;}.ChampionStatsTable>.Header>.Row>.HeaderCell{padding-top:11px;padding-bottom:10px;border-bottom:1px solid #ddd;background-color:#ededed;color:#879292;font-weight:normal;font-size:12px;text-align:center;}
+.ChampionStatsTable>.Content>.Row>.Cell{border-bottom:1px solid #ddd;background:#f2f2f2;text-align:center;color:#242929;font-size:13px;line-height:27px;}.ChampionStatsTable>.Content>.Row>.Cell.Stat{padding:0 10px;text-align:left;}
+.ChampionStatsTable>.Content>.Row>.Cell>.Count{margin-left:3px;font-family:Tahoma;font-size:13px;color:#879292;font-weight:normal;}
+.ChampionStoryArticle{padding:10px;color:#333;font-size:15px;line-height:1.6;text-align:justify;}
+.ChampionSelectBox{margin-top:10px;height:500px;font-size:0;text-align:left;overflow-y:auto;}.ChampionSelectBox>.ChampionImage{display:inline-block;margin:2px;width:48px;height:48px;}.ChampionSelectBox>.ChampionImage.show{display:inline-block;}
+.ChampionSelectBox>.ChampionImage.hide{display:none;}
+.ChampionSelectBox>.ChampionImage>a>.Image{width:48px;height:48px;border-radius:2px;}
+.ChampionGuideWriteWrap .RuneMasteryWrap>.Header>.Tab{display:inline-block;margin:0 0 -1px 0;padding:0;font-size:0;vertical-align:middle;}.ChampionGuideWriteWrap .RuneMasteryWrap>.Header>.Tab>.Item{display:inline-block;margin:0 -1px 0 0;background:#eaeaea;color:#888;border:1px solid #cdd2d2;font-size:12px;}.ChampionGuideWriteWrap .RuneMasteryWrap>.Header>.Tab>.Item>.Link{display:inline-block;height:41px;padding:0 24px;line-height:42px;color:inherit;text-decoration:none;outline:none;}
+.ChampionGuideWriteWrap .RuneMasteryWrap>.Header>.Tab>.Item>.Action{display:inline-block;}.ChampionGuideWriteWrap .RuneMasteryWrap>.Header>.Tab>.Item>.Action>.RemoveButton{display:none;padding-right:10px;}
+.ChampionGuideWriteWrap .RuneMasteryWrap>.Header>.Tab>.Item.active{border-bottom:1px solid #f2f2f2;background:#f2f2f2;color:#333;}
+.ChampionGuideWriteWrap .RuneMasteryWrap>.Header>.Action{display:inline-block;vertical-align:middle;}.ChampionGuideWriteWrap .RuneMasteryWrap>.Header>.Action>.AddButton{padding:21px 12px;}
+.ChampionGuideWriteWrap .RuneMasteryWrap>.Content{border-top-left-radius:0;}.ChampionGuideWriteWrap .RuneMasteryWrap>.Content>.ContentWrap .TitleWrap,.ChampionGuideWriteWrap .RuneMasteryWrap>.Content>.ContentWrap .RuneWrap,.ChampionGuideWriteWrap .RuneMasteryWrap>.Content>.ContentWrap .MasteryPageWrap{display:table;width:100%;table-layout:fixed;border-top:1px solid #cdd2d2;}.ChampionGuideWriteWrap .RuneMasteryWrap>.Content>.ContentWrap .TitleWrap>.Header,.ChampionGuideWriteWrap .RuneMasteryWrap>.Content>.ContentWrap .RuneWrap>.Header,.ChampionGuideWriteWrap .RuneMasteryWrap>.Content>.ContentWrap .MasteryPageWrap>.Header{position:relative;display:table-cell;width:152px;padding:14px 12px;border-right:1px solid #cdd2d2;vertical-align:top;}.ChampionGuideWriteWrap .RuneMasteryWrap>.Content>.ContentWrap .TitleWrap>.Header>.Title,.ChampionGuideWriteWrap .RuneMasteryWrap>.Content>.ContentWrap .RuneWrap>.Header>.Title,.ChampionGuideWriteWrap .RuneMasteryWrap>.Content>.ContentWrap .MasteryPageWrap>.Header>.Title{color:#666;font-size:17px;}
+.ChampionGuideWriteWrap .RuneMasteryWrap>.Content>.ContentWrap .TitleWrap>.Header>.Action,.ChampionGuideWriteWrap .RuneMasteryWrap>.Content>.ContentWrap .RuneWrap>.Header>.Action,.ChampionGuideWriteWrap .RuneMasteryWrap>.Content>.ContentWrap .MasteryPageWrap>.Header>.Action{display:none;position:absolute;right:12px;top:14px;}
+.ChampionGuideWriteWrap .RuneMasteryWrap>.Content>.ContentWrap .TitleWrap:first-child,.ChampionGuideWriteWrap .RuneMasteryWrap>.Content>.ContentWrap .RuneWrap:first-child,.ChampionGuideWriteWrap .RuneMasteryWrap>.Content>.ContentWrap .MasteryPageWrap:first-child{border-top:none;}
+.ChampionGuideWriteWrap .RuneMasteryWrap>.Content>.ContentWrap .TitleWrap>.Content{display:table-cell;width:796px;padding:14px 24px;}.ChampionGuideWriteWrap .RuneMasteryWrap>.Content>.ContentWrap .TitleWrap>.Content>.Input{display:inline-block;width:400px;padding:12px;font-size:12px;background:#fff;border:1px solid #ddd;border-radius:3px;color:#25313d;vertical-align:middle;}
+.ChampionGuideWriteWrap .RuneMasteryWrap>.Content>.ContentWrap .RuneWrap>.RealContent{display:table-cell;padding:14px 22px 14px 24px;vertical-align:top;}.ChampionGuideWriteWrap .RuneMasteryWrap>.Content>.ContentWrap .RuneWrap>.RealContent>.RuneListWrap>.SelectedRuneList{display:inline-block;max-width:355px;margin-right:22px;vertical-align:top;}.ChampionGuideWriteWrap .RuneMasteryWrap>.Content>.ContentWrap .RuneWrap>.RealContent>.RuneListWrap>.SelectedRuneList>.Item{display:inline-block;padding:1px;width:69px;color:#777;text-align:center;vertical-align:top;}.ChampionGuideWriteWrap .RuneMasteryWrap>.Content>.ContentWrap .RuneWrap>.RealContent>.RuneListWrap>.SelectedRuneList>.Item>.Image{display:inline-block;width:40px;height:40px;vertical-align:middle;}
+.ChampionGuideWriteWrap .RuneMasteryWrap>.Content>.ContentWrap .RuneWrap>.RealContent>.RuneListWrap>.SelectedRuneList>.Item>.Value{display:inline-block;font-size:16px;margin-left:3px;font-weight:bold;vertical-align:middle;}
+.ChampionGuideWriteWrap .RuneMasteryWrap>.Content>.ContentWrap .RuneWrap>.RealContent>.RuneListWrap>.SelectedRuneList>.Item>.Label{display:block;font-size:12px;line-height:1.4;margin-top:10px;}
+.ChampionGuideWriteWrap .RuneMasteryWrap>.Content>.ContentWrap .RuneWrap>.RealContent>.RuneListWrap>.SelectedRuneList.Empty{margin-right:0;}
+.ChampionGuideWriteWrap .RuneMasteryWrap>.Content>.ContentWrap .RuneWrap>.RealContent>.RuneListWrap>.AddButton{display:inline-block;vertical-align:top;}
+.ChampionGuideWriteWrap .RuneMasteryWrap>.Content>.ContentWrap .RuneWrap>.SideContent{display:table-cell;width:242px;padding:14px 22px;border-left:1px solid #cdd2d2;vertical-align:top;}.ChampionGuideWriteWrap .RuneMasteryWrap>.Content>.ContentWrap .RuneWrap>.SideContent>.RuneStatisticsList>.Item{padding:5px 0;}.ChampionGuideWriteWrap .RuneMasteryWrap>.Content>.ContentWrap .RuneWrap>.SideContent>.RuneStatisticsList>.Item>.Title{margin-right:10px;font-size:13px;color:#333;}
+.ChampionGuideWriteWrap .RuneMasteryWrap>.Content>.ContentWrap .RuneWrap>.SideContent>.RuneStatisticsList>.Item>.Stat{font-size:13px;color:#666;}
+.ChampionGuideWriteWrap .RuneMasteryWrap>.Content>.ContentWrap .MasteryPageWrap>.Header>.MasteryPageSummaryWrap{margin-top:150px;text-align:center;}.ChampionGuideWriteWrap .RuneMasteryWrap>.Content>.ContentWrap .MasteryPageWrap>.Header>.MasteryPageSummaryWrap>.MasteryPageSummary{margin-bottom:10px;}.ChampionGuideWriteWrap .RuneMasteryWrap>.Content>.ContentWrap .MasteryPageWrap>.Header>.MasteryPageSummaryWrap>.MasteryPageSummary>.Offence,.ChampionGuideWriteWrap .RuneMasteryWrap>.Content>.ContentWrap .MasteryPageWrap>.Header>.MasteryPageSummaryWrap>.MasteryPageSummary .Defense,.ChampionGuideWriteWrap .RuneMasteryWrap>.Content>.ContentWrap .MasteryPageWrap>.Header>.MasteryPageSummaryWrap>.MasteryPageSummary .Utility{display:inline-block;margin-left:15px;}.ChampionGuideWriteWrap .RuneMasteryWrap>.Content>.ContentWrap .MasteryPageWrap>.Header>.MasteryPageSummaryWrap>.MasteryPageSummary>.Offence>.Image,.ChampionGuideWriteWrap .RuneMasteryWrap>.Content>.ContentWrap .MasteryPageWrap>.Header>.MasteryPageSummaryWrap>.MasteryPageSummary .Defense>.Image,.ChampionGuideWriteWrap .RuneMasteryWrap>.Content>.ContentWrap .MasteryPageWrap>.Header>.MasteryPageSummaryWrap>.MasteryPageSummary .Utility>.Image{display:inline-block;width:24px;height:24px;vertical-align:middle;}
+.ChampionGuideWriteWrap .RuneMasteryWrap>.Content>.ContentWrap .MasteryPageWrap>.Header>.MasteryPageSummaryWrap>.MasteryPageSummary>.Offence>.Text,.ChampionGuideWriteWrap .RuneMasteryWrap>.Content>.ContentWrap .MasteryPageWrap>.Header>.MasteryPageSummaryWrap>.MasteryPageSummary .Defense>.Text,.ChampionGuideWriteWrap .RuneMasteryWrap>.Content>.ContentWrap .MasteryPageWrap>.Header>.MasteryPageSummaryWrap>.MasteryPageSummary .Utility>.Text{display:inline-block;font-size:15px;font-weight:bold;vertical-align:middle;}
+.ChampionGuideWriteWrap .RuneMasteryWrap>.Content>.ContentWrap .MasteryPageWrap>.Header>.MasteryPageSummaryWrap>.MasteryPageSummary>.Offence:first-child,.ChampionGuideWriteWrap .RuneMasteryWrap>.Content>.ContentWrap .MasteryPageWrap>.Header>.MasteryPageSummaryWrap>.MasteryPageSummary .Defense:first-child,.ChampionGuideWriteWrap .RuneMasteryWrap>.Content>.ContentWrap .MasteryPageWrap>.Header>.MasteryPageSummaryWrap>.MasteryPageSummary .Utility:first-child{margin-left:0;}
+.ChampionGuideWriteWrap .RuneMasteryWrap>.Content>.ContentWrap .MasteryPageWrap>.Header>.MasteryPageSummaryWrap>.Point{margin-bottom:10px;font-size:16px;}
+.ChampionGuideWriteWrap .RuneMasteryWrap>.Content>.ContentWrap:first-child .TitleWrap>.Header>.Action{display:block;}
+.ChampionGuideWriteInfoWrap>.List>.Item{padding-top:17px;}.ChampionGuideWriteInfoWrap>.List>.Item>.Label{display:inline-block;min-width:93px;vertical-align:middle;}.ChampionGuideWriteInfoWrap>.List>.Item>.Label>.Text{color:#666;font-size:13px;}
+.ChampionGuideWriteInfoWrap>.List>.Item>.Content{display:inline-block;vertical-align:middle;}.ChampionGuideWriteInfoWrap>.List>.Item>.Content .Input{display:inline-block;width:400px;padding:12px 10px;font-size:12px;background:#fff;border:1px solid #ddd;border-radius:3px;color:#25313d;}.ChampionGuideWriteInfoWrap>.List>.Item>.Content .Input.Video{margin-right:10px;font-size:11px;color:#999;}
+.ChampionGuideWriteInfoWrap>.List>.Item>.Content>.LinkTitle{color:#333;font-size:12px;}
+.ChampionGuideWriteInfoWrap>.List>.Item>.Content>.ChampionInfo{display:inline-block;}.ChampionGuideWriteInfoWrap>.List>.Item>.Content>.ChampionInfo>.ChampionImage{display:inline-block;margin-right:11px;vertical-align:middle;cursor:pointer;}.ChampionGuideWriteInfoWrap>.List>.Item>.Content>.ChampionInfo>.ChampionImage>.Image{width:40px;height:40px;border-radius:50%;}
+.ChampionGuideWriteInfoWrap>.List>.Item>.Content>.ChampionInfo>.ChampionName{position:relative;display:inline-block;vertical-align:middle;}.ChampionGuideWriteInfoWrap>.List>.Item>.Content>.ChampionInfo>.ChampionName>.ChampionSelectButton{border:1px solid #cdd2d2;border-radius:4px;background-color:#fff;padding:12px 12px;min-width:157px;text-align:left;color:#666;font-size:12px;}
+.ChampionGuideWriteInfoWrap>.List>.Item>.Content>.ChampionInfo>.ChampionName>.__spSite{position:absolute;top:12px;right:13px;}
+.ChampionGuideWriteInfoWrap>.List>.Item>.Content>.ChampionSelectButton{display:inline-block;margin-left:10px;padding:8px 10px;font-size:12px;vertical-align:middle;}
+.ChampionGuideWriteInfoWrap>.List>.Item>.Content>.SummonerInfo{display:inline-block;margin-left:12px;color:#555e5e;font-size:13px;vertical-align:middle;}.ChampionGuideWriteInfoWrap>.List>.Item>.Content>.SummonerInfo>.Name{display:inline-block;margin-right:6px;}
+.ChampionGuideWriteInfoWrap>.List>.Item>.Content>.SummonerInfo>.Summoner{color:#879292;font-size:12px;text-decoration:none;}.ChampionGuideWriteInfoWrap>.List>.Item>.Content>.SummonerInfo>.Summoner>.SummonerName{height:20px;vertical-align:middle;}
+.ChampionGuideWriteInfoWrap>.List>.Item>.Content>.SummonerInfo>.Summoner>.Medal{height:20px;vertical-align:middle;}
+.ChampionGuideWriteInfoWrap>.List>.Item>.Content>.SummonerInfo>.Summoner:hover{text-decoration:underline;}
+.ChampionGuideWriteInfoWrap>.List>.Item:first-child{padding-top:0;}
+.YoutubeLinkWrap>.Content>.ApplyButton.disabled{background:#ededed;color:#879292;border:1px solid #cdd2d2;}
+.YoutubeLinkWrap>.Footer{margin-top:10px;}.YoutubeLinkWrap>.Footer>.Thumbnail{max-width:200px;max-height:112px;vertical-align:middle;}
+.YoutubeLinkWrap>.Footer>.Title{font-size:15px;padding-left:10px;vertical-align:middle;}
+.DescriptionToggleWrap.closed>.Header.Toggle{border-bottom:1px solid #cdd2d2;}.DescriptionToggleWrap.closed>.Header.Toggle>.ToggleButton.Open{display:block;}
+.DescriptionToggleWrap.closed>.Header.Toggle>.ToggleButton.Close{display:none;}
+.DescriptionToggleWrap.closed>.Content{display:none;}
+.DescriptionToggleWrap>.Header{border:1px solid #cdd2d2;border-top:none;border-bottom:none;}.DescriptionToggleWrap>.Header.Toggle>.ToggleButton{display:block;padding:12px 12px;color:#555e5e;font-size:18px;text-decoration:none;background-color:#fafafa;}.DescriptionToggleWrap>.Header.Toggle>.ToggleButton.Open{display:none;}
+.DescriptionToggleWrap>.Header.Toggle>.ToggleButton>i{margin-left:10px;}
+.DescriptionToggleWrap>.Header.Title{padding:30px 0;color:#555e5e;font-size:21px;border-bottom:none;}
+.TabList{position:relative;}.TabList>.Button{position:relative;display:inline-block;padding:0;margin-left:5px;border:1px solid #cdd2d2;background-color:#ededed;color:#555e5e;outline:none;border-radius:2px;font-size:14px;}.TabList>.Button>.Name{display:inline-block;max-width:92px;padding:5px 8px;color:#555e5e;text-decoration:none;vertical-align:middle;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;}
+.TabList>.Button.active{background-color:#1f8ecd;border-color:#1a78ae;}
+.TabList>.Button.active>.Name{color:#f2f2f2;}
+.TabList>.Button:first-child{margin-left:0;}
+.ChampionGuideWriteRuneList{font-size:0;text-align:left;}.ChampionGuideWriteRuneList>.ChampionGuideRuneItem{cursor:pointer;display:inline-block;width:50%;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-o-user-select:none;user-select:none;}.ChampionGuideWriteRuneList>.ChampionGuideRuneItem.Empty{display:none;width:100%;padding:10px;color:#555e5e;font-size:12px;text-align:center;}
+.ChampionGuideWriteRuneList>.ChampionGuideRuneItem>.Face{display:table-cell;width:42px;padding:5px 0;text-align:center;vertical-align:middle;}.ChampionGuideWriteRuneList>.ChampionGuideRuneItem>.Face>.Image{width:32px;height:32px;}
+.ChampionGuideWriteRuneList>.ChampionGuideRuneItem>.Name{display:table-cell;padding-left:3px;color:#555e5e;font-size:11px;vertical-align:middle;max-width:160px;width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.ChampionGuideWriteRuneList>.ChampionGuideRuneItem>.Count{display:table-cell;padding-right:10px;color:#555e5e;font-size:11px;vertical-align:middle;}
+.ChampionGuideWriteRuneList>.ChampionGuideRuneItem>.Remove{display:table-cell;padding-right:10px;color:#555e5e;font-size:11px;vertical-align:middle;}
+.ChampionGuideWriteRuneList>.ChampionGuideRuneItem:hover>.Name{color:#333;}
+.ChampionGuideWriteRuneStatisticsList{padding:8px 13px;}.ChampionGuideWriteRuneStatisticsList>.Item{padding:5px 0;}.ChampionGuideWriteRuneStatisticsList>.Item:first-child.Empty{display:block;}
+.ChampionGuideWriteRuneStatisticsList>.Item.Empty{display:none;}
+.ChampionGuideWriteRuneStatisticsList>.Item>.Title{margin-right:10px;font-size:13px;color:#333;}
+.ChampionGuideWriteRuneStatisticsList>.Item>.Stat{font-size:13px;color:#666;}
+.ChampionGuideWriteSelectedRuneTable{width:100%;table-layout:fixed;}.ChampionGuideWriteSelectedRuneTable>.tBody>.Row{margin-top:10px;}.ChampionGuideWriteSelectedRuneTable>.tBody>.Row:first-child.Empty{display:table-row;}
+.ChampionGuideWriteSelectedRuneTable>.tBody>.Row.Empty{display:none;}.ChampionGuideWriteSelectedRuneTable>.tBody>.Row.Empty>.Cell{padding:10px;color:#555e5e;font-size:12px;text-align:center;}
+.ChampionGuideWriteSelectedRuneTable>.tBody>.Row>.Cell{padding-top:5px;}.ChampionGuideWriteSelectedRuneTable>.tBody>.Row>.Cell.Face{width:45px;padding-left:13px;text-align:right;vertical-align:middle;}.ChampionGuideWriteSelectedRuneTable>.tBody>.Row>.Cell.Face>.Image{width:42px;height:42px;}
+.ChampionGuideWriteSelectedRuneTable>.tBody>.Row>.Cell.RuneName{max-width:240px;color:#555e5e;font-size:13px;text-align:left;vertical-align:middle;padding-left:10px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.ChampionGuideWriteSelectedRuneTable>.tBody>.Row>.Cell.RuneCount{width:100px;color:#555e5e;font-size:13px;text-align:right;vertical-align:middle;padding:0 13px;}
+.ChampionGuideWriteSkillTable{width:100%;table-layout:fixed;}.ChampionGuideWriteSkillTable>.Header>.Row>.HeaderCell{height:34px;font-size:14px;vertical-align:middle;color:#666;border-bottom:1px solid #cdd2d2;font-weight:normal;}
+.ChampionGuideWriteSkillTable>.Body>.Row{text-align:center;}.ChampionGuideWriteSkillTable>.Body>.Row.Passive>.Cell{color:#666;font-size:15px;background:#ededed;}
+.ChampionGuideWriteSkillTable>.Body>.Row>.Cell{height:50px;vertical-align:middle;background:#e0e3e3;border-top:1px solid #cdd2d2;}.ChampionGuideWriteSkillTable>.Body>.Row>.Cell.Odd{background:#ededed;}
+.ChampionGuideWriteSkillTable>.Body>.Row>.Cell>.Image{width:40px;height:40px;vertical-align:middle;border:1px solid #000;border-radius:3px;overflow:hidden;}
+.ChampionGuideWriteSkillTable>.Body>.Row>.Cell.Slot{cursor:pointer;}.ChampionGuideWriteSkillTable>.Body>.Row>.Cell.Slot.show>.LevelBox{display:block;background:#1f8ecd;}.ChampionGuideWriteSkillTable>.Body>.Row>.Cell.Slot.show>.LevelBox>.Level{display:none;}
+.ChampionGuideWriteSkillTable>.Body>.Row>.Cell.Slot.selected>.LevelBox{display:block;background:#253444;}.ChampionGuideWriteSkillTable>.Body>.Row>.Cell.Slot.selected>.LevelBox>.Level{display:block;}
+.ChampionGuideWriteSkillTable>.Body>.Row>.Cell.Slot>.LevelBox{display:none;width:30px;height:30px;margin:0 auto;border-radius:50%;}.ChampionGuideWriteSkillTable>.Body>.Row>.Cell.Slot>.LevelBox>.Level{display:none;color:#fff;font-size:12px;font-weight:bold;line-height:33px;}
+.ChampionGuideWriteSkillTable>.Body>.Row>.Cell.Skill{position:relative;}.ChampionGuideWriteSkillTable>.Body>.Row>.Cell.Skill>.HotKey{position:absolute;width:20px;height:20px;line-height:20px;right:4px;bottom:5px;font-weight:bold;text-align:center;color:#f2f2f2;border-radius:3px;font-size:12px;background-color:#000;background:rgba(0, 0, 0, 0.5);}
+.ChampionGuideWriteSpellWrap{position:relative;margin-top:10px;}.ChampionGuideWriteSpellWrap>.SpellSlots{padding:13px;vertical-align:middle;background-color:#eaeaea;border:1px solid #cdd2d2;}.ChampionGuideWriteSpellWrap>.SpellSlots>.Spell{display:inline-block;cursor:pointer;margin-right:9px;vertical-align:top;}.ChampionGuideWriteSpellWrap>.SpellSlots>.Spell.Empty>.Image>.BlankImage{display:inline-block;}
+.ChampionGuideWriteSpellWrap>.SpellSlots>.Spell.Empty>.Image>.Image{display:none;}
+.ChampionGuideWriteSpellWrap>.SpellSlots>.Spell>.Image{width:48px;border-radius:2px;background-color:#ccc;text-align:center;}.ChampionGuideWriteSpellWrap>.SpellSlots>.Spell>.Image>.BlankImage{display:none;margin:17px;}
+.ChampionGuideWriteSpellWrap>.SpellSlots>.Spell>.Image>.Image{width:100%;border-radius:2px;}
+.ChampionGuideWriteSpellWrap>.SpellSlots>.Spell>.Image:hover{background-color:#bebebe;}
+.ChampionGuideWriteSpellWrap>.SpellSlots>.RemoveButton{cursor:pointer;position:absolute;right:20px;top:30px;}
+.ChampionGuideWriteSpellWrap:first-child{margin-top:0;}
+.ChampionGuideWriteItemWrap>.Section{border-top:1px solid #cdd2d2;background-color:#ededed;}.ChampionGuideWriteItemWrap>.Section>.Title{padding:14px 12px 12px;color:#666;font-size:17px;}
+.ChampionGuideWriteItemWrap>.Section>.Content{padding:15px;}.ChampionGuideWriteItemWrap>.Section>.Content>.ItemList{display:inline-block;vertical-align:top;}.ChampionGuideWriteItemWrap>.Section>.Content>.ItemList>.Bar{display:inline-block;margin:0 8px;vertical-align:middle;}
+.ChampionGuideWriteItemWrap>.Section>.Content>.ItemList>.ItemBuildListItem{position:relative;display:inline-block;cursor:pointer;margin-right:5px;vertical-align:middle;}.ChampionGuideWriteItemWrap>.Section>.Content>.ItemList>.ItemBuildListItem>.DeleteImage{display:none;position:absolute;top:0;left:0;width:48px;height:48px;border-radius:2px;}
+.ChampionGuideWriteItemWrap>.Section>.Content>.ItemList>.ItemBuildListItem>.Image{width:48px;height:48px;border-radius:2px;}
+.ChampionGuideWriteItemWrap>.Section>.Content>.ItemList>.ItemBuildListItem:hover>.DeleteImage{display:block;}
+.ChampionGuideWriteItemWrap>.Section>.Content>.Action{display:inline-block;vertical-align:top;}.ChampionGuideWriteItemWrap>.Section>.Content>.Action>.AddButton{display:block;width:48px;height:48px;border-radius:2px;background-color:#ccc;}.ChampionGuideWriteItemWrap>.Section>.Content>.Action>.AddButton>.BlankImage{margin:17px;}
+.ChampionGuideWriteItemWrap>.Section>.Content>.Action>.AddButton:hover{background-color:#bebebe;}
+.ChampionGuideWriteItemWrap>.Section:first-child{border-top:none;}
+.ChampionGuideWriteItemWrap>.Section.common>.Content>.ItemList>.ItemBuildListItem{margin:0;}
+.ChampionGuideWriteItemWrap>.Section.common>.Content>.Action>.AddButton{margin-left:5px;}.ChampionGuideWriteItemWrap>.Section.common>.Content>.Action>.AddButton:first-child{margin-left:0;}
+.ChampionGuideWriteMatchupWrap{position:relative;margin-top:10px;}.ChampionGuideWriteMatchupWrap>.Content{background-color:#eaeaea;}.ChampionGuideWriteMatchupWrap>.Content>.ChampionInfo{padding:14px 12px;border:1px solid #cdd2d2;}.ChampionGuideWriteMatchupWrap>.Content>.ChampionInfo>.ChampionImage{display:inline-block;margin-right:12px;vertical-align:middle;cursor:pointer;}.ChampionGuideWriteMatchupWrap>.Content>.ChampionInfo>.ChampionImage>.Image{width:48px;height:48px;background-color:#ccc;text-align:center;border-radius:2px;}.ChampionGuideWriteMatchupWrap>.Content>.ChampionInfo>.ChampionImage>.Image>.BlankImage{display:none;margin:17px;}
+.ChampionGuideWriteMatchupWrap>.Content>.ChampionInfo>.ChampionImage>.Image>.Image{width:100%;border-radius:2px;}
+.ChampionGuideWriteMatchupWrap>.Content>.ChampionInfo>.ChampionImage>.Image:hover{background-color:#bebebe;}
+.ChampionGuideWriteMatchupWrap>.Content>.ChampionInfo>.ChampionImage.Empty>.Image>.BlankImage{display:inline-block;}
+.ChampionGuideWriteMatchupWrap>.Content>.ChampionInfo>.ChampionImage.Empty>.Image>.Image{display:none;}
+.ChampionGuideWriteMatchupWrap>.Content>.ChampionInfo>.ChampionLevel{display:inline-block;vertical-align:middle;}.ChampionGuideWriteMatchupWrap>.Content>.ChampionInfo>.ChampionLevel>.ChampionLevelSelect{cursor:pointer;width:80px;color:#666;font-size:13px;border:1px solid #cdd2d2;border-radius:4px;background-color:#fff;padding:7px 8px;}
+.ChampionGuideWriteMatchupWrap>.Content>.ChampionInfo>.RemoveButton{cursor:pointer;position:absolute;right:20px;top:30px;}
+.ChampionGuideWriteMatchupWrap:first-child{margin-top:0;}
+.ChampionGuideDetailHeader{display:table;width:100%;}.ChampionGuideDetailHeader>.ChampionInfoWrap{display:table-cell;padding:10px 0 10px 0;width:80px;}.ChampionGuideDetailHeader>.ChampionInfoWrap>.Champion>.ChampionInfo{position:relative;width:80px;font-size:0;vertical-align:middle;}.ChampionGuideDetailHeader>.ChampionInfoWrap>.Champion>.ChampionInfo>.ChampionImage>.Image{max-width:80px;max-height:80px;}
+.ChampionGuideDetailHeader>.ChampionInfoWrap>.Champion>.ChampionInfo>.ChampionRole{position:absolute;right:0;bottom:0;width:100%;background:rgba(0, 0, 0, 0.7);text-align:center;padding:6px 0;}.ChampionGuideDetailHeader>.ChampionInfoWrap>.Champion>.ChampionInfo>.ChampionRole>span{color:#fff;font-size:13px;}
+.ChampionGuideDetailHeader>.ArticleInfo{position:relative;display:table-cell;padding:0 15px;font-size:0;vertical-align:middle;}.ChampionGuideDetailHeader>.ArticleInfo>.Title{margin-bottom:5px;}.ChampionGuideDetailHeader>.ArticleInfo>.Title>.Link{display:inline-block;max-width:790px;font-size:18px;font-weight:bold;color:#666;vertical-align:middle;text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}.ChampionGuideDetailHeader>.ArticleInfo>.Title>.Link:visited{color:#879292;}
+.ChampionGuideDetailHeader>.ArticleInfo>.Author{margin-bottom:10px;}.ChampionGuideDetailHeader>.ArticleInfo>.Author>.Name{display:inline-block;color:#666;font-size:13px;margin-right:6px;vertical-align:middle;}
+.ChampionGuideDetailHeader>.ArticleInfo>.Author>.Summoner{color:#999;font-size:12px;text-decoration:none;vertical-align:middle;}.ChampionGuideDetailHeader>.ArticleInfo>.Author>.Summoner>.SummonerName{vertical-align:middle;}
+.ChampionGuideDetailHeader>.ArticleInfo>.Author>.Summoner>.Medal{height:20px;vertical-align:middle;}
+.ChampionGuideDetailHeader>.ArticleInfo>.Author>.Summoner:hover{text-decoration:underline;}
+.ChampionGuideDetailHeader>.ArticleInfo>.Actions>.Action{display:inline-block;margin-right:10px;vertical-align:middle;}.ChampionGuideDetailHeader>.ArticleInfo>.Actions>.Action>.Button{padding:0;color:#555e5e;font-size:12px;line-height:22px;text-decoration:none;background:none;border:none;}.ChampionGuideDetailHeader>.ArticleInfo>.Actions>.Action>.Button.Vote.active>.On{display:inline-block;}
+.ChampionGuideDetailHeader>.ArticleInfo>.Actions>.Action>.Button.Vote.active>.Off{display:none;}
+.ChampionGuideDetailHeader>.ArticleInfo>.Actions>.Action>.Button.Vote.active.VoteUp>span{color:#1f8ecd;}
+.ChampionGuideDetailHeader>.ArticleInfo>.Actions>.Action>.Button.Vote.active.VoteDown>span{color:#f00;}
+.ChampionGuideDetailHeader>.ArticleInfo>.Actions>.Action>.Button.Vote>.On{display:none;}
+.ChampionGuideDetailHeader>.ArticleInfo>.Actions>.Action>.Button.Vote>.Off{display:inline-block;}
+.ChampionGuideDetailHeader>.ArticleInfo>.Actions>.Action>.Button>span{margin-left:5px;vertical-align:middle;}
+.ChampionGuideDetailHeader>.ArticleInfo>.Actions>.Action>.Button>i{margin:-1px 2px 0 0;}
+.ChampionGuideDetailHeader>.ExtraInfo{position:relative;display:table-cell;vertical-align:middle;padding-left:10px;width:120px;text-align:center;}.ChampionGuideDetailHeader>.ExtraInfo>.Hit{margin-bottom:5px;color:#999;font-size:12px;}
+.ChampionGuideDetailHeader>.ExtraInfo>.WriteDate{color:#999;font-size:12px;}
+.ChampionGuideDetailVideoWrap{width:100%;height:500px;background-color:#000;}
+.ChampionGuideDetailSummaryTable{width:100%;table-layout:fixed;}.ChampionGuideDetailSummaryTable>.Header>.Row>.HeaderCell{height:34px;border-bottom:1px solid #cdd2d2;color:#fff;font-size:13px;font-weight:bold;text-align:center;background-color:#008fd0;vertical-align:middle;}
+.ChampionGuideDetailSummaryTable>.Content>.Row>.Cell{border-top:1px solid #cdd2d2;background:#f2f2f2;}.ChampionGuideDetailSummaryTable>.Content>.Row>.Cell.Label{border-right:1px solid #cdd2d2;background:#f8f8f8 !important;color:#666;font-size:13px;font-weight:bold;text-align:center;}.ChampionGuideDetailSummaryTable>.Content>.Row>.Cell.Label>a{text-decoration:none;color:inherit;}.ChampionGuideDetailSummaryTable>.Content>.Row>.Cell.Label>a:hover{text-decoration:underline;}
+.ChampionGuideDetailSummaryTable>.Content>.Row>.Cell.Spell{height:58px;}.ChampionGuideDetailSummaryTable>.Content>.Row>.Cell.Spell>.SpellArea>.Item{display:inline-block;margin:9px;vertical-align:middle;}.ChampionGuideDetailSummaryTable>.Content>.Row>.Cell.Spell>.SpellArea>.Item>.Image{width:40px;height:40px;vertical-align:middle;border-radius:3px;overflow:hidden;border:1px solid #000;}
+.ChampionGuideDetailSummaryTable>.Content>.Row>.Cell.Spell>.SpellArea>.Bar{display:inline-block;margin:0 32px;vertical-align:middle;}.ChampionGuideDetailSummaryTable>.Content>.Row>.Cell.Spell>.SpellArea>.Bar>.Text{color:#666;font-size:11px;}
+.ChampionGuideDetailSummaryTable>.Content>.Row>.Cell.Item{height:79px;padding:0;font-size:0;}.ChampionGuideDetailSummaryTable>.Content>.Row>.Cell.Item>.ItemList{display:table;margin:9px 0;}.ChampionGuideDetailSummaryTable>.Content>.Row>.Cell.Item>.ItemList>.ItemWrap{display:table-cell;margin-bottom:9px;padding-left:4px;border-left:1px solid #cdd2d2;vertical-align:top;}.ChampionGuideDetailSummaryTable>.Content>.Row>.Cell.Item>.ItemList>.ItemWrap:first-child{border-left:none;}
+.ChampionGuideDetailSummaryTable>.Content>.Row>.Cell.Item>.ItemList>.ItemWrap>.Title{margin-left:9px;color:#666;font-size:11px;}
+.ChampionGuideDetailSummaryTable>.Content>.Row>.Cell.Item>.ItemList>.ItemWrap>.Content>.Item{display:inline-block;margin-top:10px;margin-left:8px;vertical-align:middle;}.ChampionGuideDetailSummaryTable>.Content>.Row>.Cell.Item>.ItemList>.ItemWrap>.Content>.Item>.Image{width:40px;height:40px;border:1px solid #000;border-radius:3px;}
+.ChampionGuideDetailSummaryTable>.Content>.Row>.Cell.Item>.ItemList>.ItemWrap>.Content>.Bar{display:inline-block;margin-top:10px;margin-left:5px;vertical-align:middle;}
+.ChampionGuideDetailSummaryTable>.Content>.Row>.Cell.Item>.ItemList>.ItemWrap.Start>.ItemArea{border-left:none;padding-left:0;}
+.ChampionGuideDetailSummaryTable>.Content>.Row>.Cell.Item>.ItemList>.ItemWrap.Common>.ItemArea>.Content>.Item{margin-left:5px;}
+.ChampionGuideDetailSummaryTable>.Content>.Row>.Cell.Skill{height:155px;}.ChampionGuideDetailSummaryTable>.Content>.Row>.Cell.Skill>.SkillWrap{display:table;}.ChampionGuideDetailSummaryTable>.Content>.Row>.Cell.Skill>.SkillWrap>.SkillArea{display:table-cell;width:200px;padding-left:9px;vertical-align:middle;}.ChampionGuideDetailSummaryTable>.Content>.Row>.Cell.Skill>.SkillWrap>.SkillArea>.Item{display:inline-block;position:relative;vertical-align:middle;}.ChampionGuideDetailSummaryTable>.Content>.Row>.Cell.Skill>.SkillWrap>.SkillArea>.Item>.Image{width:40px;height:40px;vertical-align:middle;border:1px solid #000;border-radius:3px;overflow:hidden;}
+.ChampionGuideDetailSummaryTable>.Content>.Row>.Cell.Skill>.SkillWrap>.SkillArea>.Item>.HotKey{position:absolute;width:20px;height:20px;line-height:20px;right:0;bottom:0;font-weight:bold;text-align:center;color:#f2f2f2;border-radius:3px;font-size:12px;background-color:#000;background:rgba(0, 0, 0, 0.5);}
+.ChampionGuideDetailSummaryTable>.Content>.Row>.Cell.Skill>.SkillWrap>.SkillArea>.Bar{display:inline-block;margin:0 10px;vertical-align:middle;}
+.ChampionGuideDetailSummaryTable>.Content>.Row>.Cell.Skill>.SkillWrap>.SkillBuildArea{display:table-cell;width:648px;height:137px;vertical-align:middle;}
+.ChampionGuideDetailSummaryTable>.Content>.Row>.Cell.RuneMastery{height:256px;}.ChampionGuideDetailSummaryTable>.Content>.Row>.Cell.RuneMastery>.RuneMasteryWrap{display:table;}.ChampionGuideDetailSummaryTable>.Content>.Row>.Cell.RuneMastery>.RuneMasteryWrap>.RuneWrap{display:table-cell;width:454px;vertical-align:top;}.ChampionGuideDetailSummaryTable>.Content>.Row>.Cell.RuneMastery>.RuneMasteryWrap>.RuneWrap>.RuneItemList{display:table-cell;padding:9px 10px 0 10px;}.ChampionGuideDetailSummaryTable>.Content>.Row>.Cell.RuneMastery>.RuneMasteryWrap>.RuneWrap>.RuneItemList>.Item{padding-left:8px;padding-right:8px;}.ChampionGuideDetailSummaryTable>.Content>.Row>.Cell.RuneMastery>.RuneMasteryWrap>.RuneWrap>.RuneItemList>.Item>.Image{width:42px;}
+.ChampionGuideDetailSummaryTable>.Content>.Row>.Cell.RuneMastery>.RuneMasteryWrap>.RuneWrap>.RuneStatistics{border-top:1px solid #cdd2d2;margin:12px 18px 0;padding:14px 0 18px;line-height:1.5;font-size:0;}.ChampionGuideDetailSummaryTable>.Content>.Row>.Cell.RuneMastery>.RuneMasteryWrap>.RuneWrap>.RuneStatistics>.Item>.Title{color:#666;font-size:13px;font-weight:bold;}
+.ChampionGuideDetailSummaryTable>.Content>.Row>.Cell.RuneMastery>.RuneMasteryWrap>.RuneWrap>.RuneStatistics>.Item>.Stat{color:#666;font-size:13px;}
+.ChampionGuideDetailSummaryTable>.Content>.Row>.Cell.RuneMastery>.RuneMasteryWrap>.MasteryWrap{display:table-cell;vertical-align:top;}.ChampionGuideDetailSummaryTable>.Content>.Row>.Cell.RuneMastery>.RuneMasteryWrap>.MasteryWrap>.mastery-page{margin:9px 10px 10px 10px;background:#e0e3e3;}
+.ChampionGuideDetailSummaryTable>.Content>.Row>.Cell.Matchup{height:79px;}.ChampionGuideDetailSummaryTable>.Content>.Row>.Cell.Matchup>.MatchupList{display:table;}.ChampionGuideDetailSummaryTable>.Content>.Row>.Cell.Matchup>.MatchupList>.MatchupItem{display:table-cell;width:280px;vertical-align:middle;}.ChampionGuideDetailSummaryTable>.Content>.Row>.Cell.Matchup>.MatchupList>.MatchupItem>.MatchupArea{margin:9px 0;border-left:1px solid #cdd2d2;}.ChampionGuideDetailSummaryTable>.Content>.Row>.Cell.Matchup>.MatchupList>.MatchupItem>.MatchupArea>.Title{padding-left:9px;margin:9px 0;color:#666;font-size:11px;}
+.ChampionGuideDetailSummaryTable>.Content>.Row>.Cell.Matchup>.MatchupList>.MatchupItem>.MatchupArea>.Content>.ChampionList{font-size:0;}.ChampionGuideDetailSummaryTable>.Content>.Row>.Cell.Matchup>.MatchupList>.MatchupItem>.MatchupArea>.Content>.ChampionList>.Item{display:inline-block;margin-left:9px;margin-bottom:9px;vertical-align:middle;}.ChampionGuideDetailSummaryTable>.Content>.Row>.Cell.Matchup>.MatchupList>.MatchupItem>.MatchupArea>.Content>.ChampionList>.Item>.Link>.Image{width:40px;height:40px;border:1px solid #000;border-radius:3px;}
+.ChampionGuideDetailSummaryTable>.Content>.Row>.Cell.Matchup>.MatchupList>.MatchupItem:first-child>.MatchupArea{border-left:none;}
+.ChampionGuideDetailSummaryTable>.Content>.Row>.Cell.Matchup>.MatchupList>.MatchupItem.Hard>.MatchupArea>.Title{color:#c5746e;}
+.ChampionGuideDetailSummaryTable>.Content>.Row>.Cell.Matchup>.MatchupList>.MatchupItem.Soft>.MatchupArea>.Title{color:#4c8eb9;}
+.ChampionGuideDetailVoteWrap{margin-top:10px;text-align:center;}.ChampionGuideDetailVoteWrap>.Item{display:inline-block;margin-right:10px;}.ChampionGuideDetailVoteWrap>.Item:last-of-type{margin:0;}
+.ChampionGuideDetailVoteWrap>.Item>.Button{padding:10px 15px 14px;margin-right:10px;background:none;vertical-align:middle;font-size:0;border:1px solid #cdd2d2;border-radius:3px;}.ChampionGuideDetailVoteWrap>.Item>.Button.Vote.active>.On{display:inline-block;}
+.ChampionGuideDetailVoteWrap>.Item>.Button.Vote.active>.Off{display:none;}
+.ChampionGuideDetailVoteWrap>.Item>.Button.Vote.active.VoteUp>span{color:#1f8ecd;}
+.ChampionGuideDetailVoteWrap>.Item>.Button.Vote.active.VoteDown>span{color:#f00;}
+.ChampionGuideDetailVoteWrap>.Item>.Button.Vote>.On{display:none;}
+.ChampionGuideDetailVoteWrap>.Item>.Button.Vote>.Off{display:inline-block;}
+.ChampionGuideDetailVoteWrap>.Item>.Button>i{margin:-1px 2px 0 0;}
+.ChampionGuideDetailVoteWrap>.Item>.Button>span{margin-left:5px;color:#555e5e;font-size:12px;vertical-align:middle;}
+.ChampionGuideDetailVoteWrap>.Item>.Score{color:#555e5e;font-size:15px;}
+.ChampionGuideDetailIntroduceWrap{margin-top:9px;}.ChampionGuideDetailIntroduceWrap>.Content{margin:15px 15px;}.ChampionGuideDetailIntroduceWrap>.Content>.Text{color:#333;font-size:15px;line-height:1.6;text-align:justify;}.ChampionGuideDetailIntroduceWrap>.Content>.Text .editorInputImage{display:inline-block;width:32px;height:32px;vertical-align:bottom;}
+.ChampionGuideDetailRuneMasteryWrap>.Title{position:relative;padding:0;}.ChampionGuideDetailRuneMasteryWrap>.Title:after{content:"\00a0";display:block;clear:both;visibility:hidden;height:0;font-size:0;}
+.ChampionGuideDetailRuneMasteryWrap>.Title>.Title{float:left;padding:15px 0 11px 20px;font-size:13px;font-weight:bold;vertical-align:middle;}
+.ChampionGuideDetailRuneMasteryWrap>.Title>.Right{float:right;text-align:right;}.ChampionGuideDetailRuneMasteryWrap>.Title>.Right>.PageList{margin:6px 6px 4px 0;}.ChampionGuideDetailRuneMasteryWrap>.Title>.Right>.PageList>.Button{display:inline-block;padding-top:4px;padding-bottom:4px;margin-bottom:4px;margin-left:4px;border:1px solid #cdd2d2;background-color:#ededed;color:#555e5e;outline:none;border-radius:2px;font-size:14px;}.ChampionGuideDetailRuneMasteryWrap>.Title>.Right>.PageList>.Button.active{background-color:#1f8ecd;border-color:#1a78ae;color:#f2f2f2;}.ChampionGuideDetailRuneMasteryWrap>.Title>.Right>.PageList>.Button.active>.Number{border-right-color:#1a78ae;}
+.ChampionGuideDetailRuneMasteryWrap>.Title>.Right>.PageList>.Button>.Number{display:inline-block;padding:2px 6px;border-right:1px solid #cdd2d2;vertical-align:middle;}
+.ChampionGuideDetailRuneMasteryWrap>.Title>.Right>.PageList>.Button>.PageName{display:inline-block;margin:0 10px;vertical-align:middle;}
+.ChampionGuideDetailRuneMasteryWrap>.Content .RuneMasteryWrap{display:table;}.ChampionGuideDetailRuneMasteryWrap>.Content .RuneMasteryWrap>.RuneWrap{display:table-cell;width:552px;vertical-align:top;}.ChampionGuideDetailRuneMasteryWrap>.Content .RuneMasteryWrap>.RuneWrap>.RuneItemList{padding:9px 10px 0 10px;}.ChampionGuideDetailRuneMasteryWrap>.Content .RuneMasteryWrap>.RuneWrap>.RuneItemList>.Item{padding-left:8px;padding-right:8px;}.ChampionGuideDetailRuneMasteryWrap>.Content .RuneMasteryWrap>.RuneWrap>.RuneItemList>.Item>.Image{width:42px;}
+.ChampionGuideDetailRuneMasteryWrap>.Content .RuneMasteryWrap>.RuneWrap>.RuneStatistics{border-top:1px solid #cdd2d2;margin:12px 18px 0;padding:14px 0 18px;}.ChampionGuideDetailRuneMasteryWrap>.Content .RuneMasteryWrap>.RuneWrap>.RuneStatistics>.Item>.Title{color:#666;font-size:13px;font-weight:bold;}
+.ChampionGuideDetailRuneMasteryWrap>.Content .RuneMasteryWrap>.RuneWrap>.RuneStatistics>.Item>.Stat{color:#666;font-size:13px;}
+.ChampionGuideDetailRuneMasteryWrap>.Content .RuneMasteryWrap>.MasteryWrap{display:table-cell;vertical-align:top;}.ChampionGuideDetailRuneMasteryWrap>.Content .RuneMasteryWrap>.MasteryWrap>.mastery-page{margin:9px 10px 10px 10px;background:#e0e3e3;}
+.ChampionGuideDetailRuneMasteryWrap>.Content .DescriptionWrap{border-top:1px solid #cdd2d2;}.ChampionGuideDetailRuneMasteryWrap>.Content .DescriptionWrap>.Content{margin:16px;}.ChampionGuideDetailRuneMasteryWrap>.Content .DescriptionWrap>.Content>.Text{color:#333;font-size:15px;line-height:1.6;text-align:justify;}
+.ChampionGuideDetailSpellList>.Item{min-height:72px;}.ChampionGuideDetailSpellList>.Item:first-child>.SpellWrap{border-top:none;}
+.ChampionGuideDetailSpellList>.Item>.SpellWrap{border-top:1px solid #cdd2d2;}.ChampionGuideDetailSpellList>.Item>.SpellWrap>.SpellArea{display:table;}.ChampionGuideDetailSpellList>.Item>.SpellWrap>.SpellArea>.Spells{display:table-cell;width:128px;padding:8px;border-right:1px solid #cdd2d2;vertical-align:top;}.ChampionGuideDetailSpellList>.Item>.SpellWrap>.SpellArea>.Spells>.Spell{display:inline-block;margin:8px;}.ChampionGuideDetailSpellList>.Item>.SpellWrap>.SpellArea>.Spells>.Spell>.Image{width:40px;height:40px;vertical-align:middle;border-radius:3px;overflow:hidden;border:1px solid #000;}
+.ChampionGuideDetailSpellList>.Item>.SpellWrap>.SpellArea>.DescriptionWrap{display:table-cell;vertical-align:top;}.ChampionGuideDetailSpellList>.Item>.SpellWrap>.SpellArea>.DescriptionWrap>.Content{margin:16px;}.ChampionGuideDetailSpellList>.Item>.SpellWrap>.SpellArea>.DescriptionWrap>.Content>.Text{color:#333;font-size:15px;line-height:1.6;text-align:justify;}
+.ChampionGuideDetailSkillWrap>.SkillWrap{display:table;height:186px;}.ChampionGuideDetailSkillWrap>.SkillWrap>.SkillArea{display:table-cell;width:230px;text-align:center;vertical-align:middle;}.ChampionGuideDetailSkillWrap>.SkillWrap>.SkillArea>.Item{display:inline-block;position:relative;vertical-align:middle;}.ChampionGuideDetailSkillWrap>.SkillWrap>.SkillArea>.Item>.Image{width:40px;height:40px;vertical-align:middle;border:1px solid #000;border-radius:3px;overflow:hidden;}
+.ChampionGuideDetailSkillWrap>.SkillWrap>.SkillArea>.Item>.HotKey{position:absolute;width:20px;height:20px;line-height:20px;right:0;bottom:0;font-weight:bold;text-align:center;color:#f2f2f2;border-radius:3px;font-size:12px;background-color:#000;background:rgba(0, 0, 0, 0.5);}
+.ChampionGuideDetailSkillWrap>.SkillWrap>.SkillArea>.Bar{display:inline-block;margin:0 10px;vertical-align:middle;}
+.ChampionGuideDetailSkillWrap>.SkillWrap>.SkillBuildArea{display:table-cell;width:717px;height:137px;vertical-align:middle;}
+.ChampionGuideDetailSkillWrap>.DescriptionWrap{border-top:1px solid #cdd2d2;}.ChampionGuideDetailSkillWrap>.DescriptionWrap>.Content{margin:16px;}.ChampionGuideDetailSkillWrap>.DescriptionWrap>.Content>.Text{color:#333;font-size:15px;line-height:1.6;text-align:justify;}
+.ChampionGuideDetailItemWrap>.Item{padding:10px 0 5px 0;}.ChampionGuideDetailItemWrap>.Item>.ItemWrap{margin-top:10px;vertical-align:top;}.ChampionGuideDetailItemWrap>.Item>.ItemWrap>.Title{padding-left:10px;margin-bottom:4px;color:#666;font-size:11px;}
+.ChampionGuideDetailItemWrap>.Item>.ItemWrap>.Content{padding-left:5px;}.ChampionGuideDetailItemWrap>.Item>.ItemWrap>.Content>.Item{display:inline-block;margin:5px;font-size:0;vertical-align:middle;}.ChampionGuideDetailItemWrap>.Item>.ItemWrap>.Content>.Item>.Image{width:40px;height:40px;border:1px solid #000;border-radius:3px;}
+.ChampionGuideDetailItemWrap>.Item>.ItemWrap>.Content>.Bar{display:inline-block;vertical-align:middle;}
+.ChampionGuideDetailItemWrap>.Item>.ItemWrap:first-child{margin-top:0;}
+.ChampionGuideDetailItemWrap>.Item:first-child{margin-top:0;}
+.ChampionGuideDetailItemWrap>.DescriptionWrap{border-top:1px solid #cdd2d2;}.ChampionGuideDetailItemWrap>.DescriptionWrap>.Content{margin:16px;}.ChampionGuideDetailItemWrap>.DescriptionWrap>.Content>.Text{color:#333;font-size:15px;line-height:1.6;text-align:justify;}
+.ChampionGuideDetailMatchupWrap>.Item{padding:16px;border-top:1px solid #cdd2d2;}.ChampionGuideDetailMatchupWrap>.Item:first-child{border-top:0;}
+.ChampionGuideDetailMatchupWrap>.Item.Hard>.Title{color:#c5746e;}
+.ChampionGuideDetailMatchupWrap>.Item.Hard>.Content>.ChampionList>.Item>.ChampionInfo>.Image{border:2px solid #ee5a52;}
+.ChampionGuideDetailMatchupWrap>.Item.Soft>.Title{color:#4c8eb9;}
+.ChampionGuideDetailMatchupWrap>.Item.Soft>.Content>.ChampionList>.Item>.ChampionInfo>.Image{border:2px solid #008fd0;}
+.ChampionGuideDetailMatchupWrap>.Item>.Title{color:#666;font-size:11px;}
+.ChampionGuideDetailMatchupWrap>.Item>.Content>.ChampionList{font-size:0;}.ChampionGuideDetailMatchupWrap>.Item>.Content>.ChampionList>.Item{width:908px;padding:16px 0;border-top:1px solid #cdd2d2;}.ChampionGuideDetailMatchupWrap>.Item>.Content>.ChampionList>.Item:first-child{border-top:none;}
+.ChampionGuideDetailMatchupWrap>.Item>.Content>.ChampionList>.Item>.ChampionInfo{display:inline-block;width:169px;vertical-align:top;}.ChampionGuideDetailMatchupWrap>.Item>.Content>.ChampionList>.Item>.ChampionInfo>.Image{display:inline-block;width:40px;height:40px;border:1px solid #000;border-radius:3px;vertical-align:middle;}
+.ChampionGuideDetailMatchupWrap>.Item>.Content>.ChampionList>.Item>.ChampionInfo>.Name{display:inline-block;margin-left:13px;color:#333;font-size:13px;vertical-align:middle;}
+.ChampionGuideDetailMatchupWrap>.Item>.Content>.ChampionList>.Item>.DescriptionWrap{display:inline-block;max-width:739px;vertical-align:top;}.ChampionGuideDetailMatchupWrap>.Item>.Content>.ChampionList>.Item>.DescriptionWrap>.Content>.Text{color:#333;font-size:15px;line-height:1.6;text-align:justify;}
+.ChampionGuideWriteItemFilterList{text-align:left;}.ChampionGuideWriteItemFilterList.First>.Category{border-top:none;}
+.ChampionGuideWriteItemFilterList>.Category{border-top:1px solid #ddd;border-bottom:1px solid #ddd;padding:10px;font-size:14px;font-weight:bold;color:#333;background-color:#e9e9e9;}
+.ChampionGuideWriteItemFilterList>.Item{margin:5px 0;}.ChampionGuideWriteItemFilterList>.Item>.Label{padding:0 10px;}.ChampionGuideWriteItemFilterList>.Item>.Label>.jcf-checkbox{vertical-align:middle;}
+.ChampionGuideWriteItemFilterList>.Item>.Label>.Text{color:#333;font-size:13px;vertical-align:middle;}
+.ChampionTrendSummary .ChampionTrendSummaryHeader{margin-bottom:-1px;}
+.ChampionTrendSummary .ChampionTrendSummaryContent{border:1px solid #cdd2d2;border-bottom-left-radius:2px;border-bottom-right-radius:2px;}
+.ChampionTrendSummaryHeader{position:relative;}.ChampionTrendSummaryHeader ul{display:inline-block;background:#ededed;border:1px solid #cdd2d2;border-top-left-radius:2px;border-top-right-radius:2px;font-size:0;}.ChampionTrendSummaryHeader ul li{display:inline-block;position:relative;border:1px solid transparent;border-top:none;margin-left:-1px;margin-bottom:-1px;}.ChampionTrendSummaryHeader ul li a{display:block;min-width:88px;text-align:center;color:#555;font-size:12px;line-height:14px;padding:11px 0;text-decoration:none;}
+.ChampionTrendSummaryHeader ul li:before{position:absolute;left:-1px;top:12px;width:1px;height:14px;background:#cdd2d2;content:'';}
+.ChampionTrendSummaryHeader ul li.active{border-left-color:#cdd2d2;border-right-color:#cdd2d2;background:#f2f2f2;border-bottom-color:#f2f2f2;}.ChampionTrendSummaryHeader ul li.active a{color:#1f8ecd;font-weight:bold;}
+.ChampionTrendSummaryHeader ul li.active:before{display:none;}
+.ChampionTrendSummaryHeader ul li.active+li:before{display:none;}
+.ChampionTrendSummaryHeader button{position:absolute;right:0;background:#36a4a4;border:1px solid #288b8b;height:37px;padding:0 12px;line-height:14px;font-size:12px;color:#fff;border-top-left-radius:2px;border-top-right-radius:2px;}.ChampionTrendSummaryHeader button i{margin-right:5px;margin-top:-2px;}
+.ChampionTrendSummaryPosition ul{background:#f2f2f2;border-bottom:1px solid #cdd2d2;text-align:center;font-size:0;}.ChampionTrendSummaryPosition ul li{display:inline-block;vertical-align:top;min-width:40px;margin-left:20px;}.ChampionTrendSummaryPosition ul li a{display:block;font-size:12px;line-height:14px;color:#555;text-decoration:none;padding:11px 0 7px;}
+.ChampionTrendSummaryPosition ul li:first-child{margin-left:0;}
+.ChampionTrendSummaryPosition ul li.active{border-bottom:2px solid #1f8ecd;}.ChampionTrendSummaryPosition ul li.active a{color:#1f8ecd;font-weight:bold;}
+.ChampionTrendSummaryChampionList li a{display:table;width:100%;table-layout:fixed;text-decoration:none;}.ChampionTrendSummaryChampionList li a>div{display:table-cell;vertical-align:middle;padding-top:10px;padding-bottom:10px;font-size:0;}
+.ChampionTrendSummaryChampionList li .Rank{width:40px;font-size:12px;line-height:14px;color:#555;text-align:center;}
+.ChampionTrendSummaryChampionList li .Image{width:40px;}
+.ChampionTrendSummaryChampionList li .Champion{padding-left:10px;}.ChampionTrendSummaryChampionList li .Champion .ChampionName{display:block;line-height:16px;font-size:14px;color:#333;}
+.ChampionTrendSummaryChampionList li .Champion .ChampionPosition{margin-top:4px;line-height:14px;font-size:12px;color:#999;}
+.ChampionTrendSummaryChampionList li .Value{text-align:right;padding-right:15px;}.ChampionTrendSummaryChampionList li .Value b{line-height:16px;font-size:14px;font-weight:normal;color:#333;}
+.ChampionTrendSummaryChampionList li .Value span{display:block;margin-top:4px;line-height:14px;font-size:12px;color:#999;}
+.ChampionTrendSummaryChampionList li:first-child .Rank{color:#1f8ecd;}
+.ChampionTrendSummaryChampionList li:first-child .Value b{color:#1f8ecd;}
+.ChampionTrendSummaryChampionList li:nth-child(even) a{background:#e6e6e6;}
+.ChampionTrendSummaryContent button{width:100%;height:35px;border:none;border-top:1px solid #cdd2d2;background:#f2f2f2;font-size:14px;line-height:16px;color:#555;}
+.ChampionCommentBox>.Title{position:relative;}.ChampionCommentBox>.Title>.Button{position:absolute;top:5px;right:5px;padding:4px 10px;line-height:14px;font-size:12px;}
+.ChampionCommentBox>.Footer a{display:block;line-height:14px;font-size:12px;color:#1f8ecd;background:#ccdbe6;border-top:1px solid #cdd2d2;text-align:center;padding:10px;text-decoration:none;}
+.ChampionComment{margin-top:20px;}.ChampionComment .ChampionCommentTitle{margin-bottom:20px;}
+.ChampionComment .ChampionCommentWriteWrap{position:relative;}
+.ChampionComment .ChampionCommentWrite.mounted{position:absolute;top:0;width:970px;}
+.ChampionComment .ChampionCommentTab{margin-top:20px;}
+.ChampionComment .ChampionCommentList{margin-top:-1px;}
+.ChampionCommentWrite{position:relative;border:1px solid #cdd2d2;}.ChampionCommentWrite .ChampionCommentWriteContent{width:800px;}
+.ChampionCommentWrite button{position:absolute;right:0;top:0;bottom:0;width:130px;text-align:center;border:none;border-left:1px solid #cdd2d2;background:#f2f2f2;line-height:16px;font-size:14px;color:#555e5e;}
+.ChampionCommentWriteContent{position:relative;padding:20px 20px 0;background:#fff;}.ChampionCommentWriteContent .Name{line-height:16px;font-size:14px;color:#555e5e;font-weight:bold;}
+.ChampionCommentWriteContent textarea{margin-top:10px;width:100%;max-height:720px;min-height:93px;border:none;background:none;padding:0;line-height:24px;font-size:14px;color:#454c4c;resize:none;}
+.ChampionCommentWriteContent .Info{position:absolute;top:10px;right:12px;}.ChampionCommentWriteContent .Info span{line-height:14px;font-size:12px;color:#555e5e;}
+.ChampionCommentWriteContent .Info img{width:30px;height:30px;vertical-align:middle;margin-left:10px;}
+.ChampionCommentWrite{transition:background 0s ease-in-out;}.ChampionCommentWrite textarea{transition:height 0s ease-in-out;}
+.ChampionCommentWrite.scroll-to-fixed-fixed{width:100% !important;left:-1px !important;background:#e0e3e3;border-bottom:1px solid #cdd2d2;padding:10px 0;transition:background 0.25s ease-in-out;}.ChampionCommentWrite.scroll-to-fixed-fixed .ChampionCommentWrite{width:970px;margin:0 auto;}
+.ChampionCommentWrite.scroll-to-fixed-fixed form{position:relative;box-sizing:border-box;width:970px;margin:0 auto;border:1px solid #cdd2d2;}
+.ChampionCommentWrite.scroll-to-fixed-fixed .ChampionCommentWriteContent textarea{min-height:44px;}
+.ChampionCommentTitle h2{line-height:20px;font-size:16px;color:#454c4c;}
+.ChampionCommentTitle b{font-size:18px;color:#1f8ecd;}
+.ChampionCommentTab{position:relative;}.ChampionCommentTab ul{display:inline-block;font-size:0;}.ChampionCommentTab ul li{display:inline-block;margin-left:-1px;border:1px solid #cdd2d2;background:#e0e3e3;}.ChampionCommentTab ul li a{display:block;min-width:98px;padding:10px 5px;border-top:2px solid transparent;line-height:16px;font-size:14px;text-align:center;text-decoration:none;font-weight:bold;color:#afb4b4;}
+.ChampionCommentTab ul li:first-child{margin-left:0;}
+.ChampionCommentTab ul li.active{border-bottom-color:#f2f2f2;}.ChampionCommentTab ul li.active a{border-top-color:#1f8ecd;background:#f2f2f2;color:#1f8ecd;}
+.ChampionCommentTab>button{float:right;border:none;background:none;line-height:16px;font-size:14px;color:#999;font-weight:bold;height:40px;}.ChampionCommentTab>button i{margin-right:5px;}
+.ChampionCommentList .tabItem{border:1px solid #cdd2d2;background:#f2f2f2;}.ChampionCommentList .tabItem>ul>li{position:relative;border-top:1px solid #cdd2d2;}.ChampionCommentList .tabItem>ul>li>.Vote{float:left;width:72px;text-align:center;margin-top:15px;margin-bottom:15px;}.ChampionCommentList .tabItem>ul>li>.Vote button{width:24px;height:24px;padding:0;border:1px solid transparent;background:none;outline:none;border-radius:2px;}.ChampionCommentList .tabItem>ul>li>.Vote button .On{display:none;}
+.ChampionCommentList .tabItem>ul>li>.Vote button .Hover{display:none;}
+.ChampionCommentList .tabItem>ul>li>.Vote button .Off{display:inline-block;}
+.ChampionCommentList .tabItem>ul>li>.Vote button:hover .Off,.ChampionCommentList .tabItem>ul>li>.Vote button:focus .Off{display:none;}
+.ChampionCommentList .tabItem>ul>li>.Vote button:hover .Hover,.ChampionCommentList .tabItem>ul>li>.Vote button:focus .Hover{display:inline-block;}
+.ChampionCommentList .tabItem>ul>li>.Vote button.Active{border-color:transparent;}.ChampionCommentList .tabItem>ul>li>.Vote button.Active .On{display:inline-block;}
+.ChampionCommentList .tabItem>ul>li>.Vote button.Active .Hover{display:none;}
+.ChampionCommentList .tabItem>ul>li>.Vote button.Active .Off{display:none;}
+.ChampionCommentList .tabItem>ul>li>.Vote .Score{margin:5px 0;line-height:17px;font-size:14px;color:#454c4c;}
+.ChampionCommentList .tabItem>ul>li>.Content{padding:20px 0;margin-right:136px;margin-left:72px;}.ChampionCommentList .tabItem>ul>li>.Content .Name{display:inline-block;vertical-align:middle;line-height:16px;font-size:14px;font-weight:bold;}
+.ChampionCommentList .tabItem>ul>li>.Content .DateTime{display:inline-block;vertical-align:middle;margin-left:10px;font-size:12px;line-height:14px;color:#879292;}
+.ChampionCommentList .tabItem>ul>li>.Content .Summoner{display:inline-block;vertical-align:middle;font-size:12px;margin-left:10px;}.ChampionCommentList .tabItem>ul>li>.Content .Summoner a{display:block;color:#879292;text-decoration:none;}.ChampionCommentList .tabItem>ul>li>.Content .Summoner a img{vertical-align:middle;margin-top:-2px;}
+.ChampionCommentList .tabItem>ul>li>.Content .Summoner a:hover{text-decoration:underline;}
+.ChampionCommentList .tabItem>ul>li>.Content p{display:block;margin:5px 0 0;line-height:22px;font-size:14px;color:#454c4c;}.ChampionCommentList .tabItem>ul>li>.Content p a{color:#1f8ecd;}
+.ChampionCommentList .tabItem>ul>li>.Content p a:visited{color:#9b59b6;}
+.ChampionCommentList .tabItem>ul>li>.Edit{position:absolute;right:0;top:0;text-align:right;margin:20px 20px 0 0;}.ChampionCommentList .tabItem>ul>li>.Edit ul li{display:inline-block;vertical-align:middle;}.ChampionCommentList .tabItem>ul>li>.Edit ul li:before{display:inline-block;margin-left:5px;margin-right:5px;content:"";border-left:1px solid #cdd2d2;height:8px;vertical-align:middle;}
+.ChampionCommentList .tabItem>ul>li>.Edit ul li:first-child:before{display:none;}
+.ChampionCommentList .tabItem>ul>li>.Edit ul li button{color:#879292;line-height:14px;font-size:12px;text-decoration:none;border:none;background:none;padding:0;}
+.ChampionCommentList .tabItem>ul>li>.Edit .Version{margin-top:10px;}.ChampionCommentList .tabItem>ul>li>.Edit .Version span{font-size:12px;line-height:14px;color:#555;}
+.ChampionCommentList .tabItem>ul>li>.Edit .Version i{margin-left:5px;}
+.ChampionCommentList .tabItem>ul>li:after{content:"\00a0";display:block;clear:both;visibility:hidden;height:0;font-size:0;}
+.ChampionCommentList .tabItem>ul>li:first-child{border-top:none;}
+.ChampionCommentList .tabItem>ul>li:hover>.Vote button{border-color:#cdd2d2;}
+.ChampionCommentList .tabItem>ul+ul{border-top:none;}.ChampionCommentList .tabItem>ul+ul>li:first-child{border-top:1px solid #cdd2d2;}
+.ChampionCommentList .tabItem>button{width:100%;height:50px;background:#e0e3e3;border:none;border-top:1px solid #cdd2d2;line-height:22px;font-size:14px;color:#454c4c;}
+.CommentMiniList ul li{border-top:1px solid #cdd2d2;}.CommentMiniList ul li>.Vote{float:left;width:45px;text-align:center;margin-top:8px;margin-bottom:8px;}.CommentMiniList ul li>.Vote button{padding:0;background:none;border:none;}.CommentMiniList ul li>.Vote button .On{display:none;}
+.CommentMiniList ul li>.Vote button .Hover{display:none;}
+.CommentMiniList ul li>.Vote button .Off{display:inline-block;}
+.CommentMiniList ul li>.Vote button:hover .Off{display:none;}
+.CommentMiniList ul li>.Vote button:hover .Hover{display:inline-block;}
+.CommentMiniList ul li>.Vote button.Active .On{display:inline-block;}
+.CommentMiniList ul li>.Vote button.Active .Hover{display:none;}
+.CommentMiniList ul li>.Vote button.Active .Off{display:none;}
+.CommentMiniList ul li>.Vote .Score{margin:12px 0;line-height:14px;font-size:12px;color:#454c4c;}
+.CommentMiniList ul li>.Content{padding:11px 0;margin-left:45px;position:relative;cursor:pointer;}.CommentMiniList ul li>.Content .Name{display:inline-block;vertical-align:middle;font-size:12px;line-height:14px;font-weight:bold;}
+.CommentMiniList ul li>.Content .Version{position:absolute;top:11px;right:11px;vertical-align:middle;font-size:12px;line-height:18px;color:#879292;margin-left:10px;}
+.CommentMiniList ul li>.Content .Comment{display:inline-block;vertical-align:middle;font-size:12px;line-height:14px;color:#969696;margin-left:10px;}
+.CommentMiniList ul li>.Content .Summoner{display:inline-block;vertical-align:middle;font-size:12px;margin-left:5px;}.CommentMiniList ul li>.Content .Summoner a{display:block;color:#879292;text-decoration:none;}.CommentMiniList ul li>.Content .Summoner a img{vertical-align:middle;margin-top:-2px;}
+.CommentMiniList ul li>.Content .Summoner a:hover{text-decoration:underline;}
+.CommentMiniList ul li>.Content p{display:block;margin:6px 5px 0 0;line-height:16px;font-size:12px;color:#454c4c;word-break:break-all;}.CommentMiniList ul li>.Content p a{color:#1f8ecd;}
+.CommentMiniList ul li>.Content p a:visited{color:#9b59b6;}
+.CommentMiniList ul li:after{content:"\00a0";display:block;clear:both;visibility:hidden;height:0;font-size:0;}
+.CommentMiniList ul li:first-child{border-top:none;}
+.CommentMiniList .more-link,.ChampionCommentList .more-link,.CommentMiniList .less-link,.ChampionCommentList .less-link{font-size:0;margin-left:5px;display:inline-block;background-image:url("../images/site/champion/btn-comment-more.png");width:28px;height:16px;vertical-align:middle;}
+.ChampionCommentNotFound{text-align:center;padding:30px;}.ChampionCommentNotFound h3{line-height:22px;font-size:16px;color:#555e5e;margin-top:15px;}
+.ChampionCommentNotFound p{margin:2px 0 0;line-height:14px;font-size:12px;color:#36a4a4;font-weight:bold;}
+.ChampionCommentNotFound.Small{padding:20px 5px 20px 20px;text-align:left;}.ChampionCommentNotFound.Small i{float:left;margin-right:12px;}
+.ChampionCommentNotFound.Small h3{margin-top:0;}
+.ChampionCommentNotFound.Small p{margin-top:5px;}
+.ChampionCommentNotFound.Small:after{content:"\00a0";display:block;clear:both;visibility:hidden;height:0;font-size:0;}
+.ChampionMatchupSummaryBox>.Tab>.TabList .Item{background:#fff;}.ChampionMatchupSummaryBox>.Tab>.TabList .Item .Link{border-top:2px solid transparent;height:34px;line-height:34px;}
+.ChampionMatchupSummaryBox>.Tab>.TabList .Item.active .Link{border-top-color:#1a78ae;}
+.ChampionMatchupSummaryTable{width:100%;table-layout:fixed;}.ChampionMatchupSummaryTable tr{cursor:pointer;}
+.ChampionMatchupSummaryTable tr:hover .ChampionName{text-decoration:underline;}
+.ChampionMatchupSummaryTable .ChampionImage{width:32px;height:32px;padding:8px 6px 8px 17px;}.ChampionMatchupSummaryTable .ChampionImage img{display:block;border-radius:50%;width:32px;height:32px;}
+.ChampionMatchupSummaryTable .ChampionName{line-height:14px;font-size:12px;color:#4a4a4a;font-weight:bold;}
+.ChampionMatchupSummaryTable .WinRate{font-size:0;width:130px;text-align:center;}.ChampionMatchupSummaryTable .WinRate span{display:inline-block;margin-right:8px;line-height:12px;font-size:12px;color:#999;}
+.ChampionMatchupSummaryTable .WinRate b{display:inline-block;font-size:12px;line-height:14px;color:#000;}
+.ChampionStatsFilterMenu ul li{padding:10px 0 10px 20px;border-left:8px solid transparent;background:#ededed;border-top:1px solid #cdd2d2;cursor:pointer;}.ChampionStatsFilterMenu ul li:first-child{border-top:none;}
+.ChampionStatsFilterMenu ul li:hover{background:#cfe9f8;}
+.ChampionStatsFilterMenu ul li.active{background:#fff;border-left-color:#1a78ae;}
+.ChampionStatsFilterMenu ul li.All{line-height:40px;text-align:center;font-size:12px;color:#444;padding:0;}
+.ChampionStatsFilterMenu ul li .Rate{font-size:12px;line-height:16px;color:#999;}.ChampionStatsFilterMenu ul li .Rate span{min-width:55px;}
+.ChampionStatsFilterMenu ul li .Rate b{font-weight:normal;color:#333;margin-left:5px;}
+.ChampionStatsFilterMenu-SkillPriority .Content{margin-bottom:10px;font-size:0;}.ChampionStatsFilterMenu-SkillPriority .Content>.Item{display:inline-block;position:relative;vertical-align:middle;}.ChampionStatsFilterMenu-SkillPriority .Content>.Item img{border-radius:3px;width:42px;}
+.ChampionStatsFilterMenu-SkillPriority .Content>.Item>.ExtraString{position:absolute;width:20px;height:20px;line-height:20px;right:0;bottom:0;font-weight:bold;text-align:center;color:#f2f2f2;border-radius:3px;font-size:12px;background:rgba(0, 0, 0, 0.5);}
+.ChampionStatsFilterMenu-SkillPriority .Content>.Bar{display:inline-block;width:20px;text-align:center;vertical-align:middle;}
+.ChampionStatsFilterMenu-KeystoneMastery .Image{float:left;margin-right:10px;width:42px;}
+.ChampionStatsFilterMenu-KeystoneMastery .Name{margin-top:5px;font-size:14px;line-height:14px;font-weight:bold;color:#444;margin-bottom:7px;}
+.ChampionStatsFilterMenu-KeystoneMastery .Rate{display:inline-block;}.ChampionStatsFilterMenu-KeystoneMastery .Rate+.ChampionStatsFilterMenu-KeystoneMastery .Rate{margin-left:5px;}
+.champion-index-message{margin-bottom:12px;}.champion-index-message:after{visibility:hidden;display:block;font-size:0;content:"";clear:both;height:0;}
+.champion-index__message{float:left;line-height:18px;font-size:12px;color:#9b9b9b;}
+.champion-index__version{float:right;line-height:18px;font-size:12px;text-align:right;color:#4a4a4a;}.champion-index__version img{vertical-align:middle;margin-right:9px;}

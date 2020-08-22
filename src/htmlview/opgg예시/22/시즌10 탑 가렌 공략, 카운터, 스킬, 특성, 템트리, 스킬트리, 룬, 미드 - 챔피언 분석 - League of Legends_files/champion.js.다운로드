@@ -1,0 +1,2281 @@
+/**
+ * Created by Yuka on 2015-12-15.
+ */
+$(function(){
+});
+$.OP.GG.champion = {
+	trend: {
+		change: function(form, viewSelector){
+			var $viewSelector = $(viewSelector),
+				setHTML = function(html){
+					$viewSelector.html(html);
+					$(window).resize(); // 광고 위치
+				};
+
+			setHTML($.OP.GG.common.makeCenteredTableLoader('black'));
+
+			$.OP.GG.ajax.formSubmit(form, 'html', {
+				onHTML: function(html){
+					setHTML(html);
+				},
+				onError: function(error){
+					setHTML("<div class='ErrorMessage'>" + error + "</div>");
+				}
+			});
+		}
+	},
+	Graph: function(targetElement, json){
+		var options = {
+			chart: {
+				renderTo: targetElement,
+				backgroundColor: null,
+				borderColor: "#ededed",
+				borderWidth: 0,
+				spacing: [15, 23, 7, 10]
+			},
+			credits: {
+				enabled: false
+			},
+			legend: {
+				enabled: false
+			},
+			title: {
+				text: null
+			},
+			tooltip: {
+				backgroundColor: "#282828",
+				borderColor: "#282828",
+				borderWidth: 1,
+				borderRadius: 0,
+				style: {
+					color: "#fff"
+				},
+				formatter: function(){
+					return (this.points[1].point.patchDate ? this.points[1].point.patchIndex + _L('PATCH') + "<span style=\"color: " + '#999' + "\">" + " (" + this.points[1].point.patchDate + ")" + "</span>" : this.x) + "<br>"
+						+ "<span style=\"color: " + this.points[1].series.color + "\">" + this.points[1].series.name + ": " + this.points[1].y + "% (" + this.points[1].point.rank + ")</span><br>"
+						+ "<span style=\"color: " + this.points[0].series.color + "\">" + this.points[0].series.name + ": " + this.points[0].y + "%</span>";
+				},
+				useHTML: true,
+				shared: true
+			},
+			symbols: ["circle"],
+			xAxis: {
+				type: "category",
+				// min: 0.4,
+				gridLineWidth: 0,
+				lineWidth: 0,
+				tickWidth: 0,
+				labels: {
+					overflow: "justify",
+					step: 1,
+					style: {
+						color: "#525252",
+						fontWeight: "bold"
+					},
+					y: 20
+				},
+				title: {
+					style: {
+						color: "#FFFFFF"
+					},
+					text: null
+				}
+			},
+			yAxis: {
+				type: "percent",
+				gridLineWidth: 0,
+				lineWidth: 0,
+				tickWidth: 0,
+				labels: {
+					format: "{value:.0f}%",
+					style: {
+						color: "#525252",
+						fontWeight: "bold"
+					}
+				},
+				title: {
+					style: {
+						color: "#FFFFFF"
+					},
+					text: null
+				}
+			},
+			plotOptions: {
+				column: {
+					dataLabels: {
+						enabled: true,
+						crop: false,
+						overflow: 'none'
+					}
+				}
+			}
+		};
+
+		(function(options, json){
+			var chart;
+			if (json) {
+				if (_isMobile) {
+					options = $.fn.extend(true, options, {
+						chart: {spacing: [10, 25, 10, 15]},
+						xAxis: {gridLineWidth: 0},
+						yAxis: {gridLineWidth: 0}
+					});
+				}
+				options = $.fn.extend(true, options, json);
+				chart = new Highcharts.Chart(options);
+			} else {
+				$(targetElement).html("<div class=\"ErrorMessage NoData\"><div class=\"Message\">데이터가 존재하지 않습니다.</div></div>");
+			}
+		})(options, json);
+	},
+	GenerateGraph: function(graphId, graphWidth, graphHeight, categories, graphData, graphDataAll, graphYAxisData, option){
+		$.OP.GG.champion.Graph(graphId, {
+			chart: {
+				width: graphWidth,
+				height: graphHeight,
+				events: {
+					load: function(){
+						if (option.zoneDisable === false) {
+							var series = this.series[1],
+								len = series.data.length;
+							series.data[len - 1].update({
+								marker: {
+									lineColor: series.color
+								},
+								dataLabels: {
+									color: series.color,
+									style: {
+										fontWeight: 'bold'
+									}
+								}
+							});
+						}
+					}
+				}
+			},
+			xAxis: {
+				categories: categories,
+				// max: graphData.length - 1.4
+			},
+			yAxis: {
+				min: graphYAxisData[0],
+				// max: graphYAxisData[1],
+				tickInterval: graphYAxisData[2]
+			},
+			series: [{
+				type: 'line',
+				name: (option && option['position'] ? _L("ROLE-" + option['position']) + ' ' : '') + _L("CHART_TITLE_CHAMPION_AVERAGE"),
+				color: "#979797",
+				lineWidth: 1,
+				marker: {enabled: false},
+				data: graphDataAll,
+				dashStyle: 'dash',
+				states: {
+					hover: {
+						enabled: false
+					}
+				}
+			},{
+				type: !!option.type ? option.type : 'line',
+				name: option.name,
+				color: option.seriesColor,
+				lineWidth: 1,
+				data: graphData,
+				pointWidth: 20,
+				dataLabels: {
+					enabled: true,
+					crop: false,
+					format: '{point.rank}', // this.points[0].point.rank
+					style: {
+						color: '#777',
+						textShadow: false,
+						fontWeight: 'normal',
+						fontSize: '12px'
+					}
+				},
+				marker: {
+					symbol: "circle",
+					lineWidth: '2px',
+					lineColor: option.zoneDisable === false ? '#989898' : option.seriesColor,
+					fillColor: '#fff'
+				},
+				zoneAxis: 'x',
+				zones: option.zoneDisable === false ? [{
+					value: graphData.length - 1,
+					fillColor: '#e7e7e7',
+					color: '#e7e7e7'
+				}] : null
+			}]
+		});
+	},
+	MatchUp: {
+		Graph: function(targetElement, json){
+			var options = {
+				colors: ["#FFFFFF"],
+				chart: {
+					renderTo: targetElement,
+					backgroundColor: "transparent",
+					borderColor: "transparent",
+					borderWidth: 0,
+					spacing: [6, 6, 7, 4],
+					type: 'area'
+				},
+				credits: {
+					enabled: !1
+				},
+				legend: {
+					enabled: !1
+				},
+				title: {
+					text: null
+				},
+				tooltip: {
+					shared: true,
+					backgroundColor: "#1C242D",
+					borderColor: "#1C242D",
+					borderWidth: 1,
+					borderRadius: 0,
+					style: {
+						color: "#FFFFFF"
+					}
+				},
+				symbols: ["circle"],
+				xAxis: {
+					categories: ['0-10', '10-20', '20-30', '30+'],
+					labels: {
+						style: {
+							color: '#4a4a4a',
+							fontWeight: 'bold',
+							fontSize: '12px'
+						}
+					},
+					tickWidth: 0,
+					// lineWidth: 0,
+					title: {
+						enabled: !1
+					},
+					min: 0.5,
+					max: 4 - 1.5,
+					startOnTick: false,
+					endOnTick: false,
+					minPadding: 0,
+					maxPadding: 0,
+					align: "left"
+				},
+				yAxis: {
+					labels: {
+						style: {
+							color: '#4a4a4a',
+							fontWeight: 'bold',
+							fontSize: '12px'
+						}
+					},
+					gridLineWidth: 0,
+					// lineWidth: 0,
+					title: {
+						text: null
+					}
+				},
+				plotOptions: {
+					area: {
+						lineWidth: 1,
+						marker: {
+							lineWidth: 1,
+							fillColor: 'white'
+						},
+						fillOpacity: 0.5
+					}
+				}
+			};
+
+			(function(options, json){
+				var chart;
+				if (json) {
+					options = $.fn.extend(true, options, json);
+					chart = new Highcharts.Chart(options);
+				} else {
+					$(targetElement).html("<div class=\"ErrorMessage NoData\"><div class=\"Message\">데이터가 존재하지 않습니다.</div></div>");
+				}
+			})(options, json);
+		},
+		selectChampion: {
+			open: function(button, championKey, targetChampionKey, position){
+				var $modal = $(button).closest('.champion-matchup-select').find('.champion-matchup-select__modal'),
+					doClose = function(){
+						$(document).off('click', closeEvent);
+						$modal.hide();
+					},
+					setHTML = function(html){
+						$modal.html(html);
+					},
+					closeEvent = function(){
+						if ($(event.target).closest(".champion-matchup-select").length > 0) {
+							return;
+						}
+						doClose();
+					};
+
+				if ($modal.is(':visible')) {
+					doClose();
+					return;
+				}
+
+				$modal.show().startLoading({
+					minHeight: 300
+				});
+
+				$(document).on('click', closeEvent);
+
+				$.OP.GG.ajax.getHTML({
+					url: "/champion/ajax/statistics/matchupChampionList/",
+					data: {
+						championKey: championKey,
+						targetChampionKey: targetChampionKey,
+						position: position
+					},
+					callback: {
+						onHTML: function(html){
+							$modal.stopLoading();
+							setHTML(html);
+						},
+						onError: function(error){
+							$modal.stopLoading();
+							alert(error);
+							doClose();
+						}
+					}
+				});
+			},
+			sort: function(button){
+				var buttonClass = "champion-matchup-sort__button",
+					upClass = "champion-matchup-sort__button--up",
+					downClass = "champion-matchup-sort__button--down";
+
+				var $button = $(button),
+					$sortType = $button.data('sort-type'),
+					sortEvent = function(sortType, orderType){
+						$(".champion-matchup-champion-list__item")
+							.sort(function(previous, current){
+								if (
+									$(previous).data('value-' + sortType) < $(current).data('value-' + sortType)
+								) {
+									return (orderType === "desc" ? -1 : 1);
+								} else {
+									return (orderType === "desc" ? 1 : -1);
+								}
+							})
+							.each(function(index){
+								$(".champion-matchup-champion-list").append(this);
+								$(this).find('.champion-matchup-list__rank').text(index + 1);
+							});
+					};
+
+				$("." + buttonClass).not($button).removeClass(upClass).removeClass(downClass);
+
+				if ($button.hasClass(downClass)) {
+					sortEvent($sortType, 'desc');
+					$button.removeClass(downClass).addClass(upClass);
+				} else {
+					sortEvent($sortType, 'asc');
+					$button.removeClass(upClass).addClass(downClass);
+				}
+			},
+			click: function(){
+
+			}
+		}
+	},
+	Counter: {
+		Graph: {
+			Line: function(targetElement, json){
+				var options = {
+					colors: ["#FFFFFF"],
+					chart: {
+						renderTo: targetElement,
+						backgroundColor: "transparent",
+						borderColor: "transparent",
+						borderWidth: 0,
+						spacing: [6, 6, 7, 4],
+						type: 'area'
+					},
+					credits: {
+						enabled: !1
+					},
+					legend: {
+						enabled: !1,
+						align: "right",
+						verticalAlign: "bottom",
+						itemStyle: {},
+						itemHoverStyle: {},
+						itemHiddenStyle: {}
+					},
+					title: {
+						text: null,
+						style: {
+							color: "#FFFFFF"
+						}
+					},
+					tooltip: {
+						shared: true,
+						backgroundColor: "#1C242D",
+						borderColor: "#1C242D",
+						borderWidth: 1,
+						borderRadius: 0,
+						style: {
+							color: "#FFFFFF"
+						}
+					},
+					subtitle: {
+						style: {
+							color: "#666666"
+						}
+					},
+					symbols: ["circle"],
+					xAxis: {
+						categories: ['0-10', '10-20', '20-30', '30+'],
+						tickWidth: 0,
+						labels: {
+							style: {
+								color: "#999",
+								fontSize: '10px'
+							}
+						},
+						lineWidth: 1,
+						lineColor: "#cdd2d2",
+						tickColor: "#cdd2d2",
+						title: {
+							enabled: !1
+						},
+						min: 0.5,
+						max: 4 - 1.5,
+						startOnTick: false,
+						endOnTick: false,
+						minPadding: 0,
+						maxPadding: 0,
+						align: "left",
+						plotBands: [{
+							from: 0,
+							to: 1,
+							color: '#dfe1e1',
+							zIndex: -1
+						}]
+					},
+					yAxis: {
+						gridLineColor: "#cdd2d2",
+						gridLineWidth: 1,
+
+						labels: {
+							style: {
+								color: "#999",
+								fontSize: '10px'
+							}
+							// formatter: function(){
+							// 	return this.value / 1000 + 'k';
+							// }
+						},
+						lineWidth: 1,
+						lineColor: "#cdd2d2",
+						tickColor: "#cdd2d2",
+						title: {
+							style: {
+								color: "#FFFFFF"
+							},
+							text: null
+						}
+					},
+					plotOptions: {
+						area: {
+							lineWidth: 1,
+							marker: {
+								lineWidth: 1,
+								fillColor: 'white'
+							},
+							fillOpacity: 0.5
+						}
+					}
+				};
+
+				(function(options, json){
+					var chart;
+					if (json) {
+						options = $.fn.extend(true, options, json);
+						chart = new Highcharts.Chart(options);
+					} else {
+						$(targetElement).html("<div class=\"ErrorMessage NoData\"><div class=\"Message\">데이터가 존재하지 않습니다.</div></div>");
+					}
+				})(options, json);
+			},
+			Radar: function(targetElement, json){
+				var options = {
+					chart: {
+						renderTo: targetElement,
+						backgroundColor: "transparent",
+						borderColor: "transparent",
+						borderWidth: 0,
+						polar: true,
+						type: 'area'
+					},
+					credits: {
+						enabled: !1
+					},
+					title: {
+						text: null,
+						style: {
+							color: "#FFFFFF"
+						}
+					},
+					pane: {
+						size: '80%'
+					},
+					xAxis: {
+						categories: ['승률', '딜량', '골드 획득량', '어시스트', '데스', '킬'],
+						tickmarkPlacement: 'on',
+						lineWidth: 0
+					},
+					yAxis: {
+						gridLineInterpolation: 'polygon',
+						lineWidth: 0,
+						min: 0,
+						labels: {
+							enabled: !1
+						}
+					},
+					tooltip: {
+						shared: true
+					},
+					plotOptions: {
+						area: {
+							lineWidth: 1,
+							marker: {
+								lineWidth: 1,
+								fillColor: 'white'
+							},
+							fillOpacity: 0.3
+						}
+					},
+					legend: {
+						borderColor: '#cdd2d2',
+						borderRadius: 3,
+						borderWidth: 1,
+
+						backgroundColor: '#fff'
+					}
+				};
+
+				(function(options, json){
+					var chart;
+					if (json) {
+						options = $.fn.extend(true, options, json);
+						chart = new Highcharts.Chart(options);
+					} else {
+						$(targetElement).html("<div class=\"ErrorMessage NoData\"><div class=\"Message\">데이터가 존재하지 않습니다.</div></div>");
+					}
+				})(options, json);
+			},
+			Pie: function(targetElement, json){
+				var options = {
+					chart: {
+						renderTo: targetElement,
+						backgroundColor: "transparent",
+						borderColor: "transparent",
+						borderWidth: 0,
+						polar: true,
+						spacing: 0,
+						type: 'pie'
+					},
+					credits: {
+						enabled: !1
+					},
+					legend: {
+						enabled: !1
+					},
+					title: {
+						text: null,
+						style: {
+							color: "#FFFFFF"
+						}
+					},
+					xAxis: {},
+					yAxis: {
+						lineWidth: 0,
+						labels: {
+							enabled: !1
+						}
+					},
+					plotOptions: {
+						pie: {
+							allowPointSelect: false,
+							cursor: 'pointer',
+							dataLabels: {
+								enabled: false
+							},
+							innerSize: 85,
+							// depth: 45,
+							enableMouseTracking: false
+						}
+					}
+				};
+
+				(function(options, json){
+					var chart;
+					if (json) {
+						options = $.fn.extend(true, options, json);
+						chart = new Highcharts.Chart(options);
+					} else {
+						$(targetElement).html("<div class=\"ErrorMessage NoData\"><div class=\"Message\">데이터가 존재하지 않습니다.</div></div>");
+					}
+				})(options, json);
+			},
+			Diff: function(targetElement, json){
+				var options = {
+					colors: ["#FFFFFF"],
+					chart: {
+						renderTo: targetElement,
+						backgroundColor: "transparent",
+						borderColor: "transparent",
+						borderWidth: 0,
+						spacing: [6, 6, 7, 4],
+						type: 'area'
+					},
+					credits: {
+						enabled: !1
+					},
+					legend: {
+						enabled: !1,
+						align: "right",
+						verticalAlign: "bottom",
+						itemStyle: {},
+						itemHoverStyle: {},
+						itemHiddenStyle: {}
+					},
+					title: {
+						text: null,
+						style: {
+							color: "#FFFFFF"
+						}
+					},
+					tooltip: {
+						shared: true,
+						backgroundColor: "#1C242D",
+						borderColor: "#1C242D",
+						borderWidth: 1,
+						borderRadius: 0,
+						style: {
+							color: "#FFFFFF"
+						}
+					},
+					subtitle: {
+						style: {
+							color: "#666666"
+						}
+					},
+					xAxis: {
+						categories: ['0-10', '10-20', '20-30'],
+						tickWidth: 0,
+						labels: {
+							style: {
+								color: "#999",
+								fontSize: '10px'
+							}
+						},
+						lineWidth: 1,
+						lineColor: "#cdd2d2",
+						tickColor: "#cdd2d2",
+						title: {
+							enabled: !1
+						},
+						min: 0.5,
+						max: 1.5,
+						startOnTick: false,
+						endOnTick: false,
+						minPadding: 0,
+						maxPadding: 0,
+						align: "left"
+					},
+					yAxis: {
+						gridLineColor: "#cdd2d2",
+						gridLineWidth: 1,
+
+						labels: {
+							style: {
+								color: "#999",
+								fontSize: '10px'
+							}
+							// formatter: function(){
+							// 	return this.value / 1000 + 'k';
+							// }
+						},
+						lineWidth: 1,
+						lineColor: "#cdd2d2",
+						tickColor: "#cdd2d2",
+						title: {
+							style: {
+								color: "#FFFFFF"
+							},
+							text: null
+						}
+					},
+					plotOptions: {
+						area: {
+							lineWidth: 1,
+							marker: {
+								lineWidth: 1,
+								fillColor: 'white'
+							},
+							fillOpacity: 0.5
+						}
+					}
+				};
+
+				(function(options, json){
+					var chart;
+					if (json) {
+						options = $.fn.extend(true, options, json);
+						chart = new Highcharts.Chart(options);
+					} else {
+						$(targetElement).html("<div class=\"ErrorMessage NoData\"><div class=\"Message\">데이터가 존재하지 않습니다.</div></div>");
+					}
+				})(options, json);
+			}
+		},
+		Change: function(oRow, championId, targetChampionId, position, callback){
+			var $viewSelector = $('#ChampionMatchUpContent'),
+				championListRows = $(oRow).closest('.Content').find('.Row'),
+				currentRow = $(oRow),
+				setHTML = function(html){
+					$viewSelector.html(html);
+					$(window).resize(); // 광고 위치
+				};
+
+			if (!$viewSelector.hasClass('loading')) {
+				$viewSelector.addClass('loading');
+				championListRows.removeClass('active');
+				currentRow.addClass('active');
+				setHTML($.OP.GG.common.makeCenteredTableLoader('black', 500));
+
+				$.OP.GG.ajax.getHTML({
+					url: '/champion/ajax/statistics/counterChampion/',
+					method: 'get',
+					data: {
+						championId: championId,
+						targetChampionId: targetChampionId,
+						position: position
+					},
+					callback: {
+						onHTML: function(html){
+							setHTML(html);
+						},
+						onError: function(error){
+							alert(error);
+						},
+						onFinal: function(){
+							$viewSelector.removeClass('loading');
+							callback && callback();
+						}
+					}
+				});
+			}
+		}
+	},
+	Guide: {
+		Index: {
+			currentSelectChampionKey: null,
+			SelectChampion: function(championKey){
+				var $Items = $("#ChampionList").find(".Item");
+
+				if (championKey) {
+					championKey = championKey.toLowerCase();
+
+					// 이미 선택된 챔피언이 있다면 삭제하고 새로 선택함
+					$Items.removeClass("selected");
+					$Items.filter('[data-champion-key="' + championKey + '"]').addClass("selected");
+				} else {
+					$Items.removeClass("selected");
+					$("#AllChampion").addClass("selected");
+				}
+			},
+			// 가이드 목록 변경
+			Change: function(championKey, order, start){
+				var $ChampionGuideList = $('#ChampionGuideList'),
+					setHTML = function(html){
+						$ChampionGuideList.html(html);
+						$(window).resize(); // 광고 위치
+					};
+
+				start = start - 1 >= 0 ? start : 0;
+				$.OP.GG.champion.Guide.Index.currentSelectChampionKey = championKey;
+
+				if (!$ChampionGuideList.hasClass('loading')) {
+					$ChampionGuideList.addClass('loading');
+					setHTML($.OP.GG.common.makeCenteredTableLoader('black', 500));
+				}
+
+				$.OP.GG.ajax.getHTML({
+					url: '/champion/ajax/guide/searchGuideList/',
+					method: 'get',
+					data: {
+						name: championKey,
+						order: order,
+						start: start
+					},
+					callback: {
+						onHTML: function(html){
+							if ($.OP.GG.champion.Guide.Index.currentSelectChampionKey == championKey) {
+								setHTML(html);
+								if (start) window.scrollTo(0, document.body.scrollHeight);
+							}
+						},
+						onError: function(error){
+							alert(error);
+						},
+						onFinal: function(){
+							$ChampionGuideList.removeClass('loading');
+						}
+					}
+				});
+			},
+			Load: function(url){
+				var $indexLayout = $(".ChampionGuideIndexLayout"),
+					setHTML = function(html){
+						var innerHTML = $(html).html();
+						$indexLayout.html(innerHTML);
+						$(window).resize(); // 광고 위치
+					};
+
+				$.OP.GG.ajax.getHTML({
+					url: url,
+					method: 'get',
+					callback: {
+						onHTML: function(html){
+							setHTML(html);
+						},
+						onError: function(error){
+							alert(error);
+						}
+					}
+				});
+			},
+			LoadMore: function(oButton, nextOffset){
+				var oButtonWrap = $(oButton).closest('.ButtonWrap');
+
+				oButtonWrap.startLoading({
+					'className': 'black'
+				});
+
+				$.OP.GG.ajax.getHTML({
+					url: '/champion/ajax/guide/recentArticles/',
+					data: {
+						start: nextOffset
+					},
+					callback: {
+						onHTML: function(html){
+							oButtonWrap.stopLoading();
+							oButtonWrap.before(html);
+							oButtonWrap.remove();
+						},
+						onError: function(error){
+							alert(error);
+							oButtonWrap.stopLoading();
+						}
+					}
+				});
+			}
+		},
+		Comment: {
+			Vote: function(oButton, commentIdx, isLoader){
+				var oItem = $(oButton).closest('.RForumCommentListItem');
+
+				oButton.disabled = true;
+
+				if (isLoader) $(oButton).startLoading({className: 'black'});
+
+				$.OP.GG.ajax.getHTML({
+					url: '/champion/ajax/guide/voteComment.toggle/',
+					method: 'post',
+					data: {
+						commentIdx: commentIdx
+					},
+					callback: {
+						onHTML: function(html){
+							oItem.replaceWith(html);
+						},
+						onError: function(error){
+							alert(error);
+							if (isLoader) $(oButton).stopLoading();
+						},
+						onFinal: function(){
+							oButton.disabled = false;
+						}
+					}
+				});
+			},
+			Load: function(targetElement, articleIdx){
+				var setHTML = function(html){
+					targetElement.html(html);
+				};
+
+				setHTML($.OP.GG.common.makeCenteredTableLoader('black', 1000));
+
+				$.OP.GG.ajax.getHTML({
+					url: '/champion/ajax/guide/comments/',
+					data: {
+						articleIdx: articleIdx
+					},
+					callback: {
+						onHTML: function(html){
+							setHTML(html);
+						},
+						onError: function(error){
+							setHTML(error);
+						}
+					}
+				});
+			},
+			Delete: function(oButton, commentIdx){
+				if (!confirm('정말로 삭제하시겠습니까?')) return;
+
+				oButton.disabled = true;
+
+				$.OP.GG.ajax.getJSON({
+					type: "POST",
+					url: '/champion/ajax/guide/deleteComment.json/',
+					data: {
+						commentIdx: commentIdx
+					},
+					callback: {
+						onJSON: function(json){
+							$(oButton).closest('.tabWrap').trigger('refresh');
+						},
+						onError: function(error){
+							alert(error);
+						},
+						onFinal: function(){
+							oButton.disabled = false;
+						}
+					}
+				});
+			},
+			ReplyComment: {
+				_ConstantClassName: '__CommentReplyComment__',
+				_o: [],
+				_removeIfFormExists: function(oComment){
+					// 글쓰기 폼이 이미 다른곳에 열려져있으면 그걸 닫는다.
+					oComment.closest('.RForumCommentListWrap').find("." + $.OP.GG.champion.Guide.Comment.ReplyComment._ConstantClassName).remove();
+				},
+				_getReplyComment: function(data, cb){
+					// 대댓글 열기
+					$.OP.GG.ajax.getHTML({
+						url: '/champion/ajax/guide/replyComment/',
+						data: data,
+						callback: {
+							onHTML: function(html){
+								cb(html);
+							},
+							onError: function(error){
+								alert(error);
+							}
+						}
+					});
+				},
+				Submit: function(form){
+					var submitBtn = $(form).find("[type=submit]"),
+						textarea = $(form).find('textarea');
+
+					$.OP.GG.ajax.formSubmit(form, 'json', {
+						onBeforeRequest: function(form){
+							submitBtn.startLoading({
+								className: 'black',
+								minHeight: 70
+							});
+						},
+						onJSON: function(json){
+							textarea.val('');
+							if (json['childPage']) {
+								$.OP.GG.champion.Guide.Comment.ReplyComment.Open($(form), json.articleIdx, json.parentCommentIdx, json['childPage']);
+							} else if (json['location']) {
+								location.href = json['location'];
+							} else if (json['reload']) {
+								$(form).closest('.tabWrap').trigger('refresh');
+							}
+						},
+						onError: function(message){
+							alert(message);
+						},
+						onFinal: function(){
+							submitBtn.stopLoading();
+						}
+					});
+				},
+				Toggle: function(oButton, articleIdx, commentIdx){
+					var oComment = $(oButton).closest('.RForumCommentListItem');
+					if (!oComment.find(".Footer").length) {
+						$.OP.GG.champion.Guide.Comment.ReplyComment.Open(oButton, articleIdx, commentIdx);
+					} else {
+						$.OP.GG.champion.Guide.Comment.ReplyComment.Close(oButton);
+					}
+				},
+				Open: function(oButton, articleIdx, commentIdx, page){
+					// 대댓글 창 열기
+					var oComment = $(oButton).closest('.RForumCommentListItem');
+
+					$.OP.GG.champion.Guide.Comment.ReplyComment._removeIfFormExists(oComment);
+
+					var oreplyComment = $($.OP.GG.common.makeCenteredTableLoader('black', 85))
+						.addClass($.OP.GG.champion.Guide.Comment.ReplyComment._ConstantClassName);
+
+					var lastObj = oComment.nextUntil(':not(.Child)').last();
+					if (lastObj.length > 0) {
+						oreplyComment.appendTo(lastObj);
+
+						// 스크롤 자동으로 내려줌. 현재 스크롤된 화면의 위치와 타겟 요소의 세로 크기 (윗 댓글 보이게 + 200 정도 해줌)를 고려하여, 현재 화면에서 글쓰기 창이 보이지 않을 경우에만 스크롤 해줌.
+						// 만약 추후 이와 비슷한 기능이 다른데서 또 필요할 경우, 복잡하게 코딩하지말고 jQuery visible 라이브러리 등을 이용하여 코딩을 간단하게 할 것.
+						var scrollToTop = oreplyComment.offset().top - 270,
+							windowHeight = $(window).height(),
+							targetElementHeight = oreplyComment.height() + 270;
+
+						if (scrollToTop - window.scrollY + targetElementHeight > windowHeight) {
+							window.scrollTo(0, scrollToTop);
+						}
+					} else {
+						oreplyComment.appendTo(oComment);
+					}
+
+					$.OP.GG.champion.Guide.Comment.ReplyComment._getReplyComment({
+						articleIdx: articleIdx,
+						parentCommentIdx: commentIdx,
+						page: page
+					}, function(html){
+						var newE = $(html);
+						oreplyComment.replaceWith(newE);
+
+						newE.addClass($.OP.GG.champion.Guide.Comment.ReplyComment._ConstantClassName);
+					});
+				},
+				Close: function(oButton){
+					var oComment = $(oButton).closest('.RForumCommentListItem');
+					oComment.find(".__CommentReplyComment__").remove();
+				},
+				Page: function(oButton, articleIdx, commentIdx, page){
+					var $button = $(oButton),
+						$footer = $(oButton).closest(".Footer"),
+						$commentList = $footer.find(".RForumCommentList");
+
+					$footer.find(".RForumChildCommentPaginate > .Page").removeClass("active");
+					$footer.find(".RForumChildCommentPaginate > .Page[data-page=" + page + "]").addClass("active");
+					//$button.addClass("active");
+
+					$commentList.startLoading({
+						minHeight: $commentList.height(),
+						'className': 'black'
+					});
+
+					$.OP.GG.ajax.getHTML({
+						url: '/champion/ajax/guide/replyCommentByPage/',
+						data: {
+							articleIdx: articleIdx,
+							parentCommentIdx: commentIdx,
+							page: page
+						},
+						callback: {
+							onHTML: function(html){
+								var newE = $(html);
+								$commentList.stopLoading();
+								$commentList.html(newE);
+							},
+							onError: function(error){
+								alert(error);
+							}
+						}
+					});
+				}
+			},
+			PageBlock: {
+				Toggle: function(oButton, articleIdx, page, order){
+					var commentListId = $(oButton).data('comment-list-id'),
+						eCommentList = $("#" + commentListId);
+
+					if (!eCommentList || !eCommentList.length) {
+						eCommentList = $("<div class='RForumCommentList' id='" + commentListId + "'>");
+						$(oButton).addClass('active');
+
+						// scrollToFixed 작동 원리 때문에 커맨트리스트 spacer 뒤쪽에다가 삽입.
+						var spacer = $(oButton).next(".scrollToFixedSpacer");
+						if (spacer.length > 0) {
+							spacer.after(eCommentList);
+						} else {
+							$(oButton).after(eCommentList);
+						}
+					} else {
+						$(eCommentList).remove();
+						$(oButton).removeClass('active');
+						return;
+					}
+
+					var setHTML = function(html){
+						eCommentList.html(html);
+					};
+
+					setHTML($.OP.GG.common.makeCenteredTableLoader('black', 600));
+
+					$.OP.GG.ajax.getHTML({
+						url: '/champion/ajax/guide/commentsByPage/',
+						data: {
+							articleIdx: articleIdx,
+							page: page,
+							order: order
+						},
+						callback: {
+							onHTML: function(html){
+								setHTML(html);
+							},
+							onError: function(error){
+								setHTML(error);
+							}
+						}
+					});
+				}
+			}
+		},
+		Champion: {
+			Open: function(tab){
+				$.OP.GG.util.blockBodyScroll(function(end){
+					$.OP.GG.common.dim({
+						onClose: function(){
+							end();
+						},
+						job: function(setHTML, doClose){
+							$.OP.GG.ajax.getHTML({
+								url: '/champion/ajax/guide/selectChampion/tab=' + tab,
+								callback: {
+									onHTML: function(html){
+										setHTML(html);
+									},
+									onError: function(error){
+										alert(error);
+										doClose();
+									}
+								}
+							});
+						}
+					});
+				});
+			}
+		},
+		Spell: {
+			Open: function(){
+				$.OP.GG.util.blockBodyScroll(function(end){
+					$.OP.GG.common.dim({
+						onClose: function(){
+							end();
+						},
+						job: function(setHTML, doClose){
+							$.OP.GG.ajax.getHTML({
+								url: '/champion/ajax/guide/selectSpell/',
+								callback: {
+									onHTML: function(html){
+										setHTML(html);
+									},
+									onError: function(error){
+										alert(error);
+										doClose();
+									}
+								}
+							});
+						}
+					});
+				});
+			}
+		},
+		Item: {
+			Open: function(){
+				$.OP.GG.util.blockBodyScroll(function(end){
+					$.OP.GG.common.dim({
+						onClose: function(){
+							end();
+						},
+						job: function(setHTML, doClose){
+							$.OP.GG.ajax.getHTML({
+								url: '/champion/ajax/guide/selectItem/',
+								callback: {
+									onHTML: function(html){
+										setHTML(html);
+									},
+									onError: function(error){
+										alert(error);
+										doClose();
+									}
+								}
+							});
+						}
+					});
+				});
+			}
+		},
+		Rune: {
+			Open: function(cb){
+				$.OP.GG.util.blockBodyScroll(function(end){
+					$.OP.GG.common.dim({
+						onClose: function(){
+							end();
+						},
+						job: function(setHTML, doClose){
+							$.OP.GG.ajax.getHTML({
+								url: '/champion/ajax/guide/selectRune/',
+								callback: {
+									onHTML: function(html){
+										setHTML(html);
+										if (cb) cb();
+									},
+									onError: function(error){
+										alert(error);
+										doClose();
+									}
+								}
+							});
+						}
+					});
+				});
+			},
+			statistics: function(){
+				var manager = $.OP.GG.champion.Guide.Rune.Manager;
+				var oSelectedRune = manager.oRuneMasteryContentWrap.find(".RuneListWrap");
+				var oSelectedRuneList = oSelectedRune.find(".SelectedRuneList");
+				var oRuneSummary = $(".RuneWrap .SideContent");
+
+				var stats = [];
+				oSelectedRuneList.find(".Item").each(function(){
+					var oRune = $(this);
+					var id = "rune-" + oRune.data("rune-id");
+					var count = oRune.find(".Value").text().substr(1) * 1;
+					if (typeof stats[id] == 'undefined') {
+						stats[id] = 0;
+					}
+
+					stats[id] += count;
+				});
+
+				var runes = [];
+				for (var key in stats) {
+					runes.push({id: key.substr(5), count: stats[key]})
+				}
+
+				oRuneSummary.startLoading({
+					className: 'black',
+					minHeight: 120
+				});
+
+				$.OP.GG.ajax.getHTML({
+					url: '/champion/ajax/guide/writeRuneSummary/',
+					method: 'get',
+					data: {
+						runes: JSON.stringify(runes)
+					},
+					callback: {
+						onHTML: function(html){
+							oRuneSummary.html(html);
+						}
+					}
+				});
+
+			},
+			Manager: {
+				oRuneMasteryContentWrap: undefined,
+				open: function(oButton){
+					var manager = $.OP.GG.champion.Guide.Rune.Manager;
+					var oRuneMasteryContentWrap = oButton.closest(".ContentWrap");
+
+					if (!oRuneMasteryContentWrap) return false;
+					manager.oRuneMasteryContentWrap = oRuneMasteryContentWrap;
+
+					$.OP.GG.champion.Guide.Rune.Open(function(){
+						var html = '';
+						var oSelectedRuneList = oButton.closest(".RuneListWrap").find(".SelectedRuneList");
+						if (oSelectedRuneList.find(".Item").length > 0) {
+							oSelectedRuneList.find(".Item").each(function(){
+								var id = $(this).data("rune-id");
+								var type = $(this).data("rune-type");
+								var imageUrl = $(this).find(".Image").attr("src");
+								var name = $(this).find(".Label").text();
+								var count = $(this).find(".Value").text().substr(1) * 1;
+
+								html += SelectRuneManager.generateRuneHtml(id, type, imageUrl, name, count);
+							});
+							SelectRuneManager.showEmptyMessage(false);
+							SelectRuneManager.addByHtml(html);
+						}
+						//var oSelectedRuneTable = oButton.closest(".RuneListWrap").find(".ChampionGuideWriteSelectedRuneTable");
+						//var oRuneList = $("> .ChampionGuideWriteRuneList", ".ChampionGuideSelectedRuneWrap.Header");
+						//var oRuneListItem = $("> .ChampionGuideRuneItem:not(.Empty)", oRuneList);
+						//if (oSelectedRuneTable.find(".tBody").find(".Row").length > 0) {
+						//	oSelectedRuneTable.find(".tBody").find(".Row").each(function(){
+						//		var id = $(this).data("rune-id");
+						//		var type = $(this).data("rune-type");
+						//		var imageUrl = $(this).find(".Image").attr("src");
+						//		var name = $(this).find(".RuneName").text();
+						//		var count = $(this).find(".RuneCount").text().substr(1) * 1;
+						//
+						//		html += SelectRuneManager.generateRuneHtml(id, type, imageUrl, name, count);
+						//	});
+						//	SelectRuneManager.showEmptyMessage(false);
+						//	SelectRuneManager.addByHtml(html);
+						//}
+					});
+
+					return true;
+				},
+				generateRuneHtml: function(id, type, imageUrl, name, count){
+					return '<li class="Item" data-rune-id="' + id + '" data-rune-type="' + type + '">' +
+						'<img src="' + imageUrl + '" class="Image">' +
+						'<div class="Value">' + count + '</div>' +
+						'<div class="Label">' + name + '</div>' +
+						'</li>';
+				},
+				addByHtml: function(html){
+					var manager = $.OP.GG.champion.Guide.Rune.Manager;
+					var oSelectedRuneTable = manager.oRuneMasteryContentWrap.find(".SelectedRuneList");
+					oSelectedRuneTable.append(html);
+					if (oSelectedRuneTable.hasClass("Empty")) oSelectedRuneTable.removeClass("Empty");
+				},
+				removeAll: function(oSelectedRuneWrap){
+					$(".SelectedRuneList > .Item", oSelectedRuneWrap).remove();
+				},
+				save: function(oButton){
+					var manager = $.OP.GG.champion.Guide.Rune.Manager;
+					var oSelectedRuneWrap = oButton.closest(".ChampionGuideWriteRuneSelectedWrap").find(".ChampionGuideSelectedRuneWrap.Header");
+					var oRuneList = oSelectedRuneWrap.find(".ChampionGuideWriteRuneList");
+
+					//manager.removeAll(oSelectedRuneWrap);
+					SelectRuneManager.removeAll(manager.oRuneMasteryContentWrap);
+
+					var html = "";
+					if (oRuneList.find(".ChampionGuideRuneItem:not(.Empty)").length) {
+						oRuneList.find(".ChampionGuideRuneItem:not(.Empty)").each(function(){
+							var id = $(this).data("rune-id");
+							var type = $(this).data("rune-type");
+							var imageUrl = $(this).find(".Face").find(".Image").attr("src");
+							var name = $(this).find(".Name").text();
+							var count = $(this).find(".Count").text();
+
+							html += manager.generateRuneHtml(id, type, imageUrl, name, count, true);
+						});
+
+						manager.addByHtml(html);
+						$.OP.GG.champion.Guide.Rune.statistics();
+					} else {
+						SelectRuneManager.removeStatistics(manager.oRuneMasteryContentWrap);
+					}
+
+					oButton.closest('.DimmedBlock').trigger('close');
+				},
+				getArray: function(){
+					var runes = [];
+					$(".RuneListWrap >.SelectedRuneList", ".RuneMasteryWrap").each(function(idx, e){
+						var rune = [];
+						$(e).find(".Item").each(function(idx2, e2){
+							var o2 = $(e2);
+							var runeId = o2.data('rune-id');
+							var rank = o2.find(".Value").text().substr(1);
+
+							if (!runeId || !rank) return;
+							rune.push({'id': runeId, 'count': rank});
+						});
+						runes.push(rune);
+					});
+					return runes;
+				}
+			}
+		},
+		Mastery: {
+			Manager: {
+				getRankAndMax: function(oMastery){
+					var manager = $.OP.GG.champion.Guide.Mastery.Manager;
+
+					var max = 0;
+					var rank = 0;
+
+					var oRank = oMastery.find(".Rank");
+					if (oRank.length) {
+						var arr = oMastery.find(".Rank").text().split('/');
+						rank = arr[0] * 1;
+						max = arr[1] * 1;
+					} else {
+						rank = manager.isActive(oMastery) ? 1 : 0;
+						max = 1;
+					}
+
+					return {
+						'max': max,
+						'rank': rank
+					}
+				},
+				isActive: function(oMastery){
+					return oMastery.hasClass("Mastery-Rank-full");
+				},
+				isBlank: function(oMastery){
+					return oMastery.hasClass("Mastery-Rank-blank");
+				},
+				getSpaceRanks: function(oMasteryPage){
+					var manager = $.OP.GG.champion.Guide.Mastery.Manager;
+
+					var sum = 0;
+					$(".Mastery", oMasteryPage).each(function(idx, e){
+						sum += manager.getRankAndMax($(e)).rank;
+					});
+
+					return 30 - sum;
+				},
+				getMasteryPage: function(oElement){
+					return oElement.closest(".MasteryPage2");
+				},
+				getMasteryPageWrap: function(oElement){
+					return oElement.closest(".MasteryPageWrap");
+				},
+				getMasteryPageSummaryWrap: function(oMastery){
+					return oMastery.closest(".MasteryPageWrap").find(".MasteryPageSummaryWrap");
+				},
+				getMasteryPageArea: function(oMastery){
+					return oMastery.closest(".MasteryPageArea");
+				},
+				getRanksInPageArea: function(oPageArea){
+					var manager = $.OP.GG.champion.Guide.Mastery.Manager;
+
+					var sum = 0;
+					$(".Mastery", oPageArea).each(function(idx, e){
+						sum += manager.getRankAndMax($(e)).rank;
+					});
+
+					return sum;
+				},
+				updateCellStatus: function(oMastery, rank, spaceRanks){
+					var manager = $.OP.GG.champion.Guide.Mastery.Manager;
+
+					if (rank > 0) {
+						if (!manager.isActive(oMastery)) oMastery.addClass("Mastery-Rank-full");
+						if (manager.isBlank(oMastery)) oMastery.removeClass("Mastery-Rank-blank");
+					} else {
+						if (manager.isActive(oMastery)) oMastery.removeClass("Mastery-Rank-full");
+						if (!manager.isBlank(oMastery)) oMastery.addClass("Mastery-Rank-blank");
+					}
+
+					var rankAndMax = manager.getRankAndMax(oMastery);
+					if (rankAndMax.max > 0) {
+						oMastery.find(".Rank").text(rank + "/" + rankAndMax.max);
+					}
+
+					// 카운트 업데이트
+					if (typeof spaceRanks != 'undefined') {
+						manager.updateRankStatus(oMastery, spaceRanks);
+					}
+				},
+				updateRankStatus: function(oMastery, spaceRanks){
+					var manager = $.OP.GG.champion.Guide.Mastery.Manager;
+					var oMasteryPageSummaryWrap = manager.getMasteryPageSummaryWrap(oMastery);
+
+					// 전체 카운트
+					$(".Point >.count", oMasteryPageSummaryWrap).text(spaceRanks);
+
+					// 섹션 카운트 (하단)
+					var oPageArea = manager.getMasteryPageArea(oMastery);
+					var ranksInPageArea = manager.getRanksInPageArea(oPageArea);
+					$(".Summary >.Count", oPageArea).text(ranksInPageArea);
+
+					// 섹션 카운트 (왼쪽)
+					var pageName = oPageArea.attr('class').match(/MasteryPageArea\-([^\s]+)/)[1];
+					$(".MasteryPageSummary >." + pageName + " >.Text", oMasteryPageSummaryWrap).text(ranksInPageArea);
+				},
+				getLineNumber: function(oMastery){
+					return oMastery.attr('class').match(/Mastery-Pos-([0-9]+)/)[1] * 1;
+				},
+				getMasteryId: function(oMastery){
+					return oMastery.data("mastery-id");
+				},
+				isFullRankInLine: function(oMasteryPage, lineNumber){
+					var manager = $.OP.GG.champion.Guide.Mastery.Manager;
+
+					var max = 0;
+					var sum = 0;
+					$(".Mastery-Pos-" + lineNumber, oMasteryPage).each(function(idx, e){
+						var o = $(e);
+						var rankAndMax = manager.getRankAndMax(o);
+
+						if (max == 0) max = rankAndMax.max;
+						sum += rankAndMax.rank;
+					});
+
+					return sum >= max;
+				},
+				add: function(oMastery, isFromWheel){
+					var manager = $.OP.GG.champion.Guide.Mastery.Manager;
+
+					var rankAndMax = manager.getRankAndMax(oMastery);
+					// 이미 풀로 찍혀있으면 무시
+					if (rankAndMax.max <= rankAndMax.rank) return false;
+
+					var oMasteryPageArea = manager.getMasteryPageArea(oMastery);
+					var lineNumber = manager.getLineNumber(oMastery);
+
+					// 두 번째 라인 부터는 그 윗 라인이 풀로 차 있을때만 가능
+					if (lineNumber > 1 && !manager.isFullRankInLine(oMasteryPageArea, lineNumber - 1)) return false;
+
+					var masteryId = manager.getMasteryId(oMastery);
+					var oItems = $(".Mastery-Pos-" + lineNumber, oMasteryPageArea);
+					var ranksInLine = 0;
+					var oOtherActivatedMastery = undefined;
+					oItems.each(function(idx, e){
+						var o = $(e);
+						var rankAndMax = manager.getRankAndMax(o);
+						ranksInLine += rankAndMax.rank;
+
+						if (oOtherActivatedMastery == undefined && rankAndMax.rank > 0 && masteryId != manager.getMasteryId(o)) {
+							oOtherActivatedMastery = o;
+						}
+					});
+
+					var spaceRanks = manager.getSpaceRanks(manager.getMasteryPage(oMastery));
+					var upRanks = 0;
+
+					if (ranksInLine == 0) {
+						// 이 라인에 선택한 룬이 없으면 풀로 찍음
+						upRanks = rankAndMax.max;
+					} else {
+						// 라인에 이미 찍혀있는 경우
+						if (oOtherActivatedMastery != undefined && (ranksInLine >= rankAndMax.max || spaceRanks == 0)) {
+							// max가 넘친 경우니까 다른 특성 찾아서 1개 까고 원하는거 올리기
+							manager.updateCellStatus(oOtherActivatedMastery, manager.getRankAndMax(oOtherActivatedMastery).rank - 1, false);
+							spaceRanks++;
+						}
+						upRanks = 1;
+					}
+
+					if (spaceRanks <= 0) return false;
+					if (upRanks > spaceRanks) upRanks = 1;
+					manager.updateCellStatus(oMastery, rankAndMax.rank + upRanks, spaceRanks - upRanks);
+
+					return true;
+				},
+				remove: function(oMastery){
+					var manager = $.OP.GG.champion.Guide.Mastery.Manager;
+
+					var rankAndMax = manager.getRankAndMax(oMastery);
+					if (rankAndMax.rank <= 0) return false;
+
+					// 다음 라인에 찍어둔 게 있으면 못지움
+					var lineNumber = manager.getLineNumber(oMastery);
+					var oMasteryPageArea = manager.getMasteryPageArea(oMastery);
+
+					var isNextLineSlotNotEmpty = false;
+					$(".Mastery-Pos-" + (lineNumber + 1), oMasteryPageArea).each(function(idx, mastery){
+						if (manager.getRankAndMax($(mastery)).rank > 0) {
+							isNextLineSlotNotEmpty = true;
+						}
+					});
+
+					if (isNextLineSlotNotEmpty) return false;
+
+					manager.updateCellStatus(oMastery, rankAndMax.rank - 1, manager.getSpaceRanks(manager.getMasteryPage(oMastery)) + 1);
+
+					return true;
+				},
+				reset: function(oButton){
+					var manager = $.OP.GG.champion.Guide.Mastery.Manager;
+					$(".MasteryPage2", manager.getMasteryPageWrap(oButton)).find(".MasteryPageArea").each(function(idx, masteryPageArea){
+						var oMasteryPageArea = $(masteryPageArea);
+
+						var oLastMastery = undefined;
+
+						$(">.Mastery", oMasteryPageArea).each(function(idx2, mastery){
+							var oMastery = $(mastery);
+							manager.updateCellStatus(oMastery, 0);
+
+							oLastMastery = oMastery;
+						});
+
+						manager.updateRankStatus(oLastMastery, 30);
+					});
+				},
+				getArray: function(){
+					var manager = $.OP.GG.champion.Guide.Mastery.Manager;
+					var masteries = [];
+					$(".MasteryPage2").each(function(idx, e){
+						var o = $(e);
+						var mastery = [];
+						o.find(".Mastery").each(function(idx2, e2){
+							var oMastery = $(e2)
+							var rankAndMax = manager.getRankAndMax(oMastery);
+							if (rankAndMax.rank > 0) {
+								mastery.push({'id': manager.getMasteryId(oMastery), 'count': rankAndMax.rank});
+							}
+						});
+						masteries.push(mastery);
+					});
+					return masteries;
+				}
+			}
+		},
+		Skill: {
+			Manager: {
+				CHAMP_UDYR: 77,
+				CHAMP_AZIR: 268,
+				CHAMP_ZILEAN: 26,
+				CHAMP_RYZE: 13,
+				CHAMP_JAYCE: 126,
+				slots: ["q", "w", "e", "r"],
+				championIdx: 0,
+				count: {},
+				maxCount: {},
+				order: [],
+				getSlotBySlotIdx: function(slotIdx){
+					switch (slotIdx) {
+						case 0:
+							return 'q';
+						case 1:
+							return 'w';
+						case 2:
+							return 'e';
+						case 3:
+							return 'r';
+					}
+
+					return '';
+				},
+				init: function(championIdx){
+					var manager = $.OP.GG.champion.Guide.Skill.Manager;
+					manager.championIdx = championIdx;
+					manager.count = {
+						q: 0,
+						w: 0,
+						e: 0,
+						r: 0
+					};
+					manager.maxCount = {
+						q: 5,
+						w: 5,
+						e: 5,
+						r: 3
+					};
+					manager.order = [];
+
+					// 우디르는 궁극기가 일반스킬임
+					switch (championIdx) {
+						case manager.CHAMP_UDYR:
+							manager.maxCount['r'] = 5;
+							break;
+						case manager.CHAMP_RYZE:
+							manager.maxCount['q'] = 6;
+							manager.maxCount['r'] = 2;
+							break;
+						case manager.CHAMP_JAYCE:
+							manager.maxCount['q'] = 6;
+							manager.maxCount['w'] = 6;
+							manager.maxCount['e'] = 6;
+							manager.maxCount['r'] = 0;
+							break;
+					}
+				},
+				loadDataByView: function(){
+					var manager = $.OP.GG.champion.Guide.Skill.Manager;
+					var oSkillOrderWrapper = $('.ChampionGuideWriteSkillTable');
+
+					for (var level = 1; level <= 18; ++level) {
+						$(".Slot[data-level='" + level + "']", oSkillOrderWrapper).each(function(idx, e){
+							var o = $(e);
+
+							if (o.hasClass("selected")) {
+								var slot = manager.getSlotBySlotIdx(idx);
+								manager.count[slot]++;
+								manager.order.push(slot);
+							}
+						});
+					}
+				},
+				isCanLevelUp: function(slot, level){
+					var manager = $.OP.GG.champion.Guide.Skill.Manager;
+					if (level == undefined) level = manager.order.length + 1;
+					var slotCount = manager.count[slot];
+					var slotMaxCount = manager.maxCount[slot];
+
+					if (slot == "r") {
+						// 우디르 제외
+						if (manager.championIdx == manager.CHAMP_UDYR) {
+							if (slotCount < slotMaxCount) {
+								return (Math.floor((level + 1) / 2) > slotCount) && (slotCount < slotMaxCount);
+							}
+						} else {
+							var ultimateCount = 0;
+							if (level >= 16) ultimateCount = 3;
+							else if (level >= 11) ultimateCount = 2;
+							else if (level >= 6) ultimateCount = 1;
+
+							if (((ultimateCount - slotCount) > 0) && (slotCount < slotMaxCount)) {
+								return true;
+							}
+						}
+
+						return false;
+					}
+
+					if (level == 1) {
+						// 아지르는 1렙 때 w만 찍을 수 있음
+						if (manager.championIdx == manager.CHAMP_AZIR) return slot == 'w';
+						// 질리언은 1렙 때 w빼고 찍을 수 있음
+						if (manager.championIdx == manager.CHAMP_ZILEAN) return slot != 'w';
+						return true;
+					}
+
+					return (Math.floor((level + 1) / 2) > slotCount) && (slotCount < slotMaxCount);
+				},
+				push: function(oSlot){
+					var manager = $.OP.GG.champion.Guide.Skill.Manager;
+					var slot = oSlot.parent().data("slot"); // Slot의 부모 Slots의 슬롯을 가져옴
+					var level = oSlot.data("level");
+
+					var orderLength = manager.order.length;
+					if (level != orderLength && level != orderLength + 1) return false;
+
+					var isShouldAdd = true;
+
+					if (level == orderLength) {
+						var prevSlot = manager.pop();
+
+						if (prevSlot == slot) {
+							isShouldAdd = false;
+						} else {
+							if (!manager.isCanLevelUp(slot)) {
+								slot = prevSlot;
+							}
+						}
+					}
+
+					if (isShouldAdd) {
+						if (!manager.isCanLevelUp(slot)) return false;
+
+						manager.order.push(slot);
+						manager.count[slot]++;
+					}
+
+					return true;
+				},
+				pop: function(){
+					var manager = $.OP.GG.champion.Guide.Skill.Manager;
+					if (!manager.order.length) return;
+
+					var slot = manager.order[manager.order.length - 1];
+					if (!manager.count[slot]) return;
+
+					manager.order.pop();
+					manager.count[slot]--;
+
+					return slot;
+				},
+				displayActiveSlotByLevel: function(level, isShouldHelperDisplayed){
+					var manager = $.OP.GG.champion.Guide.Skill.Manager;
+					if (level <= 0) return false;
+
+					$.each(manager.slots, function(index, value){
+						var o = $(".Slot[data-level='" + (level) + "']", ".Slots[data-slot='" + value + "']");
+
+						if (manager.order.length + 1 >= level && manager.order[level - 1] == value) {
+							o.addClass("selected");
+							o.addClass("show");
+							o.children(".LevelBox").children(".Level").text(level);
+						} else {
+							o.removeClass("selected");
+
+							if (isShouldHelperDisplayed && manager.isCanLevelUp(value, level)) {
+								o.addClass("show");
+							} else {
+								o.removeClass("show");
+							}
+						}
+					});
+					return true;
+				}
+			}
+		},
+		Article: {
+			isLinkVerified: false,
+			Vote: {
+				_Vote: function(oButton, articleIdx, type){
+					var updateView = function(json, oButtonVoteUp, oButtonVoteDown, oVoteScoreUp, oVoteScoreDown){
+						switch (json['voteType']) {
+							case "up":
+								oButtonVoteUp.addClass("active");
+								oButtonVoteDown.removeClass("active");
+								break;
+							case "down":
+								oButtonVoteDown.addClass("active");
+								oButtonVoteUp.removeClass("active");
+								break;
+							case "cancel":
+								oButtonVoteUp.removeClass("active");
+								oButtonVoteDown.removeClass("active");
+								break;
+						}
+						oVoteScoreUp.text(json['voteUp']);
+						oVoteScoreDown.text(json['voteDown']);
+					};
+					var updateViewRow = function(json, oArticleRow){
+						if (!oArticleRow.length) return;
+
+						var oActions = undefined;
+						var oButtonVoteUp = undefined;
+						var oButtonVoteDown = undefined;
+						var oVoteScoreUp = undefined;
+						var oVoteScoreDown = undefined;
+
+						if (!_isMobile) {
+							oActions = oArticleRow.find('.Actions');
+							oButtonVoteUp = oActions.find(".VoteUp");
+							oButtonVoteDown = oActions.find(".VoteDown");
+							oVoteScoreUp = oButtonVoteUp.find(".VoteScore");
+							oVoteScoreDown = oButtonVoteDown.find(".VoteScore");
+						} else {
+							oButtonVoteUp = oArticleRow.find(".VoteUp");
+							oButtonVoteDown = oArticleRow.find(".VoteDown");
+							oVoteScoreUp = oButtonVoteUp.find(".Text");
+							oVoteScoreDown = oButtonVoteDown.find(".Text");
+						}
+
+						updateView(json, oButtonVoteUp, oButtonVoteDown, oVoteScoreUp, oVoteScoreDown);
+					};
+
+					$.OP.GG.ajax.getJSON({
+						url: '/champion/ajax/guide/vote.json/',
+						method: 'post',
+						data: {
+							idx: articleIdx,
+							type: type
+						},
+						callback: {
+							onJSON: function(json){
+								if (json['loginRequired']) {
+									if (!confirm(_L('CHAMPION_GUIDE_RECOMMEND_LOGIN_EXCEPTION'))) return;
+									location.href = json['location'];
+									return;
+								}
+
+								if (!_isMobile) {
+									updateViewRow(json, $(".Guide[data-article-idx='" + articleIdx + "']", "#ChampionRecentGuideList")); // 인덱스 최근 업데이트된 가이드 목록
+									updateViewRow(json, $(".Item[data-article-idx='" + articleIdx + "']", ".ChampionGuideArticleList")); // 가이드 목록 리스트
+									updateViewRow(json, $(".ChampionGuideDetailHeader", ".ChampionGuideArticleDetailLayout")); // 가이드 디테일 상단
+									updateViewRow(json, $(".ChampionGuideDetailUtilWrap", ".ChampionGuideArticleDetailLayout")); // 가이드 디테일 중간
+								} else {
+									updateViewRow(json, $(".Actions", ".Util"))
+								}
+							},
+							onError: function(error){
+								alert(error);
+							},
+							onFinal: function(){
+								oButton.disabled = false;
+							}
+						}
+					});
+				},
+				Up: function(oButton, articleIdx){
+					$.OP.GG.champion.Guide.Article.Vote._Vote(oButton, articleIdx, 'up');
+				},
+				Down: function(oButton, articleIdx){
+					$.OP.GG.champion.Guide.Article.Vote._Vote(oButton, articleIdx, 'down');
+				}
+			},
+			Submit: function(form){
+				if ($.OP.GG.champion.Guide.Skill.Manager.order.length < 18) {
+					alert(_L("CHAMPION_GUIDE_WRITE_SKILL_COUNT_EXCEPTION"));
+					return;
+				}
+
+				var oSubmitButton = $(form).find("[type=submit]");
+				$("#SkillOrder").val($.OP.GG.champion.Guide.Skill.Manager.order.join(""));
+				$("#Masteries").val(JSON.stringify($.OP.GG.champion.Guide.Mastery.Manager.getArray()));
+				$("#Runes").val(JSON.stringify($.OP.GG.champion.Guide.Rune.Manager.getArray()));
+
+				var oOPGGEditorWrap = $(".OPGGEditorWrap");
+				oOPGGEditorWrap.closest(".Content").find(".EditorPreview").html(oOPGGEditorWrap.find('.OPGGEditor').html());
+
+				var oEditorPreviews = $(".EditorPreview");
+				oEditorPreviews.each(function(){
+					var self = this;
+					var html = $(self).html();
+
+					if (html.trim() !== $(self).data("placeholder")) {
+						$(self).prev("input").val(html);
+					}
+				});
+
+				$.OP.GG.ajax.formSubmit(form, 'json', {
+					onBeforeRequest: function(form){
+						oSubmitButton.startLoading({
+							maxHeight: '30'
+						});
+					},
+					onJSON: function(json){
+						if (json['location']) {
+							$(window).off('beforeunload');
+							location.href = json['location'];
+						} else if (json['reload']) {
+							$(form).closest('.tabWrap').trigger('refresh');
+						}
+					},
+					onError: function(message){
+						alert(message);
+					},
+					onFinal: function(){
+						oSubmitButton.stopLoading();
+					}
+				});
+			},
+			Delete: function(oButton, idx){
+				if (!confirm(_L("CHAMPION_GUIDE_DELETE_CONFIRM"))) return;
+
+				oButton.disabled = true;
+
+				$.OP.GG.ajax.getJSON({
+					type: "POST",
+					url: '/champion/ajax/guide/delete.json/',
+					data: {
+						idx: idx
+					},
+					callback: {
+						onJSON: function(json){
+							location.href = json.location;
+						},
+						onError: function(error){
+							alert(error);
+						},
+						onFinal: function(){
+							oButton.disabled = false;
+						}
+					}
+				});
+			},
+			Migrate: function(idx){
+				$.OP.GG.ajax.getJSON({
+					type: "POST",
+					url: '/champion/ajax/guide/migrateArticle.json/',
+					data: {
+						idx: idx
+					},
+					callback: {
+						onJSON: function(json){
+							if (json['location']) {
+								location.href = json['location'];
+							}
+							if (json['message']) {
+								alert(json['message']);
+							}
+						},
+						onError: function(error){
+							alert(error);
+						}
+					}
+				});
+			},
+			OpenManage: function(idx){
+				$.OP.GG.util.blockBodyScroll(function(end){
+					$.OP.GG.common.dim({
+						onClose: function(){
+							end();
+						},
+						job: function(setHTML, doClose){
+							$.OP.GG.ajax.getHTML({
+								url: '/champion/ajax/guide/manageArticle/',
+								method: 'post',
+								data: {
+									idx: idx
+								},
+								callback: {
+									onHTML: function(html){
+										setHTML(html);
+									},
+									onError: function(error){
+										alert(error);
+										doClose();
+									}
+								}
+							});
+						}
+					});
+				});
+			}
+		}
+	},
+	spellViewer: function(url){
+		$.OP.GG.util.blockBodyScroll(function(end){
+			$.OP.GG.common.dim({
+				onClose: function(){
+					end();
+				},
+				job: function(setHTML, doClose){
+					var rand = Math.round(Math.random() * 1000000),
+						id = 'championSpellVideo' + rand;
+
+					html = '<video id="' + id + '" class="video-js vjs-default-skin"'
+						+ ' controls autoplay loop preload="auto" width="800" height="480"'
+						+ ' data-setup=\'{"example_option":true}\'>'
+						+ '<source src="' + url + '" type="video/mp4" />'
+						+ '</video>';
+
+					setHTML(html);
+
+					videojs(id, {
+						width: 800,
+						height: 450
+					}, function(){
+						this.player().on('error', function(e){
+							alert(_L('CHAMPION_SKILLVIDEO_ERROR_MESSAGE'));
+							doClose();
+						});
+					});
+				}
+			});
+		});
+		return false;
+	},
+	comment: {
+		submit: function(form){
+			var $form = $(form),
+				$button = $(form).find('button'),
+				data = $form.serializeArray(),
+				action = $form.attr('action'),
+				dataObject = {};
+
+			if (_isMobile) {
+				$button.startLoading({maxHeight: 17});
+			} else {
+				$button.startLoading({className: 'black'});
+			}
+
+			$.each(data, function(i, item){
+				if (dataObject[item.name]) {
+					if (typeof(dataObject[item.name]) === "string") {
+						dataObject[item.name] = [dataObject[item.name]];
+					}
+					dataObject[item.name].push(item.value);
+				} else {
+					dataObject[item.name] = item.value;
+				}
+			});
+
+			$.OP.GG.ajax.getJSON({
+				url: action,
+				method: 'post',
+				data: dataObject,
+				callback: {
+					onJSON: function(json){
+						if (json.success) {
+							if (_isMobile && $form.closest('.DimmedBlock')) {
+								$form.closest('.DimmedBlock').find('.Close').trigger('click', true);
+							} else {
+								$form.trigger('reset');
+								autosize.update($('.ChampionCommentWriteContent textarea'));
+							}
+							$('#ChampionCommentTabHeaderRecent').trigger('click', true);
+						}
+					},
+					onError: function(message){
+						alert(message);
+					},
+					onFinal: function(){
+						$button.stopLoading();
+					}
+				}
+			});
+			return false;
+		},
+		loadMore: function(button){
+			var $button = $(button);
+			$button.startLoading({className: 'black'});
+			$.OP.GG.ajax.getHTML({
+				url: $button.data('next-url'),
+				callback: {
+					onHTML: function(html){
+						$button.replaceWith(html);
+					},
+					onError: function(error){
+						alert(error);
+						$button.stopLoading();
+					}
+				}
+			});
+		},
+		deleteSubmit: function(idx){
+			if (!confirm('정말로 삭제하시겠습니까?')) return;
+			$.OP.GG.ajax.getJSON({
+				url: '/champion/ajax/statistics/comment/delete.json',
+				data: {
+					idx: idx
+				},
+				callback: {
+					onJSON: function(json){
+						if (json.success) {
+							$('li[data-comment-idx="' + idx + '"]').remove();
+						}
+					}
+				}
+			});
+		},
+		report: {
+			open: function(idx){
+				$.OP.GG.util.blockBodyScroll(function(end){
+					$.OP.GG.common.dim({
+						onClose: function(){
+							end();
+						},
+						job: function(setHTML, doClose){
+							$.OP.GG.ajax.getHTML({
+								url: '/champion/ajax/statistics/comment/report/',
+								data: {
+									idx: idx
+								},
+								callback: {
+									onHTML: function(html){
+										setHTML(html);
+									},
+									onError: function(error){
+										alert(error);
+										doClose();
+									}
+								}
+							});
+						}
+					});
+				});
+			},
+			submit: function(form){
+				$.OP.GG.ajax.formSubmit(form, 'json', {
+					onJSON: function(json){
+						if (json['message']) {
+							alert(json['message']);
+						}
+					},
+					onError: function(error){
+						alert(error);
+					},
+					onFinal: function(){
+						$(form).closest('.DimmedBlockInner').find('.Close').click();
+					}
+				});
+			}
+		},
+		vote: function(button){
+			var $button = $(button),
+				$vote = $button.closest('.champion-stats-comment-vote'),
+				$upButton = $vote.find('button[data-vote-type=up]'),
+				$downButton = $vote.find('button[data-vote-type=down]'),
+				$voteScore = $vote.find('.champion-stats-comment-vote__score'),
+				commentIdx = $button.data('comment-idx'),
+				activeClass = 'champion-stats-comment-vote__button--active',
+				upToggleEvent = function(){
+					if ($upButton.hasClass(activeClass)) {
+						$upButton.removeClass(activeClass);
+						$voteScore.text(Number($voteScore.text()) - 1);
+					} else {
+						$upButton.addClass(activeClass);
+						$voteScore.text(Number($voteScore.text()) + 1);
+					}
+				},
+				downToggleEvent = function(){
+					if ($downButton.hasClass(activeClass)) {
+						$downButton.removeClass(activeClass);
+						$voteScore.text(Number($voteScore.text()) + 1);
+					} else {
+						$downButton.addClass(activeClass);
+						$voteScore.text(Number($voteScore.text()) - 1);
+					}
+				};
+
+
+			if ($upButton.is($button)) {
+				if ($downButton.hasClass(activeClass)) {
+					downToggleEvent();
+				}
+				upToggleEvent();
+			} else if ($downButton.is($button)) {
+				if ($upButton.hasClass(activeClass)) {
+					upToggleEvent();
+				}
+				downToggleEvent();
+			}
+
+			$.OP.GG.ajax.getJSON({
+				url: '/champion/ajax/statistics/comment/voteToggle.json/',
+				data: {
+					commentIdx: $button.data('comment-idx'),
+					isVoteUp: $upButton.is($button)
+				},
+				method: 'post',
+				callback: {
+					onJSON: function(json){
+						if (json.success) {
+							if (json.myScore == 0) {
+								$('li[data-comment-idx=' + commentIdx + '] button[data-vote-type=up]').removeClass(activeClass);
+								$('li[data-comment-idx=' + commentIdx + '] button[data-vote-type=down]').removeClass(activeClass);
+							} else if (json.myScore > 0) {
+								$('li[data-comment-idx=' + commentIdx + '] button[data-vote-type=up]').addClass(activeClass);
+								$('li[data-comment-idx=' + commentIdx + '] button[data-vote-type=down]').removeClass(activeClass);
+							} else if (json.myScore < 0) {
+								$('li[data-comment-idx=' + commentIdx + '] button[data-vote-type=up]').removeClass(activeClass);
+								$('li[data-comment-idx=' + commentIdx + '] button[data-vote-type=down]').addClass(activeClass);
+							}
+							$('li[data-comment-idx=' + commentIdx + '] .champion-stats-comment-vote__score').text(json.score);
+						}
+					},
+					onError: function(message){
+						alert(message);
+						if ($upButton.is($button)) {
+							upToggleEvent();
+						} else if ($downButton.is($button)) {
+							downToggleEvent();
+						}
+					}
+				}
+			});
+		},
+		highLight: function(idx){
+			$('.ChampionComment li[data-comment-idx=' + highlightComment + ']').each(function(){
+				var el = $(this);
+				el.before("<div/>")
+				el.prev()
+					.width(el.width())
+					.height(el.height())
+					.css({
+						"position": "absolute",
+						"background-color": "#f1c40f",
+						"opacity": ".9"
+					})
+					.fadeOut(1000, function(){
+						$(this).remove();
+					});
+			});
+		},
+		openWrite: function(championId){
+			$.OP.GG.util.blockBodyScroll(function(end){
+				$.OP.GG.common.dim({
+					className: 'MobileChampionCommentWrite',
+					onClose: function(){
+						end();
+					},
+					job: function(setHTML, doClose){
+						$.OP.GG.ajax.getHTML({
+							url: '/champion/ajax/statistics/comment/write/',
+							data: {
+								championId: championId
+							},
+							callback: {
+								onHTML: function(html){
+									setHTML(html);
+									$('.DimmedBlock.MobileChampionCommentWrite .DimmedBlockInner').addClass('Loaded');
+								},
+								onError: function(error){
+									alert(error);
+									doClose();
+								}
+							}
+						});
+					}
+				});
+			});
+		}
+	}
+};

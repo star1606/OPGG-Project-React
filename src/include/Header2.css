@@ -5,7 +5,7 @@ body {
   background-color: #eaeaea;
 }
 
-.l-menu {
+.l-menu2 {
   display: flex;
   height: 48px;
   background: #5383e8;
@@ -23,14 +23,14 @@ li {
   padding: 0;
 }
 /* header 부분  css 양식 */
-.menu {
+.menu2 {
   margin-left: 49px;
   display: contents;
   align-items: center;
   list-style: none;
 }
 /* header 부분  폰트 사이즈 */
-.menu__item {
+.menu__item2 {
   font-size: 15px;
   /* 부모 요소 범위를 넘어가는 자식 요소의 부분은 보이지 않도록 처리 */
 

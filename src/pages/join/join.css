@@ -4,6 +4,7 @@ body {
 .join-container {
   display: block;
   text-align: center;
+  height: 100vh;
 }
 .join-box {
   display: block;
@@ -11,8 +12,6 @@ body {
   background-color: #ffffff;
   text-align: center;
   margin: 0 auto;
-
-  height: 100vh;
 }
 
 .join-box-inner {

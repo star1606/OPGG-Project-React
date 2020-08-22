@@ -1,7 +1,7 @@
 /* head ul이랑 list css 설정임*/
 /* flex 레이아웃 */
 
-.l-menu {
+.l-menu1 {
   display: flex;
   height: 48px;
   background: #5383e8;
@@ -29,13 +29,13 @@ li {
   padding: 0;
 }
 /* header 부분  css 양식 */
-.menu {
+.menu1 {
   display: contents;
   align-items: center;
   list-style: none;
 }
 /* header 부분  폰트 사이즈 */
-.menu__item {
+.menu__item1 {
   font-size: 15px;
   /* 부모 요소 범위를 넘어가는 자식 요소의 부분은 보이지 않도록 처리 */
 

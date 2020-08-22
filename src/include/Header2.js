@@ -3,23 +3,23 @@ import "./Header2.css";
 import { Link } from "react-router-dom";
 const Header2 = ({ history }) => {
   return (
-    <div className="l-menu">
-      <ul className="menu">
-        <li className="menu__item">
+    <div className="l-menu2">
+      <ul className="menu2">
+        <li className="menu__item2">
           <Link to="/">op.gg</Link>
         </li>
-        <li className="menu__item">
+        <li className="menu__item2">
           <Link to="/champion">챔피언 분석</Link>
         </li>
 
-        <li className="menu__item">
+        <li className="menu__item2">
           <Link to="/ranking">랭킹</Link>
         </li>
 
-        <li className="menu__item">
+        <li className="menu__item2">
           <Link to="/community">커뮤니티</Link>
         </li>
-        <li className="menu__item">
+        <li className="menu__item2">
           <Link to="/login">로그인</Link>
         </li>
       </ul>

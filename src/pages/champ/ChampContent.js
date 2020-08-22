@@ -20,12 +20,7 @@ const ChampContent = () => {
         >
           <div className="top-bar">
             <ul className="champ-ul">
-              <li className="champ-li">전체</li>
-              <li className="champ-li">탑</li>
-              <li className="champ-li">정글</li>
-              <li className="champ-li">미드</li>
-              <li className="champ-li">바텀</li>
-              <li className="champ-li">서포터</li>
+              <li className="champ-li">챔피언 목록</li>
             </ul>
 
             <input
