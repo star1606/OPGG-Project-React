@@ -22,12 +22,13 @@ const ChampContent = () => {
             <ul className="champ-ul">
               <li className="champ-li">챔피언 목록</li>
             </ul>
-
-            <input
-              className="top-input"
-              type="text"
-              placeholder="챔피언 검색 (가렌, ㄱㄹ, ...)"
-            />
+            <form>
+              <input
+                className="top-input"
+                type="text"
+                placeholder="챔피언 검색 (가렌, ㄱㄹ, ...)"
+              />
+            </form>
           </div>
           {/* 
           <!-- 탭박스 이 안에 ul 태그랑 오른쪽에 검색창 있음-->

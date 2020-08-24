@@ -404,9 +404,8 @@ const Community = () => {
                 </div>
               </div>
             </div>
+            <Footer2 />
           </ContentBox>
-
-          <Footer2 />
         </div>
       </CommunityContainer>
     </div>
