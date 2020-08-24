@@ -12,14 +12,14 @@ a {
 
 /* head ul이랑 list css 설정임*/
 /* flex 레이아웃 */
-.l-menu {
+/* .l-menu {
   display: flex;
   height: 48px;
   background: #5383e8;
   text-align: center;
   align-items: center;
   justify-content: start;
-}
+} */
 
 /* header 부분 li, ul 양식 */
 /* 나중에 이쪽부분 전체로 먹을 수 있어서 체크해야함 */
@@ -30,22 +30,22 @@ li {
   padding: 0;
 }
 /* header 부분  css 양식 */
-.menu {
+/* .menu {
   display: contents;
   align-items: center;
   list-style: none;
-}
+} */
 /* header 부분  폰트 사이즈 */
-.menu__item {
+/* .menu__item {
   font-size: 15px;
   white-space: nowrap;
   margin-left: 25px;
-  margin-right: 25px;
-  /* 부모 요소 범위를 넘어가는 자식 요소의 부분은 보이지 않도록 처리 */
-  /* overflow: hidden; */
-  /* 잘린 텍스트를 생략 부호(...)표시 함 */
-  /* text-overflow: ellipsis(); */
-}
+  margin-right: 25px; */
+/* 부모 요소 범위를 넘어가는 자식 요소의 부분은 보이지 않도록 처리 */
+/* overflow: hidden; */
+/* 잘린 텍스트를 생략 부호(...)표시 함 */
+/* text-overflow: ellipsis(); */
+/* } */
 
 /* header a태그 꾸미기 */
 /* a {

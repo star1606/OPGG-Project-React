@@ -11,7 +11,7 @@ body {
   background: #5383e8;
   text-align: center;
   align-items: center;
-  justify-content: start;
+  justify-content: center;
 }
 
 /* header 부분 li, ul 양식 */
@@ -67,7 +67,7 @@ li {
 .gnb-list-item__search {
   margin-left: auto;
   margin-right: 74px;
-
+  position: relative;
   font-family: "Roboto", "Noto sans kr", "Apple SD Gothic Neo", "Malgun Gothic",
     "sans-serif";
   display: flex;
@@ -100,8 +100,8 @@ gnb-list-item__search form {
 
 .gnb-list-item__search button {
   position: absolute;
-  top: 11px;
-  right: 74px;
+  top: 4px;
+  right: 0px;
   height: 28px;
   width: 54px;
   text-align: center;

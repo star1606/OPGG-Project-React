@@ -25,6 +25,7 @@ const Header2 = ({ history }) => {
       </ul>
       <div
         className="gnb-list-item gnb-list-item__search"
+        style={{ marginLeft: "75px" }}
         // style="margin-left: auto;"
       >
         {/* <form action="/summoner/" method="get" autocomplete="off"> */}
