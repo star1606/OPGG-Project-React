@@ -11,6 +11,7 @@ import Login from "./pages/login/Login";
 
 import Community from "./pages/community/Community";
 import Champ from "./pages/champ/Champ";
+import CommunityDetail from "./pages/community/CommunityDetail";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
       <Route path="/community" component={Community} />
       <Route path="/login" component={Login} />
       <Route path="/join" component={Join} />
+      <Route path="/posts/:id" component={CommunityDetail} />
     </div>
   );
 }

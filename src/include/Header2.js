@@ -8,9 +8,6 @@ const Header2 = ({ history }) => {
         <li className="menu__item2">
           <Link to="/">op.gg</Link>
         </li>
-        <li className="menu__item2">
-          <Link to="/champion">챔피언 분석</Link>
-        </li>
 
         <li className="menu__item2">
           <Link to="/ranking">랭킹</Link>
