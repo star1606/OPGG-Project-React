@@ -9,7 +9,7 @@
 .footer {
   background-color: #5383e8;
   color: #fff;
-  width: 1080px;
+  width: 880px;
   margin: 0 auto;
   padding: 40px 0;
 }
@@ -19,7 +19,7 @@
   margin-top: 10px;
   line-height: 1.5;
   font-size: 11px;
-  width: 1000px;
+  width: 900px;
 }
 
 .footer__sns {
