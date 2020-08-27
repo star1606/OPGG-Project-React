@@ -4,6 +4,8 @@ import { CommunityWrap } from "./Community";
 import Header1 from "../../include/Header1";
 import MainForm from "./MainForm";
 import Footer2 from "../../include/Footer2";
+import { withRouter } from "react-router-dom";
+import axios from "axios";
 
 const WriteBox = styled.div`
   text-align: center;
@@ -90,7 +92,50 @@ const WriteBox = styled.div`
   }
 `;
 
-const CommunityWrite = () => {
+const CommunityWrite = ({ history }) => {
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const handleChangeTitle = (e) => {
+    setTitle(e.target.value);
+  };
+
+  const handleChangeContent = (e) => {
+    setContent(e.target.value);
+  };
+
+  // 이거 작성완료 누르면 데이터보내고 본진으로 가는것을 구현할 것이다
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(title);
+    console.log(content);
+
+    axios
+      .post(
+        "http://59.20.79.42:58002/test/post/writeProc",
+        {
+          title: title,
+          content: content,
+          user: {
+            id: 1,
+          },
+        },
+        {
+          headers: {
+            // Accept: 'application/json',
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error.response);
+      });
+
+    history.push("/");
+  };
+
   return (
     <div>
       <CommunityWrap>
@@ -100,13 +145,14 @@ const CommunityWrite = () => {
           <div>
             <WriteBox>
               <div className="content">
-                <form>
+                <form onSubmit={handleSubmit}>
                   <div className="article-write">
                     <div className="article-write-header">
                       <div className="article-write__title">글쓰기</div>
                     </div>
                     <div className="article-write-input">
                       <input
+                        onChange={handleChangeTitle}
                         type="text"
                         name="title"
                         className="article-write__text"
@@ -115,7 +161,10 @@ const CommunityWrite = () => {
                       />
                     </div>
                     <div className="article-write-content">
-                      <textarea className="article-write__textarea"></textarea>
+                      <textarea
+                        onChange={handleChangeContent}
+                        className="article-write__textarea"
+                      ></textarea>
                     </div>
                     <div className="article-write__btn">
                       <button
@@ -126,6 +175,7 @@ const CommunityWrite = () => {
                         취소
                       </button>
                       <button
+                        onClick={() => history.push("/")}
                         className="article-write__button article-write__button--submit"
                         type="submit"
                       >
@@ -144,4 +194,4 @@ const CommunityWrite = () => {
   );
 };
 
-export default CommunityWrite;
+export default withRouter(CommunityWrite);

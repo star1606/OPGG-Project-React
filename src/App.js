@@ -16,7 +16,7 @@ import CommunityWrite from "./pages/community/CommunityWrite";
 
 function App() {
   return (
-    <Switch>
+    <>
       <Route path="/" component={Home} exact={true} />
       <Route path="/champion" component={Champ} />
       <Route path="/ranking" component={Ranking} />
@@ -25,7 +25,7 @@ function App() {
       <Route path="/join" component={Join} />
       <Route path="/posts/:id" component={CommunityDetail} />
       <Route path="/write" component={CommunityWrite} />
-    </Switch>
+    </>
   );
 }
 
