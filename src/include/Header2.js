@@ -1,6 +1,6 @@
 import React from "react";
 import "./Header2.css";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 const Header2 = ({ history }) => {
   return (
     <div className="l-menu2">
@@ -35,7 +35,7 @@ const Header2 = ({ history }) => {
         />
 
         {/* 이벤트가 e.target.value 타이핑하는거 잡고 그거를 주소 뒤의 value에다가 붙이면 될듯 */}
-        <Link to="/summoner/username=aaa">
+        <Link to="/summoner/">
           <button /*onCLick={() => history.push("/ranking")}*/>
             <img height="14" src="../img/searchgg.png" alt="이미지" />
           </button>
@@ -46,4 +46,4 @@ const Header2 = ({ history }) => {
   );
 };
 
-export default Header2;
+export default withRouter(Header2);

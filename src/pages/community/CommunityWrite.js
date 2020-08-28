@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { CommunityWrap } from "./Community";
 import Header1 from "../../include/Header1";
