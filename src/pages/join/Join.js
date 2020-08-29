@@ -6,7 +6,7 @@ const Join = () => {
   //화면 전체
   // 만약에 더 바꾸고 싶으면 styled-compoenet로 hover구현해보자 색깔바뀌는거
   const [form, setForm] = useState({
-    username: "",
+    email: "",
     nickname: "",
     password: "",
   });
@@ -61,7 +61,7 @@ const Join = () => {
                   className="member-input__box"
                   type="text"
                   autocomplete="off"
-                  name="username"
+                  name="email"
                   placeholder="이메일 주소"
                 />
               </div>
