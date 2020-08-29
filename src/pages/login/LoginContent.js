@@ -1,24 +1,41 @@
 import React, { useState } from "react";
 import { Link, Route } from "react-router-dom";
-
+import axios from "axios";
 const LoginContent = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [form, setForm] = useState({
+    email: "",
+    password: "",
+  });
 
-  const onChangeEmail = (e) => {
-    setEmail(e.target.value);
-    console.log(e.target.value);
-  };
-
-  const onChangePassword = (e) => {
-    setPassword(e.target.value);
-    console.log(e.target.value);
+  const onChangeForm = (e) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
+    });
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log([email]);
-    console.log([password]);
+    // console.log(form);
+
+    axios
+      .post(
+        "http://59.20.79.42:58002/oauth/jwt/common",
+
+        form,
+        {
+          headers: {
+            // Accept: 'application/json',
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error.response);
+      });
   };
 
   return (
@@ -91,7 +108,7 @@ const LoginContent = () => {
                       autoComplete="off"
                       name="email"
                       placeholder="이메일 주소"
-                      onChange={onChangeEmail}
+                      onChange={onChangeForm}
                     />
                     <span className="member-input__valid-wrapper"></span>
                   </div>
@@ -106,7 +123,7 @@ const LoginContent = () => {
                       type="password"
                       autoComplete="off"
                       name="password"
-                      onChange={onChangePassword}
+                      onChange={onChangeForm}
                       placeholder="비밀번호"
                     />
                     <span className="member-input__valid-wrapper"></span>
