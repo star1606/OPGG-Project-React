@@ -2,25 +2,25 @@ import React from "react";
 import { Link } from "react-router-dom";
 const HomeListItem = () => {
   return (
-    <div class="community-best__content-left">
+    <div className="community-best__content-left">
       {/* <!-- 커뮤니티 ul 태그--> */}
       <ul
-        class="community-article__list community-article__list--popular"
+        className="community-article__list community-article__list--popular"
         data-type="Popular"
       >
         {/* <!-- 커뮤니티 li 컴포넌트--> */}
-        <li class="community-article__list__item">
+        <li className="community-article__list__item">
           <Link to="/community">
-            <div class="community-article__list__item__rank green">1</div>
+            <div className="community-article__list__item__rank green">1</div>
 
-            <div class="community-article__list__item__title">
+            <div className="community-article__list__item__title">
               <span>잼민이가 해낸일</span>
               <em>[117]</em>
             </div>
-            <div class="community-article__list__item__sub">
-              <div class="community-article__list__item__sub__item">
+            <div className="community-article__list__item__sub">
+              <div className="community-article__list__item__sub__item">
                 <span
-                  class="_timeago _timeCountAssigned tip"
+                  className="_timeago _timeCountAssigned tip"
                   data-datetime="1596151624"
                   data-type=""
                   data-interval="60"
@@ -29,7 +29,7 @@ const HomeListItem = () => {
                   9시간 전
                 </span>
               </div>
-              <div class="community-article__list__item__sub__item">
+              <div className="community-article__list__item__sub__item">
                 피파망해라
               </div>
             </div>

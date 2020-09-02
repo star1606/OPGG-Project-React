@@ -1,7 +1,21 @@
 import React from "react";
 import "./Home.css";
 import HomeLIst from "./HomeLIst";
+import { useState } from "react";
 const HomeMain = () => {
+  const [input, setInput] = useState("");
+
+  const handleInput = (e) => {
+    setInput(e.target.value);
+    console.log(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(e.target.value);
+    console.log("실행?");
+  };
+
   return (
     <div className="homeMain-container">
       <div className="l-container">
@@ -16,13 +30,14 @@ const HomeMain = () => {
           </div>
         </div>
         <form
+          onSubmit={handleSubmit}
           className="summoner-search-form"
-          action="/summoner/"
           autoComplete="off"
         >
           <input
             type="text"
             name="username"
+            onChange={handleInput}
             className="summoner-search-form__text__suggest"
             placeholder="소환사명 ..."
             autoComplete="off"
