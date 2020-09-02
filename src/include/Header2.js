@@ -1,12 +1,21 @@
 import React from "react";
 import "./Header2.css";
 import { Link, withRouter } from "react-router-dom";
-const Header2 = ({ history }) => {
+const Header2 = ({ history, props }) => {
+  // const{ auth } = props;
+  const links =
+    1 === 2 ? (
+      <li className="menu__item2">
+        <Link to="/login">로그인</Link>
+      </li>
+    ) : (
+      <div>로그아웃</div>
+    );
   return (
     <div className="l-menu2">
       <ul className="menu2">
         <li className="menu__item2">
-          <Link to="/">op.gg</Link>
+          <Link to="/home">OP.GG</Link>
         </li>
 
         <li className="menu__item2">

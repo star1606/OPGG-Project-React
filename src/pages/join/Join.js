@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Footer2 from "./../../include/Footer2";
 import "./join.css";
 import axios from "axios";
+import { Link, Route } from "react-router-dom";
+
 const Join = () => {
   //화면 전체
   // 만약에 더 바꾸고 싶으면 styled-compoenet로 hover구현해보자 색깔바뀌는거
@@ -23,7 +25,7 @@ const Join = () => {
     console.log(form);
     axios
       .post(
-        "http://59.20.79.42:58002/test/join",
+        "http://59.20.79.42:58002/user/join",
 
         form,
         {
@@ -35,6 +37,7 @@ const Join = () => {
       )
       .then((response) => {
         console.log(response);
+        console.log(response.data);
       })
       .catch((error) => {
         console.log(error.response);
@@ -46,7 +49,9 @@ const Join = () => {
       <div className="join-box">
         <div className="join-box-inner">
           <div className="register-header">
-            <img src="./img/opggJoin.png" />
+            <Link to={"/home"}>
+              <img src="./img/opggJoin.png" alt="opgg" />
+            </Link>
           </div>
           <h2 className="top-text">기본정보 입력</h2>
           <div className="sign-up__sub">
@@ -92,13 +97,10 @@ const Join = () => {
               </div>
 
               <div className="sign-up__l-btn">
-                <button
-                  type="button"
-                  className="member-button cancel-button sign-up__btn-cancel"
-                >
+                <button type="button" className="cancelBtn">
                   취소
                 </button>
-                <button type="submit" className="member-button sign-up__btn">
+                <button type="submit" className="sumbitBtn">
                   가입하기
                 </button>
               </div>
@@ -108,14 +110,15 @@ const Join = () => {
           <br />
           <div className="sign-up__go-to-login">
             이미 회원이신가요?
-            <a
+            <Link
+              to={"/login"}
               href=""
               type="button"
               className="sign-up__go-to-login-btn"
               alt="ff"
             >
               로그인하기
-            </a>
+            </Link>
           </div>
         </div>
       </div>

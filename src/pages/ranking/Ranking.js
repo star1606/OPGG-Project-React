@@ -534,9 +534,9 @@ const Ranking = () => {
                 </div>
               </div>
             </div>
+            <Footer2 />
           </div>
         </div>
-        <Footer2 />
       </RankingBox>
     </>
   );

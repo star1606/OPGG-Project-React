@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, Route } from "react-router-dom";
 import axios from "axios";
-<<<<<<< HEAD
+
 import GoogleLogin from "react-google-login";
 import styled from "styled-components";
 
@@ -23,7 +23,10 @@ const config = {
   },
 };
 
-const responseGoogle = async (response, history) => {
+const history = () => {
+  history.push("/home");
+};
+const responseGoogle = async (response) => {
   console.log(1, response);
   //   let res = {...response, ...{provider : "google"}};
 
@@ -54,13 +57,11 @@ const responseGoogle = async (response, history) => {
     // localStorage.setItem("googleEmail", jwtToken.data.data.googleId);
     // localStorage.setItem("googleNickname", jwtToken.data.data.nickname);
     // localStorage.setItem("jwtToken", jwtToken.data.data.jwtToken);
-    history.push("/home");
+    history();
   }
 };
 
-=======
->>>>>>> 1eac14ae3b52b9e8e8c1a380eb2f485215b67f18
-const LoginContent = () => {
+const LoginContent = ({ history }) => {
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -105,13 +106,15 @@ const LoginContent = () => {
           {/* <!-- 컨테이너 안 div --> */}
           <div className="member-card-layout__inner">
             {/* <!-- 로고 div --> */}
-            <h1 className="member-card-layout__logo">
-              <img
-                className="member-card-layout__logo-image"
-                src="/img/opggLogo.png"
-                alt="op.gg"
-              />
-            </h1>
+            <Link to={"/home"}>
+              <h1 className="member-card-layout__logo">
+                <img
+                  className="member-card-layout__logo-image"
+                  src="/img/opggLogo.png"
+                  alt="op.gg"
+                />
+              </h1>
+            </Link>
             <div className="login">
               <h2 className="login__fb-title">간편 로그인</h2>
 

@@ -1,12 +1,12 @@
 import React from "react";
 import "./Header1.css";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 const Header1 = () => {
   return (
     <div className="l-menu1">
       <ul className="menu1">
         <li className="menu__item1">
-          <Link to="/">op.gg</Link>
+          <Link to="/home">OP.GG</Link>
         </li>
 
         <li className="menu__item1">
@@ -17,7 +17,7 @@ const Header1 = () => {
           <Link to="/community">커뮤니티</Link>
         </li>
         <li className="menu__item1">
-          <Link to="/login">로그인</Link>
+          <NavLink to="/login">로그인</NavLink>
         </li>
       </ul>
     </div>

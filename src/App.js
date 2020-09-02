@@ -18,7 +18,7 @@ import Summoner from "./pages/summoner/Summoner";
 function App() {
   return (
     <Switch>
-      <Route path="/" component={Home} exact={true} />
+      <Route path="/home" component={Home} exact={true} />
       <Route path="/champion" component={Champ} />
       <Route path="/ranking" component={Ranking} />
       <Route path="/community" component={Community} />

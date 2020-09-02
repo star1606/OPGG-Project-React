@@ -80,6 +80,33 @@
   float: right;
   width: 217px;
 }
+.cancelBtn {
+  color: white;
+  margin-right: 15px;
+  font-weight: 400;
+  background: #1e2022;
+  font-size: 16px;
+  border-radius: 3px;
+  display: inline-block;
+  text-decoration: none;
+  width: 46%;
+  border: 0;
+  height: 56px;
+}
+
+.sumbitBtn {
+  color: white;
+  font-weight: 400;
+  background: #1ea1f7;
+  font-size: 16px;
+  border-radius: 3px;
+  display: inline-block;
+  text-decoration: none;
+  width: 46%;
+  border: 0;
+  height: 56px;
+  margin-left: 15px;
+}
 
 .sign-up__go-to-login {
   margin-top: 40px;
