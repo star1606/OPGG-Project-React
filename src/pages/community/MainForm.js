@@ -60,7 +60,7 @@ const MainForm = () => {
       <div className="icon-form">
         <img
           className="community-icon"
-          src="../img/communityIcon.png"
+          src="/img/communityIcon.png"
           alt="아이콘"
         />
         <div className="icon-text">리그오브레전드</div>
@@ -69,7 +69,7 @@ const MainForm = () => {
       <SearchForm>
         <input type="text" className="main-input" />
         <button className="mainBtn" type="submit">
-          <img className="btnImg" src="../img/searchBtn.gif" alt="검색" />
+          <img className="btnImg" src="/img/searchBtn.gif" alt="검색" />
         </button>
       </SearchForm>
     </MainFormBox>

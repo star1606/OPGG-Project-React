@@ -89,7 +89,7 @@ const CommunityContentBox = styled.div`
   .article-vote__up-arrow {
     width: 16px;
     height: 16px;
-    background-image: url("../img/iconVoteUp.png");
+    background-image: url("/img/iconVoteUp.png");
     background-repeat: no-repeat;
     background-position: 0 0;
     background-size: 16px;

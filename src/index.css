@@ -30,29 +30,6 @@ li {
   padding: 0;
 }
 /* header 부분  css 양식 */
-/* .menu {
-  display: contents;
-  align-items: center;
-  list-style: none;
-} */
-/* header 부분  폰트 사이즈 */
-/* .menu__item {
-  font-size: 15px;
-  white-space: nowrap;
-  margin-left: 25px;
-  margin-right: 25px; */
-/* 부모 요소 범위를 넘어가는 자식 요소의 부분은 보이지 않도록 처리 */
-/* overflow: hidden; */
-/* 잘린 텍스트를 생략 부호(...)표시 함 */
-/* text-overflow: ellipsis(); */
-/* } */
-
-/* header a태그 꾸미기 */
-/* a {
-  text-decoration: none;
-  outline: none;
-  color: #b3cdff;
-} */
 
 /* header 탭 간격 띄우기 */
 

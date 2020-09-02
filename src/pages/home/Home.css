@@ -10,6 +10,7 @@
   background-color: #5383e8;
   position: relative;
   min-height: 100vh;
+  width: 2000px;
 }
 
 /* head ul이랑 list css 설정임*/
@@ -108,6 +109,8 @@ li {
 .homeList-container {
   margin-top: 30px;
   min-height: 396px;
+  margin-left: 100px;
+  margin-right: 100px;
   background: #fff;
   border: solid 1px #e9eff4;
 }

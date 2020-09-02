@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .header {
+        position: relative;
+        width: 1000px;
+        margin: 0 auto;
+        padding: 20px 0 0 0;
+      }
+      .face {
+        display: inline-block;
+        width: 100px;
+        padding-left: 30px;
+        vertical-align: top;
+      }
+      .profileIcon {
+        position: relative;
+      }
+      .borderImage {
+        background-image: url("http://opgg-static.akamaized.net/images/borders2/challenger.png");
+        position: absolute;
+        left: -10px;
+        top: -10px;
+        width: 120px;
+        height: 120px;
+        background-position: center bottom;
+        background-repeat: no-repeat;
+      }
+
+      .profileImage {
+        display: block;
+        width: 100px;
+        height: 100px;
+      }
+      .level {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-top: -14px;
+        margin-left: -22px;
+        width: 44px;
+        height: 24px;
+        padding-top: 3px;
+        box-sizing: border-box;
+        background: url(../images/site/summoner/bg-levelbox.png);
+        background-size: 100%;
+        line-height: 17px;
+        font-family: Helvetica, AppleSDGothic, "Apple SD Gothic Neo",
+          AppleGothic, Arial, Tahoma;
+        font-size: 14px;
+        text-align: center;
+        color: #eabd56;
+      }
+
+      .profile {
+        position: relative;
+        display: inline-block;
+        height: 100px;
+        margin: 0 25px 0 25px;
+        vertical-align: top;
+        line-height: 1.1;
+      }
+      .name {
+        color: #242929;
+        font-size: 20px;
+        font-weight: bold;
+        margin-right: 4px;
+        vertical-align: middle;
+      }
+      .rank {
+        margin-bottom: 5px;
+      }
+      .link {
+        color: #555e5e;
+        font-size: 11px;
+        text-decoration: none;
+        line-height: 1.5;
+      }
+
+      .ranking {
+    color: #059ede;
+    font-weight: bold;
+}
+.buttons {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    font-size: 0;
+    margin: 15px 0 -6px;
+    white-space: nowrap;
+}
+.button__blue{
+    border: 1px solid #1a78ae;
+    background: #1f8ecd;
+    color: #f2f2f2;
+    width: 90px;
+    height: 41px;
+
+}
+
+.ladderRank{
+    font-size: 11px;
+
+}
+.lastUpdate{
+    position: absolute;
+    left: 160px;
+    bottom: -18px;
+    height: 12px;
+    color: #99a2a2;
+    font-size: 11px;
+}
+
+
+.contentWrap{
+    overflow: hidden;
+}
+
+.tabItem__content{
+    width: 1000px;
+    min-height: 500px;
+    margin: 0 auto;
+    display: block;
+}
+
+.sideContent{
+    display: inline-block;
+    width: 300px;
+    font-size: 12px;
+    vertical-align: top;
+}
+
+.tierbox{
+    margin-top: 30px;
+    border: 1px solid #cdd2d2;
+   
+    background: #f2f2f2;
+    border-radius: 2px;
+}
+
+.summonerRating{
+    display: table;
+    width: 100%;
+    color: #879292;
+    position: relative;
+    background-color: #f2f2f2;
+    padding: 8px 0;
+}
+
+.medal{
+    display: table-cell;
+    vertical-align: middle;
+    width: 120px;
+    height: 124px;
+    text-align: center;
+
+}
+.medalImage{
+    width: 104px;
+    height: 104px;
+    margin: -5px 0 -10px 0;
+
+}
+.tierRankInfo{
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 12px;
+    line-height: 1.5;
+    text-align: left;
+}
+.rankType{
+    font-size: 11px;
+    color: #879292;
+}
+.tierRank{
+    font-size: 15px;
+    font-weight: bold;
+    color: #1f8ecd;
+
+}
+.leaguePoints{
+    color: #555e5e;
+    font-weight: bold;
+}
+.sub-tier{
+    margin-top: 8px;
+    padding: 16px 0;
+    display: flex;
+    display: -ms-flexbox;
+    align-items: center;
+    background-color: #f2f2f2;
+    border: solid 1px #cdd2d2;
+}
+.img-sub-tier__medal{
+    width: 64px;
+    height: 64px;
+    margin: 0 28px;
+
+}
+.img-sub-tier__medal{
+    justify-content: center;
+}
+.sub-tier__rank-type{
+    font-size: 11px;
+    color: #879292;
+}
+.sub-tier__rank-tier__unranked{
+    color: #879292;
+}
+
+.realContent{
+    display: inline-block;
+    /* width: 690px; */
+    width: 680px;
+    margin-left: 10px;
+    font-size: 12px;
+    vertical-align: top;
+}
+
+.gameListContainer{
+    
+    margin-top: 30px;
+
+
+}
+.content{
+    position: relative;
+}
+
+.gameItem >.content > div {
+    display: table-cell;
+    height: 96px;
+    vertical-align: middle;
+}
+.gameItem>.content {
+    display: table;
+    width: 689px;
+    border-collapse: collapse;
+    border: 1px solid #cdd2d2;
+}
+.gameItemList{
+    margin-top: 8px;
+}
+.gameItemWrap {
+    position: relative;
+    border-radius: 3px;
+    margin-bottom: 8px;
+}
+.gameItemWinExtended {
+    position: relative;
+    background: none;
+}
+.content{
+    table-layout: fixed;
+    background-color: #a3cfec;
+    border-color: #99b9cf;
+}
+.gameState{
+    border-bottom: 1px solid #4aa1d2;
+}
+.gameType{
+    font-weight: bold;
+    width: 70px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.gameItemWinExtended{
+    border-bottom: 1px solid #4aa1d2;
+}
+.gameStats{
+    vertical-align: middle;
+    width: 70px;
+    text-align: center;
+    font-size: 11px;
+    color: #555;
+    line-height: 16px;
+    text-align: center;
+    display: table-cell;
+   
+}
+.bar {    display: block;
+    width: 27px;
+    margin: 5px auto;
+    height: 2px;
+    
+    background: #99b9cf;
+
+}
+.gameResult {
+    color: #1a78ae;
+}
+.gameSettingInfo{
+    display: table-cell;
+    height: 96px;
+    vertical-align: middle;
+    width: 100px;
+    font-size: 0;
+}
+.championImage {
+    display: inline-block;
+    width: 46px;
+    height: 46px;
+    vertical-align: middle;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.championIcon { 
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    
+}
+
+
+
+
+.summonerSpell {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 4px;
+}
+
+.rune {
+    width: 22px;
+    height: 22px;
+}
+
+.rune1{
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.rune2{
+   display: block;
+   width: 100%;
+   height: 100%;
+   border-radius: 50%;
+}
+.championName {
+    margin-top: 8px;
+    font-size: 11px;
+    color: #555;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.spell1{
+    margin-left: 0;
+    display: block;
+    width: 22px;
+    height: 22px;
+    margin-top: 2px;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.summonerSpell1 {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.spell2{
+    margin-left: 0;
+    display: block;
+    width: 22px;
+    height: 22px;
+    margin-top: 0px;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.summonerSpell2 {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.runes {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 4px;
+}
+.rune1{
+    margin-top: 0;
+    width: 22px;
+    height: 22px;
+}
+.rune2{
+    margin-top: 0;
+    width: 22px;
+    height: 22px;
+}
+.runeImage1 {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.runeImage2 {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.championName{
+    margin-top: 8px;
+    font-size: 11px;
+    color: #555;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.kdaWrap{
+    display: table-cell;
+    height: 96px;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 11px;
+   
+}
+.kda {
+    color: #879292;
+    font-size: 15px;
+    white-space: nowrap;
+}
+
+.kdaRatio {
+    color: #555e5e;
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 6px;
+}
+    </style>
+  </head>
+  <body>
+    <div>
+      <div class="header">
+        <div class="face">
+          <div class="profileIcon">
+            <div class="borderImage"></div>
+            <img class="profileImage" src="../include/garen.png" />
+            <span class="level">288</span>
+          </div>
+        </div>
+        <div class="profile">
+          <di class='information'>
+            <span class="name">DWG ShowMaker</span>
+            <div class='rank'>
+                <div class='ladderRank'>
+                    
+						랭킹 <span class="ranking">1</span>위
+                </div>
+
+            </div>
+            <div class='button'>
+                <button class='button__blue'>
+                    전적갱신
+                </button>
+            </div>
+          </div>
+          <div class='lastUpdate'>
+                최근업데이트: <span class="time">31 분전</span>
+          </div>
+        </div>
+        <div class='contentWrap'>
+            <div class='tabItem__content'>
+                <div class='sideContent'>
+                    <div class='tierbox'>
+                        <div class='summonerRating'>
+                            <div class='medal'>
+                                <img class='medalImage' />
+                            </div>
+                            <div class='tierRankInfo'>
+                                <div class='rankType'>솔로랭크</div>
+                                <div class='tierRank'>Chanllenger</div>
+                                <div class='tierInfo'>
+                                    <span class ='leaguePoints'>
+                                        1,604 Lp   /
+                                    </span>
+                                    <span class='winLose'>
+                                        <span class='wins'> 326승 </span>
+                                        <span class='lossers'> 324패 </span>
+                                        <br>
+                                        <span class='winRatio'>승률 58%</span>
+                                    </span>
+                                </div>
+                                <div class='leagueName'>
+                                    헤카림의 저격수들
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class='sub-tier'>
+                        <img class='img-sub-tier__medal' />
+                        <div class='sub-tier__info__unranked'>
+                            <div class='sub-tier__rank-type'>자유 5:5 랭크</div>
+                            <div class='sub-tier__rank-tier__unranked'>
+                                Unranked
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class='realContent'>
+                    <div class='gameListContainer' data-summoer-id='' data-last-info=''>
+                        <div class='content'>
+                            <div class='gameItemList'>
+                                <div class='gameItemWrap'>
+                                    <div class='gameItemWinExtended' data-summoner-id="41913808" data-game-time="1598546708" data-game-id="4605496244" data-game-result="win">
+                                        <div class='toggle-content'>
+                                            <div class="gameStats">
+                                                <div class="gameType" title="솔랭">
+                                                    솔랭
+                                                </div>
+                                                <div class="timeStamp"><span class="toggle-time" data-datetime="1598546708" data-type="" data-interval="60" title="2020년 8월 28일 오전 1시 45분">11시간 전</span></div>
+                                                <div class="bar"></div>
+                                                <div class="gameResult">
+                                                                            승리									</div>
+                                                                    <div class="gameLength">18분 40초</div>
+                                                
+
+                                                                 
+                                                            </div>
+
+                                                            <div class='gameSettingInfo'>
+                                                                <div class='championImage'>
+                                                                    <img src='../include/Kassadin.png' class='championIcon' />
+                                                                </div>
+                                                                <div class='summonerSpell'>
+                                                                    <div class='spell1'>
+                                                                        <img src='../include/8112.png' class='summonerSpell1' />
+                                                                    </div>
+                                                                    <div class='spell2'>
+                                                                    <img src='../include/8112.png' class='summonerSpell2' />
+                                                                    </div>
+                                                                </div>
+                                                                <div class='runes'>
+                                                                    <div class='rune1'>
+                                                                        <img src='../include/8112.png' class='runeImage1' />
+                                                                    </div>
+                                                                    <div class='rune2'>
+                                                                        <img src='../include/8112.png' class='runeImage2' />
+                                                                    </div>
+                                                                </div>
+                                                                <div class='championName' >
+                                                                    카사딘
+                                                                </div>
+                                                            </div>
+                                                            <div class='kdaWrap'>
+                                                                <div class='kda'>
+                                                                    <span class='kill'>13</span>
+                                                                    <span class='death'>2</span>
+                                                                    <span class='assist'>5</span>
+                                                                </div>
+                                                                <div class='kdaRatio'>
+                                                                    <span class ='kdaRatioSpan'>9.00:1</span>
+                                                                    평점
+                                                                </div>
+                                                            </div>
+                                                            
+                                         
+                                            
+                                            
+                                            
+
+                                            <!-- <img src='../include/8112.png' class='spell1' /> -->
+                                            
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
