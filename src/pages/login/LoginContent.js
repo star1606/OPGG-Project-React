@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, Route } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import axios from "axios";
 
 import GoogleLogin from "react-google-login";
@@ -17,51 +18,41 @@ const GooleLoginBox = styled.div`
   }
 `;
 
-const config = {
-  headers: {
-    "Content-Type": "application/json; charset=utf-8",
-  },
-};
-
-const history = () => {
-  history.push("/home");
-};
-const responseGoogle = async (response) => {
-  console.log(1, response);
-  //   let res = {...response, ...{provider : "google"}};
-
-  let jwtToken = await axios.post(
-    "http://59.20.79.42:58002/jwt/oauth",
-    JSON.stringify(response),
-    config
-  );
-  if (jwtToken.status === 200) {
-    // console.log(0, jwtToken.data);
-    // console.log(0, jwtToken);
-    console.log(1, jwtToken.data.data);
-    setTimeout(console.log(2, jwtToken.data.data.googleId), 4000);
-    console.log(3, jwtToken.data.name);
-    console.log(4, jwtToken.data.email);
-    // console.log(2, jwtToken.data.data.profileObj);
-    // console.log(3, jwtToken.profileObj);
-
-    // console.log(5, jwtToken.data.data.profileObj.userId);
-    // console.log(2, jwtToken.data.data.userId);
-    // console.log(3, jwtToken.data.data.googleId);
-    // console.log(1, jwtToken.data.data.);
-    // console.log(1, jwtToken.data.data);
-    // console.log(2, jwtToken.data.data.userId);
-    // console.log(3, jwtToken.data.data.ninckname);
-    // console.log(4, jwtToken.data.data.jwtToken);
-    // localStorage.setItem("googleId", jwtToken.data.data.googleId);
-    // localStorage.setItem("googleEmail", jwtToken.data.data.googleId);
-    // localStorage.setItem("googleNickname", jwtToken.data.data.nickname);
-    // localStorage.setItem("jwtToken", jwtToken.data.data.jwtToken);
-    history();
-  }
-};
-
 const LoginContent = ({ history }) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json; charset=utf-8",
+    },
+  };
+
+  const responseGoogle = async (response) => {
+    console.log(1, response);
+    console.log(5, response.googleId);
+
+    console.log(3, response.profileObj.name);
+    console.log(4, response.profileObj.email);
+
+    const googleData = {
+      googleId: response.profileObj.googleId,
+      email: response.profileObj.email,
+      name: response.profileObj.name,
+    };
+
+    let jwtToken = await axios.post(
+      "http://59.20.79.42:58002/jwt/oauth",
+      JSON.stringify(googleData),
+      config
+    );
+    if (jwtToken.status === 200) {
+      console.log(0, jwtToken.data);
+
+      localStorage.setItem("userId", jwtToken.data.data.userId);
+      localStorage.setItem("nickname", jwtToken.data.data.nickname);
+      localStorage.setItem("jwtToken", jwtToken.data.data.jwtToken);
+      history.push("/home");
+    }
+  };
+
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -80,7 +71,7 @@ const LoginContent = ({ history }) => {
 
     axios
       .post(
-        "http://59.20.79.42:58002/oauth/jwt/common",
+        "http://59.20.79.42:58002/jwt/common",
 
         form,
         {
@@ -92,6 +83,11 @@ const LoginContent = ({ history }) => {
       )
       .then((response) => {
         console.log(response);
+        localStorage.setItem("jwtToken", response.data.data.jwtToken);
+        localStorage.setItem("userId", response.data.data.userId);
+        localStorage.setItem("nickname", response.data.data.nickname);
+
+        history.push("/home");
       })
       .catch((error) => {
         console.log(error.response);
@@ -119,41 +115,42 @@ const LoginContent = ({ history }) => {
               <h2 className="login__fb-title">간편 로그인</h2>
 
               {/* <LoginBtn /> */}
-              <form onSubmit={onSubmit}>
-                <div>
-                  {/* <!-- 페이스북 로그인 --> */}
-                  <button
-                    className="member-button facebook-button login__fb-btn"
-                    // onClick={() => history.push("/a")}
-                  >
-                    <span className="facebook-button__inner">
-                      <img
-                        src="https://member.op.gg/icon_facebook_wh.6ab689d7.svg"
-                        className="facebook-button__img"
-                        width="24"
-                        height="24"
-                        alt="facebook"
-                      />
-                      <span className="facebook-button__txt">
-                        페이스북으로 로그인
-                      </span>
-                    </span>
-                  </button>
-                  {/* <!-- apple로그인 --> */}
-                  <GooleLoginBox>
-                    <GoogleLogin
-                      clientId="1038460159897-8nk592uqfjq3be23dkrah4d3t3clmg66.apps.googleusercontent.com"
-                      buttonText="Google로 로그인"
-                      onSuccess={responseGoogle}
-                      onFailure={responseGoogle}
-                      cookiePolicy={"single_host_origin"}
-                      className="googleBtn"
-                    />
-                  </GooleLoginBox>
-                </div>
 
-                {/* <!-- apple 로그인 밑  ㅡorㅡ --> */}
-                <div className="login__l-or">OR</div>
+              <div>
+                {/* <!-- 페이스북 로그인 --> */}
+                <button
+                  className="member-button facebook-button login__fb-btn"
+                  // onClick={() => history.push("/a")}
+                >
+                  <span className="facebook-button__inner">
+                    <img
+                      src="https://member.op.gg/icon_facebook_wh.6ab689d7.svg"
+                      className="facebook-button__img"
+                      width="24"
+                      height="24"
+                      alt="facebook"
+                    />
+                    <span className="facebook-button__txt">
+                      페이스북으로 로그인
+                    </span>
+                  </span>
+                </button>
+                {/* <!-- apple로그인 --> */}
+                <GooleLoginBox>
+                  <GoogleLogin
+                    clientId="1038460159897-8nk592uqfjq3be23dkrah4d3t3clmg66.apps.googleusercontent.com"
+                    buttonText="Google로 로그인"
+                    onSuccess={responseGoogle}
+                    onFailure={responseGoogle}
+                    cookiePolicy={"single_host_origin"}
+                    className="googleBtn"
+                  />
+                </GooleLoginBox>
+              </div>
+
+              {/* <!-- apple 로그인 밑  ㅡorㅡ --> */}
+              <div className="login__l-or">OR</div>
+              <form onSubmit={onSubmit}>
                 <h2 className="login__email-title">이메일 로그인</h2>
                 <div className="member-input">
                   <div className="member-input__state">
@@ -223,4 +220,4 @@ const LoginContent = ({ history }) => {
   );
 };
 
-export default LoginContent;
+export default withRouter(LoginContent);

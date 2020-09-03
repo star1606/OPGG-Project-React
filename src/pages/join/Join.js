@@ -3,8 +3,9 @@ import Footer2 from "./../../include/Footer2";
 import "./join.css";
 import axios from "axios";
 import { Link, Route } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
-const Join = () => {
+const Join = ({ history }) => {
   //화면 전체
   // 만약에 더 바꾸고 싶으면 styled-compoenet로 hover구현해보자 색깔바뀌는거
   const [form, setForm] = useState({
@@ -12,6 +13,10 @@ const Join = () => {
     nickname: "",
     password: "",
   });
+
+  const cancelHome = () => {
+    history.push("/login");
+  };
 
   const hanleOnChange = (e) => {
     setForm({
@@ -25,7 +30,7 @@ const Join = () => {
     console.log(form);
     axios
       .post(
-        "http://59.20.79.42:58002/user/join",
+        "http://59.20.79.42:58002/join",
 
         form,
         {
@@ -37,7 +42,10 @@ const Join = () => {
       )
       .then((response) => {
         console.log(response);
-        console.log(response.data);
+        localStorage.set();
+
+        alert("회원가입이 완료되었습니다.");
+        history.push("/home");
       })
       .catch((error) => {
         console.log(error.response);
@@ -97,7 +105,11 @@ const Join = () => {
               </div>
 
               <div className="sign-up__l-btn">
-                <button type="button" className="cancelBtn">
+                <button
+                  onClick={cancelHome}
+                  type="button"
+                  className="cancelBtn"
+                >
                   취소
                 </button>
                 <button type="submit" className="sumbitBtn">
@@ -126,4 +138,4 @@ const Join = () => {
   );
 };
 
-export default Join;
+export default withRouter(Join);

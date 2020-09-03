@@ -3,14 +3,16 @@ import "./Header2.css";
 import { Link, withRouter } from "react-router-dom";
 const Header2 = ({ history, props }) => {
   // const{ auth } = props;
-  const links =
-    1 === 2 ? (
-      <li className="menu__item2">
-        <Link to="/login">로그인</Link>
-      </li>
-    ) : (
-      <div>로그아웃</div>
-    );
+  const logout = () => {
+    localStorage.clear();
+    console.log(localStorage.getItem("jwtToken"));
+  };
+
+  const authCheck = localStorage.getItem("jwtToken") ? (
+    <Link onClick={logout}>로그아웃</Link>
+  ) : (
+    <Link to="/login">로그인</Link>
+  );
   return (
     <div className="l-menu2">
       <ul className="menu2">
@@ -25,9 +27,7 @@ const Header2 = ({ history, props }) => {
         <li className="menu__item2">
           <Link to="/community">커뮤니티</Link>
         </li>
-        <li className="menu__item2">
-          <Link to="/login">로그인</Link>
-        </li>
+        <li className="menu__item2">{authCheck}</li>
       </ul>
       <div
         className="gnb-list-item gnb-list-item__search"
