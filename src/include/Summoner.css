@@ -110,8 +110,8 @@
 
 .lastUpdate {
   position: absolute;
-  left: 160px;
-  bottom: -18px;
+  left: 0px;
+  bottom: 0px;
   height: 12px;
   color: #99a2a2;
   font-size: 11px;
@@ -306,8 +306,12 @@
   background: #99b9cf;
 }
 
-.gameResult {
+/* .gameResult {
   color: #1a78ae;
+} */
+
+.GameDetailTable > .Header > .Row > .HeaderCell > .GameResult {
+  color: red;
 }
 
 .gameSettingInfo {
@@ -466,18 +470,23 @@
 }
 
 .kill {
+  padding: 4px;
   color: #555e5e;
   white-space: nowrap;
   text-align: center;
 }
 
 .death {
+  padding: 4px;
+
   color: #c6443e;
   white-space: nowrap;
   text-align: center;
 }
 
 .assist {
+  padding: 4px;
+
   color: #555e5e;
   white-space: nowrap;
   text-align: center;
@@ -511,7 +520,7 @@
 }
 
 .itemList {
-  width: 96px;
+  width: 90px;
   margin: 0 auto;
 }
 
@@ -983,6 +992,7 @@ user agent stylesheet a:-webkit-any-link {
 }
 
 .GameDetailTable > .Content > .Row > .Cell.Items > .Item {
+  padding: 1px;
   display: inline-block;
   width: 22px;
   height: 22px;
