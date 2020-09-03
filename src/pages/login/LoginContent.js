@@ -29,9 +29,6 @@ const LoginContent = ({ history }) => {
     console.log(1, response);
     console.log(5, response.googleId);
 
-    console.log(3, response.profileObj.name);
-    console.log(4, response.profileObj.email);
-
     const googleData = {
       googleId: response.profileObj.googleId,
       email: response.profileObj.email,
@@ -44,8 +41,6 @@ const LoginContent = ({ history }) => {
       config
     );
     if (jwtToken.status === 200) {
-      console.log(0, jwtToken.data);
-
       localStorage.setItem("userId", jwtToken.data.data.userId);
       localStorage.setItem("nickname", jwtToken.data.data.nickname);
       localStorage.setItem("jwtToken", jwtToken.data.data.jwtToken);

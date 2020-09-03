@@ -299,7 +299,7 @@
     display: table-cell;
     height: 96px;
     vertical-align: middle;
-    width: 100px;
+    width: 120px;
     font-size: 0;
 }
 .championImage {
@@ -427,6 +427,8 @@
     vertical-align: middle;
     text-align: center;
     font-size: 11px;
+    width: 150px;
+    
    
 }
 .kda {
@@ -440,6 +442,88 @@
     font-size: 12px;
     font-weight: bold;
     margin-top: 6px;
+}
+.kill{
+    color: #555e5e;
+    white-space: nowrap;
+    text-align: center;
+}
+
+.death {
+    color: #c6443e;
+    white-space: nowrap;
+    text-align: center;
+}
+
+.assist{
+    color: #555e5e;
+    white-space: nowrap;
+    text-align: center;
+}
+
+.stats{
+    width: 90px;
+    font-size: 11px;
+    text-align: center;
+    line-height: 18px;
+    color: #555e5e;
+    width: 160px;
+    
+  
+}
+
+.statsLevel{
+    font-size: 11px;
+    text-align: center;
+    line-height: 18px;
+    color: #555e5e;
+}
+.ckRate {
+    color: #c6443e;
+}
+.items {
+    display: table-cell;
+    height: 96px;
+    vertical-align: middle;
+    width: 160px;
+
+}
+.itemList {
+    width: 96px;
+    margin: 0 auto;
+
+}
+.item {
+    background-color: #99b9cf;  
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    border-radius: 3px;
+    margin-top: 2px;
+    margin-right: 2px;
+    overflow: hidden;
+}
+.itemImg {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.statusBtn{
+    border-bottom-color: #64b1e4;
+    border-bottom: 1px solid #4aa1d2;
+    width: 30px;
+    border: 1px solid #000;
+    display: table-cell;
+    height: 96px;
+    vertical-align: middle;
+    border-color: #4aa1d2;
+}
+.content2 {
+    border-collapse: collapse;
+        position: relative;
+    width: 30px;
+    height: 96px;
 }
     </style>
   </head>
@@ -561,7 +645,9 @@
                                                             <div class='kdaWrap'>
                                                                 <div class='kda'>
                                                                     <span class='kill'>13</span>
+                                                                    /
                                                                     <span class='death'>2</span>
+                                                                    /
                                                                     <span class='assist'>5</span>
                                                                 </div>
                                                                 <div class='kdaRatio'>
@@ -569,6 +655,53 @@
                                                                     평점
                                                                 </div>
                                                             </div>
+                                                            <div class='stats' style='display: table-cell;
+                                                            height: 96px;
+                                                            vertical-align: middle;'>
+                                                                <div class = 'stateLevel'>
+                                                                    레벨12
+                                                                </div>
+                                                                <div class ='cs'>
+                                                                    <span class=cs-tip>
+                                                                        138 (7.4)
+                                                                    </span>
+                                                                    CS
+                                                                </div>
+                                                                <div class='ckRate'>
+                                                                    킬관여 90%
+                                                                </div>
+                                                            </div>
+                                                            <div class='items'>
+                                                                <div class='itemList'>
+                                                                    <div class='item'>
+                                                                        <img src='../include/3802.png' class=itemImg>
+                                                                    </div>
+                                                                    <div class='item'>
+                                                                        <img src='../include/3802.png' class=itemImg>
+                                                                    </div>
+                                                                    <div class='item'>
+                                                                        <img src='../include/3802.png' class=itemImg>
+                                                                    </div>
+                                                                    <div class='item'>
+                                                                        <img src='../include/3802.png' class=itemImg>
+                                                                    </div>
+                                                                    <div class='item'>
+                                                                        <img src='../include/3802.png' class=itemImg>
+                                                                    </div>
+                                                                    <div class='item'>
+                                                                        <img src='../include/3802.png' class=itemImg>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                                <div class="statusBtn">
+                                                                    <div class='content2'>
+                                                                        <a class='btnMatchDetail'>
+                                                                            <span class='spSite-off'></span>
+                                                                            <span class='spSite-on'></span>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
                                                             
                                          
                                             
