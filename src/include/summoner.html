@@ -1,561 +1,1303 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-      .header {
-        position: relative;
-        width: 1000px;
-        margin: 0 auto;
-        padding: 20px 0 0 0;
-      }
-      .face {
-        display: inline-block;
-        width: 100px;
-        padding-left: 30px;
-        vertical-align: top;
-      }
-      .profileIcon {
-        position: relative;
-      }
-      .borderImage {
-        background-image: url("http://opgg-static.akamaized.net/images/borders2/challenger.png");
-        position: absolute;
-        left: -10px;
-        top: -10px;
-        width: 120px;
-        height: 120px;
-        background-position: center bottom;
-        background-repeat: no-repeat;
-      }
+        .header {
+            position: relative;
+            width: 1000px;
+            margin: 0 auto;
+            padding: 20px 0 0 0;
+        }
 
-      .profileImage {
-        display: block;
-        width: 100px;
-        height: 100px;
-      }
-      .level {
-        position: absolute;
-        top: 100%;
-        left: 50%;
-        margin-top: -14px;
-        margin-left: -22px;
-        width: 44px;
-        height: 24px;
-        padding-top: 3px;
-        box-sizing: border-box;
-        background: url(../images/site/summoner/bg-levelbox.png);
-        background-size: 100%;
-        line-height: 17px;
-        font-family: Helvetica, AppleSDGothic, "Apple SD Gothic Neo",
-          AppleGothic, Arial, Tahoma;
-        font-size: 14px;
-        text-align: center;
-        color: #eabd56;
-      }
+        .face {
+            display: inline-block;
+            width: 100px;
+            padding-left: 30px;
+            vertical-align: top;
+        }
 
-      .profile {
-        position: relative;
-        display: inline-block;
-        height: 100px;
-        margin: 0 25px 0 25px;
-        vertical-align: top;
-        line-height: 1.1;
-      }
-      .name {
-        color: #242929;
-        font-size: 20px;
-        font-weight: bold;
-        margin-right: 4px;
-        vertical-align: middle;
-      }
-      .rank {
-        margin-bottom: 5px;
-      }
-      .link {
-        color: #555e5e;
-        font-size: 11px;
-        text-decoration: none;
-        line-height: 1.5;
-      }
+        .profileIcon {
+            position: relative;
+        }
 
-      .ranking {
-    color: #059ede;
-    font-weight: bold;
-}
-.buttons {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    font-size: 0;
-    margin: 15px 0 -6px;
-    white-space: nowrap;
-}
-.button__blue{
-    border: 1px solid #1a78ae;
-    background: #1f8ecd;
-    color: #f2f2f2;
-    width: 90px;
-    height: 41px;
+        .borderImage {
+            background-image: url("http://opgg-static.akamaized.net/images/borders2/challenger.png");
+            position: absolute;
+            left: -10px;
+            top: -10px;
+            width: 120px;
+            height: 120px;
+            background-position: center bottom;
+            background-repeat: no-repeat;
+        }
 
-}
+        .profileImage {
+            display: block;
+            width: 100px;
+            height: 100px;
+        }
 
-.ladderRank{
-    font-size: 11px;
+        .level {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-top: -14px;
+            margin-left: -22px;
+            width: 44px;
+            height: 24px;
+            padding-top: 3px;
+            box-sizing: border-box;
+            background: url(../images/site/summoner/bg-levelbox.png);
+            background-size: 100%;
+            line-height: 17px;
+            font-family: Helvetica, AppleSDGothic, "Apple SD Gothic Neo",
+                AppleGothic, Arial, Tahoma;
+            font-size: 14px;
+            text-align: center;
+            color: #eabd56;
+        }
 
-}
-.lastUpdate{
-    position: absolute;
-    left: 160px;
-    bottom: -18px;
-    height: 12px;
-    color: #99a2a2;
-    font-size: 11px;
-}
+        .profile {
+            position: relative;
+            display: inline-block;
+            height: 100px;
+            margin: 0 25px 0 25px;
+            vertical-align: top;
+            line-height: 1.1;
+        }
 
+        .name {
+            color: #242929;
+            font-size: 20px;
+            font-weight: bold;
+            margin-right: 4px;
+            vertical-align: middle;
+        }
 
-.contentWrap{
-    overflow: hidden;
-}
+        .rank {
+            margin-bottom: 5px;
+        }
 
-.tabItem__content{
-    width: 1000px;
-    min-height: 500px;
-    margin: 0 auto;
-    display: block;
-}
+        .link {
+            color: #555e5e;
+            font-size: 11px;
+            text-decoration: none;
+            line-height: 1.5;
+        }
 
-.sideContent{
-    display: inline-block;
-    width: 300px;
-    font-size: 12px;
-    vertical-align: top;
-}
+        .ranking {
+            color: #059ede;
+            font-weight: bold;
+        }
 
-.tierbox{
-    margin-top: 30px;
-    border: 1px solid #cdd2d2;
-   
-    background: #f2f2f2;
-    border-radius: 2px;
-}
+        .buttons {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            font-size: 0;
+            margin: 15px 0 -6px;
+            white-space: nowrap;
+        }
 
-.summonerRating{
-    display: table;
-    width: 100%;
-    color: #879292;
-    position: relative;
-    background-color: #f2f2f2;
-    padding: 8px 0;
-}
+        .button__blue {
+            border: 1px solid #1a78ae;
+            background: #1f8ecd;
+            color: #f2f2f2;
+            width: 90px;
+            height: 41px;
 
-.medal{
-    display: table-cell;
-    vertical-align: middle;
-    width: 120px;
-    height: 124px;
-    text-align: center;
+        }
 
-}
-.medalImage{
-    width: 104px;
-    height: 104px;
-    margin: -5px 0 -10px 0;
+        .ladderRank {
+            font-size: 11px;
 
-}
-.tierRankInfo{
-    display: table-cell;
-    vertical-align: middle;
-    font-size: 12px;
-    line-height: 1.5;
-    text-align: left;
-}
-.rankType{
-    font-size: 11px;
-    color: #879292;
-}
-.tierRank{
-    font-size: 15px;
-    font-weight: bold;
-    color: #1f8ecd;
+        }
 
-}
-.leaguePoints{
-    color: #555e5e;
-    font-weight: bold;
-}
-.sub-tier{
-    margin-top: 8px;
-    padding: 16px 0;
-    display: flex;
-    display: -ms-flexbox;
-    align-items: center;
-    background-color: #f2f2f2;
-    border: solid 1px #cdd2d2;
-}
-.img-sub-tier__medal{
-    width: 64px;
-    height: 64px;
-    margin: 0 28px;
-
-}
-.img-sub-tier__medal{
-    justify-content: center;
-}
-.sub-tier__rank-type{
-    font-size: 11px;
-    color: #879292;
-}
-.sub-tier__rank-tier__unranked{
-    color: #879292;
-}
-
-.realContent{
-    display: inline-block;
-    /* width: 690px; */
-    width: 680px;
-    margin-left: 10px;
-    font-size: 12px;
-    vertical-align: top;
-}
-
-.gameListContainer{
-    
-    margin-top: 30px;
+        .lastUpdate {
+            position: absolute;
+            left: 160px;
+            bottom: -18px;
+            height: 12px;
+            color: #99a2a2;
+            font-size: 11px;
+        }
 
 
-}
-.content{
-    position: relative;
-}
+        .contentWrap {
+            overflow: hidden;
+        }
 
-.gameItem >.content > div {
-    display: table-cell;
-    height: 96px;
-    vertical-align: middle;
-}
-.gameItem>.content {
-    display: table;
-    width: 689px;
-    border-collapse: collapse;
-    border: 1px solid #cdd2d2;
-}
-.gameItemList{
-    margin-top: 8px;
-}
-.gameItemWrap {
-    position: relative;
-    border-radius: 3px;
-    margin-bottom: 8px;
-}
-.gameItemWinExtended {
-    position: relative;
-    background: none;
-}
-.content{
-    table-layout: fixed;
-    background-color: #a3cfec;
-    border-color: #99b9cf;
-}
-.gameState{
-    border-bottom: 1px solid #4aa1d2;
-}
-.gameType{
-    font-weight: bold;
-    width: 70px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-.gameItemWinExtended{
-    border-bottom: 1px solid #4aa1d2;
-}
-.gameStats{
-    vertical-align: middle;
-    width: 70px;
-    text-align: center;
-    font-size: 11px;
-    color: #555;
-    line-height: 16px;
-    text-align: center;
-    display: table-cell;
-   
-}
-.bar {    display: block;
-    width: 27px;
-    margin: 5px auto;
-    height: 2px;
-    
-    background: #99b9cf;
+        .tabItem__content {
+            width: 1000px;
+            min-height: 500px;
+            margin: 0 auto;
+            display: block;
+        }
 
-}
-.gameResult {
-    color: #1a78ae;
-}
-.gameSettingInfo{
-    display: table-cell;
-    height: 96px;
-    vertical-align: middle;
-    width: 120px;
-    font-size: 0;
-}
-.championImage {
-    display: inline-block;
-    width: 46px;
-    height: 46px;
-    vertical-align: middle;
-    border-radius: 50%;
-    overflow: hidden;
-}
-.championIcon { 
-    display: block;
-    width: 100%;
-    height: 100%;
-    background: #000;
-    
-}
+        .sideContent {
+            display: inline-block;
+            width: 300px;
+            font-size: 12px;
+            vertical-align: top;
+        }
+
+        .tierbox {
+            margin-top: 30px;
+            border: 1px solid #cdd2d2;
+
+            background: #f2f2f2;
+            border-radius: 2px;
+        }
+
+        .summonerRating {
+            display: table;
+            width: 100%;
+            color: #879292;
+            position: relative;
+            background-color: #f2f2f2;
+            padding: 8px 0;
+        }
+
+        .medal {
+            display: table-cell;
+            vertical-align: middle;
+            width: 120px;
+            height: 124px;
+            text-align: center;
+
+        }
+
+        .medalImage {
+            width: 104px;
+            height: 104px;
+            margin: -5px 0 -10px 0;
+
+        }
+
+        .tierRankInfo {
+            display: table-cell;
+            vertical-align: middle;
+            font-size: 12px;
+            line-height: 1.5;
+            text-align: left;
+        }
+
+        .rankType {
+            font-size: 11px;
+            color: #879292;
+        }
+
+        .tierRank {
+            font-size: 15px;
+            font-weight: bold;
+            color: #1f8ecd;
+
+        }
+
+        .leaguePoints {
+            color: #555e5e;
+            font-weight: bold;
+        }
+
+        .sub-tier {
+            margin-top: 8px;
+            padding: 16px 0;
+            display: flex;
+            display: -ms-flexbox;
+            align-items: center;
+            background-color: #f2f2f2;
+            border: solid 1px #cdd2d2;
+        }
+
+        .img-sub-tier__medal {
+            width: 64px;
+            height: 64px;
+            margin: 0 28px;
+
+        }
+
+        .img-sub-tier__medal {
+            justify-content: center;
+        }
+
+        .sub-tier__rank-type {
+            font-size: 11px;
+            color: #879292;
+        }
+
+        .sub-tier__rank-tier__unranked {
+            color: #879292;
+        }
+
+        .realContent {
+            display: inline-block;
+            /* width: 690px; */
+            width: 680px;
+            margin-left: 10px;
+            font-size: 12px;
+            vertical-align: top;
+        }
+
+        .gameListContainer {
+
+            margin-top: 30px;
+
+
+        }
+
+        .content {
+            position: relative;
+        }
+
+        .gameItem>.content>div {
+            display: table-cell;
+            height: 96px;
+            vertical-align: middle;
+        }
+
+        .gameItem>.content {
+            display: table;
+            width: 689px;
+            border-collapse: collapse;
+            border: 1px solid #cdd2d2;
+        }
+
+        .gameItemList {
+            margin-top: 8px;
+        }
+
+        .gameItemWrap {
+            position: relative;
+            border-radius: 3px;
+            margin-bottom: 8px;
+        }
+
+        .gameItemWinExtended {
+            position: relative;
+            background: none;
+        }
+
+        .content {
+            table-layout: fixed;
+            background-color: #a3cfec;
+            border-color: #99b9cf;
+        }
+
+        .gameState {
+            border-bottom: 1px solid #4aa1d2;
+        }
+
+        .gameType {
+            font-weight: bold;
+            width: 70px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .gameItemWinExtended {
+            border-bottom: 1px solid #4aa1d2;
+        }
+
+        .gameStats {
+            vertical-align: middle;
+            width: 70px;
+            text-align: center;
+            font-size: 11px;
+            color: #555;
+            line-height: 16px;
+            text-align: center;
+            display: table-cell;
+
+        }
+
+        .bar {
+            display: block;
+            width: 27px;
+            margin: 5px auto;
+            height: 2px;
+
+            background: #99b9cf;
+
+        }
+
+        .gameResult {
+            color: #1a78ae;
+        }
+
+        .gameSettingInfo {
+            display: table-cell;
+            height: 96px;
+            vertical-align: middle;
+            width: 120px;
+            font-size: 0;
+        }
+
+        .championImage {
+            display: inline-block;
+            width: 46px;
+            height: 46px;
+            vertical-align: middle;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .championIcon {
+            display: block;
+            width: 100%;
+            height: 100%;
+            background: #000;
+
+        }
 
 
 
 
-.summonerSpell {
-    display: inline-block;
-    vertical-align: middle;
-    margin-left: 4px;
-}
+        .summonerSpell {
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 4px;
+        }
 
-.rune {
-    width: 22px;
-    height: 22px;
-}
+        .rune {
+            width: 22px;
+            height: 22px;
+        }
 
-.rune1{
-    display: block;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-}
-.rune2{
-   display: block;
-   width: 100%;
-   height: 100%;
-   border-radius: 50%;
-}
-.championName {
-    margin-top: 8px;
-    font-size: 11px;
-    color: #555;
-    text-align: center;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
+        .rune1 {
+            display: block;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
 
-.spell1{
-    margin-left: 0;
-    display: block;
-    width: 22px;
-    height: 22px;
-    margin-top: 2px;
-    border-radius: 3px;
-    overflow: hidden;
-}
+        .rune2 {
+            display: block;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
 
-.summonerSpell1 {
-    display: block;
-    width: 100%;
-    height: 100%;
-}
-.spell2{
-    margin-left: 0;
-    display: block;
-    width: 22px;
-    height: 22px;
-    margin-top: 0px;
-    border-radius: 3px;
-    overflow: hidden;
-}
+        .championName {
+            margin-top: 8px;
+            font-size: 11px;
+            color: #555;
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
 
-.summonerSpell2 {
-    display: block;
-    width: 100%;
-    height: 100%;
-}
-.runes {
-    display: inline-block;
-    vertical-align: middle;
-    margin-left: 4px;
-}
-.rune1{
-    margin-top: 0;
-    width: 22px;
-    height: 22px;
-}
-.rune2{
-    margin-top: 0;
-    width: 22px;
-    height: 22px;
-}
-.runeImage1 {
-    display: block;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-}
+        .spell1 {
+            margin-left: 0;
+            display: block;
+            width: 22px;
+            height: 22px;
+            margin-top: 2px;
+            border-radius: 3px;
+            overflow: hidden;
+        }
 
-.runeImage2 {
-    display: block;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-}
-.championName{
-    margin-top: 8px;
-    font-size: 11px;
-    color: #555;
-    text-align: center;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-.kdaWrap{
-    display: table-cell;
-    height: 96px;
-    vertical-align: middle;
-    text-align: center;
-    font-size: 11px;
-    width: 150px;
-    
-   
-}
-.kda {
-    color: #879292;
-    font-size: 15px;
-    white-space: nowrap;
-}
+        .summonerSpell1 {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
 
-.kdaRatio {
-    color: #555e5e;
-    font-size: 12px;
-    font-weight: bold;
-    margin-top: 6px;
-}
-.kill{
-    color: #555e5e;
-    white-space: nowrap;
-    text-align: center;
-}
+        .spell2 {
+            margin-left: 0;
+            display: block;
+            width: 22px;
+            height: 22px;
+            margin-top: 0px;
+            border-radius: 3px;
+            overflow: hidden;
+        }
 
-.death {
-    color: #c6443e;
-    white-space: nowrap;
-    text-align: center;
-}
+        .summonerSpell2 {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
 
-.assist{
-    color: #555e5e;
-    white-space: nowrap;
-    text-align: center;
-}
+        .runes {
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 4px;
+        }
 
-.stats{
-    width: 90px;
-    font-size: 11px;
-    text-align: center;
-    line-height: 18px;
-    color: #555e5e;
-    width: 160px;
-    
-  
-}
+        .rune1 {
+            margin-top: 0;
+            width: 22px;
+            height: 22px;
+        }
 
-.statsLevel{
-    font-size: 11px;
-    text-align: center;
-    line-height: 18px;
-    color: #555e5e;
-}
-.ckRate {
-    color: #c6443e;
-}
-.items {
-    display: table-cell;
-    height: 96px;
-    vertical-align: middle;
-    width: 160px;
+        .rune2 {
+            margin-top: 0;
+            width: 22px;
+            height: 22px;
+        }
 
-}
-.itemList {
-    width: 96px;
-    margin: 0 auto;
+        .runeImage1 {
+            display: block;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
 
-}
-.item {
-    background-color: #99b9cf;  
-    display: inline-block;
-    width: 22px;
-    height: 22px;
-    border-radius: 3px;
-    margin-top: 2px;
-    margin-right: 2px;
-    overflow: hidden;
-}
-.itemImg {
-    width: 100%;
-    height: 100%;
-    border: 0;
-}
+        .runeImage2 {
+            display: block;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
 
-.statusBtn{
-    border-bottom-color: #64b1e4;
-    border-bottom: 1px solid #4aa1d2;
-    width: 30px;
-    border: 1px solid #000;
-    display: table-cell;
-    height: 96px;
-    vertical-align: middle;
-    border-color: #4aa1d2;
-}
-.content2 {
-    border-collapse: collapse;
-        position: relative;
-    width: 30px;
-    height: 96px;
-}
+        .championName {
+            margin-top: 8px;
+            font-size: 11px;
+            color: #555;
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .kdaWrap {
+            display: table-cell;
+            height: 96px;
+            vertical-align: middle;
+            text-align: center;
+            font-size: 11px;
+            width: 150px;
+
+
+        }
+
+        .kda {
+            color: #879292;
+            font-size: 15px;
+            white-space: nowrap;
+        }
+
+        .kdaRatio {
+            color: #555e5e;
+            font-size: 12px;
+            font-weight: bold;
+            margin-top: 6px;
+        }
+
+        .kill {
+            color: #555e5e;
+            white-space: nowrap;
+            text-align: center;
+        }
+
+        .death {
+            color: #c6443e;
+            white-space: nowrap;
+            text-align: center;
+        }
+
+        .assist {
+            color: #555e5e;
+            white-space: nowrap;
+            text-align: center;
+        }
+
+        .stats {
+            width: 90px;
+            font-size: 11px;
+            text-align: center;
+            line-height: 18px;
+            color: #555e5e;
+            width: 160px;
+
+
+        }
+
+        .statsLevel {
+            font-size: 11px;
+            text-align: center;
+            line-height: 18px;
+            color: #555e5e;
+        }
+
+        .ckRate {
+            color: #c6443e;
+        }
+
+        .items {
+            display: table-cell;
+            height: 96px;
+            vertical-align: middle;
+            width: 160px;
+
+        }
+
+        .itemList {
+            width: 96px;
+            margin: 0 auto;
+
+        }
+
+        .item {
+            background-color: #99b9cf;
+            display: inline-block;
+            width: 22px;
+            height: 22px;
+            border-radius: 3px;
+            margin-top: 2px;
+            margin-right: 2px;
+            overflow: hidden;
+        }
+
+        .itemImg {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .statusBtn {
+            border-bottom-color: #64b1e4;
+            border-bottom: 1px solid #4aa1d2;
+            width: 30px;
+            border: 1px solid #000;
+            display: table-cell;
+            height: 96px;
+            vertical-align: middle;
+            border-color: #4aa1d2;
+        }
+
+        .content2 {
+            position: relative;
+            border-collapse: collapse;
+            position: relative;
+            width: 30px;
+            height: 96px;
+        }
+
+        .material-icons {
+            position: absolute;
+            bottom: 0px;
+            left: 3px;
+            cursor: pointer;
+            color: #016aa7;
+        }
+
+        .GameItem.extended.Win>.GameDetail {
+            background: #64b1e4;
+        }
+
+        .RealContent {
+
+            font-size: 12px;
+
+        }
+
+        .MatchDetailLayout .MatchDetailContent {
+            background: #ededed;
+            border-top: none;
+        }
+
+        .GameDetailTable {
+            width: 100%;
+            table-layout: fixed;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        colgroup {
+            display: table-column-group;
+        }
+
+        .GameDetailTable>colgroup>.ChampionImage {
+            width: 44px;
+        }
+
+        .GameDetailTable>colgroup>.SummonerSpell {
+            width: 18px;
+        }
+
+        .GameDetailTable>colgroup>.KeystoneMastery {
+            width: 18px;
+        }
+
+        col {
+            display: table-column;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        .GameDetailTable>colgroup>.Tier {
+            width: 65px;
+        }
+
+        .GameDetailTable>colgroup>.OPScore {
+            width: 55px;
+        }
+
+        .GameDetailTable>colgroup>.KDA {
+            width: 76px;
+        }
+
+        .GameDetailTable>colgroup>.Damage {
+            width: 66px;
+        }
+
+        .GameDetailTable>colgroup>.Ward {
+            width: 48px;
+        }
+
+        .GameDetailTable>colgroup>.CS {
+            width: 55px;
+        }
+
+        .GameDetailTable>colgroup>.Items {
+            width: 170px;
+        }
+
+        .GameDetailTable>.Header {
+            border: solid 1px #cdd2d2;
+            background-color: #fff;
+        }
+
+        tr {
+            display: table-row;
+            vertical-align: inherit;
+            border-color: inherit;
+        }
+
+        .GameDetailTable>.Header>.Row>.HeaderCell:first-child {
+            padding-left: 15px;
+            text-align: left;
+        }
+
+        .GameDetailTable>.Header>.Row>.HeaderCell {
+            height: 32px;
+            color: #555e5e;
+            font-size: 12px;
+            font-weight: normal;
+        }
+
+        .GameDetailTable.Result-WIN>.Header .Row>.HeaderCell>.GameResult {
+            color: #1a78ae;
+        }
+
+        .GameDetailTable>.Header>.Row>.HeaderCell>.GameResult {
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .GameDetailTable.Result-WIN>.Header .Row>.HeaderCell>.GameResult {
+            color: #1a78ae;
+        }
+
+        .GameDetailTable>.Content>.Row.first>.Cell {
+            padding-top: 4px;
+        }
+
+        .GameDetailTable>.Content>.Row>.Cell.ChampionImage {
+            padding-left: 10px;
+            padding-right: 4px;
+        }
+
+        .GameDetailTable>.Content>.Row>.Cell {
+            padding: 3px 0;
+            vertical-align: middle;
+        }
+
+        .GameDetailTable>.Content>.Row>.Cell.ChampionImage>a {
+            position: relative;
+            display: block;
+        }
+
+        user agent stylesheet a:-webkit-any-link {
+            color: -webkit-link;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        .GameDetailTable>.Content>.Row>.Cell.ChampionImage>a>.Image {
+            display: block;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+        }
+
+        .GameDetailTable>.Content>.Row>.Cell.ChampionImage>a>.Level {
+            position: absolute;
+            left: -10px;
+            bottom: -3px;
+            width: 15px;
+            height: 15px;
+
+            color: black;
+            font-size: 10px;
+            font-family: "Tahoma";
+            text-align: center;
+            line-height: 15px;
+        }
+
+        .GameDetailTable>.Content>.Row>.Cell {
+            padding: 3px 0;
+            vertical-align: middle;
+        }
+
+        .GameDetailTable>.Content>.Row>.Cell.SummonerSpell>.Image:first-child {
+            margin-bottom: 2px;
+        }
+
+        .GameDetailTable>.Content>.Row>.Cell.SummonerSpell>.Image {
+            display: block;
+            width: 16px;
+            height: 16px;
+            border-radius: 2px;
+        }
+
+        .GameDetailTable>.Content>.Row>.Cell.SummonerSpell>.Image {
+            display: block;
+            width: 16px;
+            height: 16px;
+            border-radius: 2px;
+        }
+
+        .GameDetailTable>.Content>.Row.first>.Cell {
+            padding-top: 4px;
+        }
+
+        .GameDetailTable>.Content>.Row>.Cell {
+            padding: 3px 0;
+            vertical-align: middle;
+        }
+
+        .GameDetailTable>.Content>.Row>.Cell.Rune>.Image:first-child {
+            margin-bottom: 2px;
+            background: #000;
+        }
+
+        .GameDetailTable>.Content>.Row>.Cell.Rune>.Image {
+            display: block;
+            width: 16px;
+            height: 16px;
+            border-radius: 8px;
+        }
+
+        .GameDetailTable>.Content>.Row>.Cell.Rune>.Image {
+            display: block;
+            width: 16px;
+            height: 16px;
+            border-radius: 8px;
+        }
+
+        .GameDetailTable>.Content>.Row.first>.Cell {
+            padding-top: 4px;
+        }
+
+        .GameDetailTable>.Content>.Row>.Cell.SummonerName {
+            padding-left: 5px;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+
+        .GameDetailTable>.Content>.Row>.Cell {
+            padding: 3px 0;
+            vertical-align: middle;
+        }
+
+        .GameDetailTable>.Content>.Row>.Cell.SummonerName>.Link {
+            color: #555e5e;
+            font-size: 11px;
+            text-decoration: none;
+        }
+
+        .GameDetailTable>.Content>.Row.first>.Cell {
+            padding-top: 4px;
+        }
+
+        .GameDetailTable>.Content>.Row>.Cell.Tier {
+            color: #555e5e;
+            font-size: 11px;
+            text-align: center;
+        }
+
+        .GameDetailTable>.Content>.Row>.Cell {
+            padding: 3px 0;
+            vertical-align: middle;
+        }
+
+        .GameDetailTable>.Content>.Row.first>.Cell {
+            padding-top: 4px;
+        }
+
+        .GameDetailTable>.Content>.Row>.Cell.OPScore {
+            text-align: center;
+            white-space: nowrap;
+            font-family: HelveticaNeue;
+            font-size: 10px;
+        }
+
+        .GameDetailTable>.Content>.Row>.Cell {
+            padding: 3px 0;
+            vertical-align: middle;
+        }
+
+        .GameDetailTable>.Content>.Row>.Cell.OPScore>.Text {
+            color: #333333;
+            font-size: 11px;
+            height: 14px;
+        }
+
+        .GameDetailTable>.Content>.Row>.Cell.OPScore>.Score {
+            background-color: #737373;
+        }
+
+        .GameDetailTable>.Content>.Row>.Cell.OPScore>.Badge {
+            color: #fff;
+            border-radius: 7px;
+            padding: 2px;
+            margin: 0 auto;
+            width: 30px;
+            height: 10px;
+            line-height: 1;
+        }
+
+        .GameDetailTable>.Content>.Row.first>.Cell {
+            padding-top: 4px;
+        }
+
+        .GameDetailTable>.Content>.Row>.Cell.KDA {
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .GameDetailTable>.Content>.Row>.Cell {
+            padding: 3px 0;
+            vertical-align: middle;
+        }
+
+        .GameDetailTable>.Content>.Row>.Cell.KDA>.KDARatio.green {
+            color: #2daf7f;
+        }
+
+        .GameDetailTable>.Content>.Row>.Cell.KDA>.KDARatio {
+            /* color: #879292; */
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .GameDetailTable>.Content>.Row>.Cell.KDA>.KDA {
+            color: #555e5e;
+            font-size: 11px;
+        }
+
+        .GameDetailTable>.Content>.Row>.Cell.KDA>.KDA {
+            color: #555e5e;
+            font-size: 11px;
+        }
+
+        .GameDetailTable>.Content>.Row.first>.Cell {
+            padding-top: 4px;
+        }
+
+        .GameDetailTable>.Content>.Row>.Cell.Damage {
+            text-align: center;
+        }
+
+        .GameDetailTable>.Content>.Row>.Cell {
+            padding: 3px 0;
+            vertical-align: middle;
+        }
+
+        .GameDetailTable>.Content>.Row.first>.Cell {
+            padding-top: 4px;
+        }
+
+        .GameDetailTable>.Content>.Row>.Cell.Ward {
+            text-align: center;
+            color: #555e5e;
+            font-size: 11px;
+        }
+
+        .GameDetailTable>.Content>.Row>.Cell {
+            padding: 3px 0;
+            vertical-align: middle;
+        }
+
+        .GameDetailTable>.Content>.Row>.Cell.Damage>.ChampionDamage {
+            color: #555e5e;
+            font-size: 11px;
+        }
+
+        .GameDetailTable>.Content>.Row>.Cell.Damage>.Progress {
+            width: 50px;
+            height: 6px;
+            margin: 0 auto;
+            border: 1px solid #cdd2d2;
+            background-color: #f2f2f2;
+        }
+
+        .GameDetailTable>.Content>.Row>.Cell.Damage>.Progress .Fill {
+            height: 100%;
+            margin: -1px;
+            border: 1px solid #c6443e;
+            background-color: #ee5a52;
+            width: 100%;
+        }
+
+        .GameDetailTable>.Content>.Row.first>.Cell {
+            padding-top: 4px;
+        }
+
+        .GameDetailTable>.Content>.Row>.Cell.Ward {
+            text-align: center;
+            color: #555e5e;
+            font-size: 11px;
+        }
+
+        .GameDetailTable>.Content>.Row>.Cell {
+            padding: 3px 0;
+            vertical-align: middle;
+        }
+
+        .GameDetailTable>.Content>.Row>.Cell.Ward {
+            text-align: center;
+            color: #555e5e;
+            font-size: 11px;
+        }
+
+        .GameDetailTable>.Content>.Row.first>.Cell {
+            padding-top: 4px;
+        }
+
+        .GameDetailTable>.Content>.Row>.Cell.CS {
+            text-align: center;
+            color: #777;
+            font-size: 11px;
+        }
+
+        .GameDetailTable>.Content>.Row>.Cell {
+            padding: 3px 0;
+            vertical-align: middle;
+        }
+
+        .GameDetailTable>.Content>.Row>.Cell.CS>.CS {
+            color: #555e5e;
+        }
+
+        .GameDetailTable>.Content>.Row.first>.Cell {
+            padding-top: 4px;
+        }
+
+        .GameDetailTable>.Content>.Row>.Cell.Items {
+            text-align: center;
+            font-size: 0;
+        }
+
+        .GameDetailTable>.Content>.Row>.Cell {
+            padding: 3px 0;
+            vertical-align: middle;
+        }
+
+        .GameDetailTable>.Content>.Row>.Cell.Items>.Item:first-child {
+            margin-left: 0;
+        }
+
+        .GameDetailTable>.Content>.Row>.Cell.Items>.Item {
+            display: inline-block;
+            width: 22px;
+            height: 22px;
+            /* margin-left: 1px; */
+            vertical-align: middle;
+        }
+
+        .GameDetailTable>.Content>.Row>.Cell.Items>.Item>.Image {
+            display: block;
+            width: 100%;
+            height: 100%;
+            border-radius: 3px;
+        }
+
+        img {
+            border: 0;
+        }
+
+        .GameDetailTableWrap>.Summary {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-left: 1px solid #cdd2d2;
+            border-right: 1px solid #cdd2d2;
+            background-color: #e4e4e4;
+        }
+
+        small,
+        div,
+        p,
+        span,
+        button {
+            font-family: Helvetica, "Malgun Gothic", "Apple SD Gothic Neo", AppleGothic, Dotum, Arial, Tahoma;
+        }
+
+        .GameDetailTableWrap>.Summary>.Team:first-child {
+            padding-right: 0;
+            padding-left: 10px;
+            text-align: left;
+            border-left: 1px solid transparent;
+        }
+
+        .GameDetailTableWrap>.Summary>.Team {
+            display: table-cell;
+            height: 30px;
+            vertical-align: middle;
+            /* padding-right: 10px; */
+            /* text-align: right; */
+            line-height: 30px;
+        }
+
+        .GameDetailTableWrap>.Summary>.Team>.ObjectScore,
+        .GameDetailTableWrap>.Summary>.Team>.ObjectScore {
+            display: inline-block;
+            font-size: 11px;
+            color: #555;
+        }
+
+        .GameDetailTableWrap>.Summary>.Team>.ObjectScore>.Image,
+        .GameDetailTableWrap>.Summary>.Team>.ObjectScore>.Image {
+            display: inline-block;
+            margin-right: 3px;
+            vertical-align: middle;
+            height: 16px;
+        }
+
+        .GameDetailTableWrap>.Summary>.Team>.ObjectScore+.ObjectScore,
+        .GameDetailTableWrap>.Summary>.Team>.ObjectScore+.ObjectScore,
+        .GameDetailTableWrap>.Summary>.Team>.ObjectScore+.ObjectScore,
+        .GameDetailTableWrap>.Summary>.Team>.ObjectScore+.ObjectScore {
+            margin-left: 10px;
+        }
+
+        .GameDetailTableWrap>.Summary>.Team>.ObjectScore,
+        .GameDetailTableWrap>.Summary>.Team>.ObjectScore {
+            display: inline-block;
+            font-size: 11px;
+            color: #555;
+        }
+
+        .GameDetailTableWrap>.Summary>.Team>.ObjectScore>.Image,
+        .GameDetailTableWrap>.Summary>.Team>.ObjectScore>.Image {
+            display: inline-block;
+            margin-right: 3px;
+            vertical-align: middle;
+            height: 16px;
+        }
+
+        .summary-graph {
+            flex: 0 1 390px;
+        }
+
+        .summary-graph>.total--container:first-child {
+            padding-top: 8px;
+            padding-bottom: 8px;
+        }
+
+        .summary-graph>.total--container {
+            display: flex;
+            justify-content: center;
+            padding: 0 8px;
+        }
+
+        .summary-graph>.total--container>.graph--title {
+            text-align: left;
+            width: 60px;
+        }
+
+        .summary-graph>.total--container>.text {
+            font-size: 10px;
+            color: #222222;
+        }
+
+        .summary-graph>.total--container>.graph--data__left {
+            text-align: right;
+        }
+
+        .summary-graph>.total--container>.graph--data {
+            width: 40px;
+        }
+
+        .summary-graph>.total--container>.text {
+            font-size: 10px;
+            color: #222222;
+        }
+
+        .summary-graph>.total--container>.graph--container {
+            flex: 0 1 290px;
+            display: flex;
+            align-items: center;
+            margin-left: 8px;
+            margin: 0 3px;
+        }
+
+        .summary-graph>.total--container>.graph--container>.win--team {
+            background-color: #548dca;
+            margin-left: 4px;
+            flex: 23;
+        }
+
+        .summary-graph>.total--container>.graph--container>.graph {
+            /* flex: 1; */
+            height: 10px;
+        }
+
+        .summary-graph>.total--container>.graph--container>.lose--team {
+            background-color: #d05a53;
+            margin-right: 4px;
+            flex: 9;
+        }
+
+        .summary-graph>.total--container>.graph--container>.graph {
+            /* flex: 1; */
+            height: 10px;
+        }
+
+        .summary-graph>.total--container>.graph--data__right {
+            text-align: left;
+        }
+
+        .summary-graph>.total--container>.graph--data {
+            width: 40px;
+        }
+
+        .summary-graph>.total--container>.text {
+            font-size: 10px;
+            color: #222222;
+        }
+
+        .summary-graph>.total--container:last-child {
+            padding-bottom: 8px;
+        }
+
+        .summary-graph>.total--container {
+            display: flex;
+            justify-content: center;
+            padding: 0 8px;
+        }
+
+        .summary-graph>.total--container>.graph--title {
+            text-align: left;
+            width: 60px;
+        }
+
+        .summary-graph>.total--container>.text {
+            font-size: 10px;
+            color: #222222;
+        }
+
+        .summary-graph>.total--container>.graph--data__left {
+            text-align: right;
+        }
+
+        .summary-graph>.total--container>.graph--data {
+            width: 40px;
+        }
+
+        .summary-graph>.total--container>.text {
+            font-size: 10px;
+            color: #222222;
+        }
+
+        .summary-graph>.total--container>.graph--container {
+            flex: 0 1 290px;
+            display: flex;
+            align-items: center;
+            margin-left: 8px;
+            margin: 0 3px;
+        }
+
+        .summary-graph>.total--container>.graph--container>.win--team {
+            background-color: #548dca;
+            margin-left: 4px;
+            flex: 45395;
+        }
+
+        .summary-graph>.total--container>.graph--container>.lose--team {
+            background-color: #d05a53;
+            margin-right: 4px;
+            flex: 38060;
+        }
+
+        .GameDetailTableWrap>.Summary>.Team:last-child {
+            padding-right: 10px;
+            border-right: 1px solid transparent;
+            border-top: 1px solid transparent;
+        }
+
+        .GameDetailTableWrap>.Summary>.Team {
+            display: table-cell;
+            height: 30px;
+            vertical-align: middle;
+            /* padding-right: 10px; */
+            /* text-align: right; */
+            line-height: 30px;
+        }
+
+        .GameDetailTable {
+            width: 100%;
+            table-layout: fixed;
+        }
+
+        .detailChampIcon {
+
+            display: block;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+        }
     </style>
-  </head>
-  <body>
-    <div>
-      <div class="header">
-        <div class="face">
-          <div class="profileIcon">
-            <div class="borderImage"></div>
-            <img class="profileImage" src="../include/garen.png" />
-            <span class="level">288</span>
-          </div>
-        </div>
-        <div class="profile">
-          <di class='information'>
-            <span class="name">DWG ShowMaker</span>
-            <div class='rank'>
-                <div class='ladderRank'>
-                    
-						랭킹 <span class="ranking">1</span>위
-                </div>
+</head>
 
+<body>
+    <div>
+        <div class="header">
+            <div class="face">
+                <div class="profileIcon">
+                    <div class="borderImage"></div>
+                    <img class="profileImage" src="../include/garen.png" />
+                    <span class="level">288</span>
+                </div>
             </div>
-            <div class='button'>
-                <button class='button__blue'>
-                    전적갱신
-                </button>
+            <div class="profile">
+                <di class='information'>
+                    <span class="name">DWG ShowMaker</span>
+                    <div class='rank'>
+                        <div class='ladderRank'>
+
+                            랭킹 <span class="ranking">1</span>위
+                        </div>
+
+                    </div>
+                    <div class='button'>
+                        <button class='button__blue'>
+                            전적갱신
+                        </button>
+                    </div>
             </div>
-          </div>
-          <div class='lastUpdate'>
+            <div class='lastUpdate'>
                 최근업데이트: <span class="time">31 분전</span>
-          </div>
+            </div>
         </div>
         <div class='contentWrap'>
             <div class='tabItem__content'>
@@ -569,8 +1311,8 @@
                                 <div class='rankType'>솔로랭크</div>
                                 <div class='tierRank'>Chanllenger</div>
                                 <div class='tierInfo'>
-                                    <span class ='leaguePoints'>
-                                        1,604 Lp   /
+                                    <span class='leaguePoints'>
+                                        1,604 Lp /
                                     </span>
                                     <span class='winLose'>
                                         <span class='wins'> 326승 </span>
@@ -602,116 +1344,971 @@
                         <div class='content'>
                             <div class='gameItemList'>
                                 <div class='gameItemWrap'>
-                                    <div class='gameItemWinExtended' data-summoner-id="41913808" data-game-time="1598546708" data-game-id="4605496244" data-game-result="win">
+                                    <div class='gameItemWinExtended' data-summoner-id="41913808"
+                                        data-game-time="1598546708" data-game-id="4605496244" data-game-result="win">
                                         <div class='toggle-content'>
                                             <div class="gameStats">
                                                 <div class="gameType" title="솔랭">
                                                     솔랭
                                                 </div>
-                                                <div class="timeStamp"><span class="toggle-time" data-datetime="1598546708" data-type="" data-interval="60" title="2020년 8월 28일 오전 1시 45분">11시간 전</span></div>
+                                                <div class="timeStamp"><span class="toggle-time"
+                                                        data-datetime="1598546708" data-type="" data-interval="60"
+                                                        title="2020년 8월 28일 오전 1시 45분">11시간 전</span></div>
                                                 <div class="bar"></div>
                                                 <div class="gameResult">
-                                                                            승리									</div>
-                                                                    <div class="gameLength">18분 40초</div>
-                                                
+                                                    승리 </div>
+                                                <div class="gameLength">18분 40초</div>
 
-                                                                 
-                                                            </div>
 
-                                                            <div class='gameSettingInfo'>
-                                                                <div class='championImage'>
-                                                                    <img src='../include/Kassadin.png' class='championIcon' />
-                                                                </div>
-                                                                <div class='summonerSpell'>
-                                                                    <div class='spell1'>
-                                                                        <img src='../include/8112.png' class='summonerSpell1' />
-                                                                    </div>
-                                                                    <div class='spell2'>
-                                                                    <img src='../include/8112.png' class='summonerSpell2' />
-                                                                    </div>
-                                                                </div>
-                                                                <div class='runes'>
-                                                                    <div class='rune1'>
-                                                                        <img src='../include/8112.png' class='runeImage1' />
-                                                                    </div>
-                                                                    <div class='rune2'>
-                                                                        <img src='../include/8112.png' class='runeImage2' />
-                                                                    </div>
-                                                                </div>
-                                                                <div class='championName' >
-                                                                    카사딘
-                                                                </div>
-                                                            </div>
-                                                            <div class='kdaWrap'>
-                                                                <div class='kda'>
-                                                                    <span class='kill'>13</span>
-                                                                    /
-                                                                    <span class='death'>2</span>
-                                                                    /
-                                                                    <span class='assist'>5</span>
-                                                                </div>
-                                                                <div class='kdaRatio'>
-                                                                    <span class ='kdaRatioSpan'>9.00:1</span>
-                                                                    평점
-                                                                </div>
-                                                            </div>
-                                                            <div class='stats' style='display: table-cell;
+
+                                            </div>
+
+                                            <div class='gameSettingInfo'>
+                                                <div class='championImage'>
+                                                    <img src='../include/Kassadin.png' class='championIcon' />
+                                                </div>
+                                                <div class='summonerSpell'>
+                                                    <div class='spell1'>
+                                                        <img src='../include/8112.png' class='summonerSpell1' />
+                                                    </div>
+                                                    <div class='spell2'>
+                                                        <img src='../include/8112.png' class='summonerSpell2' />
+                                                    </div>
+                                                </div>
+                                                <div class='runes'>
+                                                    <div class='rune1'>
+                                                        <img src='../include/8112.png' class='runeImage1' />
+                                                    </div>
+                                                    <div class='rune2'>
+                                                        <img src='../include/8112.png' class='runeImage2' />
+                                                    </div>
+                                                </div>
+                                                <div class='championName'>
+                                                    카사딘
+                                                </div>
+                                            </div>
+                                            <div class='kdaWrap'>
+                                                <div class='kda'>
+                                                    <span class='kill'>13</span>
+                                                    /
+                                                    <span class='death'>2</span>
+                                                    /
+                                                    <span class='assist'>5</span>
+                                                </div>
+                                                <div class='kdaRatio'>
+                                                    <span class='kdaRatioSpan'>9.00:1</span>
+                                                    평점
+                                                </div>
+                                            </div>
+                                            <div class='stats' style='display: table-cell;
                                                             height: 96px;
                                                             vertical-align: middle;'>
-                                                                <div class = 'stateLevel'>
-                                                                    레벨12
-                                                                </div>
-                                                                <div class ='cs'>
-                                                                    <span class=cs-tip>
-                                                                        138 (7.4)
-                                                                    </span>
-                                                                    CS
-                                                                </div>
-                                                                <div class='ckRate'>
-                                                                    킬관여 90%
-                                                                </div>
-                                                            </div>
-                                                            <div class='items'>
-                                                                <div class='itemList'>
-                                                                    <div class='item'>
-                                                                        <img src='../include/3802.png' class=itemImg>
-                                                                    </div>
-                                                                    <div class='item'>
-                                                                        <img src='../include/3802.png' class=itemImg>
-                                                                    </div>
-                                                                    <div class='item'>
-                                                                        <img src='../include/3802.png' class=itemImg>
-                                                                    </div>
-                                                                    <div class='item'>
-                                                                        <img src='../include/3802.png' class=itemImg>
-                                                                    </div>
-                                                                    <div class='item'>
-                                                                        <img src='../include/3802.png' class=itemImg>
-                                                                    </div>
-                                                                    <div class='item'>
-                                                                        <img src='../include/3802.png' class=itemImg>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            
-                                                                <div class="statusBtn">
-                                                                    <div class='content2'>
-                                                                        <a class='btnMatchDetail'>
-                                                                            <span class='spSite-off'></span>
-                                                                            <span class='spSite-on'></span>
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
-                                                            
-                                         
-                                            
-                                            
-                                            
+                                                <div class='stateLevel'>
+                                                    레벨12
+                                                </div>
+                                                <div class='cs'>
+                                                    <span class=cs-tip>
+                                                        138 (7.4)
+                                                    </span>
+                                                    CS
+                                                </div>
+                                                <div class='ckRate'>
+                                                    킬관여 90%
+                                                </div>
+                                            </div>
+                                            <div class='items'>
+                                                <div class='itemList'>
+                                                    <div class='item'>
+                                                        <img src='../include/3802.png' class=itemImg>
+                                                    </div>
+                                                    <div class='item'>
+                                                        <img src='../include/3802.png' class=itemImg>
+                                                    </div>
+                                                    <div class='item'>
+                                                        <img src='../include/3802.png' class=itemImg>
+                                                    </div>
+                                                    <div class='item'>
+                                                        <img src='../include/3802.png' class=itemImg>
+                                                    </div>
+                                                    <div class='item'>
+                                                        <img src='../include/3802.png' class=itemImg>
+                                                    </div>
+                                                    <div class='item'>
+                                                        <img src='../include/3802.png' class=itemImg>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="statusBtn">
+                                                <div class='content2'>
+                                                    <a class='btnMatchDetail'>
+                                                        <i class="material-icons">arrow_drop_down</i>
+                                                    </a>
+                                                </div>
+                                            </div>
+
+
+
+
+
 
                                             <!-- <img src='../include/8112.png' class='spell1' /> -->
-                                            
-                                            
+
+
                                         </div>
+                                        <!-- 여기서부터가 경기내용임 -->
+                                        <div class="GameDetail">
+                                            <div class="MatchDetailLayout tabWrap _recognized">
+                                                <div class="MatchDetailHeader">
+
+                                                </div>
+                                                <div class="MatchDetailContent tabItems">
+
+                                                    <div class="Content tabItem MatchDetailContent-overview"
+                                                        style="display: block;">
+                                                        <div class="GameDetailTableWrap">
+
+                                                            <table class="GameDetailTable Result-WIN">
+                                                                <colgroup>
+                                                                    <col class="ChampionImage">
+                                                                    <col class="SummonerSpell">
+                                                                    <col class="KeystoneMastery">
+                                                                    <col class="SummonerName">
+                                                                    <col class="Tier">
+                                                                    <col class="OPScore">
+                                                                    <col class="KDA">
+                                                                    <col class="Damage">
+                                                                    <col class="Ward">
+                                                                    <col class="CS">
+                                                                    <col class="Items">
+                                                                </colgroup>
+                                                                <thead class="Header">
+                                                                    <tr class="Row">
+                                                                        <th class="HeaderCell" colspan="4">
+                                                                            <span class="GameResult">
+                                                                                승리 </span>
+                                                                            (레드팀)
+                                                                        </th>
+                                                                        <th class="HeaderCell">티어</th>
+                                                                        <th class="HeaderCell"></th>
+                                                                        <th class="HeaderCell">KDA</th>
+                                                                        <th class="HeaderCell">피해량</th>
+                                                                        <th class="HeaderCell">와드</th>
+                                                                        <th class="HeaderCell">CS</th>
+                                                                        <th class="HeaderCell">아이템</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody class="Content">
+                                                                    <tr class="Row first  ">
+                                                                        <td class="ChampionImage Cell">
+                                                                            <a href="" target="_blank">
+                                                                                <img src='../include/Kassadin.png'
+                                                                                    title='제이스' class='detailChampIcon'>
+                                                                                <!-- <div class="Image __sprite __spc32 __spc32-45 tip"
+                                                                                    title="제이스">제이스</div> -->
+                                                                                <div class="Level">14</div>
+                                                                            </a>
+                                                                        </td>
+                                                                        <td class="SummonerSpell Cell">
+                                                                            <img src="../include/8112.png"
+                                                                                class="Image tip">
+                                                                            <img src="../include/8112.png"
+                                                                                class="Image tip">
+                                                                        </td>
+                                                                        <td class="Rune Cell">
+                                                                            <img src="../include/8112.png"
+                                                                                class="Image tip">
+                                                                            <img src="../include/8112.png"
+                                                                                class="Image tip">
+                                                                        </td>
+                                                                        <td class="SummonerName Cell">
+                                                                            <a href="" target="_blank"
+                                                                                class="Link">upupupupupupp</a>
+                                                                        </td>
+
+                                                                        <td class="Tier Cell tip">
+                                                                            Challenger
+                                                                        </td>
+
+                                                                        <td class="OPScore Cell">
+
+                                                                        </td>
+                                                                        <td class="KDA Cell">
+                                                                            <span class="KDARatio green">3.00:1</span>
+
+                                                                            <div class="KDA">
+                                                                                <span class="Kill">4</span>/<span
+                                                                                    class="Death">4</span>/<span
+                                                                                    class="Assist">8</span>
+                                                                                <span class="CKRate tip"
+                                                                                    title="킬관여율">(52%)</span>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="Damage Cell tip">
+                                                                            <div class="ChampionDamage">13,260</div>
+                                                                            <div class="Progress">
+                                                                                <div class="Fill" style="width: 100%;">
+                                                                                </div>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="Ward Cell tip">
+                                                                            <div class="Buy">
+                                                                                <span class="SightWard">3</span>
+                                                                            </div>
+                                                                            <div class="Stats">
+                                                                                <span> 10</span> /
+                                                                                <span> 4</span>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="CS Cell">
+                                                                            <div class="CS">172</div>
+                                                                            <div class="CSPerMinute">분당 7.9</div>
+                                                                        </td>
+                                                                        <td class="Items Cell">
+                                                                            <div class="Item">
+                                                                                <img src="../include/3802.png"
+                                                                                    class="Image tip" alt="처형인의 대검">
+                                                                            </div>
+                                                                            <div class="Item">
+                                                                                <img src="../include/3802.png"
+                                                                                    class="Image tip" alt="요우무의 유령검">
+                                                                            </div>
+                                                                            <div class="Item">
+                                                                                <img src="../include/3802.png"
+                                                                                    class="Image tip" alt="밤의 끝자락">
+                                                                            </div>
+                                                                            <div class="Item">
+                                                                                <img src="../include/3802.png"
+                                                                                    class="Image tip" alt="롱소드">
+                                                                            </div>
+                                                                            <div class="Item">
+                                                                                <img src="../include/3802.png"
+                                                                                    class="Image tip" alt="롱소드">
+                                                                            </div>
+                                                                            <div class="Item">
+                                                                                <img src="../include/3802.png"
+                                                                                    class="Image tip" alt="헤르메스의 발걸음">
+                                                                            </div>
+                                                                            <div class="Item">
+                                                                                <img src="../include/3802.png"
+                                                                                    class="Image tip" alt="망원형 개조">
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+
+
+
+
+                                                                </tbody>
+                                                            </table>
+                                                            <div class="Summary">
+                                                                <div class="Team Team-200 Result-WIN">
+                                                                    <div class="ObjectScore">
+                                                                        <img src="" class="Image tip" title="바론">
+                                                                        1
+                                                                    </div>
+                                                                    <div class="ObjectScore">
+                                                                        <img src="//opgg-static.akamaized.net/images/site/summoner/icon-dragon-b.png"
+                                                                            class="Image tip" title="드래곤">
+                                                                        2
+                                                                    </div>
+                                                                    <div class="ObjectScore">
+                                                                        <img src="//opgg-static.akamaized.net/images/site/summoner/icon-tower-b.png"
+                                                                            class="Image tip" title="타워">
+                                                                        4
+                                                                    </div>
+                                                                </div>
+                                                                <div class="summary-graph">
+                                                                    <div class="total--container">
+                                                                        <div class="text graph--title">Total Kill</div>
+                                                                        <div class="text graph--data graph--data__left">
+                                                                            23</div>
+                                                                        <div class="graph--container">
+                                                                            <div class="graph win--team"
+                                                                                style="flex:23"></div>
+                                                                            <div class="graph lose--team"
+                                                                                style="flex:9"></div>
+                                                                        </div>
+                                                                        <div
+                                                                            class="text graph--data graph--data__right">
+                                                                            9</div>
+                                                                    </div>
+                                                                    <div class="total--container">
+                                                                        <div class="text graph--title">Total Gold</div>
+                                                                        <div class="text graph--data graph--data__left">
+                                                                            45395</div>
+                                                                        <div class="graph--container">
+                                                                            <div class="graph win--team"
+                                                                                style="flex:45395"></div>
+                                                                            <div class="graph lose--team"
+                                                                                style="flex:38060"></div>
+                                                                        </div>
+                                                                        <div
+                                                                            class="text graph--data graph--data__right">
+                                                                            38060</div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="Team Team-100 Result-LOSE">
+                                                                    <div class="ObjectScore">
+                                                                        <img src="//opgg-static.akamaized.net/images/site/summoner/icon-baron-r.png"
+                                                                            class="Image tip" title="바론">
+                                                                        0
+                                                                    </div>
+                                                                    <div class="ObjectScore">
+                                                                        <img src="//opgg-static.akamaized.net/images/site/summoner/icon-dragon-r.png"
+                                                                            class="Image tip" title="드래곤">
+                                                                        0
+                                                                    </div>
+                                                                    <div class="ObjectScore">
+                                                                        <img src="//opgg-static.akamaized.net/images/site/summoner/icon-tower-r.png"
+                                                                            class="Image tip" title="타워">
+                                                                        3
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <table class="GameDetailTable Result-LOSE">
+                                                                <colgroup>
+                                                                    <col class="ChampionImage">
+                                                                    <col class="SummonerSpell">
+                                                                    <col class="KeystoneMastery">
+                                                                    <col class="SummonerName">
+                                                                    <col class="Tier">
+                                                                    <col class="OPScore">
+                                                                    <col class="KDA">
+                                                                    <col class="Damage">
+                                                                    <col class="Ward">
+                                                                    <col class="CS">
+                                                                    <col class="Items">
+                                                                </colgroup>
+                                                                <thead class="Header">
+                                                                    <tr class="Row">
+                                                                        <th class="HeaderCell" colspan="4">
+                                                                            <span class="GameResult">
+                                                                                패배 </span>
+                                                                            (블루팀)
+                                                                        </th>
+                                                                        <th class="HeaderCell">티어</th>
+                                                                        <th class="HeaderCell"></th>
+                                                                        <th class="HeaderCell">KDA</th>
+                                                                        <th class="HeaderCell">피해량</th>
+                                                                        <th class="HeaderCell">와드</th>
+                                                                        <th class="HeaderCell">CS</th>
+                                                                        <th class="HeaderCell">아이템</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody class="Content">
+                                                                    <tr class="Row first  ">
+                                                                        <td class="ChampionImage Cell">
+                                                                            <a href="/champion/cassiopeia/statistics"
+                                                                                target="_blank">
+                                                                                <div class="Image __sprite __spc32 __spc32-17 tip"
+                                                                                    title="카시오페아">카시오페아</div>
+                                                                                <div class="Level">13</div>
+                                                                            </a>
+                                                                        </td>
+                                                                        <td class="SummonerSpell Cell">
+                                                                            <img src="//opgg-static.akamaized.net/images/lol/spell/SummonerFlash.png?image=q_auto&amp;v=1596679559"
+                                                                                class="Image tip"
+                                                                                title="<b style='color: #ffc659'>점멸</b><br><span>커서 방향으로 챔피언이 짧은 거리를 순간이동합니다.</span>">
+                                                                            <img src="//opgg-static.akamaized.net/images/lol/spell/SummonerTeleport.png?image=q_auto&amp;v=1596679559"
+                                                                                class="Image tip"
+                                                                                title="<b style='color: #ffc659'>순간이동</b><br><span>4초 동안 정신을 집중한 다음, 챔피언이 지정한 아군 구조물, 미니언, 혹은 와드로 순간이동하고 이동 속도가 증가합니다. 순간이동의 재사용 대기시간은 챔피언 레벨에 따라 420~240초입니다.</span>">
+                                                                        </td>
+                                                                        <td class="Rune Cell">
+                                                                            <img src="//opgg-static.akamaized.net/images/lol/perk/8010.png?image=q_auto&amp;v=1596679559"
+                                                                                class="Image tip"
+                                                                                title="<b style='color: #ffc659'>정복자</b><br><span>적 챔피언에게 기본 공격 또는 스킬로 피해를 입히면 6초 동안 정복자 중첩을 2만큼 얻어 중첩마다 1.7~4.2의 <lol-uikit-tooltipped-keyword key='LinkTooltip_Description_Adaptive'><font color='#48C4B7'>적응형 능력치</font></lol-uikit-tooltipped-keyword>를 얻습니다. 최대 12회까지 중첩됩니다. 원거리 챔피언은 기본 공격으로 중첩을 1만 획득할 수 있습니다.<br><br>최대로 중첩되면 챔피언에게 입힌 피해량의 15%만큼 체력을 회복합니다. (원거리 챔피언은 8%)</span>">
+                                                                            <img src="//opgg-static.akamaized.net/images/lol/perkStyle/8300.png?image=q_auto&amp;v=1596679559"
+                                                                                class="Image tip"
+                                                                                title="<b style='color: #ffc659'>영감</b><br><span>다양한 방식의 전투 보조</span>">
+                                                                        </td>
+                                                                        <td class="SummonerName Cell">
+                                                                            <a href="//www.op.gg/summoner/userName=HuyaTvJincanyi"
+                                                                                target="_blank"
+                                                                                class="Link">HuyaTvJincanyi</a>
+                                                                        </td>
+
+                                                                        <td class="Tier Cell tip"
+                                                                            title="솔랭<br>Challenger<br>1264 LP">
+                                                                            Challenger
+                                                                        </td>
+
+                                                                        <td class="OPScore Cell">
+
+                                                                        </td>
+                                                                        <td class="KDA Cell">
+                                                                            <span class="KDARatio normal">1.33:1</span>
+
+                                                                            <div class="KDA">
+                                                                                <span class="Kill">3</span>/<span
+                                                                                    class="Death">3</span>/<span
+                                                                                    class="Assist">1</span>
+                                                                                <span class="CKRate tip"
+                                                                                    title="킬관여율">(44%)</span>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="Damage Cell tip"
+                                                                            title="챔피언에게 가한 피해량: 7,882<br>총 피해량: 98,344">
+                                                                            <div class="ChampionDamage">7,882</div>
+                                                                            <div class="Progress">
+                                                                                <div class="Fill" style="width: 60%;">
+                                                                                </div>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="Ward Cell tip"
+                                                                            title="제어 와드 2<br>와드 설치: 9<br>와드 제거: 3">
+                                                                            <div class="Buy">
+                                                                                <span class="SightWard">2</span>
+                                                                            </div>
+                                                                            <div class="Stats">
+                                                                                <span> 9</span> /
+                                                                                <span> 3</span>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="CS Cell">
+                                                                            <div class="CS">198</div>
+                                                                            <div class="CSPerMinute">분당 9</div>
+                                                                        </td>
+                                                                        <td class="Items Cell">
+                                                                            <div class="Item">
+                                                                                <img src="//opgg-static.akamaized.net/images/lol/item/3003.png?image=q_auto&amp;v=1596679559"
+                                                                                    class="Image tip"
+                                                                                    title="<b style='color: #00cfbc'>대천사의 지팡이</b><br><span>최대 마나량에 따라 주문력이 대폭 상승합니다.</span><br><span><stats>주문력 +50<br><mana>마나 +650</mana><br>재사용 대기시간 감소 +10%</stats><br><br><unique>고유 지속 효과 - 가속:</unique> 재사용 대기시간이 추가로 10% 감소합니다.<br><mana><unique>고유 지속 효과 - 경탄:</unique> 최대 마나의 1%만큼 주문력이 오릅니다. 마나를 소모하면 소모량의 25%를 돌려받습니다.<br><unique>고유 지속 효과 - 마나 충전:</unique> 마나를 소모할 때마다 최대 마나량이 +8 (최대 마나 +750) 증가합니다. (매 12초당 최대 3번 발동)<br><br>마나 +750에 도달하면 대천사의 포옹으로 변합니다.</mana><br><br><groupLimit>여신의 눈물 계열 아이템 소지 개수는 1개로 제한됩니다.</groupLimit></span><br><span>가격:</span> <span style='color: #ffc659'>3200 (1050)</span>"
+                                                                                    alt="대천사의 지팡이">
+                                                                            </div>
+                                                                            <div class="Item">
+                                                                                <img src="//opgg-static.akamaized.net/images/lol/item/2033.png?image=q_auto&amp;v=1596679559"
+                                                                                    class="Image tip"
+                                                                                    title="<b style='color: #00cfbc'>부패 물약</b><br><span>체력과 마나가 일정 시간 동안 회복되고 전투 능력을 상승시킵니다. 상점에 가면 다시 충전됩니다.</span><br><span><groupLimit>한 번에 한 종류의 회복 물약만 소지할 수 있습니다.</groupLimit><br><br><active>고유 사용 효과:</active> 충전량을 1회 소모해 12초 동안 125의 체력과 75의 마나를 회복하고, 그 동안 <font color='#FF8811'><u>부패의 손길</u></font>을 활성화합니다. 상점 방문 시 3회의 충전량이 다시 채워집니다.<br><br><font color='#FF8811'><u>부패의 손길:</u></font> 적 챔피언에게 주문 및 공격으로 피해를 입히면 적을 불태워 3초 동안 15의 마법 피해를 입힙니다. (광역 및 지속 피해 스킬 사용 시에는 피해의 50%만 적용됩니다. 피해량은 챔피언 레벨에 비례해 증가합니다.)<br><br><rules>(부패 물약은 체력과 마나가 모두 차 있을 때도 사용할 수 있습니다.)</rules></span><br><span>가격:</span> <span style='color: #ffc659'>500 (350)</span>"
+                                                                                    alt="부패 물약">
+                                                                            </div>
+                                                                            <div class="Item">
+                                                                                <img src="//opgg-static.akamaized.net/images/lol/item/3027.png?image=q_auto&amp;v=1596679559"
+                                                                                    class="Image tip"
+                                                                                    title="<b style='color: #00cfbc'>영겁의 지팡이</b><br><span>체력, 마나, 주문력이 크게 증가합니다.</span><br><span><stats>체력 +300<br><mana>마나 +300</mana><br>주문력 +60</stats><br><br><passive>기본 지속 효과:</passive> 매 중첩당 체력 +20, 마나 +10, 주문력 +4의 능력치를 올려줍니다. (최대 체력 +200, 마나 +100, 주문력 +40) 매 분당 중첩이 1 오릅니다. (최대 중첩 수 10)<br><unique>고유 지속 효과 - 영원:</unique> 챔피언으로부터 입은 피해의 15%를 마나로 돌려받습니다. 마나 소모 시 20%를 체력으로 돌려받습니다. (스킬 사용 1회당 최대 25까지)</span><br><span>가격:</span> <span style='color: #ffc659'>2600 (650)</span>"
+                                                                                    alt="영겁의 지팡이">
+                                                                            </div>
+                                                                            <div class="Item">
+                                                                                <img src="//opgg-static.akamaized.net/images/lol/item/1056.png?image=q_auto&amp;v=1596679559"
+                                                                                    class="Image tip"
+                                                                                    title="<b style='color: #00cfbc'>도란의 반지</b><br><span>스킬 사용에 특화된 시작 아이템입니다.</span><br><span><stats>체력 +60<br>주문력 +15<br><mana>5초당 마나 재생 +5</mana></stats><br><br><passive>기본 지속 효과: </passive>미니언에게 기본 공격 적중 시 5의 추가 물리 피해를 입힙니다.</span><br><span>가격:</span> <span style='color: #ffc659'>400 (400)</span>"
+                                                                                    alt="도란의 반지">
+                                                                            </div>
+                                                                            <div class="Item">
+                                                                                <img src="//opgg-static.akamaized.net/images/lol/item/3136.png?image=q_auto&amp;v=1596679559"
+                                                                                    class="Image tip"
+                                                                                    title="<b style='color: #00cfbc'>기괴한 가면</b><br><span>마법 피해량이 증가합니다.</span><br><span><stats>주문력 +35<br>체력 +200</stats><br><br><unique>고유 지속 효과 - 광기:</unique> 적 챔피언과 전투 시 매초 2%의 추가 피해를 입힙니다. (최대 10%)</span><br><span>가격:</span> <span style='color: #ffc659'>1500 (665)</span>"
+                                                                                    alt="기괴한 가면">
+                                                                            </div>
+                                                                            <div class="Item">
+                                                                                <img src="//opgg-static.akamaized.net/images/lol/item/3191.png?image=q_auto&amp;v=1596679559"
+                                                                                    class="Image tip"
+                                                                                    title="<b style='color: #00cfbc'>추적자의 팔목 보호대</b><br><span>방어력과 주문력이 증가합니다.</span><br><span><stats>방어력 +30<br>주문력 +20</stats><br><br><unique>고유 지속 효과:</unique> 유닛을 하나 처치하면 방어력과 주문력이 추가로 0.5 오릅니다. 이 효과는 최대 30번까지 중첩됩니다.</span><br><span>가격:</span> <span style='color: #ffc659'>1100 (65)</span>"
+                                                                                    alt="추적자의 팔목 보호대">
+                                                                            </div>
+                                                                            <div class="Item">
+                                                                                <img src="//opgg-static.akamaized.net/images/lol/item/3364.png?image=q_auto&amp;v=1596679559"
+                                                                                    class="Image tip"
+                                                                                    title="<b style='color: #00cfbc'>예언자의 렌즈</b><br><span>근처의 투명한 와드와 덫을 일정 시간 동안 차단합니다.</span><br><span><groupLimit>장신구 소지 개수는 1개로 제한됩니다.</groupLimit><br><br><active>사용 시:</active> 10초 동안 근처를 수색해 적 유닛이 숨어 있으면 경고를 보내며 주변의 투명한 덫과 와드를 드러내고, 추가로 와드를 무력화시킵니다. (재사용 대기시간 90~60초)</span>"
+                                                                                    alt="예언자의 렌즈">
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="Row   ">
+                                                                        <td class="ChampionImage Cell">
+                                                                            <a href="/champion/reksai/statistics"
+                                                                                target="_blank">
+                                                                                <div class="Image __sprite __spc32 __spc32-94 tip"
+                                                                                    title="렉사이">렉사이</div>
+                                                                                <div class="Level">11</div>
+                                                                            </a>
+                                                                        </td>
+                                                                        <td class="SummonerSpell Cell">
+                                                                            <img src="//opgg-static.akamaized.net/images/lol/spell/SummonerSmite.png?image=q_auto&amp;v=1596679559"
+                                                                                class="Image tip"
+                                                                                title="<b style='color: #ffc659'>강타</b><br><span>대상 에픽 및 대형/중형 몬스터, 혹은 적 미니언에게 390~1,000(챔피언 레벨에 따라 변동)의 고정 피해를 입힙니다. 몬스터에게 사용하면 자신의 최대 체력에 비례해 체력을 회복합니다.</span>">
+                                                                            <img src="//opgg-static.akamaized.net/images/lol/spell/SummonerFlash.png?image=q_auto&amp;v=1596679559"
+                                                                                class="Image tip"
+                                                                                title="<b style='color: #ffc659'>점멸</b><br><span>커서 방향으로 챔피언이 짧은 거리를 순간이동합니다.</span>">
+                                                                        </td>
+                                                                        <td class="Rune Cell">
+                                                                            <img src="//opgg-static.akamaized.net/images/lol/perk/8010.png?image=q_auto&amp;v=1596679559"
+                                                                                class="Image tip"
+                                                                                title="<b style='color: #ffc659'>정복자</b><br><span>적 챔피언에게 기본 공격 또는 스킬로 피해를 입히면 6초 동안 정복자 중첩을 2만큼 얻어 중첩마다 1.7~4.2의 <lol-uikit-tooltipped-keyword key='LinkTooltip_Description_Adaptive'><font color='#48C4B7'>적응형 능력치</font></lol-uikit-tooltipped-keyword>를 얻습니다. 최대 12회까지 중첩됩니다. 원거리 챔피언은 기본 공격으로 중첩을 1만 획득할 수 있습니다.<br><br>최대로 중첩되면 챔피언에게 입힌 피해량의 15%만큼 체력을 회복합니다. (원거리 챔피언은 8%)</span>">
+                                                                            <img src="//opgg-static.akamaized.net/images/lol/perkStyle/8200.png?image=q_auto&amp;v=1596679559"
+                                                                                class="Image tip"
+                                                                                title="<b style='color: #ffc659'>마법</b><br><span>스킬 및 광역 효과 강화</span>">
+                                                                        </td>
+                                                                        <td class="SummonerName Cell">
+                                                                            <a href="//www.op.gg/summoner/userName=Gen+G+Clid"
+                                                                                target="_blank" class="Link">Gen G
+                                                                                Clid</a>
+                                                                        </td>
+
+                                                                        <td class="Tier Cell tip"
+                                                                            title="솔랭<br>Challenger<br>838 LP">
+                                                                            Challenger
+                                                                        </td>
+
+                                                                        <td class="OPScore Cell">
+                                                                            <div class="OPScore Text">6.7</div>
+                                                                            <div class="OPScore Badge ACE">ACE</div>
+                                                                        </td>
+                                                                        <td class="KDA Cell">
+                                                                            <span class="KDARatio normal">1.17:1</span>
+
+                                                                            <div class="KDA">
+                                                                                <span class="Kill">3</span>/<span
+                                                                                    class="Death">6</span>/<span
+                                                                                    class="Assist">4</span>
+                                                                                <span class="CKRate tip"
+                                                                                    title="킬관여율">(78%)</span>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="Damage Cell tip"
+                                                                            title="챔피언에게 가한 피해량: 10,257<br>총 피해량: 113,262">
+                                                                            <div class="ChampionDamage">10,257</div>
+                                                                            <div class="Progress">
+                                                                                <div class="Fill" style="width: 78%;">
+                                                                                </div>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="Ward Cell tip"
+                                                                            title="제어 와드 6<br>와드 설치: 6<br>와드 제거: 11">
+                                                                            <div class="Buy">
+                                                                                <span class="SightWard">6</span>
+                                                                            </div>
+                                                                            <div class="Stats">
+                                                                                <span> 6</span> /
+                                                                                <span> 11</span>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="CS Cell">
+                                                                            <div class="CS">122</div>
+                                                                            <div class="CSPerMinute">분당 5.6</div>
+                                                                        </td>
+                                                                        <td class="Items Cell">
+                                                                            <div class="Item">
+                                                                                <img src="//opgg-static.akamaized.net/images/lol/item/2055.png?image=q_auto&amp;v=1596679559"
+                                                                                    class="Image tip"
+                                                                                    title="<b style='color: #00cfbc'>제어 와드</b><br><span>일정 지역 안의 와드와 투명 덫을 무력화시킵니다.</span><br><span><groupLimit>제어 와드는 가방에 2개만 소지할 수 있습니다.</groupLimit><br><br><consumable>클릭하여 사용:</consumable> 주변 지역을 드러내 주는 와드를 설치합니다. 근처의 투명한 덫과 와드를 드러내고, 추가로 와드를 무력화시킵니다. 위장 중인 유닛의 모습도 드러냅니다. 하지만 제어 와드로 다른 제어 와드를 무력화시킬 수는 없습니다.<br><br>플레이어 당 맵에 설치할 수 있는 <font color='#BBFFFF'>제어 와드</font>의 개수는  1개로 제한됩니다.</span><br><span>가격:</span> <span style='color: #ffc659'>75 (75)</span>"
+                                                                                    alt="제어 와드">
+                                                                            </div>
+                                                                            <div class="Item">
+                                                                                <div class="Image noItem"></div>
+                                                                            </div>
+                                                                            <div class="Item">
+                                                                                <img src="//opgg-static.akamaized.net/images/lol/item/2420.png?image=q_auto&amp;v=1596679559"
+                                                                                    class="Image tip"
+                                                                                    title="<b style='color: #00cfbc'>초시계</b><br><span>사용하면 아무런 행동도 취할 수 없는 대신 공격도 받지 않는 무적 상태가 됩니다.</span><br><span><active>고유 사용 효과 - 경직:</active> 챔피언이 2.5초 동안 아무런 행동도 취할 수 없는 대신 공격도 받지 않는 무적 상태가 됩니다. (단 1회 사용 가능)</span><br><span>가격:</span> <span style='color: #ffc659'>650 (650)</span>"
+                                                                                    alt="초시계">
+                                                                            </div>
+                                                                            <div class="Item">
+                                                                                <img src="//opgg-static.akamaized.net/images/lol/item/3071.png?image=q_auto&amp;v=1596679559"
+                                                                                    class="Image tip"
+                                                                                    title="<b style='color: #00cfbc'>칠흑의 양날 도끼</b><br><span>적 챔피언에게 물리 피해를 입히면 적의 방어력이 감소합니다.</span><br><span><stats>체력 +400<br>공격력 +40<br>재사용 대기시간 감소 +20%</stats><br><br><unique>고유 지속 효과:</unique> 적 챔피언에게 물리 피해를 입히면 대상을 베어, 6초 동안 방어력을 4% 감소시킵니다. (최대 6번, 24%까지 중첩)<br><unique>고유 지속 효과 - 격분:</unique> 물리 피해를 입히면 2초 동안 이동 속도가 20 상승합니다. 베어낸 적 챔피언의 처치를 돕거나 어떤 유닛이든 처치하면 대신 2초 동안 이동 속도가 60 상승합니다. 원거리 챔피언은 이 이동 속도의 절반만 상승합니다.</span><br><span>가격:</span> <span style='color: #ffc659'>3000 (950)</span>"
+                                                                                    alt="칠흑의 양날 도끼">
+                                                                            </div>
+                                                                            <div class="Item">
+                                                                                <img src="//opgg-static.akamaized.net/images/lol/item/1400.png?image=q_auto&amp;v=1596679559"
+                                                                                    class="Image tip"
+                                                                                    title="<b style='color: #00cfbc'>마법 부여: 용사</b><br><span>공격력이 증가하고 재사용 대기시간이 감소합니다.</span><br><span><stats>공격력 +60<br>재사용 대기시간 감소 +10%</stats><br><br><groupLimit>골드 획득 아이템이나 정글 아이템은 1개로 소지가 제한됩니다.</groupLimit></span><br><span>가격:</span> <span style='color: #ffc659'>2625 (525)</span>"
+                                                                                    alt="마법 부여: 용사">
+                                                                            </div>
+                                                                            <div class="Item">
+                                                                                <img src="//opgg-static.akamaized.net/images/lol/item/3047.png?image=q_auto&amp;v=1596679559"
+                                                                                    class="Image tip"
+                                                                                    title="<b style='color: #00cfbc'>닌자의 신발</b><br><span>이동 속도가 증가하고, 적에게 받는 기본 공격의 피해가 줄어듭니다.</span><br><span><groupLimit>1개만 구입 가능합니다.</groupLimit><br><br><stats>방어력 +20</stats><br><br><unique>고유 지속 효과:</unique> 기본 공격 피해량의 12%를 막아 줍니다.<br><unique>고유 지속 효과 - 이동 속도 향상:</unique> 이동 속도 +45</span><br><span>가격:</span> <span style='color: #ffc659'>1100 (500)</span>"
+                                                                                    alt="닌자의 신발">
+                                                                            </div>
+                                                                            <div class="Item">
+                                                                                <img src="//opgg-static.akamaized.net/images/lol/item/3364.png?image=q_auto&amp;v=1596679559"
+                                                                                    class="Image tip"
+                                                                                    title="<b style='color: #00cfbc'>예언자의 렌즈</b><br><span>근처의 투명한 와드와 덫을 일정 시간 동안 차단합니다.</span><br><span><groupLimit>장신구 소지 개수는 1개로 제한됩니다.</groupLimit><br><br><active>사용 시:</active> 10초 동안 근처를 수색해 적 유닛이 숨어 있으면 경고를 보내며 주변의 투명한 덫과 와드를 드러내고, 추가로 와드를 무력화시킵니다. (재사용 대기시간 90~60초)</span>"
+                                                                                    alt="예언자의 렌즈">
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="Row   ">
+                                                                        <td class="ChampionImage Cell">
+                                                                            <a href="/champion/zoe/statistics"
+                                                                                target="_blank">
+                                                                                <div class="Image __sprite __spc32 __spc32-148 tip"
+                                                                                    title="조이">조이</div>
+                                                                                <div class="Level">13</div>
+                                                                            </a>
+                                                                        </td>
+                                                                        <td class="SummonerSpell Cell">
+                                                                            <img src="//opgg-static.akamaized.net/images/lol/spell/SummonerDot.png?image=q_auto&amp;v=1596679559"
+                                                                                class="Image tip"
+                                                                                title="<b style='color: #ffc659'>점화</b><br><span>적 챔피언을 불태워 5초 동안 70~410의 고정 피해(챔피언 레벨에 따라 변동)를 입히고 모습을 드러내며 치료 효과를 감소시킵니다.</span>">
+                                                                            <img src="//opgg-static.akamaized.net/images/lol/spell/SummonerFlash.png?image=q_auto&amp;v=1596679559"
+                                                                                class="Image tip"
+                                                                                title="<b style='color: #ffc659'>점멸</b><br><span>커서 방향으로 챔피언이 짧은 거리를 순간이동합니다.</span>">
+                                                                        </td>
+                                                                        <td class="Rune Cell">
+                                                                            <img src="//opgg-static.akamaized.net/images/lol/perk/8360.png?image=q_auto&amp;v=1596679559"
+                                                                                class="Image tip"
+                                                                                title="<b style='color: #ffc659'>봉인 풀린 주문서</b><br><span>장착한 소환사 주문을 한 번만 사용 가능한 새로운 소환사 주문으로 교환합니다. 이전에 쓰지 않은 새로운 소환사 주문으로 교환할 때마다 교환의 재사용 대기시간이 영구적으로 25초씩 감소합니다. (최초 교환의 재사용 대기시간: 5분) <br><br>첫 번째 교환은 6분부터 가능합니다. <br><rules><br>소환사 주문은 전투에서 벗어났을 때만 교환할 수 있습니다. <br>교환한 소환사 주문을 사용한 후 3번 더 교환해야 다시 첫 번째 소환사 주문을 선택할 수 있습니다. </rules></span>">
+                                                                            <img src="//opgg-static.akamaized.net/images/lol/perkStyle/8200.png?image=q_auto&amp;v=1596679559"
+                                                                                class="Image tip"
+                                                                                title="<b style='color: #ffc659'>마법</b><br><span>스킬 및 광역 효과 강화</span>">
+                                                                        </td>
+                                                                        <td class="SummonerName Cell">
+                                                                            <a href="//www.op.gg/summoner/userName=%EC%86%90%EC%97%B0%EC%9A%B0+%EC%82%AC%EB%9E%91%ED%95%B4"
+                                                                                target="_blank" class="Link">손연우 사랑해</a>
+                                                                        </td>
+
+                                                                        <td class="Tier Cell tip"
+                                                                            title="솔랭<br>Diamond 1<br>100 LP">
+                                                                            Diamond 1
+                                                                        </td>
+
+                                                                        <td class="OPScore Cell">
+                                                                            <div class="OPScore Text">5</div>
+                                                                            <div class="OPScore Badge Score">8th</div>
+                                                                        </td>
+                                                                        <td class="KDA Cell">
+                                                                            <span class="KDARatio normal">1.50:1</span>
+
+                                                                            <div class="KDA">
+                                                                                <span class="Kill">1</span>/<span
+                                                                                    class="Death">2</span>/<span
+                                                                                    class="Assist">2</span>
+                                                                                <span class="CKRate tip"
+                                                                                    title="킬관여율">(33%)</span>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="Damage Cell tip"
+                                                                            title="챔피언에게 가한 피해량: 9,097<br>총 피해량: 105,453">
+                                                                            <div class="ChampionDamage">9,097</div>
+                                                                            <div class="Progress">
+                                                                                <div class="Fill" style="width: 69%;">
+                                                                                </div>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="Ward Cell tip"
+                                                                            title="제어 와드 2<br>와드 설치: 8<br>와드 제거: 0">
+                                                                            <div class="Buy">
+                                                                                <span class="SightWard">2</span>
+                                                                            </div>
+                                                                            <div class="Stats">
+                                                                                <span> 8</span> /
+                                                                                <span> 0</span>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="CS Cell">
+                                                                            <div class="CS">181</div>
+                                                                            <div class="CSPerMinute">분당 8.3</div>
+                                                                        </td>
+                                                                        <td class="Items Cell">
+                                                                            <div class="Item">
+                                                                                <img src="//opgg-static.akamaized.net/images/lol/item/2033.png?image=q_auto&amp;v=1596679559"
+                                                                                    class="Image tip"
+                                                                                    title="<b style='color: #00cfbc'>부패 물약</b><br><span>체력과 마나가 일정 시간 동안 회복되고 전투 능력을 상승시킵니다. 상점에 가면 다시 충전됩니다.</span><br><span><groupLimit>한 번에 한 종류의 회복 물약만 소지할 수 있습니다.</groupLimit><br><br><active>고유 사용 효과:</active> 충전량을 1회 소모해 12초 동안 125의 체력과 75의 마나를 회복하고, 그 동안 <font color='#FF8811'><u>부패의 손길</u></font>을 활성화합니다. 상점 방문 시 3회의 충전량이 다시 채워집니다.<br><br><font color='#FF8811'><u>부패의 손길:</u></font> 적 챔피언에게 주문 및 공격으로 피해를 입히면 적을 불태워 3초 동안 15의 마법 피해를 입힙니다. (광역 및 지속 피해 스킬 사용 시에는 피해의 50%만 적용됩니다. 피해량은 챔피언 레벨에 비례해 증가합니다.)<br><br><rules>(부패 물약은 체력과 마나가 모두 차 있을 때도 사용할 수 있습니다.)</rules></span><br><span>가격:</span> <span style='color: #ffc659'>500 (350)</span>"
+                                                                                    alt="부패 물약">
+                                                                            </div>
+                                                                            <div class="Item">
+                                                                                <div class="Image noItem"></div>
+                                                                            </div>
+                                                                            <div class="Item">
+                                                                                <img src="//opgg-static.akamaized.net/images/lol/item/3135.png?image=q_auto&amp;v=1596679559"
+                                                                                    class="Image tip"
+                                                                                    title="<b style='color: #00cfbc'>공허의 지팡이</b><br><span>마법 피해량이 증가합니다.</span><br><span><stats>주문력 +70</stats><br><br><unique>고유 지속 효과 - 분해:</unique> <a href=&quot;#&quot;>마법 관통력</a> +40%</span><br><span>가격:</span> <span style='color: #ffc659'>2650 (1365)</span>"
+                                                                                    alt="공허의 지팡이">
+                                                                            </div>
+                                                                            <div class="Item">
+                                                                                <img src="//opgg-static.akamaized.net/images/lol/item/3285.png?image=q_auto&amp;v=1596679559"
+                                                                                    class="Image tip"
+                                                                                    title="<b style='color: #00cfbc'>루덴의 메아리</b><br><span>주문력과 마나, 재사용 대기시간 감소량이 증가합니다.</span><br><span><stats>주문력 +90<br><mana>마나 +600</mana><br>재사용 대기시간 감소 +10%</stats><br><br><unique>고유 지속 효과 - 가속:</unique> 재사용 대기시간이 추가로 10% 감소합니다.<br><unique>고유 지속 효과 - 메아리:</unique> 이동하거나 주문을 시전할 때 전류가 충전됩니다. 충전량이 100이 되면 다음 스킬로 피해를 입혔을 때 충전된 전류를 전부 방출해, 최대 4명의 적에게 100 (+주문력의 10%)에 해당하는 마법 피해를 적중 시 추가로 입힙니다.</span><br><span>가격:</span> <span style='color: #ffc659'>3200 (1050)</span>"
+                                                                                    alt="루덴의 메아리">
+                                                                            </div>
+                                                                            <div class="Item">
+                                                                                <img src="//opgg-static.akamaized.net/images/lol/item/1056.png?image=q_auto&amp;v=1596679559"
+                                                                                    class="Image tip"
+                                                                                    title="<b style='color: #00cfbc'>도란의 반지</b><br><span>스킬 사용에 특화된 시작 아이템입니다.</span><br><span><stats>체력 +60<br>주문력 +15<br><mana>5초당 마나 재생 +5</mana></stats><br><br><passive>기본 지속 효과: </passive>미니언에게 기본 공격 적중 시 5의 추가 물리 피해를 입힙니다.</span><br><span>가격:</span> <span style='color: #ffc659'>400 (400)</span>"
+                                                                                    alt="도란의 반지">
+                                                                            </div>
+                                                                            <div class="Item">
+                                                                                <img src="//opgg-static.akamaized.net/images/lol/item/3020.png?image=q_auto&amp;v=1596679559"
+                                                                                    class="Image tip"
+                                                                                    title="<b style='color: #00cfbc'>마법사의 신발</b><br><span>이동 속도와 마법 피해량이 증가합니다.</span><br><span><groupLimit>1개만 구입 가능합니다.</groupLimit><br><br><stats><a href=&quot;#&quot;>마법 관통력</a> +18</stats><br><br><unique>고유 지속 효과 - 이동 속도 향상:</unique> 이동 속도 +45</span><br><span>가격:</span> <span style='color: #ffc659'>1100 (800)</span>"
+                                                                                    alt="마법사의 신발">
+                                                                            </div>
+                                                                            <div class="Item">
+                                                                                <img src="//opgg-static.akamaized.net/images/lol/item/3363.png?image=q_auto&amp;v=1596679559"
+                                                                                    class="Image tip"
+                                                                                    title="<b style='color: #00cfbc'>망원형 개조</b><br><span>설치 범위가 증가하며 대상 지역을 드러내 줍니다.</span><br><span><levelLimit>업그레이드하려면 9레벨 이상이 되어야 합니다.</levelLimit><br><groupLimit>장신구 소지 개수는 1개로 제한됩니다.</groupLimit><br><br><font color='#FFFFFF'>와드 토템</font> 장신구 업그레이드 시:<br><br><stats><font color='#00FF00'>+</font> 설치 가능 범위 대폭(+650%) 증가<br><font color='#00FF00'>+</font> 지속시간 제한 없음, 와드 설치 개수 제한에 관계 없음<br><font color='#FF0000'>-</font> <font color='#FF6600'>재사용 대기시간 10% 증가</font><br><font color='#FF0000'>-</font> <font color='#FF6600'>누구나 볼 수 있는 와드로, 파괴 가능하고 아군의 대상으로 지정 불가</font><br><font color='#FF0000'>-</font> <font color='#FF6600'>와드 시야 범위 45% 감소</font><br><font color='#FF0000'>-</font> <font color='#FF6600'>상점 방문 시 충전되지 않음</font></stats></span>"
+                                                                                    alt="망원형 개조">
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="Row   ">
+                                                                        <td class="ChampionImage Cell">
+                                                                            <a href="/champion/caitlyn/statistics"
+                                                                                target="_blank">
+                                                                                <div class="Image __sprite __spc32 __spc32-15 tip"
+                                                                                    title="케이틀린">케이틀린</div>
+                                                                                <div class="Level">11</div>
+                                                                            </a>
+                                                                        </td>
+                                                                        <td class="SummonerSpell Cell">
+                                                                            <img src="//opgg-static.akamaized.net/images/lol/spell/SummonerFlash.png?image=q_auto&amp;v=1596679559"
+                                                                                class="Image tip"
+                                                                                title="<b style='color: #ffc659'>점멸</b><br><span>커서 방향으로 챔피언이 짧은 거리를 순간이동합니다.</span>">
+                                                                            <img src="//opgg-static.akamaized.net/images/lol/spell/SummonerHeal.png?image=q_auto&amp;v=1596679559"
+                                                                                class="Image tip"
+                                                                                title="<b style='color: #ffc659'>회복</b><br><span>자신과 대상 아군 챔피언의 체력을 90~345만큼 (챔피언 레벨에 따라 변동) 회복시키고 1초 동안 이동 속도가 30% 증가합니다. 최근 소환사 주문 회복의 영향을 받은 유닛의 경우 치유량이 절반만 적용됩니다.</span>">
+                                                                        </td>
+                                                                        <td class="Rune Cell">
+                                                                            <img src="//opgg-static.akamaized.net/images/lol/perk/8008.png?image=q_auto&amp;v=1596679559"
+                                                                                class="Image tip"
+                                                                                title="<b style='color: #ffc659'>치명적 속도</b><br><span>적 챔피언에게 피해를 주고 1.5초 후, 3초 동안 레벨에 따라 공격 속도가 40~110% 증가합니다. 적 챔피언을 공격하면 효과 지속시간이 6초까지 증가합니다.<br><br>재사용 대기시간: 6초<br><br>치명적 속도 상태에서는 일시적으로 최고 공격 속도 제한을 초과할 수 있습니다.</span>">
+                                                                            <img src="//opgg-static.akamaized.net/images/lol/perkStyle/8200.png?image=q_auto&amp;v=1596679559"
+                                                                                class="Image tip"
+                                                                                title="<b style='color: #ffc659'>마법</b><br><span>스킬 및 광역 효과 강화</span>">
+                                                                        </td>
+                                                                        <td class="SummonerName Cell">
+                                                                            <a href="//www.op.gg/summoner/userName=EM+Envyy"
+                                                                                target="_blank" class="Link">EM
+                                                                                Envyy</a>
+                                                                        </td>
+
+                                                                        <td class="Tier Cell tip"
+                                                                            title="솔랭<br>Challenger<br>1002 LP">
+                                                                            Challenger
+                                                                        </td>
+
+                                                                        <td class="OPScore Cell">
+                                                                            <div class="OPScore Text">4.5</div>
+                                                                            <div class="OPScore Badge Score">10th</div>
+                                                                        </td>
+                                                                        <td class="KDA Cell">
+                                                                            <span class="KDARatio normal">0.43:1</span>
+
+                                                                            <div class="KDA">
+                                                                                <span class="Kill">2</span>/<span
+                                                                                    class="Death">7</span>/<span
+                                                                                    class="Assist">1</span>
+                                                                                <span class="CKRate tip"
+                                                                                    title="킬관여율">(33%)</span>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="Damage Cell tip"
+                                                                            title="챔피언에게 가한 피해량: 7,233<br>총 피해량: 92,120">
+                                                                            <div class="ChampionDamage">7,233</div>
+                                                                            <div class="Progress">
+                                                                                <div class="Fill" style="width: 55%;">
+                                                                                </div>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="Ward Cell tip"
+                                                                            title="제어 와드 1<br>와드 설치: 7<br>와드 제거: 1">
+                                                                            <div class="Buy">
+                                                                                <span class="SightWard">1</span>
+                                                                            </div>
+                                                                            <div class="Stats">
+                                                                                <span> 7</span> /
+                                                                                <span> 1</span>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="CS Cell">
+                                                                            <div class="CS">185</div>
+                                                                            <div class="CSPerMinute">분당 8.4</div>
+                                                                        </td>
+                                                                        <td class="Items Cell">
+                                                                            <div class="Item">
+                                                                                <img src="//opgg-static.akamaized.net/images/lol/item/1055.png?image=q_auto&amp;v=1596679559"
+                                                                                    class="Image tip"
+                                                                                    title="<b style='color: #00cfbc'>도란의 검</b><br><span>공격에 특화된 시작 아이템입니다.</span><br><span><stats>공격력 +8<br>체력 +80<br>생명력 흡수 +3%</stats></span><br><span>가격:</span> <span style='color: #ffc659'>450 (450)</span>"
+                                                                                    alt="도란의 검">
+                                                                            </div>
+                                                                            <div class="Item">
+                                                                                <img src="//opgg-static.akamaized.net/images/lol/item/3095.png?image=q_auto&amp;v=1596679559"
+                                                                                    class="Image tip"
+                                                                                    title="<b style='color: #00cfbc'>폭풍갈퀴</b><br><span>다른 충전 효과를 크게 강화시킵니다.</span><br><span><stats>공격력 +50<br>치명타 확률 +25%<br>공격 속도 +15%</stats><br><br><unique>고유 지속 효과 - 충전 상태:</unique> 이동하거나 공격하면 <a href=&quot;#&quot;>충전 상태</a>가 됩니다. <br><unique>고유 지속 효과 - 마비:</unique> 충전 상태로 공격 시 <magicDamage>120의 추가 마법 피해</magicDamage>를 입힙니다. 충전 효과로 0.5초 동안 75% 둔화됩니다.</span><br><span>가격:</span> <span style='color: #ffc659'>3200 (400)</span>"
+                                                                                    alt="폭풍갈퀴">
+                                                                            </div>
+                                                                            <div class="Item">
+                                                                                <img src="//opgg-static.akamaized.net/images/lol/item/3006.png?image=q_auto&amp;v=1596679559"
+                                                                                    class="Image tip"
+                                                                                    title="<b style='color: #00cfbc'>광전사의 군화</b><br><span>이동 속도와 공격 속도가 상승합니다.</span><br><span><groupLimit>1개만 구입 가능합니다.</groupLimit><br><br><stats> 공격 속도 +35%</stats><br><br><unique>고유 지속 효과 - 이동 속도 향상:</unique> 이동 속도 +45</span><br><span>가격:</span> <span style='color: #ffc659'>1100 (500)</span>"
+                                                                                    alt="광전사의 군화">
+                                                                            </div>
+                                                                            <div class="Item">
+                                                                                <img src="//opgg-static.akamaized.net/images/lol/item/3094.png?image=q_auto&amp;v=1596679559"
+                                                                                    class="Image tip"
+                                                                                    title="<b style='color: #00cfbc'>고속 연사포</b><br><span>이동하며 완전히 충전하면 강력한 일격을 발사합니다.</span><br><span><stats>공격 속도 +30%<br>치명타 확률 +25%<br>이동 속도 +7%</stats><br><br><unique>고유 지속 효과 - 충전 상태:</unique> 이동하거나 공격하면 <a href=&quot;#&quot;>충전 상태</a>가 됩니다. <br><unique>고유 지속 효과 - 저격수:</unique> 충전 상태로 공격 시 <magicDamage>120의 추가 마법 피해</magicDamage>를 입히며 사거리가 35% 증가합니다. (최대 사거리 +150)</span><br><span>가격:</span> <span style='color: #ffc659'>2600 (500)</span>"
+                                                                                    alt="고속 연사포">
+                                                                            </div>
+                                                                            <div class="Item">
+                                                                                <div class="Image noItem"></div>
+                                                                            </div>
+                                                                            <div class="Item">
+                                                                                <div class="Image noItem"></div>
+                                                                            </div>
+                                                                            <div class="Item">
+                                                                                <img src="//opgg-static.akamaized.net/images/lol/item/3363.png?image=q_auto&amp;v=1596679559"
+                                                                                    class="Image tip"
+                                                                                    title="<b style='color: #00cfbc'>망원형 개조</b><br><span>설치 범위가 증가하며 대상 지역을 드러내 줍니다.</span><br><span><levelLimit>업그레이드하려면 9레벨 이상이 되어야 합니다.</levelLimit><br><groupLimit>장신구 소지 개수는 1개로 제한됩니다.</groupLimit><br><br><font color='#FFFFFF'>와드 토템</font> 장신구 업그레이드 시:<br><br><stats><font color='#00FF00'>+</font> 설치 가능 범위 대폭(+650%) 증가<br><font color='#00FF00'>+</font> 지속시간 제한 없음, 와드 설치 개수 제한에 관계 없음<br><font color='#FF0000'>-</font> <font color='#FF6600'>재사용 대기시간 10% 증가</font><br><font color='#FF0000'>-</font> <font color='#FF6600'>누구나 볼 수 있는 와드로, 파괴 가능하고 아군의 대상으로 지정 불가</font><br><font color='#FF0000'>-</font> <font color='#FF6600'>와드 시야 범위 45% 감소</font><br><font color='#FF0000'>-</font> <font color='#FF6600'>상점 방문 시 충전되지 않음</font></stats></span>"
+                                                                                    alt="망원형 개조">
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="Row  last ">
+                                                                        <td class="ChampionImage Cell">
+                                                                            <a href="/champion/lux/statistics"
+                                                                                target="_blank">
+                                                                                <div class="Image __sprite __spc32 __spc32-68 tip"
+                                                                                    title="럭스">럭스</div>
+                                                                                <div class="Level">10</div>
+                                                                            </a>
+                                                                        </td>
+                                                                        <td class="SummonerSpell Cell">
+                                                                            <img src="//opgg-static.akamaized.net/images/lol/spell/SummonerDot.png?image=q_auto&amp;v=1596679559"
+                                                                                class="Image tip"
+                                                                                title="<b style='color: #ffc659'>점화</b><br><span>적 챔피언을 불태워 5초 동안 70~410의 고정 피해(챔피언 레벨에 따라 변동)를 입히고 모습을 드러내며 치료 효과를 감소시킵니다.</span>">
+                                                                            <img src="//opgg-static.akamaized.net/images/lol/spell/SummonerFlash.png?image=q_auto&amp;v=1596679559"
+                                                                                class="Image tip"
+                                                                                title="<b style='color: #ffc659'>점멸</b><br><span>커서 방향으로 챔피언이 짧은 거리를 순간이동합니다.</span>">
+                                                                        </td>
+                                                                        <td class="Rune Cell">
+                                                                            <img src="//opgg-static.akamaized.net/images/lol/perk/8229.png?image=q_auto&amp;v=1596679559"
+                                                                                class="Image tip"
+                                                                                title="<b style='color: #ffc659'>신비로운 유성</b><br><span>챔피언에게 스킬로 피해를 주면 해당 위치에 유성을 불러옵니다. 신비로운 유성이 재사용 대기 중일 경우 남은 재사용 대기시간이 감소합니다.<br><br><lol-uikit-tooltipped-keyword key='LinkTooltip_Description_AdaptiveDmg'><font color='#48C4B7'>적응형 피해</font></lol-uikit-tooltipped-keyword>: 레벨에 따라 30 ~ 100 (<scaleAP>+주문력의 0.2</scaleAP> 및 <scaleAD>+추가 공격력의 0.35</scaleAD>)<br>재사용 대기시간: 20 ~ 8초<br><rules><br>재사용 대기시간 감소:<br>단일 대상 스킬: 20%<br>광역 스킬: 10%<br>지속 피해 스킬: 5%<br></rules></span>">
+                                                                            <img src="//opgg-static.akamaized.net/images/lol/perkStyle/8300.png?image=q_auto&amp;v=1596679559"
+                                                                                class="Image tip"
+                                                                                title="<b style='color: #ffc659'>영감</b><br><span>다양한 방식의 전투 보조</span>">
+                                                                        </td>
+                                                                        <td class="SummonerName Cell">
+                                                                            <a href="//www.op.gg/summoner/userName=%EA%B9%8C%EC%A7%93%EA%BA%BC%ED%95%B4%EB%B3%B4%EC%A7%80%EB%AD%90"
+                                                                                target="_blank" class="Link">까짓꺼해보지뭐</a>
+                                                                        </td>
+
+                                                                        <td class="Tier Cell tip"
+                                                                            title="솔랭<br>Challenger<br>786 LP">
+                                                                            Challenger
+                                                                        </td>
+
+                                                                        <td class="OPScore Cell">
+                                                                            <div class="OPScore Text">4.7</div>
+                                                                            <div class="OPScore Badge Score">9th</div>
+                                                                        </td>
+                                                                        <td class="KDA Cell">
+                                                                            <span class="KDARatio normal">0.80:1</span>
+
+                                                                            <div class="KDA">
+                                                                                <span class="Kill">0</span>/<span
+                                                                                    class="Death">5</span>/<span
+                                                                                    class="Assist">4</span>
+                                                                                <span class="CKRate tip"
+                                                                                    title="킬관여율">(44%)</span>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="Damage Cell tip"
+                                                                            title="챔피언에게 가한 피해량: 5,162<br>총 피해량: 17,002">
+                                                                            <div class="ChampionDamage">5,162</div>
+                                                                            <div class="Progress">
+                                                                                <div class="Fill" style="width: 39%;">
+                                                                                </div>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="Ward Cell tip"
+                                                                            title="제어 와드 5<br>와드 설치: 15<br>와드 제거: 4">
+                                                                            <div class="Buy">
+                                                                                <span class="SightWard">5</span>
+                                                                            </div>
+                                                                            <div class="Stats">
+                                                                                <span> 15</span> /
+                                                                                <span> 4</span>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="CS Cell">
+                                                                            <div class="CS">15</div>
+                                                                            <div class="CSPerMinute">분당 0.7</div>
+                                                                        </td>
+                                                                        <td class="Items Cell">
+                                                                            <div class="Item">
+                                                                                <img src="//opgg-static.akamaized.net/images/lol/item/3028.png?image=q_auto&amp;v=1596679559"
+                                                                                    class="Image tip"
+                                                                                    title="<b style='color: #00cfbc'>조화의 성배</b><br><span>마나 및 체력 재생이 증가합니다.</span><br><span><stats>마법 저항력 +30<br><mana>기본 마나 재생 +50% </mana></stats><br><br><unique>고유 지속 효과 - 조화:</unique> 기본 마나 재생 %가 추가될 때마다 기본 체력 재생 %도 같은 수치만큼 추가됩니다.</span><br><span>가격:</span> <span style='color: #ffc659'>800 (100)</span>"
+                                                                                    alt="조화의 성배">
+                                                                            </div>
+                                                                            <div class="Item">
+                                                                                <div class="Image noItem"></div>
+                                                                            </div>
+                                                                            <div class="Item">
+                                                                                <img src="//opgg-static.akamaized.net/images/lol/item/3851.png?image=q_auto&amp;v=1596679559"
+                                                                                    class="Image tip"
+                                                                                    title="<b style='color: #00cfbc'>얼음 송곳니</b><br><span><stats>주문력 +15<br>체력 +70<br>10초당 골드 +3<br><mana>기본 마나 재생 +75% </mana></stats><br><br><unique>고유 지속 효과 - 헌납:</unique> 아군 챔피언 근처에 있을 때, 챔피언과 구조물에 피해를 입히는 스킬을 사용하거나 기본 공격 시 15골드를 획득합니다. 30초당 최대 3번까지만 발동합니다.<br><br><passive>퀘스트:</passive> 1000골드를 획득하면 얼음 정수의 파편으로 업그레이드됩니다.<br><br><active>고유 사용 효과 - 와드 설치:</active> <font color='#FF9900'>투명 와드</font>를 설치합니다. 상점 방문 시 3회의 충전량이 다시 채워집니다.<br><br><rules>(<a href=&quot;#&quot;>미니언을 너무 많이 처치</a>하면 획득하는 골드가 감소합니다.)</rules></span><br><span>가격:</span> <span style='color: #ffc659'>400 (400)</span>"
+                                                                                    alt="얼음 송곳니">
+                                                                            </div>
+                                                                            <div class="Item">
+                                                                                <img src="//opgg-static.akamaized.net/images/lol/item/3114.png?image=q_auto&amp;v=1596679559"
+                                                                                    class="Image tip"
+                                                                                    title="<b style='color: #00cfbc'>금지된 우상</b><br><span>회복 및 보호막 효과, 마나 재생량, 재사용 대기시간 감소량이 증가합니다.</span><br><span><stats><mana>기본 마나 재생 +50% </mana></stats><br><br><unique>고유 지속 효과:</unique> 재사용 대기시간 감소 +10%<br><unique>고유 지속 효과:</unique> 회복 및 보호막 효과 +5%</span><br><span>가격:</span> <span style='color: #ffc659'>800 (550)</span>"
+                                                                                    alt="금지된 우상">
+                                                                            </div>
+                                                                            <div class="Item">
+                                                                                <img src="//opgg-static.akamaized.net/images/lol/item/3108.png?image=q_auto&amp;v=1596679559"
+                                                                                    class="Image tip"
+                                                                                    title="<b style='color: #00cfbc'>악마의 마법서</b><br><span>주문력과 재사용 대기시간 감소율이 증가합니다.</span><br><span><stats>주문력 +35</stats><br><br><unique>고유 지속 효과:</unique> 재사용 대기시간 감소 +10%</span><br><span>가격:</span> <span style='color: #ffc659'>900 (465)</span>"
+                                                                                    alt="악마의 마법서">
+                                                                            </div>
+                                                                            <div class="Item">
+                                                                                <img src="//opgg-static.akamaized.net/images/lol/item/3158.png?image=q_auto&amp;v=1596679559"
+                                                                                    class="Image tip"
+                                                                                    title="<b style='color: #00cfbc'>명석함의 아이오니아 장화</b><br><span>이동 속도와 재사용 대기시간 감소율이 증가합니다.</span><br><span><groupLimit>1개만 구입 가능합니다.</groupLimit><br><br><unique>고유 지속 효과:</unique> 재사용 대기시간 감소 +10%<br><unique>고유 지속 효과 - 이동 속도 향상:</unique> 이동 속도 +45<br><unique>고유 지속 효과:</unique> 소환사 주문의 재사용 대기시간을 10%만큼 줄입니다.<br><br><br><rules><font color='#FDD017'>CLE 20년 12월 10일 남부 지방의 패권을 두고 벌어진 녹서스와의 재경합에서 아이오니아의 승리를 기념하는 헌정 아이템입니다.''</font></rules></span><br><span>가격:</span> <span style='color: #ffc659'>900 (600)</span>"
+                                                                                    alt="명석함의 아이오니아 장화">
+                                                                            </div>
+                                                                            <div class="Item">
+                                                                                <img src="//opgg-static.akamaized.net/images/lol/item/3364.png?image=q_auto&amp;v=1596679559"
+                                                                                    class="Image tip"
+                                                                                    title="<b style='color: #00cfbc'>예언자의 렌즈</b><br><span>근처의 투명한 와드와 덫을 일정 시간 동안 차단합니다.</span><br><span><groupLimit>장신구 소지 개수는 1개로 제한됩니다.</groupLimit><br><br><active>사용 시:</active> 10초 동안 근처를 수색해 적 유닛이 숨어 있으면 경고를 보내며 주변의 투명한 덫과 와드를 드러내고, 추가로 와드를 무력화시킵니다. (재사용 대기시간 90~60초)</span>"
+                                                                                    alt="예언자의 렌즈">
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                    <div class="Content tabItem MatchDetailContent-teamAnalysis"
+                                                        data-tab-data-url="/summoner/matches/ajax/detail/teamAnalysis/gameId=4619276001&amp;summonerId=41913808&amp;moreLoad=1"
+                                                        data-tab-spinner-height="400" data-tab-spinner-class="Progress"
+                                                        style="display: none;"></div>
+                                                    <div class="Content tabItem MatchDetailContent-builds"
+                                                        data-tab-data-url="/summoner/matches/ajax/detail/builds/gameId=4619276001&amp;summonerId=41913808&amp;moreLoad=1"
+                                                        data-tab-spinner-height="400" data-tab-spinner-class="Progress"
+                                                        style="display: none;"></div>
+                                                    <div class="Content tabItem MatchDetailContent-gold"
+                                                        data-tab-data-url="/summoner/matches/ajax/detail/gold/gameId=4619276001&amp;summonerId=41913808&amp;moreLoad=1"
+                                                        data-tab-spinner-height="400" data-tab-spinner-class="Progress"
+                                                        style="display: none;"></div>
+                                                </div>
+                                            </div>
+                                            <!-- <script>
+                                                    $(function () {
+                                                        $('.MatchDetailHeader .tabHeader a').on('click', function (evt) {
+                                                            var $this = $(evt.currentTarget),
+                                                                $tabHeader = $this.closest('.tabHeader'),
+                                                                gameResult = $this.closest('.GameItem').data('game-result');
+
+                                                            if (evt.type === 'load')
+                                                                return;
+
+                                                            $.OP.GG.tracker.combine.sendEvent(['FB', 'Pixel'], 'Summoner-Detail', 'ChCategory', {
+                                                                Category: $tabHeader.data('category'),
+                                                                GameResult: gameResult
+                                                            });
+
+                                                        });
+                                                    });
+                                                </script> -->
+                                        </div>
+
+
                                     </div>
                                 </div>
                             </div>
@@ -720,7 +2317,8 @@
                 </div>
             </div>
         </div>
-      </div>
     </div>
-  </body>
+    </div>
+</body>
+
 </html>
