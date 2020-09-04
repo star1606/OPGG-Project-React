@@ -59,6 +59,8 @@ const WriteBox = styled.div`
     color: rgb(30, 32, 34);
     resize: none;
     height: 447px;
+    font-size: 17px;
+    padding: 10px;
   }
 
   .article-write__button--submit {
@@ -134,7 +136,6 @@ const CommunityWrite = ({ history }) => {
       .then((response) => {
         console.log(response);
         alert("글작성이 완료되었습니다.");
-        history.push("/community");
 
         // 이거 먹히나?
         // setPostId(response.data.data.post.id);
@@ -181,7 +182,7 @@ const CommunityWrite = ({ history }) => {
                       <button
                         className="article-write__button article-write__button--cancel"
                         type="button"
-                        onclick={() => history.push("/community")}
+                        onClick={() => history.push("/community")}
                       >
                         취소
                       </button>

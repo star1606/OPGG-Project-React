@@ -11,7 +11,8 @@ const SummonerHeader = styled.div`
   padding: 20px 0 0 0;
 `;
 
-const Summoner = () => {
+const Summoner = ({ match }) => {
+  console.log(match.params);
   const [isToggleOn, setIsToggleOn] = useState(false);
 
   return (
@@ -271,7 +272,7 @@ const Summoner = () => {
                                           <tr className="Row">
                                             <th
                                               className="HeaderCell"
-                                              colspan="4"
+                                              colSpan="4"
                                             >
                                               <span className="GameResult">
                                                 승리{" "}
@@ -558,7 +559,7 @@ const Summoner = () => {
                                           <tr className="Row">
                                             <th
                                               className="HeaderCell"
-                                              colspan="4"
+                                              colSpan="4"
                                             >
                                               <span className="GameResult">
                                                 패배{" "}
@@ -738,11 +739,7 @@ const Summoner = () => {
                       </div>
 
                       <div className="GameMoreButton Box">
-                        <a
-                          href="#"
-                          onclick="$.OP.GG.matches.list.loadMore($(this)); return false;"
-                          className="Button"
-                        >
+                        <a href="#" className="Button">
                           더 보기
                         </a>
                       </div>

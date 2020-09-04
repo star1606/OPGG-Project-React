@@ -430,7 +430,7 @@ const Ranking = ({ history }) => {
                           </td>
                           <td className="select_summoner ranking-table__cell ranking-table__cell--summoner">
                             <a href="//www.op.gg/summoner/userName=KT+Malrang">
-                              <img src="img/homeLogo.png" onerror="" />
+                              <img src="img/homeLogo.png" />
                               <span>KT Malrang</span>
                             </a>
                           </td>
@@ -472,7 +472,7 @@ const Ranking = ({ history }) => {
                           </td>
                           <td className="select_summoner ranking-table__cell ranking-table__cell--summoner">
                             <a href="//www.op.gg/summoner/userName=KT+Malrang">
-                              <img src="img/homeLogo.png" onerror="" />
+                              <img src="img/homeLogo.png" />
                               <span>KT Malrang</span>
                             </a>
                           </td>

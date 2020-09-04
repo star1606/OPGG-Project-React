@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
+
 export const MainFormBox = styled.div`
   height: 200px;
   display: flex;
@@ -54,7 +56,18 @@ export const SearchForm = styled.form`
   }
 `;
 
-const MainForm = () => {
+const MainForm = ({ history }) => {
+  const [username, setUsername] = useState("");
+
+  const handleOnChange = (e) => {
+    setUsername(e.target.value);
+  };
+
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+    history.push("/summoner/" + username);
+  };
+
   return (
     <MainFormBox>
       <Link to="/community">
@@ -68,13 +81,15 @@ const MainForm = () => {
         </div>
       </Link>
       <SearchForm>
-        <input type="text" className="main-input" />
-        <button className="mainBtn" type="submit">
-          <img className="btnImg" src="/img/searchBtn.gif" alt="검색" />
-        </button>
+        <form onSubmit={handleOnSubmit}>
+          <input onChange={handleOnChange} type="text" className="main-input" />
+          <button className="mainBtn" type="submit">
+            <img className="btnImg" src="/img/searchBtn.gif" alt="검색" />
+          </button>
+        </form>
       </SearchForm>
     </MainFormBox>
   );
 };
 
-export default MainForm;
+export default withRouter(MainForm);

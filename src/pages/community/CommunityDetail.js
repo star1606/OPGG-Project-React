@@ -13,10 +13,13 @@ import axios from "axios";
 
 const CommunityContentBox = styled.div`
   max-width: 1044px;
+  text-align: left;
+
   .article {
     background: #fff;
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.15);
   }
+
   .article-header {
     padding-left: 24px;
     padding-right: 24px;
@@ -397,7 +400,7 @@ const CommunityDetail = ({ match, history }) => {
       <CommunityWrap>
         <Header1 />
 
-        <div classNameName="community-container">
+        <div className="community-container">
           <MainForm />
           <CommunityContentBox>
             <div className="article">

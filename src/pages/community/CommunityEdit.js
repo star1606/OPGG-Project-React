@@ -53,6 +53,8 @@ const WriteBox = styled.div`
     width: 100%;
   }
   .article-write__textarea {
+    font-size: 17px;
+    padding: 10px;
     width: 99.8%;
     margin-top: 13px;
     border: 1px solid rgb(221, 223, 228);
@@ -96,6 +98,7 @@ const CommunityEdit = ({ history }) => {
   // console.log(1, history.location.state.title);
   // console.log(2, history.location.state.content);
 
+  console.log(7, history);
   const paramTitle = history.location.state.title;
   const paramContent = history.location.state.content;
   const paramPostId = history.location.state.postId;
@@ -138,12 +141,14 @@ const CommunityEdit = ({ history }) => {
         // 이거 먹히나?
         console.log(response.data);
         // setPostId(response.data.data.post.id);
-        history.push("/community");
+
         alert("글 수정이 완료되었습니다");
       })
       .catch((error) => {
         console.log("에러", error.response);
       });
+
+    history.goBack();
   };
 
   return (

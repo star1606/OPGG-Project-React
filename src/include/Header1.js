@@ -1,7 +1,6 @@
 import React from "react";
 import "./Header1.css";
-import { Link, NavLink } from "react-router-dom";
-import { withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Header1 = ({ history }) => {
   const logout = () => {
@@ -10,7 +9,10 @@ const Header1 = ({ history }) => {
   };
 
   const authCheck = localStorage.getItem("jwtToken") ? (
-    <Link onClick={logout}>로그아웃</Link>
+    <Link to="/#" onClick={logout}>
+      {" "}
+      로그아웃{" "}
+    </Link>
   ) : (
     <Link to="/login">로그인</Link>
   );
@@ -35,4 +37,4 @@ const Header1 = ({ history }) => {
   );
 };
 
-export default withRouter(Header1);
+export default Header1;

@@ -1,15 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Header2.css";
 import { Link, withRouter } from "react-router-dom";
-const Header2 = ({ history, props }) => {
-  // const{ auth } = props;
+
+const Header2 = ({ history }) => {
+  const [username, setUsername] = useState("");
+
+  const handleOnChange = (e) => {
+    setUsername(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(username);
+    history.push("/summoner/" + username);
+  };
+
   const logout = () => {
     localStorage.clear();
     console.log(localStorage.getItem("jwtToken"));
   };
 
   const authCheck = localStorage.getItem("jwtToken") ? (
-    <Link onClick={logout}>로그아웃</Link>
+    <Link to="/#" onClick={logout}>
+      로그아웃
+    </Link>
   ) : (
     <Link to="/login">로그인</Link>
   );
@@ -34,22 +48,21 @@ const Header2 = ({ history, props }) => {
         style={{ marginLeft: "75px" }}
         // style="margin-left: auto;"
       >
-        {/* <form action="/summoner/" method="get" autocomplete="off"> */}
-        <input
-          type="text"
-          className="gnb-list-item__input _suggest"
-          name="userName"
-          placeholder="소환사명, 소환사명, ..."
-          autocomplete="off"
-        />
+        <form onSubmit={handleSubmit}>
+          {/* <form action="/summoner/" method="get" autocomplete="off"> */}
+          <input
+            onChange={handleOnChange}
+            type="text"
+            className="gnb-list-item__input _suggest"
+            name="userName"
+            placeholder="소환사명, 소환사명, ..."
+            autoComplete="off"
+          />
 
-        {/* 이벤트가 e.target.value 타이핑하는거 잡고 그거를 주소 뒤의 value에다가 붙이면 될듯 */}
-        <Link to="/summoner/">
-          <button /*onCLick={() => history.push("/ranking")}*/>
+          <button type="submit">
             <img height="14" src="../img/searchgg.png" alt="이미지" />
           </button>
-        </Link>
-        {/* </form> */}
+        </form>
       </div>
     </div>
   );

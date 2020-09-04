@@ -2,18 +2,20 @@ import React from "react";
 import "./Home.css";
 import HomeLIst from "./HomeLIst";
 import { useState } from "react";
-const HomeMain = () => {
-  const [input, setInput] = useState("");
+import { withRouter } from "react-router-dom";
+
+const HomeMain = ({ history }) => {
+  const [username, setUsername] = useState("");
 
   const handleInput = (e) => {
-    setInput(e.target.value);
+    setUsername(e.target.value);
     console.log(e.target.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(e.target.value);
-    console.log("실행?");
+    history.push("/summoner/" + username);
   };
 
   return (
@@ -54,4 +56,4 @@ const HomeMain = () => {
   );
 };
 
-export default HomeMain;
+export default withRouter(HomeMain);
