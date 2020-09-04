@@ -27,8 +27,8 @@ function App() {
       <Route path="/login" component={Login} />
       <Route path="/join" component={Join} />
       <Route path="/write" component={CommunityWrite} />
-      <Route patch="/edit" component={CommunityEdit} />
-      <Route patch="/summoner/:username" component={Summoner} />
+      <Route patch="/summoner" component={Summoner} />
+      <Route patch="/edit" component={CommunityEdit} exact={true} />
     </Switch>
   );
 }

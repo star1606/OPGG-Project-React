@@ -195,47 +195,60 @@ const Community = () => {
   moment.locale("ko");
   const [communityDtos, setCommunityDtos] = useState([]);
   const [postPage, setPostPage] = useState(0);
+  const [statusCode, setStatusCode] = useState(0);
   // const [replies, setReplies] = useState([]);
   // setReplies(response.data.data.post.replies);
   //  replies.length
-
   useEffect(() => {
     axios
       .get("http://59.20.79.42:58002/post/" + postPage)
       .then((response) => {
         setCommunityDtos(response.data.data);
-
-        console.log(1, response.data.data);
+        setStatusCode(response.data.statusCode);
+        console.log(1, response.data);
       })
       .catch((error) => {
         console.log(error);
       });
   }, []);
 
+  const handlePrevPage = () => {
+    let prevPage = postPage - 1;
+    if (postPage < 0) {
+      return;
+    }
+    console.log(6, prevPage);
+    axios
+      .get("http://59.20.79.42:58002/post/" + prevPage)
+      .then((response) => {
+        console.log(response.data.statusCode);
+        setCommunityDtos(response.data.data);
+        setStatusCode(response.data.statusCode);
+
+        setPostPage(postPage - 1);
+      })
+      .catch((error) => {
+        console.log(error.response);
+      });
+  };
+
   const handleNextPage = () => {
-    setPostPage(postPage + 1);
+    //첫페이지면서 마지막페이지
+    // if (postpage < 1) {
+    // }
+    let nextPage = postPage + 1;
 
     axios
-      .get("http://59.20.79.42:58002/post/" + postPage)
+      .get("http://59.20.79.42:58002/post/" + nextPage)
       .then((response) => {
+        console.log(response.data.statusCode);
         setCommunityDtos(response.data.data);
+        setStatusCode(response.data.statusCode);
+        setPostPage(postPage + 1);
       })
       .catch((error) => {
         console.log(error);
       });
-
-    // const changePage = async () => {
-    //   await axios
-    //     .get("http://59.20.79.42:58002/post/" + postPage)
-    //     .then((response) => {
-    //       setCommunityDtos(response.data.data);
-    //     })
-    //     .catch((error) => {
-    //       console.log(error);
-    //     });
-
-    //   changePage();
-    // };
   };
   //    <div>
   //    {communityDtos.map(
@@ -272,7 +285,7 @@ const Community = () => {
               <div className="content-header-wrap">
                 <h2 className="header-text">게시글</h2>
                 <div style={{ marginRight: "24px" }}>
-                  <Link to="/posts/write/:id">
+                  <Link to="/write">
                     <img
                       src="img/iconWrite.png"
                       style={{ width: "24px" }}
@@ -324,7 +337,7 @@ const Community = () => {
                           className="article-number"
                           style={{ alignSelf: "center", width: "72px" }}
                         >
-                          글 번호
+                          글번호
                         </div>
                         <div
                           className="article-list-item__content"
@@ -371,26 +384,51 @@ const Community = () => {
 
               <div>
                 <div className="article-list-paging">
-                  <ul>
-                    <li>
-                      <button
-                        onClick={handleNextPage}
-                        className="article-list-paging__button"
-                      >
-                        다음
-                        <img
-                          src="img/iconArrowRight.png"
-                          alt="다음"
-                          style={{
-                            width: "24px",
-                            height: "24px",
-                            verticalAlign: "middle",
-                            cursor: "pointer",
-                          }}
-                        />
-                      </button>
-                    </li>
-                  </ul>
+                  <div>
+                    {postPage > 0 && (
+                      <div style={{ display: "inline-block" }}>
+                        <button
+                          style={{ marginRight: "6px" }}
+                          onClick={handlePrevPage}
+                          className="article-list-paging__button"
+                        >
+                          <img
+                            src="img/iconArrowLeft.png"
+                            alt="이전"
+                            style={{
+                              width: "24px",
+                              height: "24px",
+                              verticalAlign: "middle",
+                              cursor: "pointer",
+                            }}
+                          />
+                          이전
+                        </button>
+                      </div>
+                    )}
+
+                    {statusCode !== 204 && (
+                      <div style={{ display: "inline-block" }}>
+                        <button
+                          style={{ marginLeft: "6px" }}
+                          onClick={handleNextPage}
+                          className="article-list-paging__button"
+                        >
+                          다음
+                          <img
+                            src="img/iconArrowRight.png"
+                            alt="다음"
+                            style={{
+                              width: "24px",
+                              height: "24px",
+                              verticalAlign: "middle",
+                              cursor: "pointer",
+                            }}
+                          />
+                        </button>
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>

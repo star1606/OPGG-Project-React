@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import Header1 from "../../include/Header1";
 import Footer2 from "../../include/Footer2";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 const RankingBox = styled.div`
   text-align: center;
@@ -343,7 +344,18 @@ const RankingBox = styled.div`
   }
 `;
 
-const Ranking = () => {
+const Ranking = ({ history }) => {
+  const [username, setUsername] = useState("");
+
+  const handleOnChange = (e) => {
+    setUsername(e.target.value);
+  };
+
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+    history.push("/summoner/" + username);
+  };
+
   return (
     <>
       <Header1 />
@@ -357,11 +369,11 @@ const Ranking = () => {
                   <form
                     id="search_summoner"
                     className="formItem"
-                    action="/ranking/ladder/"
-                    method="get"
+                    onSubmit={handleOnSubmit}
                   >
                     <div className="inputText">
                       <input
+                        onChange={handleOnChange}
                         type="text"
                         className="input"
                         placeholder="소환사명"
@@ -542,4 +554,4 @@ const Ranking = () => {
   );
 };
 
-export default Ranking;
+export default withRouter(Ranking);

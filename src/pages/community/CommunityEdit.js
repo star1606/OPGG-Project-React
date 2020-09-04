@@ -93,8 +93,9 @@ const WriteBox = styled.div`
 `;
 
 const CommunityEdit = ({ history }) => {
-  console.log(1, history.location.state.title);
-  console.log(2, history.location.state.content);
+  // console.log(1, history.location.state.title);
+  // console.log(2, history.location.state.content);
+
   const paramTitle = history.location.state.title;
   const paramContent = history.location.state.content;
   const paramPostId = history.location.state.postId;

@@ -382,10 +382,9 @@ const CommunityDetail = ({ match, history }) => {
               response.data.data.post.id
           );
         }
-        setPost(response.data.data.post.likeCount);
-        console.log("likeCount", post.likeCount);
-        // setPostLikeCount(response.data.data.post.likeCount);
-        // console.log("postLikeCount", postLikeCount);
+
+        setPostLikeCount(response.data.data.post.likeCount);
+        console.log("postLikeCount", postLikeCount);
       })
       .catch((error) => {
         console.log(9, error.response);
@@ -431,34 +430,50 @@ const CommunityDetail = ({ match, history }) => {
                     </div>
                   </div>
                 </div>
-
-                {postUserId === storageUserId && (
-                  <div className="article-action">
-                    <div className="article-action__item">
-                      <button
-                        onClick={deletePost}
-                        className="article-action__button button button--red button--red--border"
-                      >
+                ==========================================================================================
+                <div className="article-action">
+                  <div className="article-action__item">
+                    <form
+                      action="https://talk.op.gg/api/posts/2883325"
+                      method="post"
+                      onSubmit="return confirm('글을 삭제하시겠습니까?')"
+                    >
+                      <input type="hidden" name="_method" value="delete" />{" "}
+                      <input
+                        type="hidden"
+                        name="_token"
+                        value="P3hA0HqAar9BxcfXgIQUiFpVE9NkdLB6ErnCNdWv"
+                      />{" "}
+                      ======={" "}
+                      {postUserId === storageUserId && (
+                        <button onClick={deletePost}>삭제 버튼</button>
+                      )}
+                      {postUserId === storageUserId && (
+                        <Link
+                          to={{
+                            pathname: "/update",
+                            state: {
+                              postId: postId,
+                              title: postTitle,
+                              content: postContent,
+                            },
+                          }}
+                        >
+                          <button>수정 버튼</button>
+                        </Link>
+                      )}
+                      ========
+                      <button className="article-action__button button button--red button--red--border">
                         삭제
                       </button>
-                    </div>
-                    <div className="article-action__item">
-                      <Link
-                        to={{
-                          pathname: "/edit",
-                          state: {
-                            postId: postId,
-                            title: postTitle,
-                            content: postContent,
-                          },
-                        }}
-                        className="article-action__button__button"
-                      >
-                        수정
-                      </Link>
-                    </div>
+                    </form>
                   </div>
-                )}
+                  <div className="article-action__item">
+                    <Link to="/edit" className="article-action__button__button">
+                      수정
+                    </Link>
+                  </div>
+                </div>
               </div>
               <div className="article-content-wrap">
                 <div className="article-content">
