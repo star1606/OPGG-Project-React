@@ -5,6 +5,9 @@ import Header1 from "../../include/Header1";
 import Footer2 from "../../include/Footer2";
 import MainForm from "./MainForm";
 import CommentWrap from "./CommentWrap";
+import moment from "moment";
+import "moment/locale/ko";
+import { Link } from "react-router-dom";
 
 const CommunityContentBox = styled.div`
   max-width: 1044px;
@@ -146,6 +149,58 @@ const CommunityContentBox = styled.div`
     margin-bottom: 10px;
     margin-top: 10px;
   }
+
+  .article-action {
+    margin-top: 16px;
+  }
+
+  .article-action__item:first-child {
+    margin-left: 0;
+  }
+
+  .article-action__item {
+    display: inline-block;
+    vertical-align: middle;
+    /* margin-left: 8px; */
+  }
+
+  button,
+  input {
+    margin: 0;
+    font-size: 14px;
+    outline: 0;
+    border: 1px solid #dddfe4;
+    border-radius: 4px;
+  }
+  .article-action__button {
+    line-height: 15px;
+    font-size: 12px;
+    padding: 8px 15px 7px;
+  }
+  .button--red--border {
+    border-color: #f95b54;
+    background: #fff;
+    color: #f95b54;
+    margin-right: 5px;
+  }
+
+  .article-action__button__button {
+    border: 1px solid #dddfe4;
+    /* border-radius: 4px; */
+    /* line-height: 15px; */
+    /* font-size: 12px; */
+    /* padding: 8px 15px 7px; */
+    border-radius: 4px;
+    line-height: 15px;
+    font-size: 12px;
+    padding: 10px 15px 7px;
+    color: black;
+    box-sizing: border-box;
+  }
+
+  .article-meta {
+    margin-bottom: 47px;
+  }
 `;
 
 const CommunityDetail = () => {
@@ -163,14 +218,7 @@ const CommunityDetail = () => {
                 <div className="article-meta">
                   <div className="article-meta-list">
                     <div className="article-meta__item">
-                      <span
-                        data-tooltip=""
-                        data-date="2020-08-06T01:02:51+00:00"
-                        data-tippy=""
-                        data-original-title="2020년 8월 6일 목요일 오전 10:02"
-                      >
-                        6 시간 전
-                      </span>
+                      <span>6 시간 전</span>
                     </div>
                     <div className="article-meta__item article-meta__item--name">
                       <a
@@ -191,6 +239,31 @@ const CommunityDetail = () => {
                     <div className="article-meta__item">
                       <span>추천 1,729</span>
                     </div>
+                  </div>
+                </div>
+
+                <div className="article-action">
+                  <div className="article-action__item">
+                    <form
+                      action="https://talk.op.gg/api/posts/2883325"
+                      method="post"
+                      onSubmit="return confirm('글을 삭제하시겠습니까?')"
+                    >
+                      <input type="hidden" name="_method" value="delete" />{" "}
+                      <input
+                        type="hidden"
+                        name="_token"
+                        value="P3hA0HqAar9BxcfXgIQUiFpVE9NkdLB6ErnCNdWv"
+                      />{" "}
+                      <button className="article-action__button button button--red button--red--border">
+                        삭제
+                      </button>
+                    </form>
+                  </div>
+                  <div className="article-action__item">
+                    <Link to="/edit" className="article-action__button__button">
+                      수정
+                    </Link>
                   </div>
                 </div>
               </div>

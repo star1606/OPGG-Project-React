@@ -92,33 +92,35 @@ const WriteBox = styled.div`
   }
 `;
 
-const CommunityWrite = ({ history }) => {
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+const CommunityEdit = ({ history }) => {
+  console.log(1, history.location.state.title);
+  console.log(2, history.location.state.content);
+  const paramTitle = history.location.state.title;
+  const paramContent = history.location.state.content;
+  const paramPostId = history.location.state.postId;
+  const [updateTitle, setUpdateTitle] = useState(paramTitle);
+  const [updateContent, setUpdateContent] = useState(paramContent);
   const storageUserId = parseInt(localStorage.getItem("userId"));
-  const [postId, setPostId] = useState(0);
-  const [postUserId, setPostUserId] = useState(0);
 
   const handleChangeTitle = (e) => {
-    setTitle(e.target.value);
+    setUpdateTitle(e.target.value);
   };
 
   const handleChangeContent = (e) => {
-    setContent(e.target.value);
+    setUpdateContent(e.target.value);
   };
 
   // 이거 작성완료 누르면 데이터보내고 본진으로 가는것을 구현할 것이다
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(title);
-    console.log(content);
 
     axios
-      .post(
-        "http://59.20.79.42:58002/post/writeProc",
+      .put(
+        "http://59.20.79.42:58002/post/update",
         {
-          title: title,
-          content: content,
+          id: paramPostId,
+          title: updateTitle,
+          content: updateContent,
           user: {
             id: storageUserId,
           },
@@ -132,19 +134,15 @@ const CommunityWrite = ({ history }) => {
         }
       )
       .then((response) => {
-        console.log(response);
-        alert("글작성이 완료되었습니다.");
-        history.push("/community");
-
         // 이거 먹히나?
+        console.log(response.data);
         // setPostId(response.data.data.post.id);
-        // history.push('/community' + postId);
+        history.push("/community");
+        alert("글 수정이 완료되었습니다");
       })
       .catch((error) => {
-        console.log(error.response);
+        console.log("에러", error.response);
       });
-
-    history.push("/community");
   };
 
   return (
@@ -159,13 +157,14 @@ const CommunityWrite = ({ history }) => {
                 <form onSubmit={handleSubmit}>
                   <div className="article-write">
                     <div className="article-write-header">
-                      <div className="article-write__title">글쓰기</div>
+                      <div className="article-write__title">글수정</div>
                     </div>
                     <div className="article-write-input">
                       <input
                         onChange={handleChangeTitle}
                         type="text"
                         name="title"
+                        value={updateTitle}
                         className="article-write__text"
                         placeholder="제목"
                         autoComplete="off"
@@ -175,13 +174,14 @@ const CommunityWrite = ({ history }) => {
                       <textarea
                         onChange={handleChangeContent}
                         className="article-write__textarea"
+                        value={updateContent}
                       ></textarea>
                     </div>
                     <div className="article-write__btn">
                       <button
                         className="article-write__button article-write__button--cancel"
                         type="button"
-                        onclick={() => history.push("/community")}
+                        onClick={() => history.push("/community")}
                       >
                         취소
                       </button>
@@ -189,7 +189,7 @@ const CommunityWrite = ({ history }) => {
                         className="article-write__button article-write__button--submit"
                         type="submit"
                       >
-                        작성완료
+                        수정완료
                       </button>
                     </div>
                   </div>
@@ -204,4 +204,4 @@ const CommunityWrite = ({ history }) => {
   );
 };
 
-export default withRouter(CommunityWrite);
+export default withRouter(CommunityEdit);

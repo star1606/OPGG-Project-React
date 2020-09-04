@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Link, Route } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import axios from "axios";
-
 import GoogleLogin from "react-google-login";
 import styled from "styled-components";
 

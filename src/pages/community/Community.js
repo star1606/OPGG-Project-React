@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Header1 from "./../../include/Header1";
 import Footer2 from "./../../include/Footer2";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import MainForm from "./MainForm";
+import moment from "moment";
+import axios from "axios";
+import "moment/locale/ko";
 
 export const CommunityWrap = styled.div`
   margin: 0 auto;
@@ -182,9 +185,81 @@ const ContentBox = styled.div`
     height: 40px;
     margin-top: 12px;
   }
+
+  .article-list-author {
+    margin-left: 5px;
+  }
 `;
 
 const Community = () => {
+  moment.locale("ko");
+  const [communityDtos, setCommunityDtos] = useState([]);
+  const [postPage, setPostPage] = useState(0);
+  // const [replies, setReplies] = useState([]);
+  // setReplies(response.data.data.post.replies);
+  //  replies.length
+
+  useEffect(() => {
+    axios
+      .get("http://59.20.79.42:58002/post/" + postPage)
+      .then((response) => {
+        setCommunityDtos(response.data.data);
+
+        console.log(1, response.data.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  const handleNextPage = () => {
+    setPostPage(postPage + 1);
+
+    axios
+      .get("http://59.20.79.42:58002/post/" + postPage)
+      .then((response) => {
+        setCommunityDtos(response.data.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    // const changePage = async () => {
+    //   await axios
+    //     .get("http://59.20.79.42:58002/post/" + postPage)
+    //     .then((response) => {
+    //       setCommunityDtos(response.data.data);
+    //     })
+    //     .catch((error) => {
+    //       console.log(error);
+    //     });
+
+    //   changePage();
+    // };
+  };
+  //    <div>
+  //    {communityDtos.map(
+  //      (communityDto) =>
+  //        communityDto.type === 1 && (
+  //          <ul key={communityDto.post.id}>
+  //            <li>
+  //              <Link to={'/community/' + communityDto.post.id}>
+  //                {communityDto.post.title}
+  //              </Link>
+  //            </li>
+  //            <li>
+  //              {moment(communityDto.post.createDate)
+  //                .startOf('minute')
+  //                .fromNow()}
+  //            </li>
+
+  //            <li>{communityDto.post.user.nickname}</li>
+  //            <hr />
+  //          </ul>
+  //        ),
+  //    )}
+  //  </div>
+
   return (
     <div>
       <CommunityWrap>
@@ -236,214 +311,72 @@ const Community = () => {
 
             {/* 밑에 div는 flex로 만들것 */}
             <div className="article-list">
-              <div className="article-box">
-                <div className="article-item" style={{ display: "contents" }}>
-                  <div
-                    className="article-number"
-                    style={{ alignSelf: "center", width: "72px" }}
-                  >
-                    1234
-                  </div>
-                  <div
-                    className="article-list-item__content"
-                    style={{ alignSelf: "center" }}
-                  >
-                    <Link to="/posts/:id" style={{ cursor: "pointer" }}>
-                      <div className="aritcle-list-item__title">
-                        <span className="post-title">이해하면 소름돋음</span>
-                        <em style={{ color: "#16ae81", fontStyle: "normal" }}>
-                          [142]
-                        </em>
+              {/* 여기서 부터 반복 */}
+              {communityDtos.map(
+                (communityDto) =>
+                  communityDto.type === 1 && (
+                    <div className="article-box" key={communityDto.post.id}>
+                      <div
+                        className="article-item"
+                        style={{ display: "contents" }}
+                      >
+                        <div
+                          className="article-number"
+                          style={{ alignSelf: "center", width: "72px" }}
+                        >
+                          글 번호
+                        </div>
+                        <div
+                          className="article-list-item__content"
+                          style={{ alignSelf: "center" }}
+                        >
+                          <Link
+                            to={"/community/" + communityDto.post.id}
+                            style={{ cursor: "pointer" }}
+                          >
+                            <div
+                              className="aritcle-list-item__title"
+                              style={{ textAlign: "left" }}
+                            >
+                              <span className="post-title">
+                                {communityDto.post.title}
+                              </span>
+                              <em
+                                style={{
+                                  color: "#16ae81",
+                                  fontStyle: "normal",
+                                }}
+                              >
+                                [{communityDto.post.replies.length}]
+                              </em>
+                            </div>
+                          </Link>
+                          <div className="article-list-item-meta">
+                            <div className="article-list-item-meta__item">
+                              <span style={{ color: "#98a0a7" }}>
+                                {moment(communityDto.post.createDate)
+                                  .startOf("minute")
+                                  .fromNow()}
+                              </span>
+                              <span className="article-list-author">
+                                {communityDto.post.user.nickname}
+                              </span>
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                    </Link>
-                    <div className="article-list-item-meta">
-                      <div className="article-list-item-meta__item">
-                        <span style={{ color: "#98a0a7" }}>6시간 전</span>
-                      </div>
-                      <div className="article-list-author">ㅈ망겜ㅇㅈ</div>
                     </div>
-                  </div>
-                </div>
-              </div>
-              <div className="article-box">
-                <div className="article-item" style={{ display: "contents" }}>
-                  <div
-                    className="article-number"
-                    style={{ alignSelf: "center", width: "72px" }}
-                  >
-                    1234
-                  </div>
-                  <div
-                    className="article-list-item__content"
-                    style={{ alignSelf: "center" }}
-                  >
-                    <Link to="/posts/:id" style={{ cursor: "pointer" }}>
-                      <div className="aritcle-list-item__title">
-                        <span className="post-title">이해하면 소름돋음</span>
-                        <em style={{ color: "#16ae81", fontStyle: "normal" }}>
-                          [142]
-                        </em>
-                      </div>
-                    </Link>
-                    <div className="article-list-item-meta">
-                      <div className="article-list-item-meta__item">
-                        <span style={{ color: "#98a0a7" }}>6시간 전</span>
-                      </div>
-                      <div className="article-list-author">ㅈ망겜ㅇㅈ</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="article-box">
-                <div className="article-item" style={{ display: "contents" }}>
-                  <div
-                    className="article-number"
-                    style={{ alignSelf: "center", width: "72px" }}
-                  >
-                    1234
-                  </div>
-                  <div
-                    className="article-list-item__content"
-                    style={{ alignSelf: "center" }}
-                  >
-                    <Link to="/posts/:id" style={{ cursor: "pointer" }}>
-                      <div className="aritcle-list-item__title">
-                        <span className="post-title">이해하면 소름돋음</span>
-                        <em style={{ color: "#16ae81", fontStyle: "normal" }}>
-                          [142]
-                        </em>
-                      </div>
-                    </Link>
-                    <div className="article-list-item-meta">
-                      <div className="article-list-item-meta__item">
-                        <span style={{ color: "#98a0a7" }}>6시간 전</span>
-                      </div>
-                      <div className="article-list-author">ㅈ망겜ㅇㅈ</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="article-box">
-                <div className="article-item" style={{ display: "contents" }}>
-                  <div
-                    className="article-number"
-                    style={{ alignSelf: "center", width: "72px" }}
-                  >
-                    1234
-                  </div>
-                  <div
-                    className="article-list-item__content"
-                    style={{ alignSelf: "center" }}
-                  >
-                    <Link to="/posts/:id" style={{ cursor: "pointer" }}>
-                      <div className="aritcle-list-item__title">
-                        <span className="post-title">이해하면 소름돋음</span>
-                        <em style={{ color: "#16ae81", fontStyle: "normal" }}>
-                          [142]
-                        </em>
-                      </div>
-                    </Link>
-                    <div className="article-list-item-meta">
-                      <div className="article-list-item-meta__item">
-                        <span style={{ color: "#98a0a7" }}>6시간 전</span>
-                      </div>
-                      <div className="article-list-author">ㅈ망겜ㅇㅈ</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="article-box">
-                <div className="article-item" style={{ display: "contents" }}>
-                  <div
-                    className="article-number"
-                    style={{ alignSelf: "center", width: "72px" }}
-                  >
-                    1234
-                  </div>
-                  <div
-                    className="article-list-item__content"
-                    style={{ alignSelf: "center" }}
-                  >
-                    <Link to="/posts/:id" style={{ cursor: "pointer" }}>
-                      <div className="aritcle-list-item__title">
-                        <span className="post-title">이해하면 소름돋음</span>
-                        <em style={{ color: "#16ae81", fontStyle: "normal" }}>
-                          [142]
-                        </em>
-                      </div>
-                    </Link>
-                    <div className="article-list-item-meta">
-                      <div className="article-list-item-meta__item">
-                        <span style={{ color: "#98a0a7" }}>6시간 전</span>
-                      </div>
-                      <div className="article-list-author">ㅈ망겜ㅇㅈ</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="article-box">
-                <div className="article-item" style={{ display: "contents" }}>
-                  <div
-                    className="article-number"
-                    style={{ alignSelf: "center", width: "72px" }}
-                  >
-                    1234
-                  </div>
-                  <div
-                    className="article-list-item__content"
-                    style={{ alignSelf: "center" }}
-                  >
-                    <Link to="/posts/:id" style={{ cursor: "pointer" }}>
-                      <div className="aritcle-list-item__title">
-                        <span className="post-title">이해하면 소름돋음</span>
-                        <em style={{ color: "#16ae81", fontStyle: "normal" }}>
-                          [142]
-                        </em>
-                      </div>
-                    </Link>
-                    <div className="article-list-item-meta">
-                      <div className="article-list-item-meta__item">
-                        <span style={{ color: "#98a0a7" }}>6시간 전</span>
-                      </div>
-                      <div className="article-list-author">ㅈ망겜ㅇㅈ</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="article-box">
-                <div className="article-item" style={{ display: "contents" }}>
-                  <div
-                    className="article-number"
-                    style={{ alignSelf: "center", width: "72px" }}
-                  >
-                    1234
-                  </div>
-                  <div
-                    className="article-list-item__content"
-                    style={{ alignSelf: "center" }}
-                  >
-                    <Link to="/posts/:id" style={{ cursor: "pointer" }}>
-                      <div className="aritcle-list-item__title">
-                        <span className="post-title">이해하면 소름돋음</span>
-                        <em style={{ color: "#16ae81", fontStyle: "normal" }}>
-                          [142]
-                        </em>
-                      </div>
-                    </Link>
-                    <div className="article-list-item-meta">
-                      <div className="article-list-item-meta__item">
-                        <span style={{ color: "#98a0a7" }}>6시간 전</span>
-                      </div>
-                      <div className="article-list-author">ㅈ망겜ㅇㅈ</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                  )
+              )}
+
               <div>
                 <div className="article-list-paging">
                   <ul>
                     <li>
-                      <button className="article-list-paging__button">
+                      <button
+                        onClick={handleNextPage}
+                        className="article-list-paging__button"
+                      >
                         다음
                         <img
                           src="img/iconArrowRight.png"
@@ -452,6 +385,7 @@ const Community = () => {
                             width: "24px",
                             height: "24px",
                             verticalAlign: "middle",
+                            cursor: "pointer",
                           }}
                         />
                       </button>

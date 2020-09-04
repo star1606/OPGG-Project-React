@@ -14,6 +14,7 @@ import Champ from "./pages/champ/Champ";
 import CommunityDetail from "./pages/community/CommunityDetail";
 import CommunityWrite from "./pages/community/CommunityWrite";
 import Summoner from "./pages/summoner/Summoner";
+import CommunityEdit from "./pages/community/CommunityEdit";
 
 function App() {
   return (
@@ -21,12 +22,13 @@ function App() {
       <Route path="/home" component={Home} exact={true} />
       <Route path="/champion" component={Champ} />
       <Route path="/ranking" component={Ranking} />
+      <Route path="/community/:id" component={CommunityDetail} />
       <Route path="/community" component={Community} />
       <Route path="/login" component={Login} />
       <Route path="/join" component={Join} />
-      <Route path="/posts/:id" component={CommunityDetail} />
       <Route path="/write" component={CommunityWrite} />
-      <Route patch="/summoner:{username}" component={Summoner} />
+      <Route patch="/edit" component={CommunityEdit} />
+      <Route patch="/summoner/:username" component={Summoner} />
     </Switch>
   );
 }

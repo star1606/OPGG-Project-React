@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-
+import { Link } from "react-router-dom";
 export const MainFormBox = styled.div`
   height: 200px;
   display: flex;
@@ -57,15 +57,16 @@ export const SearchForm = styled.form`
 const MainForm = () => {
   return (
     <MainFormBox>
-      <div className="icon-form">
-        <img
-          className="community-icon"
-          src="/img/communityIcon.png"
-          alt="아이콘"
-        />
-        <div className="icon-text">리그오브레전드</div>
-      </div>
-
+      <Link to="/community">
+        <div className="icon-form">
+          <img
+            className="community-icon"
+            src="/img/communityIcon.png"
+            alt="아이콘"
+          />
+          <div className="icon-text">리그오브레전드</div>
+        </div>
+      </Link>
       <SearchForm>
         <input type="text" className="main-input" />
         <button className="mainBtn" type="submit">
