@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Footer2 from "./../../include/Footer2";
 import Header2 from "./../../include/Header2";
 import styled from "styled-components";
 import "../../include/Summoner.css";
+import axios from "axios";
 
 const SummonerHeader = styled.div`
   position: relative;
@@ -14,6 +15,21 @@ const SummonerHeader = styled.div`
 const Summoner = ({ match }) => {
   console.log(match.params);
   const [isToggleOn, setIsToggleOn] = useState(false);
+  const [infoDtos, setInfoDtos] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://59.20.79.42:58002/api/info/name/hideonbush")
+      .then((response) => {
+        if (response.data.statusCode === 200) {
+          setInfoDtos(response.data.data);
+        }
+        console.log(1, response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   return (
     <>
@@ -24,16 +40,39 @@ const Summoner = ({ match }) => {
           <div className="face">
             <div className="profileIcon">
               <div className="borderImage"></div>
-              <img className="profileImage" src="/img/garen.png" alt="" />
-              <span className="level">288</span>
+              <img
+                className="profileImage"
+                src={
+                  infoDtos.length > 0
+                    ? "http://ddragon.leagueoflegends.com/cdn/10.16.1/img/profileicon/" +
+                      infoDtos[0].summonerModel.profileIconId +
+                      ".png"
+                    : "http://ddragon.leagueoflegends.com/cdn/10.16.1/img/profileicon/6.png"
+                }
+                alt=""
+              />
+              <span className="level">
+                {infoDtos.length > 0
+                  ? infoDtos[0].summonerModel.summonerLevel
+                  : 0}
+              </span>
             </div>
           </div>
           <div className="profile">
             <div className="information">
-              <span className="name">DWG ShowMaker</span>
+              <span className="name">
+                {infoDtos.length > 0
+                  ? infoDtos[0].summonerModel.name
+                  : "소환사명"}
+              </span>
               <div className="rank">
                 <div className="ladderRank">
-                  랭킹 <span className="ranking">1</span>위
+                  랭킹{" "}
+                  <span className="ranking">
+                    {" "}
+                    {infoDtos.length > 0 ? infoDtos[0].radder : 0}
+                  </span>
+                  위
                 </div>
               </div>
               <div className="button">
@@ -52,36 +91,150 @@ const Summoner = ({ match }) => {
                     <div className="medal">
                       <img
                         className="medalImage"
-                        src="/img/challenger_1.png"
+                        src={
+                          infoDtos.length > 0
+                            ? infoDtos[0].entryModels[0].tierRankId !== null
+                              ? "https://opgg-static.akamaized.net/images/medals/" +
+                                infoDtos[0].entryModels[0].tierRankId +
+                                ".png"
+                              : "/img/default.png"
+                            : "/img/default.png"
+                        }
                         alt="솔랭"
                       />
                     </div>
                     <div className="tierRankInfo">
                       <div className="rankType">솔로랭크</div>
-                      <div className="tierRank">Chanllenger</div>
+                      <div className="tierRank">
+                        {infoDtos.length > 0
+                          ? infoDtos[0].entryModels.length > 0
+                            ? infoDtos[0].entryModels[0].tier +
+                              "  " +
+                              infoDtos[0].entryModels[0].rank
+                            : "noData"
+                          : "noData"}
+                      </div>
                       <div className="tierInfo">
-                        <span className="leaguePoints">1,604 Lp /</span>
+                        <span className="leaguePoints">
+                          {" "}
+                          {infoDtos.length > 0
+                            ? infoDtos[0].entryModels.length > 0
+                              ? infoDtos[0].entryModels[0].leaguePoints
+                              : 0
+                            : 0}{" "}
+                          Lp /
+                        </span>
                         <span className="winLose">
-                          <span className="wins"> 326승 </span>
-                          <span className="lossers"> 324패 </span>
+                          <span className="wins">
+                            {" "}
+                            {infoDtos.length > 0
+                              ? infoDtos[0].entryModels.length > 0
+                                ? infoDtos[0].entryModels[0].wins
+                                : 0
+                              : 0}{" "}
+                            승{" "}
+                          </span>
+                          <span className="lossers">
+                            {" "}
+                            {infoDtos.length > 0
+                              ? infoDtos[0].entryModels.length > 0
+                                ? infoDtos[0].entryModels[0].losses
+                                : 0
+                              : 0}
+                            패{" "}
+                          </span>
                           <br />
-                          <span className="winRatio">승률 58%</span>
+                          <span className="winRatio">
+                            승률{" "}
+                            {infoDtos.length > 0
+                              ? infoDtos[0].entryModels.length > 0
+                                ? (
+                                    (infoDtos[0].entryModels[0].wins /
+                                      (infoDtos[0].entryModels[0].wins +
+                                        infoDtos[0].entryModels[0].losses)) *
+                                    100
+                                  ).toFixed(2)
+                                : 0
+                              : 0}
+                            %
+                          </span>
                         </span>
                       </div>
-                      <div className="leagueName">헤카림의 저격수들</div>
                     </div>
                   </div>
                 </div>
                 <div className="sub-tier">
                   <img
                     className="img-sub-tier__medal"
-                    src="/img/default.png"
+                    src={
+                      infoDtos.length > 0
+                        ? infoDtos[0].entryModels[1].tierRankId !== null
+                          ? "https://opgg-static.akamaized.net/images/medals/" +
+                            infoDtos[0].entryModels[1].tierRankId +
+                            ".png"
+                          : "/img/default.png"
+                        : "/img/default.png"
+                    }
                     alt="자유랭"
                   />
                   <div className="sub-tier__info__unranked">
-                    <div className="sub-tier__rank-type">자유 5:5 랭크</div>
-                    <div className="sub-tier__rank-tier__unranked">
-                      Unranked
+                    <div className="tierRankInfo">
+                      <div className="rankType">솔로랭크</div>
+                      <div className="tierRank">
+                        {infoDtos.length > 0
+                          ? infoDtos[0].entryModels.length > 0
+                            ? infoDtos[0].entryModels[0].tier +
+                              "  " +
+                              infoDtos[0].entryModels[0].rank
+                            : "noData"
+                          : "noData"}
+                      </div>
+                      <div className="tierInfo">
+                        <span className="leaguePoints">
+                          {" "}
+                          {infoDtos.length > 0
+                            ? infoDtos[0].entryModels.length > 0
+                              ? infoDtos[0].entryModels[0].leaguePoints
+                              : 0
+                            : 0}{" "}
+                          Lp /
+                        </span>
+                        <span className="winLose">
+                          <span className="wins">
+                            {" "}
+                            {infoDtos.length > 0
+                              ? infoDtos[0].entryModels.length > 0
+                                ? infoDtos[0].entryModels[0].wins
+                                : 0
+                              : 0}{" "}
+                            승{" "}
+                          </span>
+                          <span className="lossers">
+                            {" "}
+                            {infoDtos.length > 0
+                              ? infoDtos[0].entryModels.length > 0
+                                ? infoDtos[0].entryModels[0].losses
+                                : 0
+                              : 0}
+                            패{" "}
+                          </span>
+                          <br />
+                          <span className="winRatio">
+                            승률{" "}
+                            {infoDtos.length > 0
+                              ? infoDtos[0].entryModels.length > 0
+                                ? (
+                                    (infoDtos[0].entryModels[0].wins /
+                                      (infoDtos[0].entryModels[0].wins +
+                                        infoDtos[0].entryModels[0].losses)) *
+                                    100
+                                  ).toFixed(2)
+                                : 0
+                              : 0}
+                            %
+                          </span>
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>
