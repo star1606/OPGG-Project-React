@@ -55,7 +55,7 @@ const WriteBox = styled.div`
   .article-write__textarea {
     font-size: 17px;
     padding: 10px;
-    width: 99.8%;
+    width: 97.8%;
     margin-top: 13px;
     border: 1px solid rgb(221, 223, 228);
     color: rgb(30, 32, 34);
@@ -98,7 +98,6 @@ const CommunityEdit = ({ history }) => {
   // console.log(1, history.location.state.title);
   // console.log(2, history.location.state.content);
 
-  console.log(7, history);
   const paramTitle = history.location.state.title;
   const paramContent = history.location.state.content;
   const paramPostId = history.location.state.postId;

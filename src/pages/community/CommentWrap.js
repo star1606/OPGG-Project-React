@@ -7,41 +7,8 @@ import CommunityDetail from "./CommunityDetail";
 const CommentWrap = (props) => {
   moment.locale("ko");
 
-  const [resp, setResp] = useState([
-    {
-      type: 1,
-      post: {
-        id: 0,
-        title: "",
-        content: "",
-        likeCount: 0,
-        viewCount: 0,
-        user: {
-          id: 0,
-          username: "",
-          nickname: "",
-          email: "",
-          roles: "",
-          providerId: "",
-          provider: "",
-          createDate: "",
-        },
-        replies: [],
-        createDate: "",
-      },
-    },
-    {
-      type: 2,
-      post: null,
-    },
-    ,
-  ]);
-  const [dto, setDto] = useState([]);
-
-  const [replies, setReplies] = useState([props.replies]);
   const [reply, setReply] = useState([]);
   const storageUserId = parseInt(localStorage.getItem("userId"));
-  const postId = props.post.id;
 
   // 리플 input 감시
   const replyOnChange = (e) => {
@@ -56,37 +23,6 @@ const CommentWrap = (props) => {
   };
 
   // 리플 삭제 구현
-
-  const deleteReply = (id) => {
-    // if (user.post.replise.reply.id !== id) {
-    //   alert('삭제 못함');
-    //   return;
-    // }
-    console.log(id);
-    axios
-      .delete("http://59.20.79.42:58002/reply/delete/" + id, {
-        headers: {
-          Authorization: "Bearer " + localStorage.getItem("jwtToken"),
-        },
-      })
-      .then((response) => {
-        axios
-          .get("http://59.20.79.42:58002/post/detail/" + postId)
-          .then((response) => {
-            console.log(100, response);
-            setReplies(response.data.data.post.replies);
-            // let repliesObject = replies.filter((reply) => {
-            //   return reply.id !== id;
-            // });
-            // setData(responseData);
-
-            // console.log(2, response.data.data.post);
-          });
-      })
-      .catch((error) => {
-        console.log(error.response);
-      });
-  };
 
   return (
     <div className="comment">
@@ -116,7 +52,7 @@ const CommentWrap = (props) => {
               {reply.user.nickname}
             </span>
             <span className="comment__date">
-              {moment(reply.createDate).startOf("minute").fromNow()}
+              {moment(reply.createDate).startOf("second").fromNow()}
             </span>
           </div>{" "}
           <div className="comment-content">
@@ -125,7 +61,7 @@ const CommentWrap = (props) => {
           {reply.user.id === storageUserId && (
             <button
               onClick={() => {
-                deleteReply(reply.id);
+                props.deleteReply(reply.id);
               }}
             >
               댓글 삭제버튼

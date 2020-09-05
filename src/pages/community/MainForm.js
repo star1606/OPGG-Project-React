@@ -29,7 +29,7 @@ export const MainFormBox = styled.div`
   }
 `;
 
-export const SearchForm = styled.form`
+export const SearchForm = styled.div`
   position: relative;
   justify-content: flex-end;
   .main-input {

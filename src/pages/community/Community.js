@@ -197,6 +197,7 @@ const Community = ({ history }) => {
   const [communityDtos, setCommunityDtos] = useState([]);
   const [postPage, setPostPage] = useState(0);
   const [statusCode, setStatusCode] = useState(0);
+  const [inputValue, setInputValue] = useState("");
 
   useEffect(() => {
     axios
@@ -251,7 +252,37 @@ const Community = ({ history }) => {
       });
   };
 
-  //  </div>
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+
+    axios
+      .get("http://59.20.79.42:58002/post/find/" + inputValue)
+      .then((response) => {
+        console.log(2, inputValue);
+        setCommunityDtos(response.data.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const handleOnChange = (e) => {
+    setInputValue(e.target.value);
+    console.log(1, inputValue);
+
+    const search = async () => {
+      await axios
+        .get("http://59.20.79.42:58002/post/find/" + inputValue)
+        .then((response) => {
+          console.log(2, inputValue);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    };
+    search();
+    setCommunityDtos(inputValue);
+  };
 
   return (
     <div>
@@ -280,13 +311,14 @@ const Community = ({ history }) => {
                 style={{ height: "48px", position: "relative" }}
               >
                 <div className="sub-search-wrap">
-                  <form className="sub-search">
+                  <form className="sub-search" onSubmit={handleOnSubmit}>
                     <select className="sub-header-search__select">
-                      <option>제목</option>
-                      <option>작성자</option>
+                      <option>제목+내용</option>
                     </select>
                     <input
+                      onChange={handleOnChange}
                       tpye="text"
+                      value={inputValue}
                       className="sub-header-search__input"
                       placeholder="검색"
                     />
@@ -348,7 +380,7 @@ const Community = ({ history }) => {
                             <div className="article-list-item-meta__item">
                               <span style={{ color: "#98a0a7" }}>
                                 {moment(communityDto.post.createDate)
-                                  .startOf("minute")
+                                  .startOf("second")
                                   .fromNow()}
                               </span>
                               <span className="article-list-author">

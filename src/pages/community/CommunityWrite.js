@@ -53,7 +53,7 @@ const WriteBox = styled.div`
     width: 100%;
   }
   .article-write__textarea {
-    width: 99.8%;
+    width: 97.8%;
     margin-top: 13px;
     border: 1px solid rgb(221, 223, 228);
     color: rgb(30, 32, 34);
@@ -98,8 +98,6 @@ const CommunityWrite = ({ history }) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const storageUserId = parseInt(localStorage.getItem("userId"));
-  const [postId, setPostId] = useState(0);
-  const [postUserId, setPostUserId] = useState(0);
 
   const handleChangeTitle = (e) => {
     setTitle(e.target.value);
@@ -137,16 +135,11 @@ const CommunityWrite = ({ history }) => {
         console.log(response);
 
         alert("글작성이 완료되었습니다.");
-
-        // 이거 먹히나?
-        // setPostId(response.data.data.post.id);
-        // history.push('/community' + postId);
+        history.push("/community");
       })
       .catch((error) => {
         console.log(error.response);
       });
-
-    history.push("/community");
   };
 
   return (
