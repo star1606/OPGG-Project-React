@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import styled from "styled-components";
 import { CommunityWrap } from "./Community";
 import Header1 from "../../include/Header1";
@@ -20,6 +20,9 @@ const CommunityContentBox = styled.div`
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.15);
   }
 
+  .comment-wrap {
+    padding: 10px;
+  }
   .article-header {
     padding-left: 24px;
     padding-right: 24px;
@@ -125,7 +128,8 @@ const CommunityContentBox = styled.div`
   }
   .comment {
     position: relative;
-    padding: 20px 15px 12px 64px;
+    /* padding: 20px 15px 12px 64px; */
+    padding: 10px;
   }
 
   .comment-meta {
@@ -149,7 +153,7 @@ const CommunityContentBox = styled.div`
   }
   .comment-content {
     line-height: 20px;
-    font-size: 14px;
+    font-size: 15px;
     color: #1e2022;
     margin-bottom: 10px;
     margin-top: 10px;
@@ -210,8 +214,38 @@ const CommunityDetail = ({ match, history }) => {
 
   // const [post, setPost] = useState('');
   // post의 id
+  const [dto, setDto] = useState([
+    {
+      type: 1,
+      post: {
+        id: 0,
+        title: "",
+        content: "",
+        likeCount: 0,
+        viewCount: 0,
+        user: {
+          id: 0,
+          username: "",
+          nickname: "",
+          email: "",
+          roles: "",
+          providerId: "",
+          provider: "",
+          createDate: "",
+        },
+        replies: [],
+        createDate: "",
+      },
+    },
+    {
+      type: 2,
+      post: null,
+    },
+  ]);
+  const [replies, setReplies] = useState([]);
+  const [resp, setResp] = useState({});
 
-  const [postUserId, setPostUserId] = useState("");
+  const [postUserId, setPostUserId] = useState(0);
   // post 좋아요
 
   const [postTitle, setPostTitle] = useState("");
@@ -223,19 +257,17 @@ const CommunityDetail = ({ match, history }) => {
   const [post, setPost] = useState({});
 
   //replies map리스트뿌리기
-  const [replies, setReplies] = useState([]);
+
   // reply 작성 value
-  const [inputReply, setInputReply] = useState("");
+
   const [replyUserId, setReplyUserId] = useState("");
   const [repliesCreateDate, setRepliesCreateDate] = useState("");
   const storageUserId = parseInt(localStorage.getItem("userId"));
+
   let postId = match.params.id;
-  // const localLoclae = moment.locale('ko');
-  // const [userId, setUserId] = useState('');
 
   useEffect(() => {
     const enterPage = async () => {
-      // let detailId = props.match.prams.id;
       moment.locale("ko");
 
       if (
@@ -280,30 +312,11 @@ const CommunityDetail = ({ match, history }) => {
             history.push("/community");
           }
 
-          // console.log(1, response.data.statusCode);
-          // console.log(2, response.data.data.post.likeCount);
-          // console.log(4, response.data.data.post); //responseDto.post
-          // console.log(5, response.data.data.post.replies); //responseDto.post.replies
-          // console.log(6, response.data.data.post.title); //responseDto.post
-          // console.log(7, response.data.data.post.id);
-          // console.log(8, response.data.data.post.createDate);
-          // post userId set
+          console.log(11, response.data);
+          setResp(response.data);
           setPostUserId(response.data.data.post.user.id);
-          setPostTitle(response.data.data.post.title);
-          setPostCreateDate(response.data.data.post.createDate);
-          setPostUserNickname(response.data.data.post.user.nickname);
-          setPostViewCount(response.data.data.post.viewCount);
-          setPostLikeCount(response.data.data.post.likeCount);
-          setPostContent(response.data.data.post.content);
-          // localStorageIndex.indexOf(postId);
-          // console.log(localStorageIndex.indexOf(postId));
-          // if (localStorageIndex != -1) {
-          setPost(response.data.data.post);
-          // repply 내용
-          console.log(1, response.data.data.post);
-          setInputReply(response.data.data.post.replies.reply);
-          setReplies(response.data.data.post.replies);
-          setRepliesCreateDate(response.data.data.post.replies.createDate);
+          // 배열 설정해야하는지 확인
+          // setDto([response.data.data]);
         })
         .catch((error) => {
           console.log(error);
@@ -395,6 +408,75 @@ const CommunityDetail = ({ match, history }) => {
       });
   };
 
+  // reply 추가, 삭제 로직 구현
+  // reply 추가 로직
+  const addReply = (reply) => {
+    axios
+      .post(
+        "http://59.20.79.42:58002/reply/writeProc/",
+        {
+          reply: reply,
+          post: {
+            id: postId,
+          },
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + localStorage.getItem("jwtToken"),
+          },
+        }
+      )
+      .then((response) => {
+        console.log("replyresponse1", response);
+        console.log("replyresponse2", response.data);
+
+        axios
+          .get("http://59.20.79.42:58002/post/detail/" + postId)
+          .then((response) => {
+            console.log(99, response.data.data.post);
+            // let newReplies = [...response.data.data.post.replies, reply];
+            // setResp(newReplies);
+
+            setResp(response.data);
+          });
+      })
+      .catch((error) => {
+        console.log(error.response);
+      });
+  };
+
+  const deleteReply = (id) => {
+    // if (user.post.replise.reply.id !== id) {
+    //   alert('삭제 못함');
+    //   return;
+    // }
+    console.log(id);
+    axios
+      .delete("http://59.20.79.42:58002/reply/delete/" + id, {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("jwtToken"),
+        },
+      })
+      .then((response) => {
+        axios
+          .get("http://59.20.79.42:58002/post/detail/" + postId)
+          .then((response) => {
+            console.log(100, response);
+            setReplies(response.data.data.post.replies);
+            // let repliesObject = replies.filter((reply) => {
+            //   return reply.id !== id;
+            // });
+            // setData(responseData);
+
+            // console.log(2, response.data.data.post);
+          });
+      })
+      .catch((error) => {
+        console.log(error.response);
+      });
+  };
+
   return (
     <div>
       <CommunityWrap>
@@ -403,87 +485,104 @@ const CommunityDetail = ({ match, history }) => {
         <div className="community-container">
           <MainForm />
           <CommunityContentBox>
-            <div className="article">
-              <div className="article-header">
-                <div className="article__title">{post.title}</div>
-                <div className="article-meta">
-                  <div className="article-meta-list">
-                    <div className="article-meta__item">
-                      <span>
-                        {moment(post.createDate).startOf("minute").fromNow()}
-                      </span>
-                    </div>
-                    <div className="article-meta__item article-meta__item--name">
-                      <a
-                        href="https://talk.op.gg/s/lol/all?q=1190583&amp;target=user_id"
-                        style={{ color: "black" }}
-                      >
-                        {post.nickname}
-                      </a>
-                    </div>
-                  </div>
-                  <div className="article-meta-list article-meta-list--right">
-                    <div className="article-meta__item">
-                      <span>조회 {post.viewCount}</span>
-                    </div>
-                    <div className="article-meta__item">
-                      <span>댓글 148</span>
-                    </div>
-                    <div className="article-meta__item">
-                      <span>추천 {post.likeCount}</span>
-                    </div>
-                  </div>
-                </div>
+            {resp.statusCode == 201
+              ? resp.data.type == 1 && (
+                  <div key={resp.data.post.id}>
+                    <div className="article">
+                      <div className="article-header">
+                        <div className="article__title">
+                          {resp.data.post.title}
+                        </div>
+                        <div className="article-meta">
+                          <div className="article-meta-list">
+                            <div className="article-meta__item">
+                              <span>
+                                {moment(resp.data.post.createDate)
+                                  .startOf("minute")
+                                  .fromNow()}
+                              </span>
+                            </div>
+                            <div className="article-meta__item article-meta__item--name">
+                              <a
+                                href="https://talk.op.gg/s/lol/all?q=1190583&amp;target=user_id"
+                                style={{ color: "black" }}
+                              >
+                                {resp.data.post.user.nickname}
+                              </a>
+                            </div>
+                          </div>
+                          <div className="article-meta-list article-meta-list--right">
+                            <div className="article-meta__item">
+                              <span>조회 {resp.data.post.viewCount}</span>
+                            </div>
+                            <div className="article-meta__item">
+                              <span>댓글 {resp.data.post.replies.length}</span>
+                            </div>
+                            <div className="article-meta__item">
+                              <span>추천 {resp.data.post.likeCount}</span>
+                            </div>
+                          </div>
+                        </div>
 
-                {postUserId === storageUserId && (
-                  <div className="article-action">
-                    <div className="article-action__item">
-                      <button
-                        onClick={deletePost}
-                        className="article-action__button button button--red button--red--border"
-                      >
-                        삭제
-                      </button>
-                    </div>
-                    <div className="article-action__item">
-                      <Link
-                        to={{
-                          pathname: "/edit",
-                          state: {
-                            postId: postId,
-                            title: postTitle,
-                            content: postContent,
-                          },
-                        }}
-                        className="article-action__button__button"
-                      >
-                        수정
-                      </Link>
+                        {postUserId === storageUserId && (
+                          <div className="article-action">
+                            <div className="article-action__item">
+                              <button
+                                onClick={deletePost}
+                                className="article-action__button button button--red button--red--border"
+                              >
+                                삭제
+                              </button>
+                            </div>
+                            <div className="article-action__item">
+                              <Link
+                                to={{
+                                  pathname: "/edit",
+                                  state: {
+                                    postId: resp.data.post.id,
+                                    title: resp.data.post.title,
+                                    content: resp.data.post.content,
+                                  },
+                                }}
+                                className="article-action__button__button"
+                              >
+                                수정
+                              </Link>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                      <div className="article-content-wrap">
+                        <div className="article-content">
+                          <p>{resp.data.post.content}</p>
+                        </div>
+                      </div>
+                      <div className="article-box">
+                        <div className="postVote">
+                          <button
+                            type="submit"
+                            className="article-vote__button"
+                          >
+                            <span className="article-vote__up-arrow">추천</span>
+                            <span className="article-vote__up-count">
+                              {resp.data.post.likeCount}
+                            </span>
+                          </button>
+                        </div>
+                      </div>
+                      <CommentWrap
+                        deleteReply={deleteReply}
+                        addReply={addReply}
+                        replies={resp.data.post.replies}
+                        post={resp.data.post}
+                      />
+                      {/* {detailDto.post.replies.map((reply, k) => (
+                      <CommentWrap replies={detailDto.post.replies} />
+                    ))} */}
                     </div>
                   </div>
-                )}
-              </div>
-              <div className="article-content-wrap">
-                <div className="article-content">
-                  <p>{post.title}</p>
-                </div>
-              </div>
-              <div className="article-box">
-                <div className="postVote">
-                  <button type="submit" className="article-vote__button">
-                    <span className="article-vote__up-arrow">추천</span>
-                    <span className="article-vote__up-count">
-                      {post.likeCount}
-                    </span>
-                  </button>
-                </div>
-              </div>
-              <CommentWrap />
-              <CommentWrap />
-              <CommentWrap />
-              <CommentWrap />
-              <CommentWrap />
-            </div>
+                )
+              : ""}
 
             <Footer2 />
           </CommunityContentBox>

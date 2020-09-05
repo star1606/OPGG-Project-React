@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Header1 from "./../../include/Header1";
 import Footer2 from "./../../include/Footer2";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import MainForm from "./MainForm";
 import moment from "moment";
 import axios from "axios";
@@ -191,21 +191,21 @@ const ContentBox = styled.div`
   }
 `;
 
-const Community = () => {
+const Community = ({ history }) => {
   moment.locale("ko");
+
   const [communityDtos, setCommunityDtos] = useState([]);
   const [postPage, setPostPage] = useState(0);
   const [statusCode, setStatusCode] = useState(0);
-  // const [replies, setReplies] = useState([]);
-  // setReplies(response.data.data.post.replies);
-  //  replies.length
+
   useEffect(() => {
     axios
       .get("http://59.20.79.42:58002/post/" + postPage)
       .then((response) => {
         setCommunityDtos(response.data.data);
         setStatusCode(response.data.statusCode);
-        console.log(1, response.data);
+        console.log(1, communityDtos);
+        console.log(2, statusCode);
       })
       .catch((error) => {
         console.log(error);
@@ -250,27 +250,7 @@ const Community = () => {
         console.log(error);
       });
   };
-  //    <div>
-  //    {communityDtos.map(
-  //      (communityDto) =>
-  //        communityDto.type === 1 && (
-  //          <ul key={communityDto.post.id}>
-  //            <li>
-  //              <Link to={'/community/' + communityDto.post.id}>
-  //                {communityDto.post.title}
-  //              </Link>
-  //            </li>
-  //            <li>
-  //              {moment(communityDto.post.createDate)
-  //                .startOf('minute')
-  //                .fromNow()}
-  //            </li>
 
-  //            <li>{communityDto.post.user.nickname}</li>
-  //            <hr />
-  //          </ul>
-  //        ),
-  //    )}
   //  </div>
 
   return (
@@ -337,7 +317,7 @@ const Community = () => {
                           className="article-number"
                           style={{ alignSelf: "center", width: "72px" }}
                         >
-                          글번호
+                          {communityDto.post.id}
                         </div>
                         <div
                           className="article-list-item__content"
@@ -407,7 +387,7 @@ const Community = () => {
                       </div>
                     )}
 
-                    {statusCode !== 204 && (
+                    {statusCode !== 204 ? (
                       <div style={{ display: "inline-block" }}>
                         <button
                           style={{ marginLeft: "6px" }}
@@ -427,6 +407,8 @@ const Community = () => {
                           />
                         </button>
                       </div>
+                    ) : (
+                      <div>{history.goBack()}</div>
                     )}
                   </div>
                 </div>
@@ -440,4 +422,4 @@ const Community = () => {
   );
 };
 
-export default Community;
+export default withRouter(Community);

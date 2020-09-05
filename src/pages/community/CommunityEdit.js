@@ -117,38 +117,40 @@ const CommunityEdit = ({ history }) => {
   // 이거 작성완료 누르면 데이터보내고 본진으로 가는것을 구현할 것이다
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    axios
-      .put(
-        "http://59.20.79.42:58002/post/update",
-        {
-          id: paramPostId,
-          title: updateTitle,
-          content: updateContent,
-          user: {
-            id: storageUserId,
+    const editPost = async () => {
+      await axios
+        .put(
+          "http://59.20.79.42:58002/post/update",
+          {
+            id: paramPostId,
+            title: updateTitle,
+            content: updateContent,
+            user: {
+              id: storageUserId,
+            },
           },
-        },
-        {
-          headers: {
-            // Accept: 'application/json',
-            "Content-Type": "application/json",
-            Authorization: "Bearer " + localStorage.getItem("jwtToken"),
-          },
-        }
-      )
-      .then((response) => {
-        // 이거 먹히나?
-        console.log(response.data);
-        // setPostId(response.data.data.post.id);
+          {
+            headers: {
+              // Accept: 'application/json',
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + localStorage.getItem("jwtToken"),
+            },
+          }
+        )
+        .then((response) => {
+          // 이거 먹히나?
+          console.log(response.data);
+          // setPostId(response.data.data.post.id);
 
-        alert("글 수정이 완료되었습니다");
-      })
-      .catch((error) => {
-        console.log("에러", error.response);
-      });
+          alert("글 수정이 완료되었습니다");
 
-    history.goBack();
+          history.push("/community/" + paramPostId);
+        })
+        .catch((error) => {
+          console.log("에러", error.response);
+        });
+    };
+    editPost();
   };
 
   return (

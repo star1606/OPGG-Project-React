@@ -135,6 +135,7 @@ const CommunityWrite = ({ history }) => {
       )
       .then((response) => {
         console.log(response);
+
         alert("글작성이 완료되었습니다.");
 
         // 이거 먹히나?

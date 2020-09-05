@@ -3,6 +3,7 @@ import Footer2 from "./../../include/Footer2";
 import Header2 from "./../../include/Header2";
 import styled from "styled-components";
 import "../../include/Summoner.css";
+import { withRouter } from "react-router-dom";
 
 const SummonerHeader = styled.div`
   position: relative;
@@ -11,7 +12,11 @@ const SummonerHeader = styled.div`
   padding: 20px 0 0 0;
 `;
 
-const Summoner = ({ match }) => {
+const Summoner = ({ match, history }) => {
+  if (match.params === null) {
+    history.goBack();
+  }
+  console.log(history);
   console.log(match.params);
   const [isToggleOn, setIsToggleOn] = useState(false);
 
@@ -756,4 +761,4 @@ const Summoner = ({ match }) => {
   );
 };
 
-export default Summoner;
+export default withRouter(Summoner);

@@ -431,6 +431,25 @@ const CommunityDetail = ({ match, history }) => {
                   </div>
                 </div>
                 ==========================================================================================
+                {/* <div>
+        {resp.map((detailDto, i) => (
+          <div key={"detailDto" + i}>
+            {detailDto.post !== null ? (
+              <div>
+                <div>{detailDto.post.title}</div>
+                <div>{detailDto.post.content}</div>
+                <div>{moment(post.createDate).startOf("minute").fromNow()}</div>
+                <div>{detailDto.post.viewCount}</div>
+                <div>{detailDto.post.likeCount}</div>
+                <div>{detailDto.post.replies.length}</div>
+                <div>{detailDto.post.user.nickname}</div>
+              </div>
+            ) : (
+              <div>{"글 내용이 없습니다"}</div>
+            )}
+          </div>
+        ))}
+      </div> */}
                 <div className="article-action">
                   <div className="article-action__item">
                     <form
