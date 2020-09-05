@@ -236,13 +236,13 @@
   position: relative;
 }
 
-.gameItem > .content > div {
+.gameItem>.content>div {
   display: table-cell;
   height: 96px;
   vertical-align: middle;
 }
 
-.gameItem > .content {
+.gameItem>.content {
   display: table;
   width: 689px;
   border-collapse: collapse;
@@ -259,15 +259,22 @@
   margin-bottom: 8px;
 }
 
-.gameItemWinExtended {
-  position: relative;
-  background: none;
-}
+
 
 .content {
   table-layout: fixed;
-  background-color: #a3cfec;
+  /* background-color: #a3cfec; */
   border-color: #99b9cf;
+}
+
+.gameItemWinExtended {
+  position: relative;
+  background: #A3CFEC;
+}
+
+.gameItemLoseExtended {
+  position: relative;
+  background: #E2B6B3;
 }
 
 .gameState {
@@ -280,10 +287,6 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-.gameItemWinExtended {
-  border-bottom: 1px solid #4aa1d2;
 }
 
 .gameStats {
@@ -303,14 +306,14 @@
   margin: 5px auto;
   height: 2px;
 
-  background: #99b9cf;
+  background: #99B9CF99;
 }
 
 /* .gameResult {
   color: #1a78ae;
 } */
 
-.GameDetailTable > .Header > .Row > .HeaderCell > .GameResult {
+.GameDetailTable>.Header>.Row>.HeaderCell>.GameResult {
   color: red;
 }
 
@@ -521,12 +524,12 @@
 }
 
 .itemList {
-  width: 90px;
+  width: 100px;
   margin: 0 auto;
 }
 
 .item {
-  background-color: #99b9cf;
+  background-color: #85858555;
   display: inline-block;
   width: 22px;
   height: 22px;
@@ -569,7 +572,7 @@
   color: #016aa7;
 }
 
-.GameItem.extended.Win > .GameDetail {
+.GameItem.extended.Win>.GameDetail {
   background: #64b1e4;
 }
 
@@ -596,15 +599,15 @@ colgroup {
   display: table-column-group;
 }
 
-.GameDetailTable > colgroup > .ChampionImage {
+.GameDetailTable>colgroup>.ChampionImage {
   width: 44px;
 }
 
-.GameDetailTable > colgroup > .SummonerSpell {
+.GameDetailTable>colgroup>.SummonerSpell {
   width: 18px;
 }
 
-.GameDetailTable > colgroup > .KeystoneMastery {
+.GameDetailTable>colgroup>.KeystoneMastery {
   width: 18px;
 }
 
@@ -617,35 +620,35 @@ table {
   border-spacing: 0;
 }
 
-.GameDetailTable > colgroup > .Tier {
+.GameDetailTable>colgroup>.Tier {
   width: 65px;
 }
 
-.GameDetailTable > colgroup > .OPScore {
+.GameDetailTable>colgroup>.OPScore {
   width: 55px;
 }
 
-.GameDetailTable > colgroup > .KDA {
+.GameDetailTable>colgroup>.KDA {
   width: 76px;
 }
 
-.GameDetailTable > colgroup > .Damage {
+.GameDetailTable>colgroup>.Damage {
   width: 66px;
 }
 
-.GameDetailTable > colgroup > .Ward {
+.GameDetailTable>colgroup>.Ward {
   width: 48px;
 }
 
-.GameDetailTable > colgroup > .CS {
+.GameDetailTable>colgroup>.CS {
   width: 55px;
 }
 
-.GameDetailTable > colgroup > .Items {
+.GameDetailTable>colgroup>.Items {
   width: 170px;
 }
 
-.GameDetailTable > .Header {
+.GameDetailTable>.Header {
   border: solid 1px #cdd2d2;
   background-color: #fff;
 }
@@ -656,46 +659,46 @@ tr {
   border-color: inherit;
 }
 
-.GameDetailTable > .Header > .Row > .HeaderCell:first-child {
+.GameDetailTable>.Header>.Row>.HeaderCell:first-child {
   padding-left: 15px;
   text-align: left;
 }
 
-.GameDetailTable > .Header > .Row > .HeaderCell {
+.GameDetailTable>.Header>.Row>.HeaderCell {
   height: 32px;
   color: #555e5e;
   font-size: 12px;
   font-weight: normal;
 }
 
-.GameDetailTable.Result-WIN > .Header .Row > .HeaderCell > .GameResult {
+.GameDetailTable.Result-WIN>.Header .Row>.HeaderCell>.GameResult {
   color: #1a78ae;
 }
 
-.GameDetailTable > .Header > .Row > .HeaderCell > .GameResult {
+.GameDetailTable>.Header>.Row>.HeaderCell>.GameResult {
   font-size: 13px;
   font-weight: bold;
 }
 
-.GameDetailTable.Result-WIN > .Header .Row > .HeaderCell > .GameResult {
+.GameDetailTable.Result-WIN>.Header .Row>.HeaderCell>.GameResult {
   color: #1a78ae;
 }
 
-.GameDetailTable > .Content > .Row.first > .Cell {
+.GameDetailTable>.Content>.Row.first>.Cell {
   padding-top: 4px;
 }
 
-.GameDetailTable > .Content > .Row > .Cell.ChampionImage {
+.GameDetailTable>.Content>.Row>.Cell.ChampionImage {
   padding-left: 10px;
   padding-right: 4px;
 }
 
-.GameDetailTable > .Content > .Row > .Cell {
+.GameDetailTable>.Content>.Row>.Cell {
   padding: 3px 0;
   vertical-align: middle;
 }
 
-.GameDetailTable > .Content > .Row > .Cell.ChampionImage > a {
+.GameDetailTable>.Content>.Row>.Cell.ChampionImage>a {
   position: relative;
   display: block;
 }
@@ -706,14 +709,14 @@ user agent stylesheet a:-webkit-any-link {
   text-decoration: underline;
 }
 
-.GameDetailTable > .Content > .Row > .Cell.ChampionImage > a > .Image {
+.GameDetailTable>.Content>.Row>.Cell.ChampionImage>a>.Image {
   display: block;
   width: 32px;
   height: 32px;
   border-radius: 50%;
 }
 
-.GameDetailTable > .Content > .Row > .Cell.ChampionImage > a > .Level {
+.GameDetailTable>.Content>.Row>.Cell.ChampionImage>a>.Level {
   position: absolute;
   left: -10px;
   bottom: -3px;
@@ -727,121 +730,121 @@ user agent stylesheet a:-webkit-any-link {
   line-height: 15px;
 }
 
-.GameDetailTable > .Content > .Row > .Cell {
+.GameDetailTable>.Content>.Row>.Cell {
   padding: 3px 0;
   vertical-align: middle;
 }
 
-.GameDetailTable > .Content > .Row > .Cell.SummonerSpell > .Image:first-child {
+.GameDetailTable>.Content>.Row>.Cell.SummonerSpell>.Image:first-child {
   margin-bottom: 2px;
 }
 
-.GameDetailTable > .Content > .Row > .Cell.SummonerSpell > .Image {
+.GameDetailTable>.Content>.Row>.Cell.SummonerSpell>.Image {
   display: block;
   width: 16px;
   height: 16px;
   border-radius: 2px;
 }
 
-.GameDetailTable > .Content > .Row > .Cell.SummonerSpell > .Image {
+.GameDetailTable>.Content>.Row>.Cell.SummonerSpell>.Image {
   display: block;
   width: 16px;
   height: 16px;
   border-radius: 2px;
 }
 
-.GameDetailTable > .Content > .Row.first > .Cell {
+.GameDetailTable>.Content>.Row.first>.Cell {
   padding-top: 4px;
 }
 
-.GameDetailTable > .Content > .Row > .Cell {
+.GameDetailTable>.Content>.Row>.Cell {
   padding: 3px 0;
   vertical-align: middle;
 }
 
-.GameDetailTable > .Content > .Row > .Cell.Rune > .Image:first-child {
+.GameDetailTable>.Content>.Row>.Cell.Rune>.Image:first-child {
   margin-bottom: 2px;
   background: #000;
 }
 
-.GameDetailTable > .Content > .Row > .Cell.Rune > .Image {
+.GameDetailTable>.Content>.Row>.Cell.Rune>.Image {
   display: block;
   width: 16px;
   height: 16px;
   border-radius: 8px;
 }
 
-.GameDetailTable > .Content > .Row > .Cell.Rune > .Image {
+.GameDetailTable>.Content>.Row>.Cell.Rune>.Image {
   display: block;
   width: 16px;
   height: 16px;
   border-radius: 8px;
 }
 
-.GameDetailTable > .Content > .Row.first > .Cell {
+.GameDetailTable>.Content>.Row.first>.Cell {
   padding-top: 4px;
 }
 
-.GameDetailTable > .Content > .Row > .Cell.SummonerName {
+.GameDetailTable>.Content>.Row>.Cell.SummonerName {
   padding-left: 5px;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
 }
 
-.GameDetailTable > .Content > .Row > .Cell {
+.GameDetailTable>.Content>.Row>.Cell {
   padding: 3px 0;
   vertical-align: middle;
 }
 
-.GameDetailTable > .Content > .Row > .Cell.SummonerName > .Link {
+.GameDetailTable>.Content>.Row>.Cell.SummonerName>.Link {
   color: #555e5e;
   font-size: 11px;
   text-decoration: none;
 }
 
-.GameDetailTable > .Content > .Row.first > .Cell {
+.GameDetailTable>.Content>.Row.first>.Cell {
   padding-top: 4px;
 }
 
-.GameDetailTable > .Content > .Row > .Cell.Tier {
+.GameDetailTable>.Content>.Row>.Cell.Tier {
   color: #555e5e;
   font-size: 11px;
   text-align: center;
 }
 
-.GameDetailTable > .Content > .Row > .Cell {
+.GameDetailTable>.Content>.Row>.Cell {
   padding: 3px 0;
   vertical-align: middle;
 }
 
-.GameDetailTable > .Content > .Row.first > .Cell {
+.GameDetailTable>.Content>.Row.first>.Cell {
   padding-top: 4px;
 }
 
-.GameDetailTable > .Content > .Row > .Cell.OPScore {
+.GameDetailTable>.Content>.Row>.Cell.OPScore {
   text-align: center;
   white-space: nowrap;
   font-family: HelveticaNeue;
   font-size: 10px;
 }
 
-.GameDetailTable > .Content > .Row > .Cell {
+.GameDetailTable>.Content>.Row>.Cell {
   padding: 3px 0;
   vertical-align: middle;
 }
 
-.GameDetailTable > .Content > .Row > .Cell.OPScore > .Text {
+.GameDetailTable>.Content>.Row>.Cell.OPScore>.Text {
   color: #333333;
   font-size: 11px;
   height: 14px;
 }
 
-.GameDetailTable > .Content > .Row > .Cell.OPScore > .Score {
+.GameDetailTable>.Content>.Row>.Cell.OPScore>.Score {
   background-color: #737373;
 }
 
-.GameDetailTable > .Content > .Row > .Cell.OPScore > .Badge {
+.GameDetailTable>.Content>.Row>.Cell.OPScore>.Badge {
   color: #fff;
   border-radius: 7px;
   padding: 2px;
@@ -851,74 +854,74 @@ user agent stylesheet a:-webkit-any-link {
   line-height: 1;
 }
 
-.GameDetailTable > .Content > .Row.first > .Cell {
+.GameDetailTable>.Content>.Row.first>.Cell {
   padding-top: 4px;
 }
 
-.GameDetailTable > .Content > .Row > .Cell.KDA {
+.GameDetailTable>.Content>.Row>.Cell.KDA {
   text-align: center;
   white-space: nowrap;
 }
 
-.GameDetailTable > .Content > .Row > .Cell {
+.GameDetailTable>.Content>.Row>.Cell {
   padding: 3px 0;
   vertical-align: middle;
 }
 
-.GameDetailTable > .Content > .Row > .Cell.KDA > .KDARatio.green {
+.GameDetailTable>.Content>.Row>.Cell.KDA>.KDARatio.green {
   color: #2daf7f;
 }
 
-.GameDetailTable > .Content > .Row > .Cell.KDA > .KDARatio {
+.GameDetailTable>.Content>.Row>.Cell.KDA>.KDARatio {
   /* color: #879292; */
   font-size: 11px;
   font-weight: bold;
 }
 
-.GameDetailTable > .Content > .Row > .Cell.KDA > .KDA {
+.GameDetailTable>.Content>.Row>.Cell.KDA>.KDA {
   color: #555e5e;
   font-size: 11px;
 }
 
-.GameDetailTable > .Content > .Row > .Cell.KDA > .KDA {
+.GameDetailTable>.Content>.Row>.Cell.KDA>.KDA {
   color: #555e5e;
   font-size: 11px;
 }
 
-.GameDetailTable > .Content > .Row.first > .Cell {
+.GameDetailTable>.Content>.Row.first>.Cell {
   padding-top: 4px;
 }
 
-.GameDetailTable > .Content > .Row > .Cell.Damage {
+.GameDetailTable>.Content>.Row>.Cell.Damage {
   text-align: center;
 }
 
-.GameDetailTable > .Content > .Row > .Cell {
+.GameDetailTable>.Content>.Row>.Cell {
   padding: 3px 0;
   vertical-align: middle;
 }
 
-.GameDetailTable > .Content > .Row.first > .Cell {
+.GameDetailTable>.Content>.Row.first>.Cell {
   padding-top: 4px;
 }
 
-.GameDetailTable > .Content > .Row > .Cell.Ward {
+.GameDetailTable>.Content>.Row>.Cell.Ward {
   text-align: center;
   color: #555e5e;
   font-size: 11px;
 }
 
-.GameDetailTable > .Content > .Row > .Cell {
+.GameDetailTable>.Content>.Row>.Cell {
   padding: 3px 0;
   vertical-align: middle;
 }
 
-.GameDetailTable > .Content > .Row > .Cell.Damage > .ChampionDamage {
+.GameDetailTable>.Content>.Row>.Cell.Damage>.ChampionDamage {
   color: #555e5e;
   font-size: 11px;
 }
 
-.GameDetailTable > .Content > .Row > .Cell.Damage > .Progress {
+.GameDetailTable>.Content>.Row>.Cell.Damage>.Progress {
   width: 50px;
   height: 6px;
   margin: 0 auto;
@@ -926,7 +929,7 @@ user agent stylesheet a:-webkit-any-link {
   background-color: #f2f2f2;
 }
 
-.GameDetailTable > .Content > .Row > .Cell.Damage > .Progress .Fill {
+.GameDetailTable>.Content>.Row>.Cell.Damage>.Progress .Fill {
   height: 100%;
   margin: -1px;
   border: 1px solid #c6443e;
@@ -934,65 +937,65 @@ user agent stylesheet a:-webkit-any-link {
   width: 100%;
 }
 
-.GameDetailTable > .Content > .Row.first > .Cell {
+.GameDetailTable>.Content>.Row.first>.Cell {
   padding-top: 4px;
 }
 
-.GameDetailTable > .Content > .Row > .Cell.Ward {
+.GameDetailTable>.Content>.Row>.Cell.Ward {
   text-align: center;
   color: #555e5e;
   font-size: 11px;
 }
 
-.GameDetailTable > .Content > .Row > .Cell {
+.GameDetailTable>.Content>.Row>.Cell {
   padding: 3px 0;
   vertical-align: middle;
 }
 
-.GameDetailTable > .Content > .Row > .Cell.Ward {
+.GameDetailTable>.Content>.Row>.Cell.Ward {
   text-align: center;
   color: #555e5e;
   font-size: 11px;
 }
 
-.GameDetailTable > .Content > .Row.first > .Cell {
+.GameDetailTable>.Content>.Row.first>.Cell {
   padding-top: 4px;
 }
 
-.GameDetailTable > .Content > .Row > .Cell.CS {
+.GameDetailTable>.Content>.Row>.Cell.CS {
   text-align: center;
   color: #777;
   font-size: 11px;
 }
 
-.GameDetailTable > .Content > .Row > .Cell {
+.GameDetailTable>.Content>.Row>.Cell {
   padding: 3px 0;
   vertical-align: middle;
 }
 
-.GameDetailTable > .Content > .Row > .Cell.CS > .CS {
+.GameDetailTable>.Content>.Row>.Cell.CS>.CS {
   color: #555e5e;
 }
 
-.GameDetailTable > .Content > .Row.first > .Cell {
+.GameDetailTable>.Content>.Row.first>.Cell {
   padding-top: 4px;
 }
 
-.GameDetailTable > .Content > .Row > .Cell.Items {
+.GameDetailTable>.Content>.Row>.Cell.Items {
   text-align: center;
   font-size: 0;
 }
 
-.GameDetailTable > .Content > .Row > .Cell {
+.GameDetailTable>.Content>.Row>.Cell {
   padding: 3px 0;
   vertical-align: middle;
 }
 
-.GameDetailTable > .Content > .Row > .Cell.Items > .Item:first-child {
+.GameDetailTable>.Content>.Row>.Cell.Items>.Item:first-child {
   margin-left: 0;
 }
 
-.GameDetailTable > .Content > .Row > .Cell.Items > .Item {
+.GameDetailTable>.Content>.Row>.Cell.Items>.Item {
   padding: 1px;
   display: inline-block;
   width: 22px;
@@ -1001,7 +1004,7 @@ user agent stylesheet a:-webkit-any-link {
   vertical-align: middle;
 }
 
-.GameDetailTable > .Content > .Row > .Cell.Items > .Item > .Image {
+.GameDetailTable>.Content>.Row>.Cell.Items>.Item>.Image {
   display: block;
   width: 100%;
   height: 100%;
@@ -1012,7 +1015,7 @@ img {
   border: 0;
 }
 
-.GameDetailTableWrap > .Summary {
+.GameDetailTableWrap>.Summary {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1030,14 +1033,14 @@ button {
     Dotum, Arial, Tahoma;
 }
 
-.GameDetailTableWrap > .Summary > .Team:first-child {
+.GameDetailTableWrap>.Summary>.Team:first-child {
   padding-right: 0;
   padding-left: 10px;
   text-align: left;
   border-left: 1px solid transparent;
 }
 
-.GameDetailTableWrap > .Summary > .Team {
+.GameDetailTableWrap>.Summary>.Team {
   display: table-cell;
   height: 30px;
   vertical-align: middle;
@@ -1046,37 +1049,37 @@ button {
   line-height: 30px;
 }
 
-.GameDetailTableWrap > .Summary > .Team > .ObjectScore,
-.GameDetailTableWrap > .Summary > .Team > .ObjectScore {
+.GameDetailTableWrap>.Summary>.Team>.ObjectScore,
+.GameDetailTableWrap>.Summary>.Team>.ObjectScore {
   display: inline-block;
   font-size: 11px;
   color: #555;
 }
 
-.GameDetailTableWrap > .Summary > .Team > .ObjectScore > .Image,
-.GameDetailTableWrap > .Summary > .Team > .ObjectScore > .Image {
+.GameDetailTableWrap>.Summary>.Team>.ObjectScore>.Image,
+.GameDetailTableWrap>.Summary>.Team>.ObjectScore>.Image {
   display: inline-block;
   margin-right: 3px;
   vertical-align: middle;
   height: 16px;
 }
 
-.GameDetailTableWrap > .Summary > .Team > .ObjectScore + .ObjectScore,
-.GameDetailTableWrap > .Summary > .Team > .ObjectScore + .ObjectScore,
-.GameDetailTableWrap > .Summary > .Team > .ObjectScore + .ObjectScore,
-.GameDetailTableWrap > .Summary > .Team > .ObjectScore + .ObjectScore {
+.GameDetailTableWrap>.Summary>.Team>.ObjectScore+.ObjectScore,
+.GameDetailTableWrap>.Summary>.Team>.ObjectScore+.ObjectScore,
+.GameDetailTableWrap>.Summary>.Team>.ObjectScore+.ObjectScore,
+.GameDetailTableWrap>.Summary>.Team>.ObjectScore+.ObjectScore {
   margin-left: 10px;
 }
 
-.GameDetailTableWrap > .Summary > .Team > .ObjectScore,
-.GameDetailTableWrap > .Summary > .Team > .ObjectScore {
+.GameDetailTableWrap>.Summary>.Team>.ObjectScore,
+.GameDetailTableWrap>.Summary>.Team>.ObjectScore {
   display: inline-block;
   font-size: 11px;
   color: #555;
 }
 
-.GameDetailTableWrap > .Summary > .Team > .ObjectScore > .Image,
-.GameDetailTableWrap > .Summary > .Team > .ObjectScore > .Image {
+.GameDetailTableWrap>.Summary>.Team>.ObjectScore>.Image,
+.GameDetailTableWrap>.Summary>.Team>.ObjectScore>.Image {
   display: inline-block;
   margin-right: 3px;
   vertical-align: middle;
@@ -1087,41 +1090,41 @@ button {
   flex: 0 1 390px;
 }
 
-.summary-graph > .total--container:first-child {
+.summary-graph>.total--container:first-child {
   padding-top: 8px;
   padding-bottom: 8px;
 }
 
-.summary-graph > .total--container {
+.summary-graph>.total--container {
   display: flex;
   justify-content: center;
   padding: 0 8px;
 }
 
-.summary-graph > .total--container > .graph--title {
+.summary-graph>.total--container>.graph--title {
   text-align: left;
   width: 60px;
 }
 
-.summary-graph > .total--container > .text {
+.summary-graph>.total--container>.text {
   font-size: 10px;
   color: #222222;
 }
 
-.summary-graph > .total--container > .graph--data__left {
+.summary-graph>.total--container>.graph--data__left {
   text-align: right;
 }
 
-.summary-graph > .total--container > .graph--data {
+.summary-graph>.total--container>.graph--data {
   width: 40px;
 }
 
-.summary-graph > .total--container > .text {
+.summary-graph>.total--container>.text {
   font-size: 10px;
   color: #222222;
 }
 
-.summary-graph > .total--container > .graph--container {
+.summary-graph>.total--container>.graph--container {
   flex: 0 1 290px;
   display: flex;
   align-items: center;
@@ -1129,75 +1132,75 @@ button {
   margin: 0 3px;
 }
 
-.summary-graph > .total--container > .graph--container > .win--team {
+.summary-graph>.total--container>.graph--container>.win--team {
   background-color: #548dca;
   margin-left: 4px;
   flex: 23;
 }
 
-.summary-graph > .total--container > .graph--container > .graph {
+.summary-graph>.total--container>.graph--container>.graph {
   /* flex: 1; */
   height: 10px;
 }
 
-.summary-graph > .total--container > .graph--container > .lose--team {
+.summary-graph>.total--container>.graph--container>.lose--team {
   background-color: #d05a53;
   margin-right: 4px;
   flex: 9;
 }
 
-.summary-graph > .total--container > .graph--container > .graph {
+.summary-graph>.total--container>.graph--container>.graph {
   /* flex: 1; */
   height: 10px;
 }
 
-.summary-graph > .total--container > .graph--data__right {
+.summary-graph>.total--container>.graph--data__right {
   text-align: left;
 }
 
-.summary-graph > .total--container > .graph--data {
+.summary-graph>.total--container>.graph--data {
   width: 40px;
 }
 
-.summary-graph > .total--container > .text {
+.summary-graph>.total--container>.text {
   font-size: 10px;
   color: #222222;
 }
 
-.summary-graph > .total--container:last-child {
+.summary-graph>.total--container:last-child {
   padding-bottom: 8px;
 }
 
-.summary-graph > .total--container {
+.summary-graph>.total--container {
   display: flex;
   justify-content: center;
   padding: 0 8px;
 }
 
-.summary-graph > .total--container > .graph--title {
+.summary-graph>.total--container>.graph--title {
   text-align: left;
   width: 60px;
 }
 
-.summary-graph > .total--container > .text {
+.summary-graph>.total--container>.text {
   font-size: 10px;
   color: #222222;
 }
 
-.summary-graph > .total--container > .graph--data__left {
+.summary-graph>.total--container>.graph--data__left {
   text-align: right;
 }
 
-.summary-graph > .total--container > .graph--data {
+.summary-graph>.total--container>.graph--data {
   width: 40px;
 }
 
-.summary-graph > .total--container > .text {
+.summary-graph>.total--container>.text {
   font-size: 10px;
   color: #222222;
 }
 
-.summary-graph > .total--container > .graph--container {
+.summary-graph>.total--container>.graph--container {
   flex: 0 1 290px;
   display: flex;
   align-items: center;
@@ -1205,25 +1208,25 @@ button {
   margin: 0 3px;
 }
 
-.summary-graph > .total--container > .graph--container > .win--team {
+.summary-graph>.total--container>.graph--container>.win--team {
   background-color: #548dca;
   margin-left: 4px;
   flex: 45395;
 }
 
-.summary-graph > .total--container > .graph--container > .lose--team {
+.summary-graph>.total--container>.graph--container>.lose--team {
   background-color: #d05a53;
   margin-right: 4px;
   flex: 38060;
 }
 
-.GameDetailTableWrap > .Summary > .Team:last-child {
+.GameDetailTableWrap>.Summary>.Team:last-child {
   padding-right: 10px;
   border-right: 1px solid transparent;
   border-top: 1px solid transparent;
 }
 
-.GameDetailTableWrap > .Summary > .Team {
+.GameDetailTableWrap>.Summary>.Team {
   display: table-cell;
   height: 30px;
   vertical-align: middle;
@@ -1251,7 +1254,7 @@ button {
   border-radius: 2px;
 }
 
-.GameMoreButton > .Button {
+.GameMoreButton>.Button {
   display: block;
   height: 50px;
   color: #555e5e;
