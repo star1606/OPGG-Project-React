@@ -214,54 +214,17 @@ const CommunityDetail = ({ match, history }) => {
 
   // const [post, setPost] = useState('');
   // post의 id
-  const [dto, setDto] = useState([
-    {
-      type: 1,
-      post: {
-        id: 0,
-        title: "",
-        content: "",
-        likeCount: 0,
-        viewCount: 0,
-        user: {
-          id: 0,
-          username: "",
-          nickname: "",
-          email: "",
-          roles: "",
-          providerId: "",
-          provider: "",
-          createDate: "",
-        },
-        replies: [],
-        createDate: "",
-      },
-    },
-    {
-      type: 2,
-      post: null,
-    },
-  ]);
+
   const [replies, setReplies] = useState([]);
   const [resp, setResp] = useState({});
 
   const [postUserId, setPostUserId] = useState(0);
   // post 좋아요
 
-  const [postTitle, setPostTitle] = useState("");
-  const [postContent, setPostContent] = useState("");
-  const [postCreateDate, setPostCreateDate] = useState("");
-  const [postUserNickname, setPostUserNickname] = useState("");
-  const [postLikeCount, setPostLikeCount] = useState(0);
-  const [postViewCount, setPostViewCount] = useState(0);
-  const [post, setPost] = useState({});
-
   //replies map리스트뿌리기
 
   // reply 작성 value
 
-  const [replyUserId, setReplyUserId] = useState("");
-  const [repliesCreateDate, setRepliesCreateDate] = useState("");
   const storageUserId = parseInt(localStorage.getItem("userId"));
 
   let postId = match.params.id;
@@ -297,7 +260,6 @@ const CommunityDetail = ({ match, history }) => {
                 localStorage.getItem("updateView") + "," + postId
               );
             }
-            console.log(11, postViewCount);
           })
           .catch((error) => {
             console.log(8, error.response);
@@ -343,7 +305,9 @@ const CommunityDetail = ({ match, history }) => {
       )
       .then((response) => {
         console.log(response);
-        history.pushState("/community");
+        setResp(response.data);
+
+        history.push("/community");
       })
       .catch((error) => {
         console.log(error.response);
@@ -398,10 +362,9 @@ const CommunityDetail = ({ match, history }) => {
               response.data.data.post.id
           );
         }
-        setPost(response.data.data.post.likeCount);
-        console.log("likeCount", post.likeCount);
-        // setPostLikeCount(response.data.data.post.likeCount);
-        // console.log("postLikeCount", postLikeCount);
+
+        // setResp(response.data.data.post.likeCount);
+        setResp(response.data);
       })
       .catch((error) => {
         console.log(9, error.response);
@@ -463,13 +426,7 @@ const CommunityDetail = ({ match, history }) => {
           .get("http://59.20.79.42:58002/post/detail/" + postId)
           .then((response) => {
             console.log(100, response);
-            setReplies(response.data.data.post.replies);
-            // let repliesObject = replies.filter((reply) => {
-            //   return reply.id !== id;
-            // });
-            // setData(responseData);
-
-            // console.log(2, response.data.data.post);
+            setResp(response.data);
           });
       })
       .catch((error) => {
@@ -498,17 +455,12 @@ const CommunityDetail = ({ match, history }) => {
                             <div className="article-meta__item">
                               <span>
                                 {moment(resp.data.post.createDate)
-                                  .startOf("minute")
+                                  .startOf("second")
                                   .fromNow()}
                               </span>
                             </div>
                             <div className="article-meta__item article-meta__item--name">
-                              <a
-                                href="https://talk.op.gg/s/lol/all?q=1190583&amp;target=user_id"
-                                style={{ color: "black" }}
-                              >
-                                {resp.data.post.user.nickname}
-                              </a>
+                              {resp.data.post.user.nickname}
                             </div>
                           </div>
                           <div className="article-meta-list article-meta-list--right">
@@ -560,6 +512,8 @@ const CommunityDetail = ({ match, history }) => {
                       <div className="article-box">
                         <div className="postVote">
                           <button
+                            style={{ cursor: "pointer" }}
+                            onClick={addLike}
                             type="submit"
                             className="article-vote__button"
                           >
@@ -576,9 +530,6 @@ const CommunityDetail = ({ match, history }) => {
                         replies={resp.data.post.replies}
                         post={resp.data.post}
                       />
-                      {/* {detailDto.post.replies.map((reply, k) => (
-                      <CommentWrap replies={detailDto.post.replies} />
-                    ))} */}
                     </div>
                   </div>
                 )

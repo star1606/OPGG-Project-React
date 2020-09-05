@@ -20,6 +20,7 @@ function App() {
   return (
     <Switch>
       <Route path="/home" component={Home} exact={true} />
+      <Route path="/" component={Home} exact={true} />
       <Route path="/ranking" component={Ranking} />
       <Route path="/community/:id" component={CommunityDetail} />
       <Route path="/community" component={Community} />
