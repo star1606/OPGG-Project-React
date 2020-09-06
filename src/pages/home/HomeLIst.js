@@ -11,6 +11,10 @@ const HomeLIst = () => {
         </Link>
       </div>
       <HomeListItem />
+      <HomeListItem />
+      <HomeListItem />
+      <HomeListItem />
+      <HomeListItem />
     </div>
   );
 };

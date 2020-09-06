@@ -210,24 +210,12 @@ const CommunityContentBox = styled.div`
 `;
 
 const CommunityDetail = ({ match, history }) => {
-  //responseDto
-
-  // const [post, setPost] = useState('');
-  // post의 id
+  let postId = match.params.id;
 
   const [replies, setReplies] = useState([]);
   const [resp, setResp] = useState({});
-
   const [postUserId, setPostUserId] = useState(0);
-  // post 좋아요
-
-  //replies map리스트뿌리기
-
-  // reply 작성 value
-
   const storageUserId = parseInt(localStorage.getItem("userId"));
-
-  let postId = match.params.id;
 
   useEffect(() => {
     const enterPage = async () => {
@@ -243,15 +231,12 @@ const CommunityDetail = ({ match, history }) => {
             {},
             {
               headers: {
-                // Accept: 'application/json',
                 "Content-Type": "application/json",
                 Authorization: "Bearer " + localStorage.getItem("jwtToken"),
               },
             }
           )
           .then((response1) => {
-            // response.data.data.post.id
-            console.log("여기로옴");
             if (localStorage.getItem("updateView") == null) {
               localStorage.setItem("updateView", postId);
             } else {
@@ -262,7 +247,7 @@ const CommunityDetail = ({ match, history }) => {
             }
           })
           .catch((error) => {
-            console.log(8, error.response);
+            console.log("에러", error.response);
           });
       }
 
@@ -277,62 +262,38 @@ const CommunityDetail = ({ match, history }) => {
           console.log(11, response.data);
           setResp(response.data);
           setPostUserId(response.data.data.post.user.id);
-          // 배열 설정해야하는지 확인
-          // setDto([response.data.data]);
         })
         .catch((error) => {
-          console.log(error);
+          console.log("에러", error);
         });
     };
 
     enterPage();
   }, []);
 
-  //update/view/1
-
-  //삭제 버튼
   const deletePost = () => {
     axios
-      .delete(
-        "http://59.20.79.42:58002/post/delete/" + postId,
-        // data넣는자리, headers를 넣으면 안됨
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: "Bearer " + localStorage.getItem("jwtToken"),
-          },
-        }
-      )
+      .delete("http://59.20.79.42:58002/post/delete/" + postId, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + localStorage.getItem("jwtToken"),
+        },
+      })
       .then((response) => {
-        console.log(response);
         setResp(response.data);
 
         history.push("/community");
       })
       .catch((error) => {
-        console.log(error.response);
+        console.log("에러", error.response);
       });
   };
 
-  //update/like/1
   const addLike = () => {
-    // if (localStorage.getItem('updateLike') !== null) {
-    //   const storageUpdateLike = localStorage.getItem('updateLike').split(',');
-    //   console.log(storageUpdateLike);
-    //   for (let i = 0, len = storageUpdateLike.length; i < len; i++) {
-    //     let key = localStorage.key(i);
-    //     let value = localStorage[key];
-    //     if (value !== null) {
-    //       return;
-    //     }
-    //   }
-    // }
-
     if (localStorage.getItem("updateLike") !== null) {
       const storageUpdateLike = localStorage.getItem("updateLike");
 
       if (storageUpdateLike.indexOf(postId) !== -1) {
-        // 0으로 나옴console.log(111, storageUpdateLike.indexOf(postId));
         return;
       }
     }
@@ -343,15 +304,12 @@ const CommunityDetail = ({ match, history }) => {
         {},
         {
           headers: {
-            // Accept: 'application/json',
             "Content-Type": "application/json",
             Authorization: "Bearer " + localStorage.getItem("jwtToken"),
           },
         }
       )
       .then((response) => {
-        // response.data.data.post.id
-
         if (localStorage.getItem("updateLike") === null) {
           localStorage.setItem("updateLike", response.data.data.post.id);
         } else {
@@ -363,11 +321,10 @@ const CommunityDetail = ({ match, history }) => {
           );
         }
 
-        // setResp(response.data.data.post.likeCount);
         setResp(response.data);
       })
       .catch((error) => {
-        console.log(9, error.response);
+        console.log("에러", error.response);
       });
   };
 
@@ -397,10 +354,6 @@ const CommunityDetail = ({ match, history }) => {
         axios
           .get("http://59.20.79.42:58002/post/detail/" + postId)
           .then((response) => {
-            console.log(99, response.data.data.post);
-            // let newReplies = [...response.data.data.post.replies, reply];
-            // setResp(newReplies);
-
             setResp(response.data);
           });
       })
@@ -442,8 +395,8 @@ const CommunityDetail = ({ match, history }) => {
         <div className="community-container">
           <MainForm />
           <CommunityContentBox>
-            {resp.statusCode == 201
-              ? resp.data.type == 1 && (
+            {resp.statusCode === 201
+              ? resp.data.type === 1 && (
                   <div key={resp.data.post.id}>
                     <div className="article">
                       <div className="article-header">
