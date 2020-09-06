@@ -272,21 +272,25 @@ const CommunityDetail = ({ match, history }) => {
   }, []);
 
   const deletePost = () => {
-    axios
-      .delete("http://59.20.79.42:58002/post/delete/" + postId, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + localStorage.getItem("jwtToken"),
-        },
-      })
-      .then((response) => {
-        setResp(response.data);
+    if (window.confirm("게시글을 삭제하시겠습니까?") == true) {
+      axios
+        .delete("http://59.20.79.42:58002/post/delete/" + postId, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + localStorage.getItem("jwtToken"),
+          },
+        })
+        .then((response) => {
+          setResp(response.data);
 
-        history.push("/community");
-      })
-      .catch((error) => {
-        console.log("에러", error.response);
-      });
+          history.push("/community");
+        })
+        .catch((error) => {
+          console.log("에러", error.response);
+        });
+    } else {
+      return;
+    }
   };
 
   const addLike = () => {

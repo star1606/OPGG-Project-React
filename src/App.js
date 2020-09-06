@@ -29,7 +29,6 @@ function App() {
       <Route path="/write" component={CommunityWrite} />
       <Route path="/summoner/:username" component={Summoner} />
       <Route path="/edit" component={CommunityEdit} exact={true} />
-      {/* <Route path="/test" component={App2} /> */}
     </Switch>
   );
 }
