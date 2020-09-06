@@ -123,10 +123,8 @@ const ContentBox = styled.div`
     float: left;
     width: 122px;
     padding: 9px 0 8px 15px;
-    /* -webkit-box-sizing: border-box; */
     box-sizing: border-box;
     border: 1px solid #ebeef1;
-    /* background: #fff; */
     border-radius: 4px 0 0 4px;
     line-height: 17px;
     font-size: 14px;
@@ -135,7 +133,6 @@ const ContentBox = styled.div`
     background-size: 24px;
     background-position: top 5px right 5px;
     background-repeat: no-repeat;
-    /* -webkit-appearance: none; */
     -moz-appearance: none;
     appearance: none;
     outline: none;
@@ -145,7 +142,6 @@ const ContentBox = styled.div`
     float: left;
     border: none;
     width: 200px;
-    /* -webkit-box-sizing: border-box; */
     box-sizing: border-box;
     padding: 10px 32px 9px 16px;
     border-top-right-radius: 4px;
@@ -254,7 +250,6 @@ const Community = ({ history }) => {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-
     axios
       .get("http://59.20.79.42:58002/post/find/" + inputValue)
       .then((response) => {
@@ -267,21 +262,23 @@ const Community = ({ history }) => {
   };
 
   const handleOnChange = (e) => {
-    setInputValue(e.target.value);
     console.log(1, inputValue);
+    setInputValue(e.target.value);
 
     const search = async () => {
       await axios
         .get("http://59.20.79.42:58002/post/find/" + inputValue)
         .then((response) => {
           console.log(2, inputValue);
+
+          setCommunityDtos(response.data.data);
         })
         .catch((error) => {
           console.log(error);
         });
     };
+    setTimeout(400);
     search();
-    setCommunityDtos(inputValue);
   };
 
   return (
@@ -334,7 +331,6 @@ const Community = ({ history }) => {
               </div>
             </div>
 
-            {/* 밑에 div는 flex로 만들것 */}
             <div className="article-list">
               {/* 여기서 부터 반복 */}
               {communityDtos.map(
@@ -440,7 +436,7 @@ const Community = ({ history }) => {
                         </button>
                       </div>
                     ) : (
-                      <div>{history.goBack()}</div>
+                      <div></div>
                     )}
                   </div>
                 </div>

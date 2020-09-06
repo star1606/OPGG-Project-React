@@ -108,7 +108,7 @@ li {
 /* 커뮤니티 게시글 전체 레이아웃 css 설정*/
 .homeList-container {
   margin-top: 30px;
-  min-height: 396px;
+  min-height: 640px;
   margin-left: 100px;
   margin-right: 100px;
   background: #fff;
@@ -133,6 +133,8 @@ li {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+  padding-bottom: 15px;
+  padding-top: 10px;
 }
 
 .community-article__list__item__title {
@@ -148,7 +150,7 @@ li {
 
 .link {
   display: block;
-  padding: 17px 0 16px 20px;
+  padding: 17px 0 16px 30px;
   line-height: 17px;
   font-size: 14px;
   color: #000;
