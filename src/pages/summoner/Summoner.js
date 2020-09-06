@@ -14,6 +14,40 @@ const SummonerHeader = styled.div`
 `;
 
 const Summoner = ({ match, history }) => {
+  if (match.params === null) {
+    history.goBack();
+  }
+
+  console.log(history);
+  console.log(match.params);
+  // const [isToggleOn, setIsToggleOn] = useState(false);
+  const [toggleId, setToggleId] = useState(0);
+  const [respDto, setRespDto] = useState({});
+  const [detailRespDto, setDetailRespDto] = useState({});
+  const [maxDeal, setMaxDeal] = useState(0);
+
+  // 팀별 토탈골드
+  const getTotalGolds = (matchSummonerModels) => {
+    let totalGolds = 0;
+
+    matchSummonerModels.map((matchSummonerModel) => {
+      totalGolds = totalGolds + matchSummonerModel.goldEarned;
+    });
+
+    return totalGolds;
+  };
+
+  // 팀별 토탈킬
+  const getTotalKills = (matchSummonerModels) => {
+    let totalKills = 0;
+
+    matchSummonerModels.map((matchSummonerModel) => {
+      totalKills = totalKills + matchSummonerModel.kills;
+    });
+
+    return totalKills;
+  };
+
   // 아이템 이미지 가져오기
   const getItemImg = (itemId) => {
     if (itemId == 0) {
@@ -104,12 +138,12 @@ const Summoner = ({ match, history }) => {
   // 평점 계산
   const getGrade = (kill, death, assist) => {
     if (death === 0) {
-      return "Perfect";
+      return "Perfect 평점";
     }
 
     let grade = ((kill + assist) / death).toFixed(2);
 
-    return grade;
+    return grade + ":1 평점";
   };
 
   // 숫자 시간을 분과 초로 변경
@@ -496,17 +530,43 @@ const Summoner = ({ match, history }) => {
     return champName;
   };
 
-  if (match.params === null) {
-    history.goBack();
-  }
-  console.log(history);
-  console.log(match.params);
-  const [isToggleOn, setIsToggleOn] = useState(false);
-  const [respDto, setRespDto] = useState({ data: { statusCode: 0 } });
+  const getDetailDto = (gameId) => {
+    axios
+      .get("http://59.20.79.42:58002/api/detail/gameid/" + gameId)
+      .then((response) => {
+        console.log(response.data);
+        if (response.data !== null && response.data !== undefined) {
+          setDetailRespDto(response.data);
+
+          let maxDealInt = 0;
+          response.data.data.winSummonerModels.map((winSummonerModel) => {
+            if (maxDealInt < winSummonerModel.totalDamageDealtToChampions) {
+              maxDealInt = winSummonerModel.totalDamageDealtToChampions;
+            }
+          });
+
+          response.data.data.loseSummonerModels.map((loseSummonerModel) => {
+            if (maxDealInt < loseSummonerModel.totalDamageDealtToChampions) {
+              maxDealInt = loseSummonerModel.totalDamageDealtToChampions;
+            }
+          });
+
+          console.log(maxDealInt);
+
+          setMaxDeal(maxDealInt);
+        } else {
+          setDetailRespDto({});
+        }
+      })
+      .catch((error) => {
+        setDetailRespDto({});
+        console.log(error);
+      });
+  };
 
   useEffect(() => {
     axios
-      .get("http://59.20.79.42:58002/api/info/name/hideonbush")
+      .get("http://59.20.79.42:58002/api/info/name/" + match.params.username)
       .then((response) => {
         console.log(response.data);
         if (response.data !== null && response.data !== undefined) {
@@ -741,269 +801,296 @@ const Summoner = ({ match, history }) => {
                   <div className="content">
                     <div className="gameItemList">
                       {/* <!-- 여기서 부터 한 경기 --> */}
-                      {respDto.statusCode === 200
-                        ? respDto.data.map(
-                            (infoDto) =>
-                              infoDto.type === 1 && (
+                      {respDto.statusCode === 200 ? (
+                        respDto.data.map(
+                          (infoDto) =>
+                            infoDto.type === 1 && (
+                              <div
+                                className="gameItemWrap"
+                                key={infoDto.matchSummonerModel.id}
+                              >
                                 <div
-                                  className="gameItemWrap"
-                                  key={infoDto.matchSummonerModel.id}
+                                  className={
+                                    infoDto.matchSummonerModel.win === true
+                                      ? "gameItemWinExtended"
+                                      : "gameItemLoseExtended"
+                                  }
+                                  data-summoner-id="41913808"
+                                  data-game-time="1598546708"
+                                  data-game-id="4605496244"
+                                  data-game-result="win"
                                 >
-                                  <div
-                                    className={
-                                      infoDto.matchSummonerModel.win === true
-                                        ? "gameItemWinExtended"
-                                        : "gameItemLoseExtended"
-                                    }
-                                    data-summoner-id="41913808"
-                                    data-game-time="1598546708"
-                                    data-game-id="4605496244"
-                                    data-game-result="win"
-                                  >
-                                    <div className="toggle-content">
-                                      <div className="gameStats">
-                                        <div className="gameType" title="솔랭">
-                                          {infoDto.matchSummonerModel
-                                            .queueId === 420
-                                            ? "솔랭"
-                                            : "자유"}
-                                        </div>
-                                        <div className="timeStamp">
-                                          <span
-                                            className="toggle-time"
-                                            data-datetime="1598546708"
-                                            data-type=""
-                                            data-interval="60"
-                                            title="2020년 8월 28일 오전 1시 45분"
-                                          >
-                                            {getCreation(
-                                              infoDto.matchSummonerModel
-                                                .gameCreation
-                                            )}
-                                          </span>
-                                        </div>
-                                        <div className="bar"></div>
-                                        <div className="gameResult">
-                                          {infoDto.matchSummonerModel.win ===
-                                          true
-                                            ? "승리"
-                                            : "패배"}
-                                        </div>
-                                        <div className="gameLength">
-                                          {" "}
-                                          {getDuration(
-                                            infoDto.matchSummonerModel
-                                              .gameDuration
-                                          )}{" "}
-                                        </div>
+                                  <div className="toggle-content">
+                                    <div className="gameStats">
+                                      <div className="gameType" title="솔랭">
+                                        {infoDto.matchSummonerModel.queueId ===
+                                        420
+                                          ? "솔랭"
+                                          : "자유"}
                                       </div>
+                                      <div className="timeStamp">
+                                        <span
+                                          className="toggle-time"
+                                          data-datetime="1598546708"
+                                          data-type=""
+                                          data-interval="60"
+                                          title="2020년 8월 28일 오전 1시 45분"
+                                        >
+                                          {getCreation(
+                                            infoDto.matchSummonerModel
+                                              .gameCreation
+                                          )}
+                                        </span>
+                                      </div>
+                                      <div
+                                        className={
+                                          infoDto.matchSummonerModel.win ===
+                                          true
+                                            ? "bar"
+                                            : "bar bar-lose"
+                                        }
+                                      ></div>
+                                      <div className="gameResult">
+                                        {infoDto.matchSummonerModel.win === true
+                                          ? "승리"
+                                          : "패배"}
+                                      </div>
+                                      <div className="gameLength">
+                                        {" "}
+                                        {getDuration(
+                                          infoDto.matchSummonerModel
+                                            .gameDuration
+                                        )}{" "}
+                                      </div>
+                                    </div>
 
-                                      <div className="gameSettingInfo">
-                                        <div className="championImage">
-                                          <img
-                                            src={getChampImg(
-                                              infoDto.matchSummonerModel
-                                                .championId
-                                            )}
-                                            className="championIcon"
-                                          />
-                                        </div>
-                                        <div className="summonerSpell">
-                                          <div className="spell1">
-                                            <img
-                                              src={getSpellImg(
-                                                infoDto.matchSummonerModel
-                                                  .spell1Id
-                                              )}
-                                              className="summonerSpell1"
-                                            />
-                                          </div>
-                                          <div className="spell2">
-                                            <img
-                                              src={getSpellImg(
-                                                infoDto.matchSummonerModel
-                                                  .spell2Id
-                                              )}
-                                              className="summonerSpell2"
-                                            />
-                                          </div>
-                                        </div>
-                                        <div className="runes">
-                                          <div className="rune1">
-                                            <img
-                                              src={getPerkImg(
-                                                infoDto.matchSummonerModel
-                                                  .perkPrimaryStyle
-                                              )}
-                                              className="runeImage1"
-                                            />
-                                          </div>
-                                          <div className="rune2">
-                                            <img
-                                              src={getPerkImg(
-                                                infoDto.matchSummonerModel
-                                                  .perkSubStyle
-                                              )}
-                                              className="runeImage2"
-                                            />
-                                          </div>
-                                        </div>
-                                        <div className="championName">
-                                          {getChampName(
+                                    <div className="gameSettingInfo">
+                                      <div className="championImage">
+                                        <img
+                                          src={getChampImg(
                                             infoDto.matchSummonerModel
                                               .championId
                                           )}
-                                        </div>
+                                          className="championIcon"
+                                        />
                                       </div>
-                                      <div className="kdaWrap">
-                                        <div className="kda">
-                                          <span className="kill">
-                                            {infoDto.matchSummonerModel.kills}
-                                          </span>
-                                          /
-                                          <span className="death">
-                                            {infoDto.matchSummonerModel.deaths}
-                                          </span>
-                                          /
-                                          <span className="assist">
-                                            {infoDto.matchSummonerModel.assists}
-                                          </span>
-                                        </div>
-                                        <div className="kdaRatio">
-                                          <span className="kdaRatioSpan">
-                                            {getGrade(
-                                              infoDto.matchSummonerModel.kills,
-                                              infoDto.matchSummonerModel.deaths,
-                                              infoDto.matchSummonerModel.assists
+                                      <div className="summonerSpell">
+                                        <div className="spell1">
+                                          <img
+                                            src={getSpellImg(
+                                              infoDto.matchSummonerModel
+                                                .spell1Id
                                             )}
-                                          </span>
-                                          평점
+                                            className="summonerSpell1"
+                                          />
+                                        </div>
+                                        <div className="spell2">
+                                          <img
+                                            src={getSpellImg(
+                                              infoDto.matchSummonerModel
+                                                .spell2Id
+                                            )}
+                                            className="summonerSpell2"
+                                          />
                                         </div>
                                       </div>
-                                      <div
-                                        className="stats"
-                                        style={{
-                                          display: "table-cell",
-                                          height: "96px",
-                                          verticalAlign: "middle",
-                                        }}
-                                      >
-                                        <div className="stateLevel">
-                                          레벨
+                                      <div className="runes">
+                                        <div className="rune1">
+                                          <img
+                                            src={getPerkImg(
+                                              infoDto.matchSummonerModel
+                                                .perkPrimaryStyle
+                                            )}
+                                            className="runeImage1"
+                                          />
+                                        </div>
+                                        <div className="rune2">
+                                          <img
+                                            src={getPerkImg(
+                                              infoDto.matchSummonerModel
+                                                .perkSubStyle
+                                            )}
+                                            className="runeImage2"
+                                          />
+                                        </div>
+                                      </div>
+                                      <div className="championName">
+                                        {getChampName(
+                                          infoDto.matchSummonerModel.championId
+                                        )}
+                                      </div>
+                                    </div>
+                                    <div className="kdaWrap">
+                                      <div className="kda">
+                                        <span className="kill">
+                                          {infoDto.matchSummonerModel.kills}
+                                        </span>
+                                        /
+                                        <span className="death">
+                                          {infoDto.matchSummonerModel.deaths}
+                                        </span>
+                                        /
+                                        <span className="assist">
+                                          {infoDto.matchSummonerModel.assists}
+                                        </span>
+                                      </div>
+                                      <div className="kdaRatio">
+                                        <span className="kdaRatioSpan">
+                                          {getGrade(
+                                            infoDto.matchSummonerModel.kills,
+                                            infoDto.matchSummonerModel.deaths,
+                                            infoDto.matchSummonerModel.assists
+                                          )}
+                                        </span>
+                                      </div>
+                                    </div>
+                                    <div
+                                      className="stats"
+                                      style={{
+                                        display: "table-cell",
+                                        height: "96px",
+                                        verticalAlign: "middle",
+                                      }}
+                                    >
+                                      <div className="stateLevel">
+                                        레벨
+                                        {infoDto.matchSummonerModel.champLevel}
+                                      </div>
+                                      <div className="cs">
+                                        <span className="">
                                           {
                                             infoDto.matchSummonerModel
-                                              .champLevel
-                                          }
-                                        </div>
-                                        <div className="cs">
-                                          <span className="">
-                                            {
-                                              infoDto.matchSummonerModel
-                                                .totalMinionsKilled
-                                            }{" "}
-                                            (
-                                            {(
-                                              infoDto.matchSummonerModel
-                                                .totalMinionsKilled /
-                                              (infoDto.matchSummonerModel
-                                                .gameDuration /
-                                                60)
-                                            ).toFixed(1)}
-                                            )
-                                          </span>
-                                          CS
-                                        </div>
-                                        {/* <div className="ckRate">
+                                              .totalMinionsKilled
+                                          }{" "}
+                                          (
+                                          {(
+                                            infoDto.matchSummonerModel
+                                              .totalMinionsKilled /
+                                            (infoDto.matchSummonerModel
+                                              .gameDuration /
+                                              60)
+                                          ).toFixed(1)}
+                                          )
+                                        </span>
+                                        CS
+                                      </div>
+                                      {/* <div className="ckRate">
                                           킬관여 90% 안할 것
                                         </div> */}
-                                      </div>
-                                      <div className="items">
-                                        <div className="itemList">
-                                          <div className="item">
-                                            <img
-                                              src={getItemImg(
-                                                infoDto.matchSummonerModel.item0
-                                              )}
-                                              className="itemImg"
-                                              alt=""
-                                            />
-                                          </div>
-                                          <div className="item">
-                                            <img
-                                              src={getItemImg(
-                                                infoDto.matchSummonerModel.item1
-                                              )}
-                                              className="itemImg"
-                                              alt=""
-                                            />
-                                          </div>
-                                          <div className="item">
-                                            <img
-                                              src={getItemImg(
-                                                infoDto.matchSummonerModel.item2
-                                              )}
-                                              className="itemImg"
-                                              alt=""
-                                            />
-                                          </div>
-                                          <div className="item">
-                                            <img
-                                              src={getItemImg(
-                                                infoDto.matchSummonerModel.item6
-                                              )}
-                                              className="itemImg"
-                                              alt=""
-                                            />
-                                          </div>
-                                          <div className="item">
-                                            <img
-                                              src={getItemImg(
-                                                infoDto.matchSummonerModel.item3
-                                              )}
-                                              className="itemImg"
-                                              alt=""
-                                            />
-                                          </div>
-                                          <div className="item">
-                                            <img
-                                              src={getItemImg(
-                                                infoDto.matchSummonerModel.item4
-                                              )}
-                                              className="itemImg"
-                                              alt=""
-                                            />
-                                          </div>
-                                          <div className="item">
-                                            <img
-                                              src={getItemImg(
-                                                infoDto.matchSummonerModel.item5
-                                              )}
-                                              className="itemImg"
-                                              alt=""
-                                            />
-                                          </div>
+                                    </div>
+                                    <div className="items">
+                                      <div className="itemList">
+                                        <div className="item">
+                                          <img
+                                            src={getItemImg(
+                                              infoDto.matchSummonerModel.item0
+                                            )}
+                                            className="itemImg"
+                                            alt=""
+                                          />
                                         </div>
-                                      </div>
-
-                                      <div className="statusBtn">
-                                        <div className="content2">
-                                          <a className="btnMatchDetail">
-                                            <i
-                                              onClick={() =>
-                                                setIsToggleOn(
-                                                  (isToggleOn) => !isToggleOn
-                                                )
-                                              }
-                                              className="material-icons"
-                                            >
-                                              arrow_drop_down
-                                            </i>
-                                          </a>
+                                        <div className="item">
+                                          <img
+                                            src={getItemImg(
+                                              infoDto.matchSummonerModel.item1
+                                            )}
+                                            className="itemImg"
+                                            alt=""
+                                          />
+                                        </div>
+                                        <div className="item">
+                                          <img
+                                            src={getItemImg(
+                                              infoDto.matchSummonerModel.item2
+                                            )}
+                                            className="itemImg"
+                                            alt=""
+                                          />
+                                        </div>
+                                        <div className="item">
+                                          <img
+                                            src={getItemImg(
+                                              infoDto.matchSummonerModel.item6
+                                            )}
+                                            className="itemImg"
+                                            alt=""
+                                          />
+                                        </div>
+                                        <div className="item">
+                                          <img
+                                            src={getItemImg(
+                                              infoDto.matchSummonerModel.item3
+                                            )}
+                                            className="itemImg"
+                                            alt=""
+                                          />
+                                        </div>
+                                        <div className="item">
+                                          <img
+                                            src={getItemImg(
+                                              infoDto.matchSummonerModel.item4
+                                            )}
+                                            className="itemImg"
+                                            alt=""
+                                          />
+                                        </div>
+                                        <div className="item">
+                                          <img
+                                            src={getItemImg(
+                                              infoDto.matchSummonerModel.item5
+                                            )}
+                                            className="itemImg"
+                                            alt=""
+                                          />
                                         </div>
                                       </div>
                                     </div>
-                                    {/* <!-- 여기서부터가 경기내용임 --> */}
-                                    {isToggleOn && (
+                                    <div
+                                      className={
+                                        infoDto.matchSummonerModel.win === true
+                                          ? "statusBtn"
+                                          : "statusBtn statusBtn-lose"
+                                      }
+                                    >
+                                      <div className="content2">
+                                        <a className="btnMatchDetail">
+                                          <i
+                                            onClick={() => {
+                                              if (
+                                                toggleId === 0 ||
+                                                toggleId !==
+                                                  infoDto.matchSummonerModel
+                                                    .gameId
+                                              ) {
+                                                getDetailDto(
+                                                  infoDto.matchSummonerModel
+                                                    .gameId
+                                                );
+                                                setToggleId(
+                                                  infoDto.matchSummonerModel
+                                                    .gameId
+                                                );
+                                              } else {
+                                                setToggleId(0);
+                                              }
+                                            }}
+                                            className={
+                                              infoDto.matchSummonerModel.win ===
+                                              true
+                                                ? "material-icons"
+                                                : "material-icons material-icons-lose"
+                                            }
+                                          >
+                                            arrow_drop_down
+                                          </i>
+                                        </a>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  {/* <!-- 여기서부터가 경기내용임 --> */}
+                                  {toggleId ===
+                                    infoDto.matchSummonerModel.gameId &&
+                                    detailRespDto.statusCode == 200 && (
                                       <div className="GameDetail">
                                         <div className="MatchDetailLayout tabWrap _recognized">
                                           <div className="MatchDetailHeader"></div>
@@ -1019,7 +1106,7 @@ const Summoner = ({ match, history }) => {
                                                     <col className="SummonerSpell" />
                                                     <col className="KeystoneMastery" />
                                                     <col className="SummonerName" />
-                                                    <col className="Tier" />
+                                                    {/* <col className="Tier" /> */}
                                                     <col className="OPScore" />
                                                     <col className="KDA" />
                                                     <col className="Damage" />
@@ -1036,11 +1123,18 @@ const Summoner = ({ match, history }) => {
                                                         <span className="GameResult">
                                                           승리{" "}
                                                         </span>
-                                                        (레드팀)
+                                                        {detailRespDto.statusCode ===
+                                                        200
+                                                          ? detailRespDto.data
+                                                              .winTeam
+                                                              .teamId === 100
+                                                            ? "(레드팀)"
+                                                            : "(블루팀)"
+                                                          : ""}
                                                       </th>
-                                                      <th className="HeaderCell">
+                                                      {/* <th className="HeaderCell">
                                                         티어
-                                                      </th>
+                                                      </th> */}
                                                       <th className="HeaderCell"></th>
                                                       <th className="HeaderCell">
                                                         KDA
@@ -1060,194 +1154,282 @@ const Summoner = ({ match, history }) => {
                                                     </tr>
                                                   </thead>
                                                   <tbody className="Content">
-                                                    <tr className="Row first  ">
-                                                      <td className="ChampionImage Cell">
-                                                        <a
-                                                          href=""
-                                                          target="_blank"
-                                                        >
-                                                          <img
-                                                            src="/img/Kassadin.png"
-                                                            title="제이스"
-                                                            className="detailChampIcon"
-                                                          />
-
-                                                          <div className="Level">
-                                                            14
-                                                          </div>
-                                                        </a>
-                                                      </td>
-                                                      <td className="SummonerSpell Cell">
-                                                        <img
-                                                          src="/img/8112.png"
-                                                          className="Image tip"
-                                                        />
-                                                        <img
-                                                          src="/img/8112.png"
-                                                          className="Image tip"
-                                                        />
-                                                      </td>
-                                                      <td className="Rune Cell">
-                                                        <img
-                                                          src="/img/8112.png"
-                                                          className="Image tip"
-                                                        />
-                                                        <img
-                                                          src="/img/8112.png"
-                                                          className="Image tip"
-                                                        />
-                                                      </td>
-                                                      <td className="SummonerName Cell">
-                                                        <a
-                                                          href=""
-                                                          target="_blank"
-                                                          className="Link"
-                                                        >
-                                                          upupupupupupp
-                                                        </a>
-                                                      </td>
-
-                                                      <td className="Tier Cell tip">
-                                                        Challenger
-                                                      </td>
-
-                                                      <td className="OPScore Cell"></td>
-                                                      <td className="KDA Cell">
-                                                        <span className="KDARatio green">
-                                                          3.00:1
-                                                        </span>
-
-                                                        <div className="KDA">
-                                                          <span className="Kill">
-                                                            4
-                                                          </span>
-                                                          /
-                                                          <span className="Death">
-                                                            4
-                                                          </span>
-                                                          /
-                                                          <span className="Assist">
-                                                            8
-                                                          </span>
-                                                          <span
-                                                            className="CKRate tip"
-                                                            title="킬관여율"
+                                                    {detailRespDto.data.winSummonerModels.map(
+                                                      (matchSummonerModel) => {
+                                                        return (
+                                                          <tr
+                                                            className={
+                                                              matchSummonerModel.summonerName ===
+                                                              respDto.data[0]
+                                                                .summonerModel
+                                                                .name
+                                                                ? "Row RowNowWin"
+                                                                : "Row RowWin"
+                                                            }
                                                           >
-                                                            (52%)
-                                                          </span>
-                                                        </div>
-                                                      </td>
-                                                      <td className="Damage Cell tip">
-                                                        <div className="ChampionDamage">
-                                                          13,260
-                                                        </div>
-                                                        <div className="Progress">
-                                                          <div
-                                                            className="Fill"
-                                                            style={{
-                                                              width: "100%",
-                                                            }}
-                                                          ></div>
-                                                        </div>
-                                                      </td>
-                                                      <td className="Ward Cell tip">
-                                                        <div className="Buy">
-                                                          <span className="SightWard">
-                                                            3
-                                                          </span>
-                                                        </div>
-                                                        <div className="Stats">
-                                                          <span> 10</span> /
-                                                          <span> 4</span>
-                                                        </div>
-                                                      </td>
-                                                      <td className="CS Cell">
-                                                        <div className="CS">
-                                                          172
-                                                        </div>
-                                                        <div className="CSPerMinute">
-                                                          분당 7.9
-                                                        </div>
-                                                      </td>
-                                                      <td className="Items Cell">
-                                                        <div className="Item">
-                                                          <img
-                                                            src="/img/3802.png"
-                                                            className="Image tip"
-                                                            alt="처형인의 대검"
-                                                          />
-                                                        </div>
-                                                        <div className="Item">
-                                                          <img
-                                                            src="/img/3802.png"
-                                                            className="Image tip"
-                                                            alt="요우무의 유령검"
-                                                          />
-                                                        </div>
-                                                        <div className="Item">
-                                                          <img
-                                                            src="/img/3802.png"
-                                                            className="Image tip"
-                                                            alt="밤의 끝자락"
-                                                          />
-                                                        </div>
-                                                        <div className="Item">
-                                                          <img
-                                                            src="/img/3802.png"
-                                                            className="Image tip"
-                                                            alt="롱소드"
-                                                          />
-                                                        </div>
-                                                        <div className="Item">
-                                                          <img
-                                                            src="/img/3802.png"
-                                                            className="Image tip"
-                                                            alt="롱소드"
-                                                          />
-                                                        </div>
-                                                        <div className="Item">
-                                                          <img
-                                                            src="/img/3802.png"
-                                                            className="Image tip"
-                                                            alt="헤르메스의 발걸음"
-                                                          />
-                                                        </div>
-                                                        <div className="Item">
-                                                          <img
-                                                            src="/img/3364.png"
-                                                            className="Image tip"
-                                                            alt="망원형 개조"
-                                                          />
-                                                        </div>
-                                                      </td>
-                                                    </tr>
+                                                            <td className="ChampionImage Cell">
+                                                              <a
+                                                                href=""
+                                                                target="_blank"
+                                                              >
+                                                                <img
+                                                                  src={getChampImg(
+                                                                    matchSummonerModel.championId
+                                                                  )}
+                                                                  title="제이스"
+                                                                  className="detailChampIcon"
+                                                                />
+
+                                                                <div className="Level">
+                                                                  {
+                                                                    matchSummonerModel.champLevel
+                                                                  }
+                                                                </div>
+                                                              </a>
+                                                            </td>
+                                                            <td className="SummonerSpell Cell">
+                                                              <img
+                                                                src={getSpellImg(
+                                                                  matchSummonerModel.spell1Id
+                                                                )}
+                                                                className="Image tip"
+                                                              />
+                                                              <img
+                                                                src={getSpellImg(
+                                                                  matchSummonerModel.spell2Id
+                                                                )}
+                                                                className="Image tip"
+                                                              />
+                                                            </td>
+                                                            <td className="Rune Cell">
+                                                              <img
+                                                                src={getPerkImg(
+                                                                  matchSummonerModel.perkPrimaryStyle
+                                                                )}
+                                                                className="Image tip"
+                                                              />
+                                                              <img
+                                                                src={getPerkImg(
+                                                                  matchSummonerModel.perkSubStyle
+                                                                )}
+                                                                className="Image tip"
+                                                              />
+                                                            </td>
+                                                            <td className="SummonerName Cell">
+                                                              <a
+                                                                href=""
+                                                                target="_blank"
+                                                                className="Link"
+                                                              >
+                                                                {
+                                                                  matchSummonerModel.summonerName
+                                                                }
+                                                              </a>
+                                                            </td>
+
+                                                            {/* <td className="Tier Cell tip">
+                                                            </td> */}
+
+                                                            <td className="OPScore Cell"></td>
+                                                            <td className="KDA Cell">
+                                                              <span className="KDARatio green">
+                                                                {getGrade(
+                                                                  matchSummonerModel.kills,
+                                                                  matchSummonerModel.deaths,
+                                                                  matchSummonerModel.assists
+                                                                )}
+                                                              </span>
+
+                                                              <div className="KDA">
+                                                                <span className="Kill">
+                                                                  {
+                                                                    matchSummonerModel.kills
+                                                                  }
+                                                                </span>
+                                                                /
+                                                                <span className="Death">
+                                                                  {
+                                                                    matchSummonerModel.deaths
+                                                                  }
+                                                                </span>
+                                                                /
+                                                                <span className="Assist">
+                                                                  {
+                                                                    matchSummonerModel.assists
+                                                                  }
+                                                                </span>
+                                                                {/* <span
+                                                                    className="CKRate tip"
+                                                                    title="킬관여율"
+                                                                  >
+                                                                    (52%)
+                                                                  </span> */}
+                                                              </div>
+                                                            </td>
+                                                            <td className="Damage Cell tip">
+                                                              <div className="ChampionDamage">
+                                                                {
+                                                                  matchSummonerModel.totalDamageDealtToChampions
+                                                                }
+                                                              </div>
+                                                              <div className="Progress">
+                                                                <div
+                                                                  className="Fill"
+                                                                  style={{
+                                                                    width:
+                                                                      (matchSummonerModel.totalDamageDealtToChampions /
+                                                                        maxDeal) *
+                                                                        100 +
+                                                                      "%",
+                                                                  }}
+                                                                ></div>
+                                                              </div>
+                                                            </td>
+                                                            <td className="Ward Cell tip">
+                                                              {/* <div className="Buy">
+                                                                  <span className="SightWard">
+                                                                  </span>
+                                                                </div> */}
+                                                              <div className="Stats">
+                                                                <span>
+                                                                  {" "}
+                                                                  {
+                                                                    matchSummonerModel.wardsPlaced
+                                                                  }
+                                                                </span>{" "}
+                                                                /
+                                                                <span>
+                                                                  {" "}
+                                                                  {
+                                                                    matchSummonerModel.wardsKilled
+                                                                  }
+                                                                </span>
+                                                              </div>
+                                                            </td>
+                                                            <td className="CS Cell">
+                                                              <div className="CS">
+                                                                {
+                                                                  matchSummonerModel.totalMinionsKilled
+                                                                }
+                                                              </div>
+                                                              <div className="CSPerMinute">
+                                                                (
+                                                                {(
+                                                                  matchSummonerModel.totalMinionsKilled /
+                                                                  (matchSummonerModel.gameDuration /
+                                                                    60)
+                                                                ).toFixed(1)}
+                                                                )
+                                                              </div>
+                                                            </td>
+                                                            <td className="Items Cell">
+                                                              <div className="item">
+                                                                <img
+                                                                  src={getItemImg(
+                                                                    matchSummonerModel.item0
+                                                                  )}
+                                                                  className="itemImg"
+                                                                  alt=""
+                                                                />
+                                                              </div>
+                                                              <div className="item">
+                                                                <img
+                                                                  src={getItemImg(
+                                                                    matchSummonerModel.item1
+                                                                  )}
+                                                                  className="itemImg"
+                                                                  alt=""
+                                                                />
+                                                              </div>
+                                                              <div className="item">
+                                                                <img
+                                                                  src={getItemImg(
+                                                                    matchSummonerModel.item2
+                                                                  )}
+                                                                  className="itemImg"
+                                                                  alt=""
+                                                                />
+                                                              </div>
+                                                              <div className="item">
+                                                                <img
+                                                                  src={getItemImg(
+                                                                    matchSummonerModel.item3
+                                                                  )}
+                                                                  className="itemImg"
+                                                                  alt=""
+                                                                />
+                                                              </div>
+                                                              <div className="item">
+                                                                <img
+                                                                  src={getItemImg(
+                                                                    matchSummonerModel.item4
+                                                                  )}
+                                                                  className="itemImg"
+                                                                  alt=""
+                                                                />
+                                                              </div>
+                                                              <div className="item">
+                                                                <img
+                                                                  src={getItemImg(
+                                                                    matchSummonerModel.item5
+                                                                  )}
+                                                                  className="itemImg"
+                                                                  alt=""
+                                                                />
+                                                              </div>
+                                                              <div className="item">
+                                                                <img
+                                                                  src={getItemImg(
+                                                                    matchSummonerModel.item6
+                                                                  )}
+                                                                  className="itemImg"
+                                                                  alt=""
+                                                                />
+                                                              </div>
+                                                            </td>
+                                                          </tr>
+                                                        );
+                                                      }
+                                                    )}
                                                   </tbody>
                                                 </table>
                                                 <div className="Summary">
                                                   <div className="Team Team-200 Result-WIN">
                                                     <div className="ObjectScore">
                                                       <img
-                                                        src="/img/iconBaron.png"
+                                                        src="https://opgg-static.akamaized.net/images/site/summoner/icon-baron-b.png"
                                                         className="Image tip"
                                                         title="바론"
                                                       />
-                                                      1
+                                                      {detailRespDto.statusCode ===
+                                                      200
+                                                        ? detailRespDto.data
+                                                            .winTeam.baronKills
+                                                        : 0}
                                                     </div>
                                                     <div className="ObjectScore">
                                                       <img
-                                                        src="/img/iconBaron.png"
+                                                        src="https://opgg-static.akamaized.net/images/site/summoner/icon-dragon-b.png"
                                                         className="Image tip"
                                                         title="드래곤"
                                                       />
-                                                      2
+                                                      {detailRespDto.statusCode ===
+                                                      200
+                                                        ? detailRespDto.data
+                                                            .winTeam.dragonKills
+                                                        : 0}
                                                     </div>
                                                     <div className="ObjectScore">
                                                       <img
-                                                        src="/img/iconBaron.png"
+                                                        src="https://opgg-static.akamaized.net/images/site/summoner/icon-tower-b.png"
                                                         className="Image tip"
                                                         title="타워"
                                                       />
-                                                      4
+                                                      {detailRespDto.statusCode ===
+                                                      200
+                                                        ? detailRespDto.data
+                                                            .winTeam.towerKills
+                                                        : 0}
                                                     </div>
                                                   </div>
                                                   <div className="summary-graph">
@@ -1256,20 +1438,52 @@ const Summoner = ({ match, history }) => {
                                                         Total Kill
                                                       </div>
                                                       <div className="text graph--data graph--data__left">
-                                                        23
+                                                        {detailRespDto.statusCode ===
+                                                        200
+                                                          ? getTotalKills(
+                                                              detailRespDto.data
+                                                                .winSummonerModels
+                                                            )
+                                                          : 0}
                                                       </div>
                                                       <div className="graph--container">
                                                         <div
                                                           className="graph win--team"
-                                                          style={{ flex: 23 }}
+                                                          style={{
+                                                            flex:
+                                                              detailRespDto.statusCode ===
+                                                              200
+                                                                ? getTotalKills(
+                                                                    detailRespDto
+                                                                      .data
+                                                                      .winSummonerModels
+                                                                  )
+                                                                : 0,
+                                                          }}
                                                         ></div>
                                                         <div
                                                           className="graph lose--team"
-                                                          style={{ flex: 9 }}
+                                                          style={{
+                                                            flex:
+                                                              detailRespDto.statusCode ===
+                                                              200
+                                                                ? getTotalKills(
+                                                                    detailRespDto
+                                                                      .data
+                                                                      .loseSummonerModels
+                                                                  )
+                                                                : 0,
+                                                          }}
                                                         ></div>
                                                       </div>
                                                       <div className="text graph--data graph--data__right">
-                                                        9
+                                                        {detailRespDto.statusCode ===
+                                                        200
+                                                          ? getTotalKills(
+                                                              detailRespDto.data
+                                                                .loseSummonerModels
+                                                            )
+                                                          : 0}
                                                       </div>
                                                     </div>
                                                     <div className="total--container">
@@ -1277,51 +1491,92 @@ const Summoner = ({ match, history }) => {
                                                         Total Gold
                                                       </div>
                                                       <div className="text graph--data graph--data__left">
-                                                        45395
+                                                        {detailRespDto.statusCode ===
+                                                        200
+                                                          ? getTotalGolds(
+                                                              detailRespDto.data
+                                                                .winSummonerModels
+                                                            )
+                                                          : 0}
                                                       </div>
                                                       <div className="graph--container">
                                                         <div
                                                           className="graph win--team"
                                                           style={{
-                                                            flex: 45395,
+                                                            flex:
+                                                              detailRespDto.statusCode ===
+                                                              200
+                                                                ? getTotalGolds(
+                                                                    detailRespDto
+                                                                      .data
+                                                                      .winSummonerModels
+                                                                  )
+                                                                : 0,
                                                           }}
                                                         ></div>
                                                         <div
                                                           className="graph lose--team"
                                                           style={{
-                                                            flex: 38060,
+                                                            flex:
+                                                              detailRespDto.statusCode ===
+                                                              200
+                                                                ? getTotalGolds(
+                                                                    detailRespDto
+                                                                      .data
+                                                                      .loseSummonerModels
+                                                                  )
+                                                                : 0,
                                                           }}
                                                         ></div>
                                                       </div>
                                                       <div className="text graph--data graph--data__right">
-                                                        38060
+                                                        {detailRespDto.statusCode ===
+                                                        200
+                                                          ? getTotalGolds(
+                                                              detailRespDto.data
+                                                                .loseSummonerModels
+                                                            )
+                                                          : 0}
                                                       </div>
                                                     </div>
                                                   </div>
                                                   <div className="Team Team-100 Result-LOSE">
                                                     <div className="ObjectScore">
                                                       <img
-                                                        src="/img/iconBaron.png"
+                                                        src="https://opgg-static.akamaized.net/images/site/summoner/icon-baron-r.png"
                                                         className="Image tip"
                                                         title="바론"
                                                       />
-                                                      0
+                                                      {detailRespDto.statusCode ===
+                                                      200
+                                                        ? detailRespDto.data
+                                                            .loseTeam.baronKills
+                                                        : 0}
                                                     </div>
                                                     <div className="ObjectScore">
                                                       <img
-                                                        src="/img/iconBaron.png"
+                                                        src="https://opgg-static.akamaized.net/images/site/summoner/icon-dragon-r.png"
                                                         className="Image tip"
                                                         title="드래곤"
                                                       />
-                                                      0
+                                                      {detailRespDto.statusCode ===
+                                                      200
+                                                        ? detailRespDto.data
+                                                            .loseTeam
+                                                            .dragonKills
+                                                        : 0}
                                                     </div>
                                                     <div className="ObjectScore">
                                                       <img
-                                                        src="/img/iconBaron.png"
+                                                        src="https://opgg-static.akamaized.net/images/site/summoner/icon-tower-r.png"
                                                         className="Image tip"
                                                         title="타워"
                                                       />
-                                                      3
+                                                      {detailRespDto.statusCode ===
+                                                      200
+                                                        ? detailRespDto.data
+                                                            .loseTeam.towerKills
+                                                        : 0}
                                                     </div>
                                                   </div>
                                                 </div>
@@ -1332,7 +1587,7 @@ const Summoner = ({ match, history }) => {
                                                     <col className="SummonerSpell" />
                                                     <col className="KeystoneMastery" />
                                                     <col className="SummonerName" />
-                                                    <col className="Tier" />
+                                                    {/* <col className="Tier" /> */}
                                                     <col className="OPScore" />
                                                     <col className="KDA" />
                                                     <col className="Damage" />
@@ -1349,11 +1604,18 @@ const Summoner = ({ match, history }) => {
                                                         <span className="GameResult">
                                                           패배{" "}
                                                         </span>
-                                                        (블루팀)
+                                                        {detailRespDto.statusCode ===
+                                                        200
+                                                          ? detailRespDto.data
+                                                              .loseTeam
+                                                              .teamId === 100
+                                                            ? "(레드팀)"
+                                                            : "(블루팀)"
+                                                          : ""}
                                                       </th>
-                                                      <th className="HeaderCell">
+                                                      {/* <th className="HeaderCell">
                                                         티어
-                                                      </th>
+                                                      </th> */}
                                                       <th className="HeaderCell"></th>
                                                       <th className="HeaderCell">
                                                         KDA
@@ -1373,167 +1635,243 @@ const Summoner = ({ match, history }) => {
                                                     </tr>
                                                   </thead>
                                                   <tbody className="Content">
-                                                    <tr className="Row first  ">
-                                                      <td className="ChampionImage Cell">
-                                                        <a
-                                                          href=""
-                                                          target="_blank"
-                                                        >
-                                                          <img
-                                                            src="/img/Kassadin.png"
-                                                            title="제이스"
-                                                            className="detailChampIcon"
-                                                          />
-
-                                                          <div className="Level">
-                                                            14
-                                                          </div>
-                                                        </a>
-                                                      </td>
-                                                      <td className="SummonerSpell Cell">
-                                                        <img
-                                                          src="/img/8112.png"
-                                                          className="Image tip"
-                                                        />
-                                                        <img
-                                                          src="/img/8112.png"
-                                                          className="Image tip"
-                                                        />
-                                                      </td>
-                                                      <td className="Rune Cell">
-                                                        <img
-                                                          src="/img/8112.png"
-                                                          className="Image tip"
-                                                        />
-                                                        <img
-                                                          src="/img/8112.png"
-                                                          className="Image tip"
-                                                        />
-                                                      </td>
-                                                      <td className="SummonerName Cell">
-                                                        <a
-                                                          href=""
-                                                          target="_blank"
-                                                          className="Link"
-                                                        >
-                                                          upupupupupupp
-                                                        </a>
-                                                      </td>
-
-                                                      <td className="Tier Cell tip">
-                                                        Challenger
-                                                      </td>
-
-                                                      <td className="OPScore Cell"></td>
-                                                      <td className="KDA Cell">
-                                                        <span className="KDARatio green">
-                                                          3.00:1
-                                                        </span>
-
-                                                        <div className="KDA">
-                                                          <span className="Kill">
-                                                            4
-                                                          </span>
-                                                          /
-                                                          <span className="Death">
-                                                            4
-                                                          </span>
-                                                          /
-                                                          <span className="Assist">
-                                                            8
-                                                          </span>
-                                                          <span
-                                                            className="CKRate tip"
-                                                            title="킬관여율"
+                                                    {detailRespDto.data.loseSummonerModels.map(
+                                                      (matchSummonerModel) => {
+                                                        return (
+                                                          <tr
+                                                            className={
+                                                              matchSummonerModel.summonerName ===
+                                                              respDto.data[0]
+                                                                .summonerModel
+                                                                .name
+                                                                ? "Row RowNowLose"
+                                                                : "Row RowLose"
+                                                            }
                                                           >
-                                                            (52%)
-                                                          </span>
-                                                        </div>
-                                                      </td>
-                                                      <td className="Damage Cell tip">
-                                                        <div className="ChampionDamage">
-                                                          13,260
-                                                        </div>
-                                                        <div className="Progress">
-                                                          <div
-                                                            className="Fill"
-                                                            style={{
-                                                              width: "100%",
-                                                            }}
-                                                          ></div>
-                                                        </div>
-                                                      </td>
-                                                      <td className="Ward Cell tip">
-                                                        <div className="Buy">
-                                                          <span className="SightWard">
-                                                            3
-                                                          </span>
-                                                        </div>
-                                                        <div className="Stats">
-                                                          <span> 10</span> /
-                                                          <span> 4</span>
-                                                        </div>
-                                                      </td>
-                                                      <td className="CS Cell">
-                                                        <div className="CS">
-                                                          172
-                                                        </div>
-                                                        <div className="CSPerMinute">
-                                                          분당 7.9
-                                                        </div>
-                                                      </td>
-                                                      <td className="Items Cell">
-                                                        <div className="Item">
-                                                          <img
-                                                            src="/img/3802.png"
-                                                            className="Image tip"
-                                                            alt="처형인의 대검"
-                                                          />
-                                                        </div>
-                                                        <div className="Item">
-                                                          <img
-                                                            src="/img/3802.png"
-                                                            className="Image tip"
-                                                            alt="요우무의 유령검"
-                                                          />
-                                                        </div>
-                                                        <div className="Item">
-                                                          <img
-                                                            src="/img/3802.png"
-                                                            className="Image tip"
-                                                            alt="밤의 끝자락"
-                                                          />
-                                                        </div>
-                                                        <div className="Item">
-                                                          <img
-                                                            src="/img/3802.png"
-                                                            className="Image tip"
-                                                            alt="롱소드"
-                                                          />
-                                                        </div>
-                                                        <div className="Item">
-                                                          <img
-                                                            src="/img/3802.png"
-                                                            className="Image tip"
-                                                            alt="롱소드"
-                                                          />
-                                                        </div>
-                                                        <div className="Item">
-                                                          <img
-                                                            src="/img/3802.png"
-                                                            className="Image tip"
-                                                            alt="헤르메스의 발걸음"
-                                                          />
-                                                        </div>
-                                                        <div className="Item">
-                                                          <img
-                                                            src="/img/3364.png"
-                                                            className="Image tip"
-                                                            alt="망원형 개조"
-                                                          />
-                                                        </div>
-                                                      </td>
-                                                    </tr>
+                                                            <td className="ChampionImage Cell">
+                                                              <a
+                                                                href=""
+                                                                target="_blank"
+                                                              >
+                                                                <img
+                                                                  src={getChampImg(
+                                                                    matchSummonerModel.championId
+                                                                  )}
+                                                                  title="제이스"
+                                                                  className="detailChampIcon"
+                                                                />
+
+                                                                <div className="Level">
+                                                                  {
+                                                                    matchSummonerModel.champLevel
+                                                                  }
+                                                                </div>
+                                                              </a>
+                                                            </td>
+                                                            <td className="SummonerSpell Cell">
+                                                              <img
+                                                                src={getSpellImg(
+                                                                  matchSummonerModel.spell1Id
+                                                                )}
+                                                                className="Image tip"
+                                                              />
+                                                              <img
+                                                                src={getSpellImg(
+                                                                  matchSummonerModel.spell2Id
+                                                                )}
+                                                                className="Image tip"
+                                                              />
+                                                            </td>
+                                                            <td className="Rune Cell">
+                                                              <img
+                                                                src={getPerkImg(
+                                                                  matchSummonerModel.perkPrimaryStyle
+                                                                )}
+                                                                className="Image tip"
+                                                              />
+                                                              <img
+                                                                src={getPerkImg(
+                                                                  matchSummonerModel.perkSubStyle
+                                                                )}
+                                                                className="Image tip"
+                                                              />
+                                                            </td>
+                                                            <td className="SummonerName Cell">
+                                                              <a
+                                                                href=""
+                                                                target="_blank"
+                                                                className="Link"
+                                                              >
+                                                                {
+                                                                  matchSummonerModel.summonerName
+                                                                }
+                                                              </a>
+                                                            </td>
+
+                                                            {/* <td className="Tier Cell tip">
+                                                            </td> */}
+
+                                                            <td className="OPScore Cell"></td>
+                                                            <td className="KDA Cell">
+                                                              <span className="KDARatio green">
+                                                                {getGrade(
+                                                                  matchSummonerModel.kills,
+                                                                  matchSummonerModel.deaths,
+                                                                  matchSummonerModel.assists
+                                                                )}
+                                                              </span>
+
+                                                              <div className="KDA">
+                                                                <span className="Kill">
+                                                                  {
+                                                                    matchSummonerModel.kills
+                                                                  }
+                                                                </span>
+                                                                /
+                                                                <span className="Death">
+                                                                  {
+                                                                    matchSummonerModel.deaths
+                                                                  }
+                                                                </span>
+                                                                /
+                                                                <span className="Assist">
+                                                                  {
+                                                                    matchSummonerModel.assists
+                                                                  }
+                                                                </span>
+                                                                {/* <span
+                                                                    className="CKRate tip"
+                                                                    title="킬관여율"
+                                                                  >
+                                                                    (52%)
+                                                                  </span> */}
+                                                              </div>
+                                                            </td>
+                                                            <td className="Damage Cell tip">
+                                                              <div className="ChampionDamage">
+                                                                {
+                                                                  matchSummonerModel.totalDamageDealtToChampions
+                                                                }
+                                                              </div>
+                                                              <div className="Progress">
+                                                                <div
+                                                                  className="Fill"
+                                                                  style={{
+                                                                    width:
+                                                                      (matchSummonerModel.totalDamageDealtToChampions /
+                                                                        maxDeal) *
+                                                                        100 +
+                                                                      "%",
+                                                                  }}
+                                                                ></div>
+                                                              </div>
+                                                            </td>
+                                                            <td className="Ward Cell tip">
+                                                              {/* <div className="Buy">
+                                                                  <span className="SightWard">
+                                                                  </span>
+                                                                </div> */}
+                                                              <div className="Stats">
+                                                                <span>
+                                                                  {" "}
+                                                                  {
+                                                                    matchSummonerModel.wardsPlaced
+                                                                  }
+                                                                </span>{" "}
+                                                                /
+                                                                <span>
+                                                                  {" "}
+                                                                  {
+                                                                    matchSummonerModel.wardsKilled
+                                                                  }
+                                                                </span>
+                                                              </div>
+                                                            </td>
+                                                            <td className="CS Cell">
+                                                              <div className="CS">
+                                                                {
+                                                                  matchSummonerModel.totalMinionsKilled
+                                                                }
+                                                              </div>
+                                                              <div className="CSPerMinute">
+                                                                (
+                                                                {(
+                                                                  matchSummonerModel.totalMinionsKilled /
+                                                                  (matchSummonerModel.gameDuration /
+                                                                    60)
+                                                                ).toFixed(1)}
+                                                                )
+                                                              </div>
+                                                            </td>
+                                                            <td className="Items Cell">
+                                                              <div className="item">
+                                                                <img
+                                                                  src={getItemImg(
+                                                                    matchSummonerModel.item0
+                                                                  )}
+                                                                  className="itemImg"
+                                                                  alt=""
+                                                                />
+                                                              </div>
+                                                              <div className="item">
+                                                                <img
+                                                                  src={getItemImg(
+                                                                    matchSummonerModel.item1
+                                                                  )}
+                                                                  className="itemImg"
+                                                                  alt=""
+                                                                />
+                                                              </div>
+                                                              <div className="item">
+                                                                <img
+                                                                  src={getItemImg(
+                                                                    matchSummonerModel.item2
+                                                                  )}
+                                                                  className="itemImg"
+                                                                  alt=""
+                                                                />
+                                                              </div>
+                                                              <div className="item">
+                                                                <img
+                                                                  src={getItemImg(
+                                                                    matchSummonerModel.item3
+                                                                  )}
+                                                                  className="itemImg"
+                                                                  alt=""
+                                                                />
+                                                              </div>
+                                                              <div className="item">
+                                                                <img
+                                                                  src={getItemImg(
+                                                                    matchSummonerModel.item4
+                                                                  )}
+                                                                  className="itemImg"
+                                                                  alt=""
+                                                                />
+                                                              </div>
+                                                              <div className="item">
+                                                                <img
+                                                                  src={getItemImg(
+                                                                    matchSummonerModel.item5
+                                                                  )}
+                                                                  className="itemImg"
+                                                                  alt=""
+                                                                />
+                                                              </div>
+                                                              <div className="item">
+                                                                <img
+                                                                  src={getItemImg(
+                                                                    matchSummonerModel.item6
+                                                                  )}
+                                                                  className="itemImg"
+                                                                  alt=""
+                                                                />
+                                                              </div>
+                                                            </td>
+                                                          </tr>
+                                                        );
+                                                      }
+                                                    )}
                                                   </tbody>
                                                 </table>
                                               </div>
@@ -1542,11 +1880,13 @@ const Summoner = ({ match, history }) => {
                                         </div>
                                       </div>
                                     )}
-                                  </div>
                                 </div>
-                              )
-                          )
-                        : ""}
+                              </div>
+                            )
+                        )
+                      ) : (
+                        <div>로딩 중</div>
+                      )}
 
                       <div className="GameMoreButton Box">
                         <a href="#" className="Button">
