@@ -306,12 +306,33 @@
   margin: 5px auto;
   height: 2px;
 
-  background: #99B9CF99;
+  background: #6b88d899;
+}
+
+.bar-lose {
+  background: #d16f6a99;
 }
 
 /* .gameResult {
   color: #1a78ae;
 } */
+
+.RowWin {
+  background-color: #8993ee22;
+}
+
+.RowLose {
+  background-color: #e2828222;
+}
+
+.RowNowWin {
+  background-color: #8993ee55;
+}
+
+.RowNowLose {
+  background-color: #e2828255;
+}
+
 
 .GameDetailTable>.Header>.Row>.HeaderCell>.GameResult {
   color: red;
@@ -556,6 +577,11 @@
   border-color: #4aa1d2;
 }
 
+.statusBtn-lose {
+  border-bottom-color: #C6443E;
+  border-color: #C6443E;
+}
+
 .content2 {
   position: relative;
   border-collapse: collapse;
@@ -570,6 +596,10 @@
   left: 3px;
   cursor: pointer;
   color: #016aa7;
+}
+
+.material-icons-lose {
+  color: #C6443E;
 }
 
 .GameItem.extended.Win>.GameDetail {
@@ -600,7 +630,7 @@ colgroup {
 }
 
 .GameDetailTable>colgroup>.ChampionImage {
-  width: 44px;
+  width: 60px;
 }
 
 .GameDetailTable>colgroup>.SummonerSpell {
@@ -608,7 +638,7 @@ colgroup {
 }
 
 .GameDetailTable>colgroup>.KeystoneMastery {
-  width: 18px;
+  width: 40px;
 }
 
 col {
@@ -629,11 +659,11 @@ table {
 }
 
 .GameDetailTable>colgroup>.KDA {
-  width: 76px;
+  width: 120px;
 }
 
 .GameDetailTable>colgroup>.Damage {
-  width: 66px;
+  width: 80px;
 }
 
 .GameDetailTable>colgroup>.Ward {
@@ -788,8 +818,8 @@ user agent stylesheet a:-webkit-any-link {
 .GameDetailTable>.Content>.Row>.Cell.SummonerName {
   padding-left: 5px;
   white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
+  /* text-overflow: ellipsis; */
+  /* overflow: hidden; */
 }
 
 .GameDetailTable>.Content>.Row>.Cell {
