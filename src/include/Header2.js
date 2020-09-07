@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Header2.css";
 import { Link, withRouter } from "react-router-dom";
 
-const Header2 = ({ history }) => {
+const Header2 = (props) => {
   const [username, setUsername] = useState("");
 
   const handleOnChange = (e) => {
@@ -11,13 +11,18 @@ const Header2 = ({ history }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    props.changeName(username);
     console.log(username);
-    history.push("/summoner/" + username);
+    // history.push("/summoner/" + username);
   };
 
   const logout = () => {
-    localStorage.clear();
-    console.log(localStorage.getItem("jwtToken"));
+    if (window.confirm("로그아웃 하시겠습니까?") == true) {
+      localStorage.clear();
+      console.log("로그아웃", localStorage.getItem("jwtToken"));
+    } else {
+      return;
+    }
   };
 
   const authCheck = localStorage.getItem("jwtToken") ? (
@@ -49,7 +54,6 @@ const Header2 = ({ history }) => {
         // style="margin-left: auto;"
       >
         <form onSubmit={handleSubmit}>
-          {/* <form action="/summoner/" method="get" autocomplete="off"> */}
           <input
             onChange={handleOnChange}
             type="text"

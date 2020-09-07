@@ -28,6 +28,7 @@ function App() {
       <Route path="/join" component={Join} />
       <Route path="/write" component={CommunityWrite} />
       <Route path="/summoner/:username" component={Summoner} />
+      <Route path="/summoner" component={Summoner} />
       <Route path="/edit" component={CommunityEdit} exact={true} />
     </Switch>
   );

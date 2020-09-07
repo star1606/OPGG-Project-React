@@ -4,6 +4,7 @@ import Header2 from "./../../include/Header2";
 import styled from "styled-components";
 import "../../include/Summoner.css";
 import { withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 const SummonerHeader = styled.div`
@@ -18,13 +19,15 @@ const Summoner = ({ match, history }) => {
     history.goBack();
   }
 
-  console.log(history);
-  console.log(match.params);
   // const [isToggleOn, setIsToggleOn] = useState(false);
   const [toggleId, setToggleId] = useState(0);
   const [respDto, setRespDto] = useState({});
   const [detailRespDto, setDetailRespDto] = useState({});
   const [maxDeal, setMaxDeal] = useState(0);
+  const [summonerName, setSummonerName] = useState(match.params.username);
+
+  console.log(history);
+  console.log(match.params);
 
   // 팀별 토탈골드
   const getTotalGolds = (matchSummonerModels) => {
@@ -51,7 +54,7 @@ const Summoner = ({ match, history }) => {
   // 아이템 이미지 가져오기
   const getItemImg = (itemId) => {
     if (itemId == 0) {
-      return "";
+      return "/img/blank.png";
     } else if (itemId !== null && itemId !== "" && itemId !== "null") {
       return (
         "http://ddragon.leagueoflegends.com/cdn/10.16.1/img/item/" +
@@ -209,11 +212,11 @@ const Summoner = ({ match, history }) => {
     if (creation + 86400000 > Date.now()) {
       let temp = Date.now() - creation;
       if (temp < 60000) {
-        return temp / 1000 + "초 전";
+        return (temp / 1000).toFixed(0) + "초 전";
       } else if (temp < 3600000) {
-        return temp / 60000 + "분 전";
+        return (temp / 60000).toFixed(0) + "분 전";
       } else {
-        return temp / 3600000 + "시간 전";
+        return (temp / 3600000).toFixed(0) + "시간 전";
       }
     }
     return new Date(creation).yyyymmdd();
@@ -320,7 +323,7 @@ const Summoner = ({ match, history }) => {
     } else if (champId === 222) {
       champName = "Jinx";
     } else if (champId === 145) {
-      champName = "KaiSa";
+      champName = "Kaisa";
     } else if (champId === 429) {
       champName = "Kalista";
     } else if (champId === 43) {
@@ -484,7 +487,7 @@ const Summoner = ({ match, history }) => {
     } else if (champId === 45) {
       champName = "Veigar";
     } else if (champId === 161) {
-      champName = "VelKoz";
+      champName = "Velkoz";
     } else if (champId === 254) {
       champName = "Vi";
     } else if (champId === 112) {
@@ -564,23 +567,38 @@ const Summoner = ({ match, history }) => {
       });
   };
 
+  const changeName = (changedName) => {
+    console.log("changedName: " + changedName);
+    setSummonerName(changedName);
+  };
+
   useEffect(() => {
-    axios
-      .get("http://59.20.79.42:58002/api/info/name/" + match.params.username)
-      .then((response) => {
-        console.log(response.data);
-        if (response.data !== null && response.data !== undefined) {
-          setRespDto(response.data);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+    console.log("summonerName: " + summonerName);
+    if (
+      summonerName === null ||
+      summonerName === "" ||
+      summonerName === undefined
+    ) {
+      alert("소환사명을 입력하세요");
+      history.push("/home");
+    } else {
+      axios
+        .get("http://59.20.79.42:58002/api/info/name/" + summonerName)
+        .then((response) => {
+          console.log(response.data);
+          if (response.data !== null && response.data !== undefined) {
+            setRespDto(response.data);
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }, [summonerName]);
 
   return (
     <>
-      <Header2 />
+      <Header2 changeName={changeName} />
       <div>
         <div className="header">
           <div className="face">
@@ -626,7 +644,16 @@ const Summoner = ({ match, history }) => {
               </div>
             </div>
             <div className="lastUpdate">
-              최근업데이트: <span className="time">31 분전</span>
+              최근업데이트:{" "}
+              <span className="time">
+                {respDto.statusCode == 200
+                  ? respDto.data[1] !== null && respDto.data[1] !== undefined
+                    ? getCreation(
+                        respDto.data[1].matchSummonerModel.gameCreation
+                      )
+                    : "로딩실패"
+                  : "로딩실패"}
+              </span>
             </div>
           </div>
           <div className="contentWrap">
@@ -1168,10 +1195,7 @@ const Summoner = ({ match, history }) => {
                                                             }
                                                           >
                                                             <td className="ChampionImage Cell">
-                                                              <a
-                                                                href=""
-                                                                target="_blank"
-                                                              >
+                                                              <a>
                                                                 <img
                                                                   src={getChampImg(
                                                                     matchSummonerModel.championId
@@ -1216,15 +1240,22 @@ const Summoner = ({ match, history }) => {
                                                               />
                                                             </td>
                                                             <td className="SummonerName Cell">
-                                                              <a
-                                                                href=""
-                                                                target="_blank"
+                                                              <span
+                                                                onClick={() => {
+                                                                  changeName(
+                                                                    matchSummonerModel.summonerName
+                                                                  );
+                                                                }}
+                                                                style={{
+                                                                  cursor:
+                                                                    "pointer",
+                                                                }}
                                                                 className="Link"
                                                               >
                                                                 {
                                                                   matchSummonerModel.summonerName
                                                                 }
-                                                              </a>
+                                                              </span>
                                                             </td>
 
                                                             {/* <td className="Tier Cell tip">
@@ -1697,6 +1728,10 @@ const Summoner = ({ match, history }) => {
                                                               />
                                                             </td>
                                                             <td className="SummonerName Cell">
+                                                              {console.log(
+                                                                "link",
+                                                                matchSummonerModel
+                                                              )}
                                                               <a
                                                                 href=""
                                                                 target="_blank"
@@ -1885,7 +1920,7 @@ const Summoner = ({ match, history }) => {
                             )
                         )
                       ) : (
-                        <div>로딩 중</div>
+                        <div>{respDto.message}</div>
                       )}
 
                       <div className="GameMoreButton Box">

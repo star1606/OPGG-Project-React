@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, Route } from "react-router-dom";
+import { Link, Route, Redirect } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import axios from "axios";
 import GoogleLogin from "react-google-login";
@@ -85,7 +85,7 @@ const LoginContent = ({ history }) => {
         localStorage.setItem("jwtToken", response.data.data.jwtToken);
         localStorage.setItem("userId", response.data.data.userId);
         localStorage.setItem("nickname", response.data.data.nickname);
-        alert("로그인에 성공하셨습니다.");
+
         history.push("/home");
       })
       .catch((error) => {
@@ -95,126 +95,104 @@ const LoginContent = ({ history }) => {
 
   return (
     <div className="app">
-      <div className="member-card-layout">
-        {/* <!-- 흰색 박스 --> */}
-        <div className="member-card-layout__container">
-          {/* <!-- 컨테이너 안 div --> */}
-          <div className="member-card-layout__inner">
-            {/* <!-- 로고 div --> */}
-            <Link to={"/home"}>
-              <h1 className="member-card-layout__logo">
-                <img
-                  className="member-card-layout__logo-image"
-                  src="/img/opggLogo.png"
-                  alt="op.gg"
-                />
-              </h1>
-            </Link>
-            <div className="login">
-              <h2 className="login__fb-title">간편 로그인</h2>
-
-              {/* <LoginBtn /> */}
-
-              <div>
-                {/* <!-- 페이스북 로그인 --> */}
-                <button
-                  className="member-button facebook-button login__fb-btn"
-                  // onClick={() => history.push("/a")}
-                >
-                  <span className="facebook-button__inner">
-                    <img
-                      src="https://member.op.gg/icon_facebook_wh.6ab689d7.svg"
-                      className="facebook-button__img"
-                      width="24"
-                      height="24"
-                      alt="facebook"
-                    />
-                    <span className="facebook-button__txt">
-                      페이스북으로 로그인
-                    </span>
-                  </span>
-                </button>
-                {/* <!-- apple로그인 --> */}
-                <GooleLoginBox>
-                  <GoogleLogin
-                    clientId="1038460159897-8nk592uqfjq3be23dkrah4d3t3clmg66.apps.googleusercontent.com"
-                    buttonText="Google로 로그인"
-                    onSuccess={responseGoogle}
-                    onFailure={responseGoogle}
-                    cookiePolicy={"single_host_origin"}
-                    className="googleBtn"
+      {!localStorage.getItem("jwtToken") ? (
+        <div className="member-card-layout">
+          {/* <!-- 흰색 박스 --> */}
+          <div className="member-card-layout__container">
+            {/* <!-- 컨테이너 안 div --> */}
+            <div className="member-card-layout__inner">
+              {/* <!-- 로고 div --> */}
+              <Link to={"/home"}>
+                <h1 className="member-card-layout__logo">
+                  <img
+                    className="member-card-layout__logo-image"
+                    src="/img/opggLogo.png"
+                    alt="op.gg"
                   />
-                </GooleLoginBox>
-              </div>
+                </h1>
+              </Link>
+              <div className="login">
+                <h2
+                  className="login__fb-title"
+                  style={{ marginBottom: "12px" }}
+                >
+                  간편 로그인
+                </h2>
 
-              {/* <!-- apple 로그인 밑  ㅡorㅡ --> */}
-              <div className="login__l-or">OR</div>
-              <form onSubmit={onSubmit}>
-                <h2 className="login__email-title">이메일 로그인</h2>
-                <div className="member-input">
-                  <div className="member-input__state">
-                    {/* <!-- 이메일 input 박스 --> */}
-                    <input
-                      id="memberInput6908"
-                      className="member-input__box"
-                      type="text"
-                      autoComplete="off"
-                      name="email"
-                      placeholder="이메일 주소"
-                      onChange={onChangeForm}
+                {/* <LoginBtn /> */}
+
+                <div>
+                  {/* <!-- apple로그인 --> */}
+                  <GooleLoginBox>
+                    <GoogleLogin
+                      clientId="1038460159897-8nk592uqfjq3be23dkrah4d3t3clmg66.apps.googleusercontent.com"
+                      buttonText="Google로 로그인"
+                      onSuccess={responseGoogle}
+                      onFailure={responseGoogle}
+                      cookiePolicy={"single_host_origin"}
+                      className="googleBtn"
                     />
-                    <span className="member-input__valid-wrapper"></span>
-                  </div>
+                  </GooleLoginBox>
                 </div>
 
-                <div className="member-input">
-                  <div className="member-input__state">
-                    {/* <!-- 비밀번호 input 박스 --> */}
-                    <input
-                      id="memberInput3108"
-                      className="member-input__box"
-                      type="password"
-                      autoComplete="off"
-                      name="password"
-                      onChange={onChangeForm}
-                      placeholder="비밀번호"
-                    />
-                    <span className="member-input__valid-wrapper"></span>
-                  </div>
-                  {/* <!-- 로그인 상태유지 checkbox --> */}
-                </div>
-                <div className="login__l">
-                  <div className="login__checkbox" id="login__checkbox">
-                    <div className="member-checkbox">
-                      <span className="member-checkbox__state">
-                        <input
-                          id="memberCheckbox6943"
-                          type="checkbox"
-                          className="member-checkbox__input"
-                        />
-                      </span>
-                      <label className="member-checkbox__label">
-                        로그인 상태 유지하기
-                      </label>
+                {/* <!-- apple 로그인 밑  ㅡorㅡ --> */}
+                <div className="login__l-or">OR</div>
+                <form onSubmit={onSubmit}>
+                  <h2 className="login__email-title">이메일 로그인</h2>
+                  <div className="member-input">
+                    <div className="member-input__state">
+                      {/* <!-- 이메일 input 박스 --> */}
+                      <input
+                        id="memberInput6908"
+                        className="member-input__box"
+                        type="text"
+                        autoComplete="off"
+                        name="email"
+                        placeholder="이메일 주소"
+                        onChange={onChangeForm}
+                      />
+                      <span className="member-input__valid-wrapper"></span>
                     </div>
                   </div>
-                </div>
-                <button type="submit" className="member-button login__btn">
-                  로그인
-                </button>
-                <div className="login__l-sign-up">
-                  OP.GG에 처음이세요?
-                  <span className="login__sign-up-link">
-                    <Link className="member-link" to="/join">
-                      회원가입하기
-                    </Link>
-                  </span>
-                </div>
-              </form>
+
+                  <div className="member-input">
+                    <div className="member-input__state">
+                      {/* <!-- 비밀번호 input 박스 --> */}
+                      <input
+                        id="memberInput3108"
+                        className="member-input__box"
+                        type="password"
+                        autoComplete="off"
+                        name="password"
+                        onChange={onChangeForm}
+                        placeholder="비밀번호"
+                      />
+                      <span className="member-input__valid-wrapper"></span>
+                    </div>
+                    {/* <!-- 로그인 상태유지 checkbox --> */}
+                  </div>
+                  <div className="login__l">
+                    <div className="login__checkbox" id="login__checkbox"></div>
+                  </div>
+                  <button type="submit" className="member-button login__btn">
+                    로그인
+                  </button>
+                  <div className="login__l-sign-up">
+                    OP.GG에 처음이세요?
+                    <span className="login__sign-up-link">
+                      <Link className="member-link" to="/join">
+                        회원가입하기
+                      </Link>
+                    </span>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      ) : (
+        <div>{(alert("잘못된 접근입니다."), history.push("/"))}</div>
+      )}
     </div>
   );
 };

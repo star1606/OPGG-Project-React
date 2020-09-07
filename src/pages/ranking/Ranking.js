@@ -504,8 +504,8 @@ const Ranking = ({ history }) => {
                           <th className="ranking-table__header"></th>
                           <th className="ranking-table__header">소환사</th>
                           <th className="ranking-table__header">티어</th>
+                          <th className="ranking-table__header"></th>
                           <th className="ranking-table__header">LP</th>
-                          <th className="ranking-table__header">레벨</th>
                           <th className="ranking-table__header">승률</th>
                         </tr>
                       </thead>
@@ -524,7 +524,7 @@ const Ranking = ({ history }) => {
                                     {userDto.rankingModel.id}
                                   </td>
                                   <td className="select_summoner ranking-table__cell ranking-table__cell--summoner">
-                                    {/* <Link
+                                    <Link
                                       to={
                                         "/summoner/" +
                                         userDto.rankingModel.summonerName
@@ -532,19 +532,20 @@ const Ranking = ({ history }) => {
                                     >
                                       <img
                                         src={
-                                          userDto.statusCode === 200
+                                          userDto.type === 1 &&
+                                          userDto.summonerModel !== null
                                             ? "http://ddragon.leagueoflegends.com/cdn/10.16.1/img/profileicon/" +
-                                              userDto.data.summonerModel
+                                              userDto.summonerModel
                                                 .profileIconId +
                                               ".png"
-                                            : "http://ddragon.leagueoflegends.com/cdn/10.16.1/img/profileicon/6.png"
+                                            : "http://ddragon.leagueoflegends.com/cdn/10.16.1/img/profileicon/1.png"
                                         }
                                         alt=""
                                       />
                                       <span style={{ fontSize: "15px" }}>
                                         {userDto.rankingModel.summonerName}
                                       </span>
-                                    </Link> */}
+                                    </Link>
                                   </td>
                                   <td
                                     className="ranking-table__cell ranking-table__cell--tier"
@@ -552,11 +553,9 @@ const Ranking = ({ history }) => {
                                   >
                                     {userDto.rankingModel.tier}
                                   </td>
-                                  <td className="ranking-table__cell ranking-table__cell--lp">
-                                    {userDto.rankingModel.leaguePoints}
-                                  </td>
+                                  <td className="ranking-table__cell ranking-table__cell--lp"></td>
                                   <td className="ranking-table__cell ranking-table__cell--level">
-                                    {/* {userDto.summonerModel.summonerLevel} */}
+                                    {userDto.rankingModel.leaguePoints}
                                   </td>
                                   <td className="ranking-table__cell ranking-table__cell--winratio">
                                     <div className="winratio">

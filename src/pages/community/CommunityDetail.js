@@ -236,7 +236,7 @@ const CommunityDetail = ({ match, history }) => {
               },
             }
           )
-          .then((response1) => {
+          .then((response) => {
             if (localStorage.getItem("updateView") == null) {
               localStorage.setItem("updateView", postId);
             } else {

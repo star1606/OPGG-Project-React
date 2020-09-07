@@ -4,8 +4,12 @@ import { Link } from "react-router-dom";
 
 const Header1 = ({ history }) => {
   const logout = () => {
-    localStorage.clear();
-    console.log(localStorage.getItem("jwtToken"));
+    if (window.confirm("로그아웃 하시겠습니까?") == true) {
+      localStorage.clear();
+      console.log(localStorage.getItem("jwtToken"));
+    } else {
+      return;
+    }
   };
 
   const authCheck = localStorage.getItem("jwtToken") ? (
