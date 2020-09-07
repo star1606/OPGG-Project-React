@@ -293,13 +293,16 @@ const Community = ({ history }) => {
               <div className="content-header-wrap">
                 <h2 className="header-text">게시글</h2>
                 <div style={{ marginRight: "24px" }}>
-                  <Link to="/write">
-                    <img
-                      src="img/iconWrite.png"
-                      style={{ width: "24px" }}
-                      alt="글쓰기"
-                    />
-                  </Link>
+                  {localStorage.getItem("jwtToken") !== null &&
+                    localStorage.getItem("jwtToken") !== undefined && (
+                      <Link to="/write">
+                        <img
+                          src="img/iconWrite.png"
+                          style={{ width: "24px" }}
+                          alt="글쓰기"
+                        />
+                      </Link>
+                    )}
                 </div>
               </div>
 

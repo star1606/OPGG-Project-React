@@ -466,7 +466,7 @@ const Ranking = ({ history }) => {
                       />
                     </div>
                     <button className="button-SemiRound-Blue" type="submit">
-                      랭킹검색
+                      소환사 검색
                     </button>
                   </form>
                 </div>
@@ -476,12 +476,13 @@ const Ranking = ({ history }) => {
               {respDto.statusCode === 200 && (
                 <span className="text">
                   {console.log(11, respDto)}
-                  챌린저~다이아 구간에 총 {respDto.data[0].allUser}명의 소환사가
-                  있습니다.
+                  챌린저~다이아IV 구간에 총 {respDto.data[0].allUser}명의
+                  소환사가 있습니다.
                 </span>
               )}
               <small className="small">
-                랭킹은 마스터 이상 소환사만 표시. 랭킹은 주기적으로 갱신됩니다.
+                랭킹은 다이아IV 이상 소환사만 표시. 랭킹은 주기적으로
+                갱신됩니다.
               </small>
             </div>
 

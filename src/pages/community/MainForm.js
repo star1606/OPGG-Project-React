@@ -82,7 +82,12 @@ const MainForm = ({ history }) => {
       </Link>
       <SearchForm>
         <form onSubmit={handleOnSubmit}>
-          <input onChange={handleOnChange} type="text" className="main-input" />
+          <input
+            onChange={handleOnChange}
+            type="text"
+            className="main-input"
+            placeholder="소환사명..."
+          />
           <button className="mainBtn" type="submit">
             <img className="btnImg" src="/img/searchBtn.gif" alt="검색" />
           </button>

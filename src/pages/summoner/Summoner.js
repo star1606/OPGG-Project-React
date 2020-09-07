@@ -25,6 +25,7 @@ const Summoner = ({ match, history }) => {
   const [detailRespDto, setDetailRespDto] = useState({});
   const [maxDeal, setMaxDeal] = useState(0);
   const [summonerName, setSummonerName] = useState(match.params.username);
+  const [isUpdate, setIsUpdate] = useState(false);
 
   console.log(history);
   console.log(match.params);
@@ -567,6 +568,20 @@ const Summoner = ({ match, history }) => {
       });
   };
 
+  const updateInfo = (summonerName) => {
+    setIsUpdate(true);
+    axios
+      .post("http://59.20.79.42:58002/api/info/update/name/" + summonerName)
+      .then((response) => {
+        alert("갱신이 완료되었습니다.");
+        setRespDto(response.data);
+        setIsUpdate(false);
+      })
+      .catch((error) => {
+        console.log(error.response);
+      });
+  };
+
   const changeName = (changedName) => {
     console.log("changedName: " + changedName);
     setSummonerName(changedName);
@@ -640,7 +655,22 @@ const Summoner = ({ match, history }) => {
                 </div>
               </div>
               <div className="button">
-                <button className="button__blue">전적갱신</button>
+                {isUpdate === false ? (
+                  <button
+                    className="button__blue"
+                    onClick={() => {
+                      updateInfo(
+                        respDto.statusCode === 200
+                          ? respDto.data[0].summonerModel.name
+                          : "소환사명"
+                      );
+                    }}
+                  >
+                    전적갱신
+                  </button>
+                ) : (
+                  <button className="button__blue">갱신중</button>
+                )}
               </div>
             </div>
             <div className="lastUpdate">
