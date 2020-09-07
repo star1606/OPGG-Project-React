@@ -41,8 +41,11 @@ const Join = ({ history }) => {
         }
       )
       .then((response) => {
-        console.log(response);
-        localStorage.set();
+        //     alert('아이디가 중복되었습니다.');
+        // } else if (result == 0) { // === 3개는 타입까지 비교 == 값만비교
+        // 	alert('사용하실 수 있는 아이디입니다.');
+        alert(response.data.message);
+        // join할 때는 jwt 토큰 받을 필요 없다.
 
         alert("회원가입이 완료되었습니다.");
         history.push("/home");
@@ -73,7 +76,7 @@ const Join = ({ history }) => {
                   onChange={hanleOnChange}
                   className="member-input__box"
                   type="text"
-                  autocomplete="off"
+                  autoComplete="off"
                   name="email"
                   placeholder="이메일 주소"
                 />
@@ -84,7 +87,7 @@ const Join = ({ history }) => {
                   onChange={hanleOnChange}
                   className="member-input__box"
                   type="text"
-                  autocomplete="off"
+                  autoComplete="off"
                   name="nickname"
                   placeholder="닉네임"
                 />
@@ -98,7 +101,7 @@ const Join = ({ history }) => {
                   onChange={hanleOnChange}
                   className="member-input__box"
                   type="password"
-                  autocomplete="off"
+                  autoComplete="off"
                   name="password"
                   placeholder="비밀번호"
                 />
@@ -137,5 +140,21 @@ const Join = ({ history }) => {
     </div>
   );
 };
+
+// <h1>Create new account</h1>
+// <form action="/newaccount" method=post
+//       oninput='up2.setCustomValidity(up2.value != up.value ? "Passwords do not match." : "")'>
+//   <p>
+//   <label for="username">E-mail address:</label>
+//   <input id="username" type=email required name=un>
+//   <p>
+//   <label for="password1">Password:</label>
+//   <input id="password1" type=password required name=up>
+//   <p>
+//   <label for="password2">Confirm password:</label>
+//   <input id="password2" type=password name=up2>
+//   <p>
+//   <input type=submit value="Create account">
+// </form>
 
 export default withRouter(Join);

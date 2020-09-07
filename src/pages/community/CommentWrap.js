@@ -109,7 +109,7 @@ const CommentWrap = (props) => {
               className="deleteReplyBtn"
               style={{ color: "red", cursor: "pointer", fontSize: "14px" }}
               onClick={() => {
-                if (window.confirm("댓글을 삭제하시겠습니까?") == true) {
+                if (window.confirm("댓글을 삭제하시겠습니까?") === true) {
                   props.deleteReply(reply.id);
                 } else {
                   return;

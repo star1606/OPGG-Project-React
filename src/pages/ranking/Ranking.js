@@ -357,15 +357,32 @@ const RankingBox = styled.div`
     margin-top: 3px;
     margin-left: 6px;
   }
+
+  .ranking-list-paging {
+    height: 64px;
+  }
+
+  .ranking-list-paging__button {
+    line-height: 17px;
+    font-size: 14px;
+    color: #7b858e;
+    border-radius: 4px;
+    background-color: #ffffff;
+    border: 1px solid #dddfe4;
+    width: 77px;
+    height: 40px;
+    margin-top: 12px;
+  }
 `;
 
 const Ranking = ({ history }) => {
   const [username, setUsername] = useState("");
-  const [respDto, setRespDto] = useState("");
+  const [respDto, setRespDto] = useState({});
+  const [postPage, setPostPage] = useState(1);
 
   useEffect(() => {
     axios
-      .get("http://59.20.79.42:58002/api/ranking/page/1")
+      .get("http://59.20.79.42:58002/api/ranking/page/" + postPage)
       .then((response) => {
         console.log(1, response.data);
         console.log(2, response);
@@ -385,6 +402,41 @@ const Ranking = ({ history }) => {
   const handleOnSubmit = (e) => {
     e.preventDefault();
     history.push("/summoner/" + username);
+  };
+
+  const handlePrevPage = () => {
+    let prevPage = postPage - 1;
+    if (postPage < 1) {
+      return;
+    }
+    console.log(6, prevPage);
+    axios
+      .get("http://59.20.79.42:58002/api/ranking/page/" + prevPage)
+      .then((response) => {
+        setRespDto(response.data);
+
+        setPostPage(postPage - 1);
+      })
+      .catch((error) => {
+        console.log(error.response);
+      });
+  };
+  const handleNextPage = () => {
+    //첫페이지면서 마지막페이지
+    // if (postpage < 1) {
+    // }
+    let nextPage = postPage + 1;
+
+    axios
+      .get("http://59.20.79.42:58002/api/ranking/page/" + nextPage)
+      .then((response) => {
+        setRespDto(response.data);
+
+        setPostPage(postPage + 1);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   let a = 300;
@@ -549,83 +601,63 @@ const Ranking = ({ history }) => {
                                 </tr>
                               )
                           )}
-                        {/* 두번째 컴포넌트 */}
-                        {/* <tr
-                          className="ranking-table__row"
-                          id="summoner-41780873"
-                        >
-                          <td className="ranking-table__cellranking-table__cell--rank">
-                            6
-                          </td>
-                          <td className="select_summoner ranking-table__cell ranking-table__cell--summoner">
-                            <a href="//www.op.gg/summoner/userName=KT+Malrang">
-                              <img src="img/homeLogo.png" />
-                              <span>KT Malrang</span>
-                            </a>
-                          </td>
-                          <td className="ranking-table__cell ranking-table__cell--tier">
-                            Challenger
-                          </td>
-                          <td className="ranking-table__cell ranking-table__cell--lp">
-                            1,326 LP
-                          </td>
-                          <td className="ranking-table__cell ranking-table__cell--level">
-                            277
-                          </td>
-                          <td className="ranking-table__cell ranking-table__cell--winratio">
-                            <div className="winratio">
-                              <div className="winratio-graph">
-                                <div
-                                  className="winratio-graph__fill winratio-graph__fill--left"
-                                  style={{ width: "57%" }}
-                                ></div>
-                                <div className="winratio-graph__text winratio-graph__text--left">
-                                  343
-                                </div>
-                                <div className="winratio-graph__fill winratio-graph__fill--right"></div>
-                                <div className="winratio-graph__text winratio-graph__text--right">
-                                  262
-                                </div>
-                              </div>
-                              <span className="winratio__text">57%</span>
-                            </div>
-                          </td>
-                        </tr> */}
                       </tbody>
                     </table>
 
                     <div className="ranking-pagination">
-                      <ul className="ranking-pagination__list">
-                        <li className="ranking-pagination__item ranking-pagination__item--arrow">
-                          <a href="#">◀</a>
-                        </li>
-                        <li className="ranking-pagination__item ranking-pagination__item--disable">
-                          <a href="#">1</a>
-                        </li>
-                        <li className="ranking-pagination__item">
-                          <a href="/ranking/ladder/page=2">2</a>
-                        </li>
-                        <li className="ranking-pagination__item">
-                          <a href="/ranking/ladder/page=3">3</a>
-                        </li>
-                        <li className="ranking-pagination__item">
-                          <a href="/ranking/ladder/page=4">4</a>
-                        </li>
-                        <li className="ranking-pagination__item">
-                          <a href="/ranking/ladder/page=5">5</a>
-                        </li>
-                        <li className="ranking-pagination__item">
-                          <a href="/ranking/ladder/page=6">6</a>
-                        </li>
-                        <li className="ranking-pagination__item">
-                          <a href="/ranking/ladder/page=7">7</a>
-                        </li>
-                        <li className="ranking-pagination__item ranking-pagination__item--arrow">
-                          <a href="/ranking/ladder/page=8">▶</a>
-                        </li>
-                      </ul>
+                      <div>
+                        <div className="ranking-list-paging">
+                          <div>
+                            {postPage > 1 && (
+                              <div style={{ display: "inline-block" }}>
+                                <button
+                                  style={{ marginRight: "6px" }}
+                                  onClick={handlePrevPage}
+                                  className="ranking-list-paging__button"
+                                >
+                                  <img
+                                    src="img/iconArrowLeft.png"
+                                    alt="이전"
+                                    style={{
+                                      width: "24px",
+                                      height: "24px",
+                                      verticalAlign: "middle",
+                                      cursor: "pointer",
+                                    }}
+                                  />
+                                  이전
+                                </button>
+                              </div>
+                            )}
+
+                            {respDto.statusCode !== 204 ? (
+                              <div style={{ display: "inline-block" }}>
+                                <button
+                                  style={{ marginLeft: "6px" }}
+                                  onClick={handleNextPage}
+                                  className="ranking-list-paging__button"
+                                >
+                                  다음
+                                  <img
+                                    src="img/iconArrowRight.png"
+                                    alt="다음"
+                                    style={{
+                                      width: "24px",
+                                      height: "24px",
+                                      verticalAlign: "middle",
+                                      cursor: "pointer",
+                                    }}
+                                  />
+                                </button>
+                              </div>
+                            ) : (
+                              <div></div>
+                            )}
+                          </div>
+                        </div>
+                      </div>
                       <div className="ranking-pagination__desc">
-                        <span>1 ~ 100</span> 등 /{" "}
+                        <span>1 ~ 10</span> 등 /{" "}
                         {respDto.statusCode === 200 && (
                           <span>총 {respDto.data[0].allUser} </span>
                         )}

@@ -43,7 +43,10 @@ const LoginContent = ({ history }) => {
       localStorage.setItem("userId", jwtToken.data.data.userId);
       localStorage.setItem("nickname", jwtToken.data.data.nickname);
       localStorage.setItem("jwtToken", jwtToken.data.data.jwtToken);
+      alert("로그인에 성공하셨습니다.");
       history.push("/home");
+    } else {
+      alert("로그인에 실패하셨습니다");
     }
   };
 
@@ -77,10 +80,12 @@ const LoginContent = ({ history }) => {
       )
       .then((response) => {
         console.log(response);
+        alert(response.data.message);
+
         localStorage.setItem("jwtToken", response.data.data.jwtToken);
         localStorage.setItem("userId", response.data.data.userId);
         localStorage.setItem("nickname", response.data.data.nickname);
-
+        alert("로그인에 성공하셨습니다.");
         history.push("/home");
       })
       .catch((error) => {
