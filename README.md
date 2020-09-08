@@ -80,7 +80,7 @@
 #### 페이징 처리
 
 ```
-0페이지가 되면 이전 버튼이 사라짐
+<!-- 0페이지가 되면 이전 버튼이 사라짐 -->
 const  handlePrevPage = () => {
 let  prevPage = postPage - 1;
 if (postPage < 0) {
@@ -101,7 +101,7 @@ console.log(error.response);
 };
 
 
-마지막 페이지가 되면 다음 버튼이 사라짐
+<!-- 마지막 페이지가 되면 다음 버튼이 사라짐 -->
 const  handleNextPage = () => {
 let  nextPage = postPage + 1;
 axios
