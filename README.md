@@ -40,41 +40,37 @@ Springboot JPA
 
 ## 메인, 랭킹화면
 
-![enter image description here](https://github.com/star1606/OPGG-Project-React/blob/master/src/capture/ranking2.gif?raw=true)
-<br>
-<br>
+![enter image description here](https://github.com/star1606/OPGG-Project-React/blob/master/src/capture/ranking2.gif?raw=true)<br><br><br>
+
+
 ## 소환사 검색 화면
 
 ![enter image description here](https://github.com/star1606/OPGG-Project-React/blob/master/src/capture/rankingsearch1.gif?raw=true)
 
-- 검색을 하면 API에서 유저정보를 불러옵니다.
-<br>
-<br>
+- 검색을 하면 API에서 유저정보를 불러옵니다.<br><br><br>
+
 ## 전적 갱신
 
 ![enter image description here](https://github.com/star1606/OPGG-Project-React/blob/master/src/capture/rankingupdate3.gif?raw=true)
 
-- API를 불러와서 게임 전적을 최신화합니다.
-<br>
+- API를 불러와서 게임 전적을 최신화합니다.<br>
+
 
 ![enter image description here](https://github.com/star1606/OPGG-Project-React/blob/master/src/capture/rankingupdate4.gif?raw=true)
 
-- 경기 내용에 있는 토글을 클릭하면 경기 상세 내용을 볼 수 있습니다.
-<br>
-<br>
+- 경기 내용에 있는 토글을 클릭하면 경기 상세 내용을 볼 수 있습니다.<br><br><br>
+
 ## 회원가입 화면
 
-![enter image description here](https://postfiles.pstatic.net/MjAyMDA5MDhfMTI5/MDAxNTk5NTY5NjY5NTE4.8mNx9HxMxideSkMBrJvKiYo5mExqn_Su-E-DAuGnLJMg.nEtRPB4EuFaTmO1MqsSbCfjUCBkpdMMZ3M55LUKU92wg.PNG.swiniee/image.png?type=w773)
-<br>
-<br>
+![enter image description here](https://postfiles.pstatic.net/MjAyMDA5MDhfMTI5/MDAxNTk5NTY5NjY5NTE4.8mNx9HxMxideSkMBrJvKiYo5mExqn_Su-E-DAuGnLJMg.nEtRPB4EuFaTmO1MqsSbCfjUCBkpdMMZ3M55LUKU92wg.PNG.swiniee/image.png?type=w773)<br><br><br>
+
 ## OAuth 로그인
 
 ![enter image description here](https://github.com/star1606/OPGG-Project-React/blob/master/src/capture/oauthlogin4.gif?raw=true)
 
 - OAuth 2.0 구글 로그인
-- 로그인이 완료되면 JWT token을 받습니다.
-<br>
-<br>
+- 로그인이 완료되면 JWT token을 받습니다.<br><br><br>
+
 ## 커뮤니티 화면
 
 ![enter image description here](https://github.com/star1606/OPGG-Project-React/blob/master/src/capture/Honeycam%202020-09-08%2012-28-34.gif?raw=true)
@@ -165,18 +161,19 @@ statusCode 200: 첫페이지도 마지막페이지도 아님
 statusCode 204: 마지막페이지
 
 ```
-<br>
-<br>
+<br><br><br>
+
+
 ## 게시글 검색
 
 ![enter image description here](https://github.com/star1606/OPGG-Project-React/blob/master/src/capture/communitysearch.gif?raw=true)
-<br>
-<br>
+<br><br><br>
+
 ## 글쓰기
 
 ![enter image description here](https://postfiles.pstatic.net/MjAyMDA5MDhfMTIg/MDAxNTk5NTcwMzI1MTI2.W5UTfQmgV8ONRn49wbkliJLLK5rwwDEWlyJN9UgWsuog.rKaDX3JOpq54MFPn86pkOrV-_AnOjaNOg5eTS81Tw8Mg.PNG.swiniee/Screenshot_17.png?type=w773)
-<br>
-<br>
+<br><br><br>
+
 ## 글 상세 화면
 
 ![enter image description here](https://postfiles.pstatic.net/MjAyMDA5MDhfMTQz/MDAxNTk5NTcwNTA3OTc4.6zhF54PtD7SAcRgEomkctoNM7g6qtCp86s7cbzELRq0g.vT46GJCXSmqIRJw_6VG99sQOp-b3rl6TKR70TxbZ3AEg.PNG.swiniee/Screenshot_18.png?type=w773)
