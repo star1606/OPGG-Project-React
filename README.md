@@ -16,6 +16,26 @@
 - Spring boot JPA
 - MySQL 8.0
 
+
+
+## 3. 사용기술
+
+React
+  - Hooks
+  - styled-components
+  - axios
+  
+
+Springboot JPA
+ - JWT token
+ - OAuth 2.0
+ - Security
+ 
+
+
+
+
+
 ## 메인, 랭킹화면
 
 ![enter image description here](https://github.com/star1606/OPGG-Project-React/blob/master/src/capture/ranking2.gif?raw=true)
