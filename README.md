@@ -22,15 +22,15 @@
 ## 3. 사용기술
 
 #### React
-  -Hooks
-  -styled-components
-  -axios
+  - Hooks
+  - styled-components
+  - axios
   
 
 #### Springboot JPA
- -JWT token
- -OAuth 2.0
- -Security
+ - JWT token
+ - OAuth 2.0
+ - Security
 <br>
 <br> 
 
@@ -82,73 +82,38 @@
 ```
 // 0페이지가 되면 이전 버튼이 사라짐
 const  handlePrevPage = () => {
-
 let  prevPage = postPage - 1;
-
 if (postPage < 0) {
-
 return;
-
 }
 
-console.log(6, prevPage);
-
 axios
-
 .get("http://59.20.79.42:58002/post/" + prevPage)
-
 .then((response) => {
-
 console.log(response.data.statusCode);
-
 setCommunityDtos(response.data.data);
-
 setStatusCode(response.data.statusCode);
-
-
-
 setPostPage(postPage - 1);
-
 })
-
 .catch((error) => {
-
 console.log(error.response);
-
 });
-
 };
 
 
 // 마지막 페이지가 되면 다음 버튼이 사라짐
 const  handleNextPage = () => {
-
 let  nextPage = postPage + 1;
-
-
-
 axios
-
 .get("http://59.20.79.42:58002/post/" + nextPage)
-
 .then((response) => {
-
-console.log(response.data.statusCode);
-
 setCommunityDtos(response.data.data);
-
 setStatusCode(response.data.statusCode);
-
 setPostPage(postPage + 1);
-
 })
-
 .catch((error) => {
-
 console.log(error);
-
 });
-
 };
 
 ```
