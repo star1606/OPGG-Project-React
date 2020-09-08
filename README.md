@@ -12,8 +12,9 @@
 ## 2. 개발환경
 
 - Visual Studio Code
-- React 16.13.1, React-router
 - Spring Tool Suite4
+- React 16.13.1, React-router
+- nodejs v12.18.2
 - Spring boot JPA
 - MySQL 8.0
 
