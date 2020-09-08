@@ -230,9 +230,6 @@ const Community = ({ history }) => {
   };
 
   const handleNextPage = () => {
-    //첫페이지면서 마지막페이지
-    // if (postpage < 1) {
-    // }
     let nextPage = postPage + 1;
 
     axios

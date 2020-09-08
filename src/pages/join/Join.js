@@ -101,6 +101,7 @@ const Join = ({ history }) => {
                   onChange={hanleOnChange}
                   className="member-input__box"
                   type="password"
+                  t
                   autoComplete="off"
                   name="password"
                   placeholder="비밀번호"
