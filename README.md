@@ -2,11 +2,10 @@
 
 ## 1. 프로젝트 개요
 
-> -OP.GG는 월간 4500만명의 이용자가 사용하는 게임 전적 검색 사이트입니다. `https://www.op.gg`
->
-> 본 프로젝트는 OP.GG 의 어플리케이션과 웹을 클론 코딩하였습니다.
-> 리그오브레전드 게임 유저의 데이터를 API를 통해 조회하고 실제 경기 승, 패 상세내용을 제공하고 있습니다. ` Riot API: https://developer.riotgames.com` <br>
-> 커뮤니티 서비스를 제공하고 있습니다.<br>
+>-OP.GG는 월간 4500만명의 이용자가 사용하는 게임 전적 검색 사이트입니다. `https://www.op.gg`
+>-본 프로젝트는 OP.GG 의 어플리케이션과 웹을 클론 코딩하였습니다.
+>-리그오브레전드 게임 유저의 데이터를 API를 통해 조회하고 실제 경기 승, 패 상세내용을 제공하고 있습니다. ` Riot API: https://developer.riotgames.com` <br>
+>-커뮤니티 서비스를 제공하고 있습니다.<br>
 
 
 ## 2. 개발환경
@@ -21,16 +20,16 @@
 
 ## 3. 사용기술
 
-React
-  - Hooks
-  - styled-components
-  - axios
+#### React
+  -Hooks
+  -styled-components
+  -axios
   
 
-Springboot JPA
- - JWT token
- - OAuth 2.0
- - Security
+#### Springboot JPA
+ -JWT token
+ -OAuth 2.0
+ -Security
 <br>
 <br> 
 
