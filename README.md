@@ -182,3 +182,6 @@ statusCode 204: 마지막페이지
 ## 글 상세 화면
 
 ![enter image description here](https://postfiles.pstatic.net/MjAyMDA5MDhfMTQz/MDAxNTk5NTcwNTA3OTc4.6zhF54PtD7SAcRgEomkctoNM7g6qtCp86s7cbzELRq0g.vT46GJCXSmqIRJw_6VG99sQOp-b3rl6TKR70TxbZ3AEg.PNG.swiniee/Screenshot_18.png?type=w773)
+
+<br><br>
+> 시연 동영상 : ➡️ [링크](https://www.youtube.com/watch?v=JbTQcFy7P3o)
