@@ -6,10 +6,9 @@
 >
 > 본 프로젝트는 OP.GG 의 어플리케이션과 웹을 클론 코딩하였습니다.
 > 리그오브레전드 게임 유저의 데이터를 API를 통해 조회하고 실제 경기 승, 패 상세내용을 제공하고 있습니다. ` Riot API: https://developer.riotgames.com` <br>
-> 커뮤니티 서비스를 제공하고 있습니다.
+> 커뮤니티 서비스를 제공하고 있습니다.<br>
 
-<br>
-<br>
+
 ## 2. 개발환경
 
 - Visual Studio Code
@@ -18,7 +17,6 @@
 - Spring boot JPA
 - MySQL 8.0
 
-<br>
 <br>
 
 ## 3. 사용기술
