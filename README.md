@@ -7,7 +7,10 @@
 >-리그오브레전드 게임 유저의 데이터를 API를 통해 조회하고 실제 경기 승, 패 상세내용을 제공하고 있습니다.<br>
 >` Riot API: https://developer.riotgames.com` <br>
 >-커뮤니티 서비스를 제공하고 있습니다.<br>
-### notion: https://www.notion.so/OP-GG-Project-c335ba2152ca430cac31dc1c020afa63
+### 프로젝트 구현 과정 notion: https://www.notion.so/OP-GG-Project-c335ba2152ca430cac31dc1c020afa63
+
+#### Spring boot 서버: https://github.com/bk6717/opgg
+#### Android App : https://github.com/jaybon1/opggProject
 
 
 ## 2. 개발환경
